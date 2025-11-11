@@ -1,19 +1,23 @@
 # Contributing to Claude Code Plugins Collection
 
-Thank you for your interest in contributing! This document provides guidelines for adding new plugins or improving existing ones.
+Thank you for your interest in contributing! This document provides guidelines
+for adding new plugins or improving existing ones.
 
 ## 🎯 Contribution Guidelines
 
 We welcome several types of contributions:
 
-- **New Plugins**: Share plugins that align with our focus areas in [README.md](README.md)
-- **Plugin Improvements**: Enhance existing plugins with new features, bug fixes, or better documentation
+- **New Plugins**: Share plugins that align with our focus areas in
+  [README.md](README.md)
+- **Plugin Improvements**: Enhance existing plugins with new features, bug
+  fixes, or better documentation
 - **Bug Reports**: Report issues with existing plugins
 - **Documentation**: Improve plugin documentation or examples
 
 ## 📂 Plugin Structure
 
-Each plugin is a standalone directory following the Claude Code [plugin directory structure][structure-docs]. Here's the basic layout:
+Each plugin is a standalone directory following the Claude Code [plugin
+directory structure][structure-docs]. Here's the basic layout:
 
 ```
 plugin-name/
@@ -33,7 +37,9 @@ plugin-name/
 └── CHANGELOG.md             # Version history (optional)
 ```
 
-The plugin manifest (`.claude-plugin/plugin.json`) contains metadata and configuration following the [plugin manifest schema][manifest-schema]. Here's a minimal example:
+The plugin manifest (`.claude-plugin/plugin.json`) contains metadata and
+configuration following the [plugin manifest schema][manifest-schema]. Here's a
+minimal example:
 
 ```json
 {
@@ -49,17 +55,25 @@ The plugin manifest (`.claude-plugin/plugin.json`) contains metadata and configu
 }
 ```
 
-Each plugin must have a `README.md` documenting its purpose, usage with examples, and any dependencies or configuration options.
+Each plugin must have a `README.md` documenting its purpose, usage with
+examples, and any dependencies or configuration options.
 
-The [CLAUDE.md](CLAUDE.md) file in this repository contains detailed instructions to help Claude Code generate plugin directories and components following our conventions.
+The [CLAUDE.md](CLAUDE.md) file in this repository contains detailed
+instructions to help Claude Code generate plugin directories and components
+following our conventions.
 
 Plugins can include any combination of these optional components:
 
-- **[Slash commands][commands-docs]** (`commands/`) - Command development details (instruction files)
-- **[Subagents][agents-docs]** (`agents/`) - Agent configuration and capabilities (instruction files)
-- **[Agent Skills][skills-docs]** (`skills/`) - Extend Claude's capabilities (directory containing `SKILL.md`)
-- **[Hooks][hooks-docs]** (`hooks/`) - React to specific Claude Code events automatically (configured in `hooks.json`)
-- **[MCP servers][mcp-docs]** (`.mcp.json`) - Integrate external data sources or tools
+- **[Slash commands][commands-docs]** (`commands/`) - Command development
+  details (instruction files)
+- **[Subagents][agents-docs]** (`agents/`) - Agent configuration and
+  capabilities (instruction files)
+- **[Agent Skills][skills-docs]** (`skills/`) - Extend Claude's capabilities
+  (directory containing `SKILL.md`)
+- **[Hooks][hooks-docs]** (`hooks/`) - React to specific Claude Code events
+  automatically (configured in `hooks.json`)
+- **[MCP servers][mcp-docs]** (`.mcp.json`) - Integrate external data sources
+  or tools
 
 ## 🔧 Development Workflow
 
@@ -99,7 +113,10 @@ Follow these principles when creating plugins:
 
 When submitting a pull request:
 
-- **Title in IMPERATIVE MOOD** starting with a verb describing what the plugin does, not what you're adding to the repository. The title should capture the plugin's capability and naturally indicate its primary component type or interaction model.
+- **Title in IMPERATIVE MOOD** starting with a verb describing what the plugin
+  does, not what you're adding to the repository. The title should capture the
+  plugin's capability and naturally indicate its primary component type or
+  interaction model.
 
   Examples:
   - "Analyze distributed tracing context autonomously" (includes agents)
@@ -108,11 +125,16 @@ When submitting a pull request:
   - "Generate system architecture documentation" (general capability, may include multiple components)
   - "Analyze Go concurrency patterns as skills" (includes skills)
 
-  Notice how the component type emerges naturally: "autonomously" suggests agents, "with commands" indicates slash commands, "via hooks" signals event hooks, and "as skills" denotes autonomous skills. Plugins may include multiple component types to deliver their capabilities.
+  Notice how the component type emerges naturally: "autonomously" suggests
+  agents, "with commands" indicates slash commands, "via hooks" signals event
+  hooks, and "as skills" denotes autonomous skills. Plugins may include
+  multiple component types to deliver their capabilities.
 
 - **Description explains the plugin's purpose and value**, not a list of commits
   - Why this plugin is useful, what problem it solves, how it fits our focus areas
+
 - Ensure your plugin follows the structure and principles outlined above
+
 - Test your plugin locally before submitting
 
 ## 🔗 Reference Documentation

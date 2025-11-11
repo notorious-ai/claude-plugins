@@ -1,6 +1,9 @@
 # Claude Code Plugins Collection
 
-A curated collection of Claude Code plugins for systems architecture, distributed systems, and software engineering workflows. Each plugin is a standalone, composable tool that extends Claude Code with custom commands, agents, hooks, and integrations.
+A curated collection of Claude Code plugins for systems architecture,
+distributed systems, and software engineering workflows. Each plugin is a
+standalone, composable tool that extends Claude Code with custom commands,
+agents, hooks, and integrations.
 
 ## ✨ Available Plugins
 
@@ -24,7 +27,8 @@ Each plugin directory contains:
 
 ### Installation
 
-Since this repository follows a composable design (no bundled marketplace), you choose exactly which plugins you want:
+Since this repository follows a composable design (no bundled marketplace), you
+choose exactly which plugins you want:
 
 1. **Browse the repository** to find plugins that match your needs
 
@@ -67,7 +71,8 @@ This repository follows the **Unix philosophy**:
 
 ### Why No Marketplace File?
 
-Most plugin repositories bundle a marketplace file that installs all plugins together. We deliberately don't do this because:
+Most plugin repositories bundle a marketplace file that installs all plugins
+together. We deliberately don't do this because:
 
 1. **Lower cognitive load**: Only install plugins you actually need
 2. **Maximum flexibility**: Mix and match plugins across repositories
@@ -96,11 +101,13 @@ claude-plugins/
 
 ## 🤝 Contributing
 
-We welcome contributions! Whether you have a new plugin to share, improvements to existing ones, or bug reports:
+We welcome contributions! Whether you have a new plugin to share, improvements
+to existing ones, or bug reports:
 
 - Open an issue for bugs, feature requests, or questions
 - Submit a pull request for new plugins or enhancements
-- See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on plugin structure and development
+- See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on plugin
+  structure and development
 
 ## 💬 Getting Help
 
@@ -109,7 +116,8 @@ Use GitHub Issues with the appropriate issue type:
 - **Bug**: Report issues with existing plugins
 - **Feature**: Suggest new plugins or enhancements
 - **Task**: Propose improvements to documentation or infrastructure
-- **Question Label**: Add the `question` label for questions about plugins or usage
+- **Question Label**: Add the `question` label for questions about plugins or
+  usage
 
 ## 🔗 Resources
 
