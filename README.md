@@ -99,10 +99,6 @@ Our plugins are designed with several principles in mind:
 - [Model Context Protocol](https://modelcontextprotocol.io/)
 - [Go Programming Language](https://go.dev/)
 
-## 📝 License
-
-This repository is provided as-is for educational and reference purposes. Individual plugins may have their own licensing requirements—check the specific plugin directories for details.
-
 ## 🌱 About Emergence
 
 The concept of emergence—where complex patterns arise from simple rules—fascinates us in both natural systems and software architecture. You'll find this philosophy reflected in how our plugins are designed: simple, composable pieces that enable sophisticated workflows.
