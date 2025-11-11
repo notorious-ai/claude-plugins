@@ -20,77 +20,66 @@ The plugins in this repository reflect our professional focus:
 
 This repository contains individual Claude Code plugins, each as a standalone directory with its own configuration and components.
 
+**Note on Marketplaces**: Plugins are distributed through marketplaces in Claude Code. This repository intentionally does not include a marketplace file to maximize composability. Following the Unix philosophy, each plugin has a single purpose. Users can create their own marketplace files to "package" several related plugins into coherent sets, without being burdened by unrelated plugins. This approach keeps the mental load low and makes plugins more effective.
+
 ## 🚀 Getting Started
 
 ### Prerequisites
 
 - [Claude Code](https://claude.ai/code) installed and configured
-- Familiarity with the Claude Code plugin system
+- Familiarity with the Claude Code plugin system and marketplaces
 
 ### Installation
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/notorious-ai/claude-plugins.git
-   cd claude-plugins
+To use plugins from this repository, you'll need to create a local marketplace file:
+
+1. **Browse available plugins** in this repository to identify which ones suit your needs
+
+2. **Create a marketplace file** (e.g., `my-marketplace.json`) with your selected plugins:
+   ```json
+   {
+     "name": "My Custom Marketplace",
+     "plugins": [
+       {
+         "name": "plugin-name-1",
+         "source": "https://github.com/notorious-ai/claude-plugins.git",
+         "path": "plugin-name-1"
+       }
+     ]
+   }
    ```
 
-2. Browse the plugin directories
+3. **Register your marketplace** with Claude Code:
+   ```bash
+   claude marketplace add /path/to/my-marketplace.json
+   ```
 
-3. Follow the individual plugin READMEs for specific setup instructions
+4. **Browse and install plugins** interactively:
+   ```bash
+   claude plugin install
+   ```
 
-4. Install plugins locally or add them to your Claude Code configuration
+For more details on marketplace configuration, see the [Claude Code settings documentation](https://code.claude.com/docs/en/settings#plugin-configuration).
 
 ## 📂 Repository Structure
 
-Each plugin is a standalone directory with its own structure:
-
-```
-claude-plugins/
-├── plugin-name-1/
-│   ├── .claude-plugin/
-│   │   └── plugin.json      # Plugin manifest (required)
-│   ├── commands/            # Custom slash commands (optional)
-│   ├── agents/              # Custom agents (optional)
-│   ├── skills/              # Autonomous agent skills (optional)
-│   ├── hooks/               # Event hooks (optional)
-│   ├── .mcp.json            # MCP server config (optional)
-│   └── README.md            # Plugin documentation
-├── plugin-name-2/
-│   └── ...
-└── README.md                # This file
-```
-
-### Plugin Structure
-
-Each plugin directory contains:
-- **`.claude-plugin/plugin.json`**: Required manifest with plugin metadata
-- **`commands/`**: Optional directory with markdown files defining custom commands
-- **`agents/`**: Optional directory with markdown files defining custom agents
-- **`skills/`**: Optional directory with skill definitions
-- **`hooks/`**: Optional directory with event hook configurations
-- **`.mcp.json`**: Optional MCP server configuration
-- **`README.md`**: Documentation for the plugin
+Each plugin is a standalone directory. See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed plugin structure guidelines.
 
 ## 🤝 Contributing
 
-We welcome contributions from the community:
+We welcome contributions! Whether you have a new plugin to share, improvements to existing ones, or bug reports, feel free to open an issue or submit a pull request.
 
-- **New Plugins**: Share your useful Claude Code plugins
-- **Improvements**: Enhance existing plugins with new features or fixes
-- **Bug Reports**: If something doesn't work as expected
-- **Discussions**: Thoughts on distributed systems, Go patterns, or emergence
-
-Feel free to open an issue or submit a pull request!
+For detailed guidelines on plugin structure and development, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 📖 Plugin Philosophy
 
-Our plugins are designed with several principles in mind:
+Our plugins follow the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy):
 
-1. **Composability**: Each plugin works independently and composes well with others
-2. **Clarity**: Clear documentation and examples for each plugin
-3. **Pragmatism**: Solutions that work in real-world scenarios, not just theory
-4. **Evolution**: Plugins evolve as we learn and discover better patterns
+1. **Do One Thing Well**: Each plugin has a single, well-defined purpose
+2. **Work Together**: Plugins are designed to compose with others through clean interfaces
+3. **Handle Text Streams**: Plugins process and generate clear, parseable output
+4. **Simple and Transparent**: Clear documentation and straightforward implementations
+5. **Evolutionary**: Plugins improve incrementally based on real-world usage
 
 ## 🔗 Related Resources
 
