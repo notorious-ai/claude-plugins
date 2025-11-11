@@ -38,7 +38,7 @@ plugin-name/
 
 #### `.claude-plugin/plugin.json`
 
-The plugin manifest contains metadata and configuration:
+The plugin manifest contains metadata and configuration. See [Settings][settings-docs] for complete configuration options.
 
 ```json
 {
@@ -70,39 +70,11 @@ Each plugin must have a README with:
 
 ### Optional Components
 
-#### Commands (`commands/`)
-
-Custom slash commands are defined in markdown files:
-
-```markdown
----
-description: Brief description of the command
----
-
-# Command Name
-
-Detailed documentation of what the command does and how to use it.
-
-## Usage
-
-Examples and use cases.
-```
-
-#### Agents (`agents/`)
-
-Custom agents are defined in markdown files with specific capabilities and context.
-
-#### Skills (`skills/`)
-
-Each skill is a directory containing a `SKILL.md` file that defines the skill's capabilities.
-
-#### Hooks (`hooks/`)
-
-Event hooks are configured in `hooks.json` to trigger actions on specific Claude Code events.
-
-#### MCP Servers (`.mcp.json`)
-
-MCP server configuration for integrating external data sources or tools.
+- **[Slash commands][commands-docs]** (`commands/`) - Custom slash commands defined in markdown files
+- **[Subagents][agents-docs]** (`agents/`) - Custom agents defined in markdown files with specific capabilities and context
+- **[Agent Skills][skills-docs]** (`skills/`) - Each skill is a directory containing a `SKILL.md` file that defines the skill's capabilities
+- **[Hooks][hooks-docs]** (`hooks/`) - Event hooks configured in `hooks.json` to trigger actions on specific Claude Code events
+- **[MCP servers][mcp-docs]** (`.mcp.json`) - MCP server configuration for integrating external data sources or tools
 
 ## 🔧 Development Workflow
 
@@ -150,9 +122,7 @@ Follow these principles when creating plugins:
 
 ## 🔗 Reference Documentation
 
-- [Claude Code Plugins Overview](https://code.claude.com/docs/en/plugins)
 - [Plugins Reference](https://code.claude.com/docs/en/plugins-reference)
-- [Plugin Settings](https://code.claude.com/docs/en/settings#plugin-configuration)
 - [Model Context Protocol](https://modelcontextprotocol.io/)
 - [Unix Philosophy](https://en.wikipedia.org/wiki/Unix_philosophy)
 
@@ -177,3 +147,12 @@ Follow these principles when creating plugins:
 ---
 
 *Thank you for contributing to our plugin collection!*
+
+[plugins-docs]: https://code.claude.com/docs/en/plugins
+[marketplaces-docs]: https://code.claude.com/docs/en/plugin-marketplaces
+[commands-docs]: https://code.claude.com/docs/en/slash-commands
+[agents-docs]: https://code.claude.com/docs/en/sub-agents
+[skills-docs]: https://code.claude.com/docs/en/skills
+[hooks-docs]: https://code.claude.com/docs/en/hooks
+[mcp-docs]: https://code.claude.com/docs/en/mcp
+[settings-docs]: https://code.claude.com/docs/en/settings
