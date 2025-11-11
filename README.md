@@ -31,7 +31,7 @@ Since this repository follows a composable design (no bundled marketplace), you 
 2. **Create your own marketplace file** (e.g., `my-marketplace.json`):
    ```json
    {
-     "name": "My Custom Marketplace",
+     "name": "my-marketplace",
      "plugins": [
        {
          "name": "plugin-name",
@@ -80,8 +80,8 @@ This keeps plugins focused and users in control.
 
 ```
 claude-plugins/
-├── README.md              # This file
-├── CONTRIBUTING.md        # Plugin development guidelines
+├── README.md             # This file
+├── CONTRIBUTING.md       # Plugin development guidelines
 ├── CLAUDE.md             # Instructions for Claude Code
 └── plugin-name/          # Each plugin is a top-level directory
     ├── .claude-plugin/
@@ -109,16 +109,16 @@ Use GitHub Issues with the appropriate issue type:
 - **Bug**: Report issues with existing plugins
 - **Feature**: Suggest new plugins or enhancements
 - **Task**: Propose improvements to documentation or infrastructure
-- **Question Label**: Add the `question` label for usage questions
+- **Question Label**: Add the `question` label for questions about plugins or usage
 
 ## 🔗 Resources
 
 - [Claude Code Plugins Documentation](https://code.claude.com/docs/en/plugins)
 - [Plugins Reference](https://code.claude.com/docs/en/plugins-reference)
 - [Model Context Protocol](https://modelcontextprotocol.io/)
-- [Official Claude Code Plugins](https://github.com/anthropics/claude-code)
-- [Official Skills Collection](https://github.com/anthropics/skills)
+- Example: [Official Claude Code Plugins](https://github.com/anthropics/claude-code)
+- Example: [Official Skills Collection](https://github.com/anthropics/skills)
 
 ---
 
-*Built with curiosity and shared with the community.*
+*Built with curiosity and shared with friends.*
