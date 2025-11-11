@@ -13,7 +13,7 @@ We welcome several types of contributions:
 
 ## 📂 Plugin Structure
 
-Each plugin is a standalone directory following the Claude Code plugin standard. Here's the structure:
+Each plugin is a standalone directory following the Claude Code [plugin directory structure][structure-docs]. Here's the basic layout:
 
 ```
 plugin-name/
@@ -30,14 +30,10 @@ plugin-name/
 │   └── hooks.json
 ├── .mcp.json                # MCP server config (optional)
 ├── README.md                # Plugin documentation (required)
-└── LICENSE                  # Plugin-specific license (optional)
+└── CHANGELOG.md             # Version history (optional)
 ```
 
-### Required Files
-
-#### `.claude-plugin/plugin.json`
-
-The plugin manifest contains metadata and configuration. See [Settings][settings-docs] for complete configuration options.
+The plugin manifest (`.claude-plugin/plugin.json`) contains metadata and configuration following the [plugin manifest schema][manifest-schema]. Here's a minimal example:
 
 ```json
 {
@@ -53,17 +49,17 @@ The plugin manifest contains metadata and configuration. See [Settings][settings
 }
 ```
 
-#### `README.md`
+Each plugin must have a `README.md` documenting its purpose, usage with examples, and any dependencies or configuration options.
 
-Each plugin must have a README documenting its purpose, usage with examples, and any dependencies or configuration options.
+The [CLAUDE.md](CLAUDE.md) file in this repository contains detailed instructions to help Claude Code generate plugin directories and components following our conventions.
 
-### Optional Components
+Plugins can include any combination of these optional components:
 
-- **[Slash commands][commands-docs]** (`commands/`) - Custom slash commands defined in markdown files
-- **[Subagents][agents-docs]** (`agents/`) - Custom agents defined in markdown files with specific capabilities and context
-- **[Agent Skills][skills-docs]** (`skills/`) - Each skill is a directory containing a `SKILL.md` file that defines the skill's capabilities
-- **[Hooks][hooks-docs]** (`hooks/`) - Event hooks configured in `hooks.json` to trigger actions on specific Claude Code events
-- **[MCP servers][mcp-docs]** (`.mcp.json`) - MCP server configuration for integrating external data sources or tools
+- **[Slash commands][commands-docs]** (`commands/`) - Command development details (instruction files)
+- **[Subagents][agents-docs]** (`agents/`) - Agent configuration and capabilities (instruction files)
+- **[Agent Skills][skills-docs]** (`skills/`) - Extend Claude's capabilities (directory containing `SKILL.md`)
+- **[Hooks][hooks-docs]** (`hooks/`) - React to specific Claude Code events automatically (configured in `hooks.json`)
+- **[MCP servers][mcp-docs]** (`.mcp.json`) - Integrate external data sources or tools
 
 ## 🔧 Development Workflow
 
@@ -99,19 +95,6 @@ Follow these principles when creating plugins:
 6. **Well-Documented**: Write clear READMEs with examples
 7. **Lightweight**: Keep plugins efficient and performant
 
-## 🔗 Reference Documentation
-
-- [Plugins Reference](https://code.claude.com/docs/en/plugins-reference)
-- [Model Context Protocol](https://modelcontextprotocol.io/)
-- [Unix Philosophy](https://en.wikipedia.org/wiki/Unix_philosophy)
-
-## 💬 Getting Help
-
-- **Questions**: Open a GitHub issue with the `question` label
-- **Bugs**: Open a GitHub issue with the `bug` label
-- **Ideas**: Open a GitHub issue with the `enhancement` label
-- **Discussions**: Use GitHub Discussions for broader topics
-
 ## 📋 Pull Request Guidelines
 
 When submitting a pull request:
@@ -132,6 +115,12 @@ When submitting a pull request:
 - Ensure your plugin follows the structure and principles outlined above
 - Test your plugin locally before submitting
 
+## 🔗 Reference Documentation
+
+- [Plugins Reference](https://code.claude.com/docs/en/plugins-reference)
+- [Model Context Protocol](https://modelcontextprotocol.io/)
+- [Unix Philosophy](https://en.wikipedia.org/wiki/Unix_philosophy)
+
 ---
 
 *Thank you for contributing to our plugin collection!*
@@ -144,3 +133,5 @@ When submitting a pull request:
 [hooks-docs]: https://code.claude.com/docs/en/hooks
 [mcp-docs]: https://code.claude.com/docs/en/mcp
 [settings-docs]: https://code.claude.com/docs/en/settings
+[structure-docs]: https://code.claude.com/docs/en/plugins-reference#plugin-directory-structure
+[manifest-schema]: https://code.claude.com/docs/en/plugins-reference#plugin-manifest-schema

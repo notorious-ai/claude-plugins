@@ -71,6 +71,15 @@ We welcome contributions! Whether you have a new plugin to share, improvements t
 
 For detailed guidelines on plugin structure and development, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## 💬 Getting Help
+
+Use GitHub Issues with the appropriate issue type:
+
+- **Bug**: Report issues with existing plugins
+- **Feature**: Suggest new plugins or enhancements
+- **Task**: Propose improvements to documentation or infrastructure
+- **Question Label**: Add the `question` label for questions about plugins or usage
+
 ## 📖 Plugin Philosophy
 
 Our plugins follow the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy):
