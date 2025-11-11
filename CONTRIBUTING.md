@@ -174,16 +174,6 @@ Follow these principles when creating plugins:
    - Any testing you've performed
 5. Respond to review feedback
 
-## 🌱 Plugin Ideas
-
-Looking for ideas? Consider plugins for:
-
-- **Go Development**: Testing, benchmarking, linting, refactoring tools
-- **Systems Architecture**: Diagram generation, dependency analysis, design pattern helpers
-- **Distributed Systems**: Event sourcing, CQRS patterns, resilience testing
-- **Knowledge Management**: Documentation generation, cross-referencing, learning aids
-- **Emergence**: Pattern detection, complexity analysis, system visualization
-
 ---
 
 *Thank you for contributing to our plugin collection!*
