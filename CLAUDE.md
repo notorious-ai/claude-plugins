@@ -176,6 +176,16 @@ Create a `README.md` at the plugin root documenting:
 
 If versioning is important, create a `CHANGELOG.md` to track changes.
 
+### Step 7: Update Repository README
+
+**IMPORTANT**: After creating a new plugin, update the repository's [README.md](README.md) to include the new plugin in the "Available Plugins" section.
+
+Add an entry with:
+- Plugin name (linked to its directory)
+- One-line description of what it does
+
+This keeps the repository documentation current and helps users discover available plugins.
+
 ## Helping Users Test Their Plugin
 
 After creating a plugin, guide the user through local testing. **You cannot test the plugin yourself** - provide clear instructions for the user to follow.
