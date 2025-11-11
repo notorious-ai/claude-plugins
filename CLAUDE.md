@@ -55,37 +55,42 @@ When a user requests a new plugin, **ALWAYS** start with planning. Never immedia
 
 ### Component Selection Guide
 
-When planning which component types to use, consider these guidelines:
+When planning which component types to use, consider these guidelines based on activation patterns and use cases:
 
-**[Slash Commands][commands-docs]** - Use when you want to:
-- Provide quick, user-triggered actions
-- Execute specific, bounded tasks on-demand
-- Offer convenient shortcuts for common operations
-- Example: `/lint-go` to run Go linting, `/visualize-coverage` to show test coverage
+**[Slash Commands][commands-docs]** - User-triggered shortcuts for quick tasks:
+- Single-file Markdown structure with explicit invocation
+- Quick, frequently-used prompts and templates
+- Simple workflows that don't require complex multi-file organization
+- Best for: reminders, code templates, common prompt snippets
+- Example: `/lint-go` to run Go linting with standard flags, `/trace-context` to analyze distributed tracing headers
 
-**[Subagents][agents-docs]** - Use when you want to:
-- Perform autonomous, multi-step tasks
-- Make decisions and adapt based on context
-- Handle complex workflows requiring reasoning
-- Example: Analyze distributed tracing spans autonomously, debug issues independently
+**[Subagents][agents-docs]** - Delegated task execution with isolated context:
+- Pre-configured AI personalities with specific expertise
+- Separate context windows that keep main conversation clean
+- Task-specific workflows like reviews, testing, debugging, or analysis
+- Best for: complex subtasks requiring focused attention without polluting main thread
+- Example: Delegate code review to specialized agent, autonomously debug distributed system issues
 
-**[Agent Skills][skills-docs]** - Use when you want to:
-- Extend Claude's base capabilities with domain expertise
-- Provide reusable, composable abilities
-- Enable specialized knowledge or patterns
-- Example: Go concurrency pattern analysis, system architecture validation
+**[Agent Skills][skills-docs]** - Model-invoked capabilities that activate automatically:
+- Claude autonomously decides when to use them based on request relevance
+- Self-activating modular components for encoding specialized knowledge
+- Single-capability focus with clear activation descriptions
+- Best for: automating repetitive workflows, distributing standardized processes
+- Example: Automatically analyze Go concurrency patterns when reviewing code, validate system architecture against principles
 
-**[Hooks][hooks-docs]** - Use when you want to:
-- React automatically to Claude Code events
-- Validate, transform, or augment operations
-- Enforce policies or run checks
-- Example: Validate event schema before commits, auto-format on file save
+**[Hooks][hooks-docs]** - Event-driven automation at workflow points:
+- Execute automatically at specific lifecycle events (PreToolUse, PostToolUse, SessionStart, etc.)
+- Validation, context injection, permission management, monitoring
+- Deterministic rules and security policies
+- Best for: automated enforcement of standards, context enrichment, security checks
+- Example: Validate event schemas before commits, auto-format code on file save, inject distributed tracing context at session start
 
-**[MCP Servers][mcp-docs]** - Use when you want to:
-- Integrate external data sources or APIs
-- Provide tools for accessing external systems
-- Bridge Claude Code with other services
-- Example: Fetch metrics from observability platform, query architecture diagrams
+**[MCP Servers][mcp-docs]** - Integration bridge to external systems:
+- Connect Claude Code with external tools, databases, and APIs
+- OAuth-authenticated cloud services and real-time data access
+- Multi-step automations across design, development, and deployment tools
+- Best for: enterprise integrations, data-heavy operations, cross-tool workflows
+- Example: Query observability platform for metrics, fetch architecture diagrams from design system, analyze error tracking data
 
 **Combining Components**: A single plugin can use multiple component types to deliver its capabilities. Plan which components work together to achieve the plugin's single, focused purpose.
 
@@ -93,7 +98,17 @@ When planning which component types to use, consider these guidelines:
 
    If the plugin tries to do multiple unrelated things, help the user break it into separate plugins. Each plugin should have one clear purpose.
 
-4. **Create a Plan**
+4. **Validate the Approach**
+
+   Before proceeding, validate that the plugin design is sound:
+   - Does this plugin have exactly one clear purpose?
+   - Can the functionality be achieved with existing tools or plugins?
+   - Are there overlapping plugins that should be consolidated?
+   - Does the name clearly convey the plugin's purpose?
+   - Are the chosen component types appropriate for the intended activation pattern?
+   - Have all external dependencies been identified and documented?
+
+5. **Create a Plan**
 
    Present a clear plan including:
    - Plugin name and description
@@ -102,7 +117,7 @@ When planning which component types to use, consider these guidelines:
    - Key files to be created
    - Any external dependencies
 
-5. **Get Approval**
+6. **Get Approval**
 
    Wait for user approval before proceeding to the Creation Phase.
 
@@ -288,6 +303,12 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed PR guidelines with examples 
 ### Merging
 
 When the pull request is ready to merge, use **squash-and-merge**. This will combine all development commits into a single commit using the PR title and description as the merge commit message.
+
+**Why squash-and-merge?**
+- Keeps the main branch history clean and focused on plugin capabilities rather than development iterations
+- Makes it easy to revert entire plugins if needed (one commit = one plugin)
+- Preserves full development history in the pull request for future reference
+- Aligns commit messages with the plugin's purpose rather than implementation steps
 
 ## Reference Documentation
 

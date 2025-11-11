@@ -7,6 +7,8 @@ agents, hooks, and integrations.
 
 ## ✨ Available Plugins
 
+**Note**: This repository is newly initialized. Plugins will be added as they are developed and contributed.
+
 This collection is growing. To browse available plugins:
 
 ```bash

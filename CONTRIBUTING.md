@@ -58,9 +58,8 @@ minimal example:
 Each plugin must have a `README.md` documenting its purpose, usage with
 examples, and any dependencies or configuration options.
 
-The [CLAUDE.md](CLAUDE.md) file in this repository contains detailed
-instructions to help Claude Code generate plugin directories and components
-following our conventions.
+This repository's files are configured to help Claude Code generate plugin
+directories and components following our conventions.
 
 Plugins can include any combination of these optional components:
 
