@@ -279,15 +279,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed PR guidelines with examples 
 
 When the pull request is ready to merge, use **squash-and-merge**. This will combine all development commits into a single commit using the PR title and description as the merge commit message.
 
-### Documentation Style
-
-When writing or editing documentation in this repository:
-
-- **Repository files**: Use inline links - `[CONTRIBUTING.md](CONTRIBUTING.md)`
-- **External documentation**: Use reference-style links - `[Slash Commands][commands-docs]`
-
-This keeps repository file references direct and readable, while allowing external URLs to be defined once at the bottom of the document.
-
 ## Reference Documentation
 
 - [README.md](README.md) - Repository overview and installation
