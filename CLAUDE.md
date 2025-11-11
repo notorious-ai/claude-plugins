@@ -180,13 +180,13 @@ If versioning is important, create a `CHANGELOG.md` to track changes.
 
 After creating a plugin, guide the user through local testing. **You cannot test the plugin yourself** - provide clear instructions for the user to follow.
 
-### Step 1: Generate Test Marketplace File
+### Step 1: Generate Development Marketplace File
 
-Create a file named `testing-marketplace.json` at the repository root:
+Create a file named `dev-marketplace.json` at the repository root:
 
 ```json
 {
-  "name": "testing",
+  "name": "dev-marketplace",
   "owner": {
     "name": "Developer"
   },
@@ -206,7 +206,7 @@ Create a file named `testing-marketplace.json` at the repository root:
 **Do NOT run `claude` commands yourself.** Instruct the user to run:
 
 ```bash
-claude plugin marketplace add ./testing-marketplace.json
+claude plugin marketplace add ./dev-marketplace.json
 ```
 
 **Note**: The new marketplace takes effect only in Claude Code sessions opened after registration.
@@ -216,7 +216,7 @@ claude plugin marketplace add ./testing-marketplace.json
 Prompt the user to install the plugin:
 
 ```bash
-claude plugin install plugin-name@testing
+claude plugin install plugin-name@dev-marketplace
 ```
 
 ### Step 4: Test Plugin Functionality
@@ -224,27 +224,28 @@ claude plugin install plugin-name@testing
 Provide specific testing instructions based on the plugin's components:
 
 - **Commands**: Try the slash command (e.g., `/command-name`)
-- **Agents**: Check that agents appear in `/agents` and test their functionality
+- **Agents**: Check that agents appear in agent listings and test their functionality
 - **Skills**: Describe scenarios where the skill should activate
 - **Hooks**: Verify hooks trigger on the expected events
 - **MCP**: Test the MCP server integration
 
 ### Step 5: Iterate on Changes
 
-When the user makes changes to the plugin, update the `testing-marketplace.json` to reflect any changes (if needed), then prompt the user to run:
+When the user makes changes to the plugin, instruct them to reload the changes by uninstalling and reinstalling:
 
 ```bash
-claude plugin marketplace update testing
+claude plugin uninstall plugin-name@dev-marketplace
+claude plugin install plugin-name@dev-marketplace
 ```
 
-Then have them restart their Claude Code session to pick up the changes.
+This uninstall/reinstall cycle reloads all plugin changes (commands, JSON configuration, or any other plugin files).
 
-### Step 6: Decommission the Test Marketplace
+### Step 6: Decommission the Development Marketplace
 
-Once testing is complete, prompt the user to clean up by removing the test marketplace:
+Once testing is complete, prompt the user to clean up by removing the development marketplace:
 
 ```bash
-claude plugin marketplace remove testing
+claude plugin marketplace remove dev-marketplace
 ```
 
 This leaves their environment in a clean state.
@@ -252,6 +253,12 @@ This leaves their environment in a clean state.
 For more details, refer users to the [Claude Code plugin testing documentation](https://code.claude.com/docs/en/plugins#test-your-plugins-locally).
 
 ## Git Workflow
+
+### During Development
+
+**Commit often** as you work on the plugin. Don't worry about perfect commit messages during development - the focus is on making incremental progress.
+
+### When Ready for Pull Request
 
 When submitting pull requests for new plugins or improvements:
 
@@ -268,11 +275,25 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed PR guidelines with examples 
 
 **Do NOT** list commits in the description - focus on the plugin's intention and impact on the collection.
 
+### Merging
+
+When the pull request is ready to merge, use **squash-and-merge**. This will combine all development commits into a single commit using the PR title and description as the merge commit message.
+
+### Documentation Style
+
+When writing or editing documentation in this repository:
+
+- **Repository files**: Use inline links - `[CONTRIBUTING.md](CONTRIBUTING.md)`
+- **External documentation**: Use reference-style links - `[Slash Commands][commands-docs]`
+
+This keeps repository file references direct and readable, while allowing external URLs to be defined once at the bottom of the document.
+
 ## Reference Documentation
 
 - [README.md](README.md) - Repository overview and installation
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Plugin development guidelines
 - [Claude Code Plugins Documentation](https://code.claude.com/docs/en/plugins)
+- [Plugin Marketplaces Documentation](https://code.claude.com/docs/en/plugin-marketplaces)
 - [Plugins Reference](https://code.claude.com/docs/en/plugins-reference)
 
 [commands-docs]: https://code.claude.com/docs/en/slash-commands
