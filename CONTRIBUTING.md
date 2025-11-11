@@ -6,11 +6,10 @@ Thank you for your interest in contributing! This document provides guidelines f
 
 We welcome several types of contributions:
 
-- **New Plugins**: Share plugins that align with our focus areas (systems architecture, distributed systems, Go development, knowledge access, emergence)
+- **New Plugins**: Share plugins that align with our focus areas in [README.md](README.md)
 - **Plugin Improvements**: Enhance existing plugins with new features, bug fixes, or better documentation
 - **Bug Reports**: Report issues with existing plugins
 - **Documentation**: Improve plugin documentation or examples
-- **Discussions**: Share ideas, patterns, or best practices
 
 ## 📂 Plugin Structure
 
@@ -45,10 +44,6 @@ The plugin manifest contains metadata and configuration. See [Settings][settings
   "name": "plugin-name",
   "version": "1.0.0",
   "description": "Brief description of what the plugin does",
-  "author": {
-    "name": "Your Name",
-    "email": "your.email@example.com"
-  },
   "paths": {
     "commands": "./commands",
     "agents": "./agents",
@@ -60,13 +55,7 @@ The plugin manifest contains metadata and configuration. See [Settings][settings
 
 #### `README.md`
 
-Each plugin must have a README with:
-
-- Clear description of the plugin's purpose (single responsibility)
-- Installation and usage instructions
-- Examples demonstrating the plugin in action
-- Any dependencies or prerequisites
-- Configuration options (if any)
+Each plugin must have a README documenting its purpose, usage with examples, and any dependencies or configuration options.
 
 ### Optional Components
 
@@ -81,14 +70,11 @@ Each plugin must have a README with:
 ### Adding a New Plugin
 
 1. **Fork and clone** this repository
-2. **Create a new directory** with a descriptive, kebab-case name
-3. **Add the required files**:
-   - `.claude-plugin/plugin.json`
-   - `README.md`
-   - Any optional components (commands, agents, skills, hooks)
-4. **Test your plugin** locally using Claude Code
-5. **Document thoroughly** - include examples and usage instructions
-6. **Submit a pull request** with a clear description
+2. **Create a kebab-case directory** with your plugin name
+3. **Add required files**: `.claude-plugin/plugin.json` and `README.md`
+4. **Add optional components** as needed: commands, agents, skills, hooks, MCP config
+5. **Test your plugin** locally (see Testing section below)
+6. **Submit a pull request** following the guidelines below
 
 ### Testing Your Plugin
 
@@ -105,20 +91,13 @@ See the [Claude Code plugin testing documentation](https://code.claude.com/docs/
 
 Follow these principles when creating plugins:
 
-### Unix Philosophy
-
 1. **Do One Thing Well**: Each plugin should have a single, focused purpose
 2. **Composability**: Design plugins to work with others through clean interfaces
 3. **Simplicity**: Keep implementations straightforward and understandable
 4. **Text-Based**: Process and generate clear, parseable output
-
-### Quality Standards
-
-- **Clear naming**: Use descriptive, kebab-case names
-- **Good documentation**: Write clear READMEs with examples
-- **Error handling**: Provide helpful error messages
-- **Performance**: Keep plugins lightweight and efficient
-- **Security**: Don't include secrets or credentials
+5. **Clear Naming**: Use descriptive, kebab-case names
+6. **Well-Documented**: Write clear READMEs with examples
+7. **Lightweight**: Keep plugins efficient and performant
 
 ## 🔗 Reference Documentation
 
@@ -133,16 +112,25 @@ Follow these principles when creating plugins:
 - **Ideas**: Open a GitHub issue with the `enhancement` label
 - **Discussions**: Use GitHub Discussions for broader topics
 
-## 📋 Pull Request Process
+## 📋 Pull Request Guidelines
 
-1. Ensure your plugin follows the structure and principles outlined above
-2. Update documentation as needed
-3. Test your plugin locally
-4. Submit a PR with:
-   - Clear title describing the change
-   - Description of what the plugin does
-   - Any testing you've performed
-5. Respond to review feedback
+When submitting a pull request:
+
+- **Title in IMPERATIVE MOOD** starting with a verb describing what the plugin does, not what you're adding to the repository. The title should capture the plugin's capability and naturally indicate its primary component type or interaction model.
+
+  Examples:
+  - "Analyze distributed tracing context autonomously" (includes agents)
+  - "Visualize Go test coverage with commands" (includes commands)
+  - "Validate event streaming patterns via hooks" (includes hooks)
+  - "Generate system architecture documentation" (general capability, may include multiple components)
+  - "Analyze Go concurrency patterns as skills" (includes skills)
+
+  Notice how the component type emerges naturally: "autonomously" suggests agents, "with commands" indicates slash commands, "via hooks" signals event hooks, and "as skills" denotes autonomous skills. Plugins may include multiple component types to deliver their capabilities.
+
+- **Description explains the plugin's purpose and value**, not a list of commits
+  - Why this plugin is useful, what problem it solves, how it fits our focus areas
+- Ensure your plugin follows the structure and principles outlined above
+- Test your plugin locally before submitting
 
 ---
 
