@@ -1,0 +1,8 @@
+{
+  "name": "obsidian-notes",
+  "version": "1.0.0",
+  "description": "Capture and structure knowledge from various sources (videos, articles, podcasts, papers) into your Obsidian vault following your personal note-taking system",
+  "paths": {
+    "skills": "./skills"
+  }
+}
