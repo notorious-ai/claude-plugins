@@ -1,4 +1,7 @@
-# YouTube Video Capture
+---
+name: youtube-capture
+description: Use this skill when YouTube URLs are shared to automatically capture video metadata, transcripts, and create structured markdown notes in your Obsidian vault's Resources/Videos/ directory. Activates only when working inside an Obsidian vault (detected by .obsidian directory).
+---
 
 Use this skill to automatically capture YouTube videos as structured markdown notes in your Obsidian vault. The skill activates when YouTube URLs are detected and you're working inside an Obsidian vault.
 
