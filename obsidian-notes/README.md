@@ -4,22 +4,43 @@ Capture and structure knowledge from various sources into your Obsidian vault fo
 
 ## Vision
 
-This plugin provides automated capture skills for different types of content you want to preserve in your personal knowledge base:
+This plugin provides automated capture skills for different types of content you want to preserve in your personal knowledge base. Each skill understands your note-taking format, extracts relevant metadata, and creates properly structured markdown files in the appropriate directories within your vault.
 
-- **YouTube Videos** (available now)
-- **Articles & Blog Posts** (planned)
-- **Podcasts** (planned)
-- **Research Papers** (planned)
-- **Books & Chapters** (planned)
+**Current Skills:**
+- **YouTube Videos** - Automatic capture with metadata extraction and transcript analysis
 
-Each skill understands your note-taking format, extracts relevant metadata, and creates properly structured markdown files in the appropriate directories within your vault.
+**Planned Skills:**
+- **Articles & Blog Posts** - Extract and format articles from URLs with readability parsing
+- **Podcasts** - Capture podcast episodes with transcript extraction
+- **Research Papers** - Structure research papers with citation management
+- **Books & Chapters** - Template-based book and chapter note creation
+
+All skills follow the same philosophy: understand your personal system, extract rich metadata, and create well-structured notes that integrate seamlessly with your existing knowledge base.
 
 ## Prerequisites
 
 - **Obsidian vault**: You must run Claude Code from the root directory of your Obsidian vault (the directory containing `.obsidian/`)
 - **yt-dlp**: Required for YouTube video capture. Install on macOS via: `brew install yt-dlp`
 
+### Vault Structure
+
+Your vault should have the following structure for this plugin to work optimally:
+
+```
+YourVault/
+├── .obsidian/              # Obsidian configuration (required)
+├── _templates/
+│   └── YouTube Resource.md # Your YouTube note template (optional, has fallback)
+├── Resources/
+│   └── Videos/            # YouTube notes are created here
+└── Concept/               # Concept pages for backlinking
+```
+
+If directories don't exist, the skill will create them as needed (except `.obsidian` which must exist).
+
 ## Current Skills
+
+Always run Claude Code from your Obsidian vault's root directory. The skill automatically discovers concepts from your `Concept/` folder for backlinking, reads existing notes in `Resources/Videos/` to match your personal takeaway style, and you can share multiple YouTube URLs in a single message - each will be captured separately. You can customize the output format by editing `_templates/YouTube Resource.md` in your vault.
 
 ### YouTube Video Capture
 
@@ -58,36 +79,7 @@ Claude: I'll capture this YouTube video as a structured note in your vault.
 - **Fallback**: Uses embedded template if vault template not found
 - This allows you to evolve your template over time while maintaining plugin compatibility
 
-## Directory Structure
-
-Your vault should have the following structure for this plugin to work optimally:
-
-```
-YourVault/
-├── .obsidian/              # Obsidian configuration (required)
-├── _templates/
-│   └── YouTube Resource.md # Your YouTube note template (optional, has fallback)
-├── Resources/
-│   └── Videos/            # YouTube notes are created here
-└── Concept/               # Concept pages for backlinking
-```
-
-If directories don't exist, the skill will create them as needed (except
-`.obsidian` which must exist).
-
-### Local Development
-
-See [Testing Instructions](#testing-instructions) below.
-
-## Usage Tips
-
-1. **Run from vault root**: Always start Claude Code from your Obsidian vault's root directory
-2. **Template customization**: Edit `_templates/YouTube Resource.md` in your vault to customize the output format
-3. **Concept discovery**: The skill automatically discovers concepts from your `Concept/` folder for backlinking
-4. **Learning your style**: The skill reads existing notes in `Resources/Videos/` to match your personal takeaway style
-5. **Multiple videos**: You can share multiple YouTube URLs in a single message; each will be captured separately
-
-## Testing Instructions
+## Development & Testing
 
 To test this plugin locally during development:
 
@@ -134,27 +126,14 @@ claude plugin install obsidian-notes@dev-marketplace
 claude plugin marketplace remove dev-marketplace
 ```
 
-## Future Skills
+### Adding New Skills
 
-As this plugin evolves, additional skills will be added for:
+To extend this plugin with additional capture skills (articles, podcasts, papers, etc.):
 
-- **Article Capture**: Extract and format articles from URLs with readability parsing
-- **Podcast Notes**: Capture podcast episodes with transcript extraction
-- **Paper Summaries**: Structure research papers with citation management
-- **Book Notes**: Template-based book and chapter note creation
-
-Each skill will follow the same philosophy: understand your personal system,
-extract rich metadata, and create well-structured notes that integrate
-seamlessly with your existing knowledge base.
-
-## Contributing
-
-Contributions welcome! To add a new capture skill:
-
-1. Create a new skill directory in `skills/`
+1. Create a new skill directory in `skills/` (e.g., `skills/article-capture/`)
 2. Add `SKILL.md` with clear activation conditions and capture logic
 3. Include any necessary templates or supporting files
 4. Update this README with the new skill documentation
 5. Update `CHANGELOG.md`
 
-See [CONTRIBUTING.md](../CONTRIBUTING.md) for detailed guidelines.
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for detailed guidelines on plugin development.
