@@ -146,11 +146,9 @@ Create a minimal manifest:
   "name": "plugin-name",
   "version": "1.0.0",
   "description": "Brief description of what the plugin does",
-  "paths": {
-    "commands": "./commands",
-    "agents": "./agents",
-    "skills": "./skills",
-    "hooks": "./hooks"
+  "author": {
+    "name": "Person of contact for this plugin",
+    "url": "https://github.com/USERNAME"
   }
 }
 ```
