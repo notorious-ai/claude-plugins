@@ -177,6 +177,13 @@ Create component files based on your plan. Refer to the official documentation f
 - [Hooks][hooks-docs] - Event hook configurations in `hooks.json`
 - [MCP servers][mcp-docs] - `.mcp.json` configuration
 
+**For Agent Skills specifically:**
+- Skills MUST start with YAML frontmatter containing `name` and `description` fields
+- Read the [skill structure requirements][skills-docs] before creating
+- Understand [YAML frontmatter format][skill-structure]
+- The `name` must be lowercase alphanumeric with hyphens only (max 64 characters)
+- The `description` must explain both what the skill does AND when Claude should use it (max 1024 characters)
+
 ### Step 5: Create README.md
 
 Create a `README.md` at the plugin root documenting:
@@ -198,6 +205,39 @@ Add an entry with:
 - One-line description of what it does
 
 This keeps the repository documentation current and helps users discover available plugins.
+
+## Validating Plugin Components
+
+Before proceeding to testing, validate that all plugin components are correctly structured. This is especially critical for skills.
+
+### Validating Agent Skills
+
+Skills must pass all validation checks before testing. Use the WebFetch tool to access specific documentation sections:
+
+**1. Structure Validation:**
+- Verify YAML frontmatter exists at the top of SKILL.md
+- Check `name` field: lowercase alphanumeric with hyphens only, max 64 characters
+- Check `description` field: non-empty, max 1024 characters, explains WHAT and WHEN
+- Reference: [Skill Structure Requirements][skill-structure]
+
+**2. Quality Checklist:**
+- SKILL.md body under 500 lines
+- Description is specific with key terms and usage triggers
+- No time-sensitive information
+- Consistent terminology throughout
+- Concrete examples provided
+- File references one level deep from SKILL.md
+- Forward slashes only in file paths
+- Reference: [Checklist for Effective Skills][skill-checklist]
+
+**3. Technical Requirements:**
+- All file paths use forward slashes (Unix-style)
+- Required packages are documented
+- Scripts include error handling
+- Progressive disclosure of information
+- Reference: [Technical Notes][skill-technical]
+
+**IMPORTANT:** If any validation fails, fix the issues before proceeding to testing. Invalid skills will not activate properly.
 
 ## Helping Users Test Their Plugin
 
@@ -323,3 +363,6 @@ When the pull request is ready to merge, use **squash-and-merge**. This will com
 [mcp-docs]: https://code.claude.com/docs/en/mcp
 [manifest-schema]: https://code.claude.com/docs/en/plugins-reference#plugin-manifest-schema
 [structure-docs]: https://code.claude.com/docs/en/plugins-reference#plugin-directory-structure
+[skill-structure]: https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices#skill-structure
+[skill-checklist]: https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices#checklist-for-effective-skills
+[skill-technical]: https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices#technical-notes
