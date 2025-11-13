@@ -10,18 +10,21 @@ tags:
 
 ## TL;DR
 <instructions>
-Write a SUCCINCT TL;DR-style paragraph of the video's content. Careful to NOT repeat the video's description. Focus on the value I get as a viewer.
+Write a BRIEF, punchy paragraph (2-3 sentences max) that speaks directly to me as a viewer about WHY I should watch this. Focus on the compelling hook, key insight, or unique value proposition—not a summary of what's covered.
 
-Follow with a "Watch again when..." sentence in its own paragraph, focusing on situations in my life/career where this video would be valuable.
+Follow with a single "Watch again when..." sentence in its own paragraph, focusing on situations in my life/career where this video would be valuable.
 
-Think hard on this section.
+Keep this section SHORT and reader-focused. Think hard on this section.
 </instructions>
 
 ## Video Description
 <instructions>
-Some videos have good descriptions, other contain a lot of spam. When the description is good, you may copy it verbatim. Otherwise, clip useful snippets from it, and fill the rest from the transcript.
+Start with the original YouTube description if it's good (clean and informative). If it's good but short, add a "Highlights" subsection with key points from the transcript.
+
+If the YouTube description is spammy, reconstruct it from the transcript. Prioritize the main topics, arguments, and notable examples—create an index of what's covered so I can decide whether to watch and what to look for.
+
 DO NOT include promotions, advertisements, spammy links, weirdly formatted paragraphs, thank yous, credits, or donations.
-DO NOT recap the entire video, extract just enough information out so that I will be reminded about this video's value for me or friends as viewers.
+DO NOT recap the entire video—this should help me navigate the content, not replace watching it.
 
 Think harder on this section.
 </instructions>
