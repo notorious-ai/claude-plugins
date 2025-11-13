@@ -138,12 +138,53 @@ Generate a new markdown file EXCLUSIVELY in `Resources/Videos/` directory with:
 
 ### 6. Generate Personal Takeaways
 
-This section requires understanding the user's interests and note-taking style. To accomplish this:
+This section requires understanding the user's interests and note-taking style. Follow this interactive workflow:
+
+**Step 1: Analyze Context**
 - Read 2-3 existing video notes from `Resources/Videos/` directory to understand the user's takeaway style
 - Look for patterns in what they highlight and find important
 - Identify recurring themes or interests
-- Write takeaways that speak directly to the user, suggesting insights relevant to their perspective
+
+**Step 2: Generate Initial Suggestions**
+Based on the video transcript, metadata, and your analysis of existing notes, generate 3-5 potential personal takeaways that:
+- Connect to the user's apparent interests and recurring themes
+- Highlight actionable insights or novel perspectives
+- Link concepts from the video to broader ideas
 - Use phrases like "Notice how...", "This connects to...", "Consider applying..."
+
+**Step 3: Interactive Refinement**
+Use the AskUserQuestion tool to present your suggested takeaways for review:
+- Present each suggestion as a selectable option with a description explaining the insight
+- Use `multiSelect: true` to allow the user to select multiple takeaways
+- Each option's label should be a concise takeaway (1-2 sentences)
+- Each option's description should explain WHY this insight might be valuable
+- The user can select multiple, add their own via "Other", or reject all
+
+**Step 4: Incorporate Feedback**
+- Include all user-selected takeaways in the note
+- If the user provides custom takeaways via "Other", use their exact wording
+- If the user rejects all suggestions, leave the Personal Takeaways section with a placeholder note
+- Maintain the conversational tone ("you", "your") when writing selected takeaways
+
+**Example AskUserQuestion usage:**
+```
+questions: [{
+  question: "Which personal takeaways resonate with you for this video?",
+  header: "Takeaways",
+  multiSelect: true,
+  options: [
+    {
+      label: "Notice how the speaker frames failure as iteration—this connects to your interest in resilience patterns.",
+      description: "Highlights reframing technique relevant to your psychological resilience notes"
+    },
+    {
+      label: "Consider applying the three-question framework to your own decision-making process.",
+      description: "Actionable framework that builds on your existing decision-making tools"
+    },
+    // ... more suggestions
+  ]
+}]
+```
 
 ### 7. Create Concept Links
 
