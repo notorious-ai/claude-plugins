@@ -74,29 +74,21 @@ If `.obsidian` is NOT found, STOP immediately and do not proceed with capture. I
 
 ### 2. Extract Video Metadata and Transcript
 
-PROACTIVELY explore the video to gather comprehensive information. You MUST fetch BOTH:
+PROACTIVELY use yt-dlp to comprehensively explore the video. You MUST gather BOTH metadata and transcript/captions.
 
-**Metadata**: Use yt-dlp with the `--dump-json` flag to retrieve all relevant video information:
-```bash
-yt-dlp --dump-json "VIDEO_URL"
-```
+**What to extract**:
+- **Metadata**: Title, channel, description, upload date, duration, tags, categories
+- **Transcript**: Full spoken content from captions/subtitles (auto-generated or manual)
 
-**Transcript**: Use yt-dlp to download the video transcript/captions:
-```bash
-yt-dlp --write-auto-sub --sub-lang en --skip-download --print "%(subtitles)s" "VIDEO_URL"
-```
+**yt-dlp capabilities to leverage**:
+- JSON output for structured metadata
+- Subtitle/caption extraction in various formats
+- Skip video download to only fetch metadata and text
+- Print specific fields or output templates
 
-Or extract subtitles directly:
-```bash
-yt-dlp --write-auto-sub --sub-lang en --skip-download -o "/tmp/%(id)s.%(ext)s" "VIDEO_URL"
-```
+**Note**: Use `/tmp/claude` paths for any temporary files.
 
-**CRITICAL**: DO NOT use commands that leave files in the current working directory. Either:
-- Pipe output directly to stdout for processing
-- Use `/tmp` directory for any temporary files (and clean them up)
-- Use flags that output to stdout instead of files
-
-Parse the transcript to extract the actual spoken content. BE PROACTIVE: Deeply explore all available information - look for patterns, extract mentioned concepts, identify speakers, find related content references.
+BE PROACTIVE: Deeply explore all available information - look for patterns, extract mentioned concepts, identify speakers, find related content references.
 
 ### 3. Generate Clean Filename
 
