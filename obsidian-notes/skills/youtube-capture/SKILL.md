@@ -67,7 +67,7 @@ When you receive a YouTube URL, you will:
 
 **FIRST STEP - MANDATORY**: Check that `.obsidian` directory exists in the current working directory:
 ```bash
-ls -la | grep -E '^\\.obsidian$'
+test -d .obsidian
 ```
 
 If `.obsidian` is NOT found, STOP immediately and do not proceed with capture. Inform the user that this skill only works when running Claude Code from the root of an Obsidian vault.
