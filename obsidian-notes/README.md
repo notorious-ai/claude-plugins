@@ -39,7 +39,7 @@ YourVault/
 └── Concept/                # Concept pages for backlinking
 ```
 
-If directories don't exist, the skill will never create them.
+If required directories (such as `Resources/Videos/`) do not exist, the skill will skip execution for those resources and no notes will be created. The plugin does not create missing directories automatically, and no error message will be shown. Please ensure all required directories exist in your vault before running the skill.
 
 ## Skills Definitions
 
