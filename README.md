@@ -7,7 +7,7 @@ agents, hooks, and integrations.
 
 ## ✨ Available Plugins
 
-**Note**: This repository is newly initialized. Plugins will be added as they are developed and contributed.
+- [obsidian-notes](obsidian-notes/) - Capture and structure knowledge from various sources (videos, articles, podcasts) into your Obsidian vault
 
 This collection is growing. To browse available plugins:
 
