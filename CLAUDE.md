@@ -192,9 +192,9 @@ Create a `README.md` at the plugin root documenting:
 - Dependencies or prerequisites
 - Configuration options
 
-### Step 6: Create CHANGELOG.md (Optional)
+### Step 6: Create CHANGELOG.md
 
-If versioning is important, create a `CHANGELOG.md` to track changes.
+Create a `CHANGELOG.md` to track changes across versions. Organize entries by **component** (e.g. skill names, agent names, command names) rather than by change type.
 
 ### Step 7: Update Repository README
 
