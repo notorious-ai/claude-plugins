@@ -29,36 +29,45 @@ Each plugin directory contains:
 
 ### Installation
 
-Since this repository follows a composable design (no bundled marketplace), you
-choose exactly which plugins you want:
+**Simple approach - Register the marketplace:**
 
-1. **Browse the repository** to find plugins that match your needs
+```bash
+claude plugin marketplace add notorious-ai/claude-plugins
+```
 
-2. **Create your own marketplace file** (e.g., `my-marketplace.json`):
-   ```json
-   {
-     "name": "my-marketplace",
-     "plugins": [
-       {
-         "name": "plugin-name",
-         "source": "https://github.com/notorious-ai/claude-plugins.git",
-         "path": "plugin-name"
-       }
-     ]
-   }
-   ```
+Then install individual plugins you need:
 
-3. **Register your marketplace**:
-   ```bash
-   claude marketplace add /path/to/my-marketplace.json
-   ```
+```bash
+claude plugin install obsidian-notes@notorious-ai
+```
 
-4. **Install plugins interactively**:
-   ```bash
-   claude plugin install
-   ```
+Or browse and install interactively:
 
-For more details, see the [Claude Code settings documentation](https://code.claude.com/docs/en/settings#plugin-configuration).
+```bash
+claude plugin
+```
+
+**Advanced - Team configuration for selective installation:**
+
+Teams can configure `.claude/settings.json` in their repository to specify which plugins to enable. When team members trust the repository, they'll be prompted to install only the selected plugins:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "team-tools": {
+      "source": {
+        "source": "github",
+        "repo": "notorious-ai/claude-plugins"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "developing-go@team-tools": true
+  }
+}
+```
+
+For more details, see the [plugin configuration documentation](https://code.claude.com/docs/en/settings#plugin-configuration).
 
 ## 📖 Understanding This Repository
 
@@ -68,25 +77,26 @@ This repository follows the **Unix philosophy**:
 
 - **Do One Thing Well**: Each plugin has a single, focused purpose
 - **Composability**: Plugins work together through clean interfaces
-- **User Control**: No bundled marketplace means you select only what you need
+- **User Control**: Install only the plugins you need, not the entire collection
 - **Simplicity**: Clear documentation and transparent implementations
 
-### Why No Marketplace File?
+### User Control and Selective Installation
 
-Most plugin repositories bundle a marketplace file that installs all plugins
-together. We deliberately don't do this because:
+While this repository provides a marketplace for convenient discovery, you maintain complete control over which plugins you install:
 
-1. **Lower cognitive load**: Only install plugins you actually need
-2. **Maximum flexibility**: Mix and match plugins across repositories
-3. **Single responsibility**: Each plugin maintains clear boundaries
-4. **Custom combinations**: Create your own "plugin packs" via marketplace files
+1. **Individual selection**: Install only the plugins you need from our marketplace
+2. **Team configuration**: Use settings to pre-select plugin subsets for your team
+3. **Maximum flexibility**: Mix and match plugins across multiple marketplaces
+4. **Single responsibility**: Each plugin maintains clear boundaries and can be used independently
 
-This keeps plugins focused and users in control.
+The marketplace enables easy discovery while preserving your freedom to choose exactly what you need.
 
 ### Repository Structure
 
 ```
 claude-plugins/
+├── .claude-plugin/
+│   └── marketplace.json  # Repository marketplace
 ├── README.md             # This file
 ├── CONTRIBUTING.md       # Plugin development guidelines
 ├── CLAUDE.md             # Instructions for Claude Code
