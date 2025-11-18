@@ -4,20 +4,19 @@ watched:
 tags:
 ---
 
-**Source**: <instructions>Insert **short** YouTube URL, wrapped in angle brackets. For example, https://youtu.be/abcDefGhIjK.</instructions>
-**Channel**: <instructions>Extract channel name and link from the video resource. For example, https://www.youtube.com/@ChannelHandle</instructions>
-**Event**: <instructions>Extract conference/event name from video title, description or channel. Format with backlinks as <format>[[EVENT NAME]] YEAR</format></instructions>
-**Speakers**: <instructions>Extract speaker names from video metadata, description, or name, if any. Remove if not applicable.</instructions>
-
-<instructions>
-Embed the YouTube video using markdown image syntax with the full YouTube URL:
-![](https://www.youtube.com/watch?v=VIDEO_ID)
-
-Extract the VIDEO_ID from the YouTube URL. For example, if the URL is https://www.youtube.com/watch?v=dQw4w9WgXcQ, use:
-![](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
-</instructions>
-
----
+> [!INFO]
+> **Source:** <instructions>Insert **short** YouTube URL, wrapped in angle brackets. For example, https://youtu.be/abcDefGhIjK.</instructions>
+> **Channel:** <instructions>Extract channel name and link from the video resource. For example, https://www.youtube.com/@ChannelHandle</instructions>
+> **Event:** <instructions>Extract conference/event name from video title, description or channel. Format with backlinks as <format>[[EVENT NAME]] YEAR</format></instructions>
+> **Speakers:** <instructions>Extract speaker names from video metadata, description, or name, if any. Remove if not applicable.</instructions>
+>
+> <instructions>
+> Embed the YouTube video using markdown image syntax with the full YouTube URL:
+> ![](https://www.youtube.com/watch?v=VIDEO_ID)
+>
+> Extract the VIDEO_ID from the YouTube URL. For example, if the URL is https://www.youtube.com/watch?v=dQw4w9WgXcQ, use:
+> ![](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+> </instructions>
 
 ## TL;DR
 <instructions>
