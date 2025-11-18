@@ -257,7 +257,7 @@ Skills must pass all validation checks before testing. Use the WebFetch tool to 
 
 After creating a plugin, guide the user through local testing. **You cannot test the plugin yourself** - provide clear instructions for the user to follow.
 
-**IMPORTANT**: The `dev-marketplace.json` file described below is for LOCAL TESTING ONLY. The repository's official marketplace is `.claude-plugin/marketplace.json`, which should be updated as described in Step 8 above.
+**IMPORTANT**: The `dev-marketplace.json` file described below is for LOCAL TESTING ONLY. The repository's official marketplace is `.claude-plugin/marketplace.json`, which should be updated during plugin creation (see Step 8 in "Creating a New Plugin" above).
 
 ### Step 1: Generate Development Marketplace File
 
