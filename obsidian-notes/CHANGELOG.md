@@ -7,19 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.1] - 2025-11-18
 
-### Changed
+### YouTube Capture Skill
 
-- Updated YouTube video template to use INFO callout formatting for better visual organization
+- Updated template to use INFO callout formatting for better visual organization
 - Moved colons inside bold markers for metadata fields (e.g., `**Source:**` instead of `**Source**:`)
 - Relocated YouTube embed inside the metadata callout for logical grouping
 - Removed redundant horizontal rule separator after metadata section
 
 ## [1.0.0] - 2025-11-12
 
-### Added
+### YouTube Capture Skill
 
-- Initial release of Obsidian Notes plugin
-- YouTube Video Capture skill with automatic activation
+- Initial release with automatic activation
 - Vault detection (requires `.obsidian` directory in working directory)
 - Metadata extraction using `yt-dlp` (title, channel, description, transcript)
 - Dual template strategy: reads from vault's `_templates/YouTube Resource.md` with embedded fallback
@@ -30,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Safety constraints: only modifies files in `Resources/Videos/`
 - Temporary file cleanup in `/tmp`
 
-### Notes
+### Plugin Infrastructure
 
-- This is the foundation release establishing the plugin architecture for multi-source knowledge capture
+- Foundation release establishing plugin architecture for multi-source knowledge capture
 - Future skills planned: articles, podcasts, research papers, Twitter threads, books
