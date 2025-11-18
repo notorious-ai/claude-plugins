@@ -82,8 +82,16 @@ Plugins can include any combination of these optional components:
 2. **Create a kebab-case directory** with your plugin name
 3. **Add required files**: `.claude-plugin/plugin.json` and `README.md`
 4. **Add optional components** as needed: commands, agents, skills, hooks, MCP config
-5. **Test your plugin** locally (see Testing section below)
-6. **Submit a pull request** following the guidelines below
+5. **Update `.claude-plugin/marketplace.json`** to include your plugin:
+   ```json
+   {
+     "name": "your-plugin-name",
+     "source": "./your-plugin-name"
+   }
+   ```
+6. **Update the repository README** to add your plugin to the "Available Plugins" section
+7. **Test your plugin** locally (see Testing section below)
+8. **Submit a pull request** following the guidelines below
 
 ### Testing Your Plugin
 
@@ -132,9 +140,11 @@ When submitting a pull request:
 - **Description explains the plugin's purpose and value**, not a list of commits
   - Why this plugin is useful, what problem it solves, how it fits our focus areas
 
-- Ensure your plugin follows the structure and principles outlined above
+- **Ensure your plugin follows the structure and principles outlined above**
 
-- Test your plugin locally before submitting
+- **Update both `.claude-plugin/marketplace.json` and repository README** to include your new plugin
+
+- **Test your plugin locally** before submitting
 
 ## 🔗 Reference Documentation
 

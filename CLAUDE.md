@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Understanding This Repository's Structure
 
-This repository uses a **flat structure** where each top-level directory represents a single, standalone plugin. There is no nesting, categorization, or marketplace file - every plugin directory sits at the root level.
+This repository uses a **flat structure** where each top-level directory represents a single, standalone plugin. There is no nesting or categorization - every plugin directory sits at the root level. The repository includes a marketplace file (`.claude-plugin/marketplace.json`) to enable easy discovery and installation.
 
 **To browse available plugins:**
 ```bash
@@ -21,7 +21,7 @@ Each plugin directory contains its own `.claude-plugin/plugin.json` manifest, `R
 - [anthropics/claude-code](https://github.com/anthropics/claude-code) - Official Claude Code plugins
 - [anthropics/skills](https://github.com/anthropics/skills) - Official Skills collection
 
-**Note:** These official repositories use `.claude-plugin/marketplace.json` to organize their plugins. You'll need to parse the marketplace file to understand their structure and locate individual plugins, unlike this repository's simpler flat approach.
+**Note:** Like this repository, the official repositories use `.claude-plugin/marketplace.json` to enable plugin discovery. You can browse the marketplace file to understand their structure and locate individual plugins.
 
 **To explore plugins in this repository:**
 1. **Browse plugin directories** at the root level
@@ -206,6 +206,20 @@ Add an entry with:
 
 This keeps the repository documentation current and helps users discover available plugins.
 
+### Step 8: Update Marketplace File
+
+**IMPORTANT**: After creating a new plugin, update the repository's marketplace file at `.claude-plugin/marketplace.json` to include the new plugin.
+
+Add an entry to the `plugins` array:
+```json
+{
+  "name": "plugin-name",
+  "source": "./plugin-name"
+}
+```
+
+This enables users to discover and install your plugin through the marketplace.
+
 ## Validating Plugin Components
 
 Before proceeding to testing, validate that all plugin components are correctly structured. This is especially critical for skills.
@@ -243,9 +257,11 @@ Skills must pass all validation checks before testing. Use the WebFetch tool to 
 
 After creating a plugin, guide the user through local testing. **You cannot test the plugin yourself** - provide clear instructions for the user to follow.
 
+**IMPORTANT**: The `dev-marketplace.json` file described below is for LOCAL TESTING ONLY. The repository's official marketplace is `.claude-plugin/marketplace.json`, which should be updated as described in Step 8 above.
+
 ### Step 1: Generate Development Marketplace File
 
-Create a file named `dev-marketplace.json` at the repository root:
+Create a file named `dev-marketplace.json` at the repository root for local testing:
 
 ```json
 {

@@ -1,0 +1,12 @@
+{
+  "name": "notorious-ai",
+  "owner": {
+    "name": "Daniel Orbach"
+  },
+  "plugins": [
+    {
+      "name": "obsidian-notes",
+      "source": "./obsidian-notes"
+    }
+  ]
+}
