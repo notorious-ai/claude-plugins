@@ -5,6 +5,15 @@ All notable changes to the Obsidian Notes plugin will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-11-18
+
+### Changed
+
+- Updated YouTube video template to use INFO callout formatting for better visual organization
+- Moved colons inside bold markers for metadata fields (e.g., `**Source:**` instead of `**Source**:`)
+- Relocated YouTube embed inside the metadata callout for logical grouping
+- Removed redundant horizontal rule separator after metadata section
+
 ## [1.0.0] - 2025-11-12
 
 ### Added
