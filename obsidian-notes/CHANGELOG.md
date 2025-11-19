@@ -5,6 +5,18 @@ All notable changes to the Obsidian Notes plugin will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2025-11-19
+
+### Distilling Video Notes Skill (formerly YouTube Capture)
+
+**BREAKING CHANGE**: Skill renamed from `youtube-capture` to `distilling-video-notes`
+
+- Renamed skill from `youtube-capture` to `distilling-video-notes` to better reflect its purpose of distilling and structuring video knowledge
+- Updated file path reference to use relative path (`template.md`) following skill best practices
+- All functionality remains identical; only the skill name has changed
+
+**Migration**: If you have local configurations or references to the old skill name, update them to `distilling-video-notes`.
+
 ## [1.0.1] - 2025-11-18
 
 ### YouTube Capture Skill
