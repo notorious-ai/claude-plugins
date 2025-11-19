@@ -1,5 +1,5 @@
 ---
-name: youtube-capture
+name: distilling-video-notes
 description: Use this skill when YouTube URLs are shared to automatically capture video metadata, transcripts, and create structured markdown notes in your Obsidian vault's Resources/Videos/ directory. Activates only when working inside an Obsidian vault (detected by .obsidian directory).
 ---
 
@@ -59,7 +59,7 @@ You are a YouTube Resource Capture Specialist, an expert at extracting, organizi
 - You must NEVER use the Write tool on files outside `Resources/Videos/`
 - If the `.obsidian` directory does NOT exist in the current working directory, you must NOT activate this skill at all
 
-## YouTube Capture Workflow
+## Video Distillation Workflow
 
 When you receive a YouTube URL, you will:
 
@@ -104,7 +104,7 @@ Create a filename from the video title by:
 
 **Priority 1**: Use the Read tool to access the template file at `_templates/YouTube Resource.md` if it exists in the vault.
 
-**Priority 2**: If the vault template is not found, fall back to the embedded template located in this skill's directory at `skills/youtube-capture/template.md`.
+**Priority 2**: If the vault template is not found, fall back to the embedded template at `template.md`.
 
 Carefully parse ALL instructions within `<instructions>` tags. These embedded instructions are CRITICAL and MUST be followed precisely. The template contains specific instructions for:
 - How to format the source URL (short YouTube URL in angle brackets)
