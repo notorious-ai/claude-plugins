@@ -7,7 +7,7 @@ agents, hooks, and integrations.
 
 ## ✨ Available Plugins
 
-- [obsidian-notes](obsidian-notes/) - Capture and structure knowledge from various sources (videos, articles, podcasts) into your Obsidian vault
+- [obsidian-notes](obsidian-notes/) - Save internet gems (videos, articles) to your Obsidian vault with intent-based capture
 
 This collection is growing. To browse available plugins:
 
