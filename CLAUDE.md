@@ -257,9 +257,34 @@ Skills must pass all validation checks before testing. Use the WebFetch tool to 
 
 After creating a plugin, guide the user through local testing. **You cannot test the plugin yourself** - provide clear instructions for the user to follow.
 
+There are two methods for local testing. The `--plugin-dir` flag is simpler and recommended for quick iteration, while the development marketplace method is useful for testing marketplace integration.
+
+### Method 1: Using --plugin-dir Flag (Recommended)
+
+The simplest way to test a plugin is using the `--plugin-dir` flag when starting Claude Code:
+
+**Start Claude Code with the plugin loaded:**
+
+```bash
+claude --plugin-dir /absolute/path/to/plugin-name
+```
+
+**Important notes:**
+- Use the absolute path to the plugin directory
+- The plugin is loaded only for that session
+- To test changes, exit the session and restart with the flag
+- This method doesn't require any marketplace setup or cleanup
+
+**Iterate on changes:**
+Simply exit the Claude Code session and restart with the same `--plugin-dir` flag to load the updated plugin.
+
+### Method 2: Using Development Marketplace (Alternative)
+
+This method is useful for testing marketplace integration and installation workflows.
+
 **IMPORTANT**: The `dev-marketplace.json` file described below is for LOCAL TESTING ONLY. The repository's official marketplace is `.claude-plugin/marketplace.json`, which should be updated during plugin creation (see Step 8 in "Creating a New Plugin" above).
 
-### Step 1: Generate Development Marketplace File
+#### Step 1: Generate Development Marketplace File
 
 Create a file named `dev-marketplace.json` at the repository root for local testing:
 
@@ -280,7 +305,7 @@ Create a file named `dev-marketplace.json` at the repository root for local test
 
 **Important**: The `source` is relative to the marketplace file's location (repository root). Since the marketplace file is at the root, use `./plugin-name` to reference the plugin directory.
 
-### Step 2: Register the Marketplace
+#### Step 2: Register the Marketplace
 
 **Do NOT run `claude` commands yourself.** Instruct the user to run:
 
@@ -290,7 +315,7 @@ claude plugin marketplace add ./dev-marketplace.json
 
 **Note**: The new marketplace takes effect only in Claude Code sessions opened after registration.
 
-### Step 3: Install the Plugin
+#### Step 3: Install the Plugin
 
 Prompt the user to install the plugin:
 
@@ -298,17 +323,7 @@ Prompt the user to install the plugin:
 claude plugin install plugin-name@dev-marketplace
 ```
 
-### Step 4: Test Plugin Functionality
-
-Provide specific testing instructions based on the plugin's components:
-
-- **Commands**: Try the slash command (e.g., `/command-name`)
-- **Agents**: Check that agents appear in agent listings and test their functionality
-- **Skills**: Describe scenarios where the skill should activate
-- **Hooks**: Verify hooks trigger on the expected events
-- **MCP**: Test the MCP server integration
-
-### Step 5: Iterate on Changes
+#### Step 4: Iterate on Changes
 
 When the user makes changes to the plugin, instruct them to reload the changes by uninstalling and reinstalling:
 
@@ -319,7 +334,7 @@ claude plugin install plugin-name@dev-marketplace
 
 This uninstall/reinstall cycle reloads all plugin changes (commands, JSON configuration, or any other plugin files).
 
-### Step 6: Decommission the Development Marketplace
+#### Step 5: Decommission the Development Marketplace
 
 Once testing is complete, prompt the user to clean up by removing the development marketplace:
 
