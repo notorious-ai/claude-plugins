@@ -325,20 +325,20 @@ claude plugin install plugin-name@dev-marketplace
 
 #### Step 4: Iterate on Changes
 
-When the user makes changes to the plugin, instruct them to reload the changes by uninstalling and reinstalling:
+When the user makes changes to the plugin, the changes won't automatically appear because the marketplace is cached. To reload changes, update the marketplace registration:
 
 ```bash
-claude plugin uninstall plugin-name@dev-marketplace
-claude plugin install plugin-name@dev-marketplace
+claude plugin marketplace update dev-marketplace
 ```
 
-This uninstall/reinstall cycle reloads all plugin changes (commands, JSON configuration, or any other plugin files).
+This refreshes the marketplace cache and picks up all plugin changes (commands, JSON configuration, or any other plugin files).
 
 #### Step 5: Decommission the Development Marketplace
 
-Once testing is complete, prompt the user to clean up by removing the development marketplace:
+Once testing is complete, prompt the user to clean up by uninstalling the plugin and removing the development marketplace:
 
 ```bash
+claude plugin uninstall plugin-name@dev-marketplace
 claude plugin marketplace remove dev-marketplace
 ```
 
