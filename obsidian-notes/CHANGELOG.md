@@ -2,8 +2,14 @@
 
 All notable changes to the Obsidian Notes plugin will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [Unreleased]
+
+### Distilling Video Notes Skill
+
+**BREAKING CHANGE**: Skill removed
+
+- Removed `distilling-video-notes` skill as it has been replaced by the unified `saving-internet-gems` skill
+- The new unified skill handles both videos and articles with better intent detection and progressive disclosure
 
 ## [2.0.0] - 2025-11-19
 
