@@ -179,6 +179,20 @@ Discover and create backlinks to relevant pages throughout the vault.
 - Match content keywords to page names
 - Be thorough but selective - only include genuinely relevant links
 
+6. **User Refinement (when needed)**
+
+   Use the user as a refinement tool to improve quality, not as a verification gate.
+
+   **Invoke AskUserQuestion when:**
+   - Discovered list exceeds 8 items → present all candidates, ask user to select most relevant
+   - Uncertain about specific backlink relevance → present uncertain items as options
+   - Multiple candidate pages for same concept → ask which connection is strongest
+
+   **After user input:**
+   - Include all selected items in final list
+   - Add any custom backlinks provided via "Other"
+   - Always retain mandatory items (platform reference) even if not selected
+
 ## Common Mistakes to Avoid
 
 **TL;DR Section:**
