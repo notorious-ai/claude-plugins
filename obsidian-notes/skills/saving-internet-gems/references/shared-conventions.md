@@ -134,7 +134,7 @@ questions: [{
 }]
 ```
 
-## Links & Concepts Section
+## Related Topics Section
 
 Discover and create backlinks to relevant pages throughout the vault.
 
@@ -164,7 +164,7 @@ Discover and create backlinks to relevant pages throughout the vault.
 
 5. **Format as Bulleted List**
    ```markdown
-   ## Links & Concepts
+   ## Related Topics
    - [[Site/Platform Reference]]
    - [[Concept Page 1]]
    - [[Concept Page 2]]
@@ -192,7 +192,7 @@ Discover and create backlinks to relevant pages throughout the vault.
 - ❌ Don't describe what the content says - focus on personal insights derived FROM it
 - ❌ Don't write in second person (you/your) or third person - use first person (I/my)
 
-**Links & Concepts:**
+**Related Topics:**
 - ❌ Don't limit backlink search to just `Concept/` folder
 - ❌ Don't forget the platform reference ([[YouTube]], [[Site Name]])
 - ❌ Don't include every possible link - be selective and relevant

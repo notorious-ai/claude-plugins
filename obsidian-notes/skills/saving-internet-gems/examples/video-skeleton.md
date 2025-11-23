@@ -107,7 +107,7 @@ tags:
 # - I hadn't considered framing failure as iteration before - this shifts my perspective
 # - I've been making decisions without a framework - this three-question approach could help
 
-## Links & Concepts
+## Related Topics
 
 # Discover and create backlinks across vault:
 #

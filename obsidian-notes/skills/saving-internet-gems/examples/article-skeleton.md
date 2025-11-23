@@ -130,7 +130,7 @@ tags:
 # - This reinforces something I've felt about dogmatic thinking but couldn't express
 # - I've been seeing this pattern in my own work without naming it
 
-## Links & Concepts
+## Related Topics
 
 # Discover and create backlinks across vault:
 #

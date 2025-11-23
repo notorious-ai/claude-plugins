@@ -89,7 +89,7 @@ Analyze the URL to determine if it's a video or article. If uncertain, ask the u
 
 See `references/shared-conventions.md` for:
 - Directory structure (Gems/Videos/, Gems/Articles/)
-- Shared template sections (INFO callout, TL;DR, Personal Takeaways, Links & Concepts)
+- Shared template sections (INFO callout, TL;DR, Personal Takeaways, Related Topics)
 - Backlink discovery across vault folders
 - Safety rules (only modify Gems/)
 
