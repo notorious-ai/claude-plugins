@@ -86,11 +86,17 @@ This section requires understanding the user's interests and note-taking pattern
 
 2. **Generate Suggestions**
    - Based on content analysis and user patterns, generate 3-5 potential takeaways
-   - Each takeaway should:
-     - Connect to user's apparent interests and recurring themes
-     - Highlight actionable insights or novel perspectives
-     - Link concepts to broader ideas
-     - Use phrases like "Notice how...", "This connects to...", "Consider applying..."
+   - Each takeaway should be written in FIRST PERSON (I/my) as the user's voice
+   - Focus on PERSONAL INSIGHTS derived from the content, not summaries of what the content says
+   - Each takeaway should express:
+     - Personal realizations or shifts in thinking ("I realized...", "This changed how I think about...")
+     - Connections the user made to their own work/experience ("I've been doing X wrong...", "I hadn't considered...")
+     - Discoveries or aha moments ("I didn't know...", "This explains why...")
+     - Can be general reflections, not necessarily actionable items
+   - ❌ WRONG: "Notice how this pattern solves X" (describes content)
+   - ❌ WRONG: "Consider applying Y to your work" (advice to user)
+   - ✅ RIGHT: "I realized I've been missing X in my own services" (personal insight)
+   - ✅ RIGHT: "This changed how I think about Y" (shift in thinking)
 
 3. **Interactive Refinement**
    - Use AskUserQuestion tool to present suggestions for review
@@ -102,7 +108,7 @@ This section requires understanding the user's interests and note-taking pattern
    - Include all user-selected takeaways in note
    - Use user's exact wording if they provide custom takeaways
    - If user rejects all, leave section with placeholder note
-   - Write selected takeaways in direct address (you/your)
+   - Write selected takeaways in FIRST PERSON (I/my) as user's personal voice
 
 **Example AskUserQuestion usage:**
 ```
@@ -112,12 +118,16 @@ questions: [{
   multiSelect: true,
   options: [
     {
-      label: "Notice how [specific observation] - this connects to your interest in [theme].",
-      description: "Highlights [why this is valuable to user]"
+      label: "I realized I've been [specific realization about own work/thinking]",
+      description: "Personal insight connecting content to your [domain/experience]"
     },
     {
-      label: "Consider applying [framework/technique] to your own [domain].",
-      description: "Actionable insight that builds on your existing [knowledge/tools]"
+      label: "This changed how I think about [concept] - I hadn't considered [new perspective]",
+      description: "Shift in understanding that relates to your interest in [theme]"
+    },
+    {
+      label: "I didn't know [discovery] - this explains why [connection to past experience]",
+      description: "Aha moment that clarifies something you've encountered"
     },
     // ... 3-5 total suggestions
   ]
@@ -179,7 +189,8 @@ Discover and create backlinks to relevant pages throughout the vault.
 **Personal Takeaways:**
 - ❌ Don't write generic takeaways without analyzing existing notes first
 - ❌ Don't skip the interactive refinement step
-- ❌ Don't write takeaways in third person - use direct address (you/your)
+- ❌ Don't describe what the content says - focus on personal insights derived FROM it
+- ❌ Don't write in second person (you/your) or third person - use first person (I/my)
 
 **Links & Concepts:**
 - ❌ Don't limit backlink search to just `Concept/` folder

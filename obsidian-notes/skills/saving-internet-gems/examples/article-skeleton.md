@@ -107,25 +107,28 @@ tags:
 #    - What actionable insights exist?
 #    - What perspectives challenge or expand thinking?
 #
-# 3. GENERATE 3-5 suggestions:
-#    - "Notice how [observation] connects to [user's interest]"
-#    - "Consider applying [insight] to [domain]"
-#    - "[Point] challenges the common assumption that [X]"
-#    - "This reinforces your understanding of [concept]"
+# 3. GENERATE 3-5 suggestions in FIRST PERSON (I/my) as user's voice:
+#    - Focus on PERSONAL INSIGHTS derived from content, not summaries of what content says
+#    - Express personal realizations: "I realized I've been [doing X wrong]..."
+#    - Express shifts in thinking: "This changed how I think about [concept]..."
+#    - Express discoveries: "I didn't know [fact] - this explains why [connection]..."
+#    - Can be general reflections, not necessarily actionable items
+#    - ❌ WRONG: "Notice how this solves X" (describes content)
+#    - ✅ RIGHT: "I realized I've been missing X in my own work" (personal insight)
 #
 # 4. USE AskUserQuestion with multiSelect: true
 #    - Present suggestions with value explanations
 #    - Allow multiple selections, custom input, or rejection
 #
-# 5. WRITE selected takeaways in direct address (you/your)
+# 5. WRITE selected takeaways in FIRST PERSON (I/my) as user's personal voice
 #    - Use user's exact wording for custom input
 #    - If rejected all, leave placeholder
 #
 # Example takeaway formats:
-# - **Performance Trade-offs:** GOGC controls balance between memory and CPU overhead
-# - We have responsibility to explain both sides of design decisions
-# - This reinforces the importance of avoiding dogmatic thinking
-# - Notice how the author frames [X] - applicable to [user's context]
+# - I didn't realize GOGC controls the balance between memory and CPU - I've been tuning blindly
+# - I've felt this responsibility to explain both sides but never articulated it this clearly
+# - This reinforces something I've felt about dogmatic thinking but couldn't express
+# - I've been seeing this pattern in my own work without naming it
 
 ## Links & Concepts
 
@@ -171,7 +174,7 @@ tags:
 3. **TL;DR variations**: Use "Read again when...", "Send to a friend who...", or "Reference when..."
 4. **Description focus**: Create navigable summary, not full text. Clean promotional content.
 5. **Site backlink**: Always create [[Site Name]] backlink (not [[YouTube]])
-6. **Takeaways**: Same interactive workflow as videos, direct address
+6. **Takeaways**: Same interactive workflow as videos, first person (I/my) personal insights
 7. **Links**: Search broadly across vault folders
 
 ## Differences from Videos

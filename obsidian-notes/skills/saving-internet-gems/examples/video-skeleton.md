@@ -85,23 +85,27 @@ tags:
 #    - What actionable insights or novel perspectives exist?
 #    - What concepts link to broader ideas?
 #
-# 3. GENERATE 3-5 suggestions using phrases like:
-#    - "Notice how [observation] - this connects to your interest in [theme]"
-#    - "Consider applying [framework] to your own [domain]"
-#    - "[Insight] builds on your existing knowledge of [topic]"
+# 3. GENERATE 3-5 suggestions in FIRST PERSON (I/my) as user's voice:
+#    - Focus on PERSONAL INSIGHTS derived from content, not summaries of what content says
+#    - Express personal realizations: "I realized I've been [doing X wrong]..."
+#    - Express shifts in thinking: "This changed how I think about [concept]..."
+#    - Express discoveries: "I didn't know [fact] - this explains why [connection]..."
+#    - Can be general reflections, not necessarily actionable items
+#    - ❌ WRONG: "Notice how this solves X" (describes content)
+#    - ✅ RIGHT: "I realized I've been missing X in my own work" (personal insight)
 #
 # 4. USE AskUserQuestion tool with multiSelect: true
 #    - Present suggestions with explanations of why each is valuable
 #    - Allow user to select multiple, add custom, or reject all
 #
-# 5. WRITE selected takeaways in direct address (you/your)
+# 5. WRITE selected takeaways in FIRST PERSON (I/my) as user's personal voice
 #    - Use user's exact wording if they provided custom input
 #    - If user rejected all, leave placeholder note
 #
 # Example takeaway format:
-# - AI progression goes through: LLM → Agent → Agentic
-# - Notice how the speaker frames failure as iteration
-# - Consider applying the three-question framework to your decision-making
+# - I realized the AI progression (LLM → Agent → Agentic) maps to my own journey
+# - I hadn't considered framing failure as iteration before - this shifts my perspective
+# - I've been making decisions without a framework - this three-question approach could help
 
 ## Links & Concepts
 
@@ -142,6 +146,6 @@ tags:
 
 1. **TL;DR**: Punchy, value-focused, includes "Watch again when..." context
 2. **Description**: Index of content, not full recap. Remove promotional material.
-3. **Takeaways**: Interactive workflow, analyze existing notes first, direct address
+3. **Takeaways**: Interactive workflow, analyze existing notes first, first person (I/my) personal insights
 4. **Links**: Search broadly across vault, not just Concept/. Always include [[YouTube]].
 5. **Metadata**: Extract comprehensively. Event and Speakers optional (remove if N/A).
