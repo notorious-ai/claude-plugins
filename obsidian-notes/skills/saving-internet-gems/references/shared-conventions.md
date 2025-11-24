@@ -42,6 +42,23 @@ tags:
 
 **Critical:** The first tag MUST be either `external/video` or `external/article` depending on content type.
 
+### Tag Selection
+
+**Prefer existing vault tags over inventing new ones.**
+
+1. **Discover existing tags:**
+   ```bash
+   ${CLAUDE_PLUGIN_ROOT}/scripts/list-vault-tags.sh
+   ```
+   This returns all unique tags used throughout the vault.
+
+2. **Match content to existing tags:**
+   - Review the tag list for relevant matches
+   - Prioritize tags that already exist in the vault
+   - Only suggest new tags when no existing tag fits
+
+3. **Suggest 2-4 additional tags** after the mandatory external/* tag
+
 ## INFO Callout Format
 
 All gems use an INFO callout at the top with metadata. The specific fields vary by content type:
