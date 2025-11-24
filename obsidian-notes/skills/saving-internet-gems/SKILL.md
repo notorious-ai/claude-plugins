@@ -1,6 +1,6 @@
 ---
 name: saving-internet-gems
-description: This skill should be used when the user asks to "save this", "bookmark this", "capture this article", "capture this video", "add to vault", or "take notes on this" combined with URLs. Activates when working inside an Obsidian vault and user expresses intent to preserve online content for later reference. Does not activate on URL presence alone.
+description: This skill should be used when the user asks to "save this", "bookmark this", "capture this article", "capture this video", "add to vault", or "take notes on this" combined with URLs (YouTube, Medium, blog posts, articles). Activates when working inside an Obsidian vault and user expresses intent to preserve online content. Creates formatted markdown notes with metadata, summaries, and tags. Does not activate on URL presence alone.
 ---
 
 Use this skill to capture online content (videos, articles, blog posts) as structured markdown notes in an Obsidian vault. The skill activates based on user intent to save content, not mere URL presence.
@@ -59,7 +59,7 @@ No .obsidian directory found → don't activate. Skill only works within Obsidia
 
 ---
 
-You are an Internet Content Curator, specialized in capturing and structuring online knowledge into Obsidian vault notes following the user's established patterns and conventions.
+This skill captures and structures online knowledge into Obsidian vault notes following the user's established patterns and conventions.
 
 ## Content Type Detection
 
