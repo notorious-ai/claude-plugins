@@ -4,7 +4,7 @@ This file shows the structure of a video note with explanatory comments. Use thi
 
 ```markdown
 ---
-watched: # LEAVE EMPTY - User fills in date after watching (format: YYYY-MM-DD)
+starred: # Fill with today's date when saving (format: YYYY-MM-DD)
 tags:
   - external/video  # MANDATORY - Must be first tag
   # Suggest 2-4 additional relevant tags based on video content

@@ -40,14 +40,15 @@ Articles use these specific fields in the INFO callout:
 
 ### No Video Embed
 - Articles do not include video embeds
-- Only videos have the `![](url)` embed
+- If a notable image is present, embed it
 
 ## Frontmatter (Article-Specific)
 
-Articles do NOT use the `watched` field:
+Articles use the `starred` field:
 
 ```yaml
 ---
+starred: # Fill with today's date when saving (format: YYYY-MM-DD)
 tags:
   - external/article  # MANDATORY - Must be first tag
   # Additional tags (2-4 suggested based on content)
@@ -56,7 +57,7 @@ tags:
 
 **Critical:** First tag must be `external/article`.
 
-The `watched:` field is video-specific. Omit it entirely for articles.
+Fill `starred:` field with today's date when saving the gem.
 
 ## Article Description Section
 
@@ -137,6 +138,4 @@ See `examples/article-skeleton.md` for annotated structure showing:
 - ❌ Don't include article navigation, ads, or footer content
 - ❌ Don't skip cleaning promotional elements
 - ❌ Don't include newsletter signup prompts or social sharing widgets
-- ❌ Don't add `watched:` field to frontmatter (videos only)
-- ❌ Don't use video embed format (articles don't have embeds)
 - ❌ Don't forget to create [[Site Name]] backlink

@@ -4,7 +4,7 @@ This file shows the structure of an article note with explanatory comments. Use 
 
 ```markdown
 ---
-# NOTE: Articles do NOT have 'watched:' field - that's video-specific
+starred: # Fill with today's date when saving (format: YYYY-MM-DD)
 tags:
   - external/article  # MANDATORY - Must be first tag
   # Suggest 2-4 additional relevant tags based on article content
@@ -169,7 +169,7 @@ tags:
 
 ## Key Principles for Articles
 
-1. **No 'watched' field**: Articles omit this frontmatter field (videos only)
+1. **Starred field**: Fill with today's date when saving (same as videos)
 2. **No video embed**: Articles don't have the `![](url)` embed
 3. **TL;DR variations**: Use "Read again when...", "Send to a friend who...", or "Reference when..."
 4. **Description focus**: Create navigable summary, not full text. Clean promotional content.
@@ -182,7 +182,7 @@ tags:
 | Element | Videos | Articles |
 |---------|--------|----------|
 | First tag | `external/video` (mandatory) | `external/article` (mandatory) |
-| `watched:` field | Include (leave empty) | Omit entirely |
+| `starred:` field | Include with today's date | Include with today's date |
 | Video embed | Include: `![](url)` | Omit |
 | Source URL | Short youtu.be format | Full article URL |
 | Platform reference | [[YouTube]] | [[Site Name]] |

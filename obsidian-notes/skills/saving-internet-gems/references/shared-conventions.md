@@ -32,7 +32,7 @@ All gems start with YAML frontmatter:
 
 ```yaml
 ---
-watched: # For videos: leave empty initially. For articles: omit this field entirely
+starred: # Fill with today's date when saving (format: YYYY-MM-DD)
 tags:
   - external/video    # For videos (mandatory, must be first tag)
   - external/article  # For articles (mandatory, must be first tag)

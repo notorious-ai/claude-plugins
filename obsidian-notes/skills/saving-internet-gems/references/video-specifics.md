@@ -54,11 +54,11 @@ Videos use these specific fields in the INFO callout:
 
 ## Frontmatter (Video-Specific)
 
-Videos use the `watched` field in frontmatter:
+Videos use the `starred` field in frontmatter:
 
 ```yaml
 ---
-watched: # Leave empty initially - user fills after watching
+starred: # Fill with today's date when saving (format: YYYY-MM-DD)
 tags:
   - external/video  # MANDATORY - Must be first tag
   # Additional tags (2-4 suggested based on content)
@@ -67,7 +67,7 @@ tags:
 
 **Critical:** First tag must be `external/video`.
 
-Leave `watched:` field empty (no value). User will fill in date after watching.
+Fill `starred:` field with today's date when saving the gem.
 
 ## Video Description Section
 
