@@ -2,14 +2,42 @@
 
 All notable changes to the Obsidian Notes plugin will be documented in this file.
 
-## [Unreleased]
+## [3.0.0] - 2025-11-24
 
-### Distilling Video Notes Skill
+### Saving Internet Gems Skill
 
-**BREAKING CHANGE**: Skill removed
+**NEW**: Unified skill for capturing videos and articles
 
-- Removed `distilling-video-notes` skill as it has been replaced by the unified `saving-internet-gems` skill
-- The new unified skill handles both videos and articles with better intent detection and progressive disclosure
+- Initial release of `saving-internet-gems` skill that unifies video and article capture
+- Intent-based activation: only activates when user explicitly requests capture ("save this", "bookmark this", etc.), not on URL presence alone
+- Multi-source support: handles YouTube videos and web articles with source-appropriate processing
+- Progressive disclosure: guides users through metadata refinement after initial capture
+- Tag-based classification: mandatory tagging replaces legacy type field for flexible content organization
+- Related Topics section: links to existing vault concepts for knowledge graph integration, avoiding duplicate backlinks for articles
+- Personal Takeaways: focuses on insights and learnings derived from content rather than content recaps
+- Site field: represents logical brand/publication (e.g., "The Verge"), not domain
+- Starred property: enables immediate capture of promising content for later review
+- Tag preservation: respects tags already in-use within the vault
+- Template structure: separate skeletons for videos (with embed) and articles (text-focused)
+- User refinement workflow: allows iterative improvement of Related Topics and other metadata
+- Script validation: validates required external tools at skill invocation
+
+### Breaking Changes
+
+**Skill Removed**
+- Removed `distilling-video-notes` skill, superseded by the unified `saving-internet-gems` skill
+- All video capture functionality preserved and enhanced in the new skill
+
+**Vault Structure Changed**
+- Video notes now saved to `Gems/Videos/` instead of `Resources/Videos/`
+- Article notes saved to `Gems/Articles/`
+- Existing notes in `Resources/Videos/` will not be automatically migrated
+- Template system removed: skill now learns from vault environment and respects existing conventions
+
+**Migration**:
+- Use the new `saving-internet-gems` skill for all content capture. The activation pattern remains similar but requires explicit capture intent.
+- Manually move existing video notes from `Resources/Videos/` to `Gems/Videos/` if you want them in the new location.
+- The skill will adapt to your vault's existing structure and conventions without requiring templates.
 
 ## [2.0.0] - 2025-11-19
 
