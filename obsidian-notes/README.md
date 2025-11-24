@@ -22,6 +22,8 @@ your vault.
   Obsidian vault (the directory containing `.obsidian/`)
 - **yt-dlp**: Required for YouTube video capture. Install on macOS via: `brew
   install yt-dlp`
+- **yq**: Required for tag extraction from vault notes. Install on macOS via:
+  `brew install yq`
 
 ### Vault Structure
 
@@ -98,7 +100,21 @@ Claude: I'll capture this article as a structured note in your Gems/Articles/ di
 
 ## Development & Testing
 
-To test this plugin locally during development:
+To test this plugin locally during development, use the `--plugin-dir` flag for quick iteration:
+
+### Method 1: Using --plugin-dir Flag (Recommended)
+
+The simplest way to test the plugin:
+
+```bash
+claude --plugin-dir /absolute/path/to/obsidian-notes
+```
+
+To test changes, simply exit the session and restart with the same flag.
+
+### Method 2: Using Development Marketplace
+
+For testing marketplace integration:
 
 1. **Create development marketplace** at the repository root:
 
@@ -134,12 +150,12 @@ claude plugin install obsidian-notes@dev-marketplace
 
 5. **Iterate on changes**:
 ```bash
-claude plugin uninstall obsidian-notes@dev-marketplace
-claude plugin install obsidian-notes@dev-marketplace
+claude plugin marketplace update dev-marketplace
 ```
 
 6. **Clean up when done**:
 ```bash
+claude plugin uninstall obsidian-notes@dev-marketplace
 claude plugin marketplace remove dev-marketplace
 ```
 

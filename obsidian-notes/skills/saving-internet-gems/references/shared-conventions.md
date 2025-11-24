@@ -48,7 +48,7 @@ tags:
 
 1. **Discover existing tags:**
    ```bash
-   ${CLAUDE_PLUGIN_ROOT}/scripts/list-vault-tags.sh
+   scripts/list-vault-tags.sh
    ```
    This returns all unique tags used throughout the vault.
 
