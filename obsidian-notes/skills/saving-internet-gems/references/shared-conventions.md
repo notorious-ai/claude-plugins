@@ -173,10 +173,12 @@ Discover and create backlinks to relevant pages throughout the vault.
    - Check `My Stack/` for technologies discussed
    - Check other folders as appropriate
 
-3. **Include Site/Platform Reference**
-   - Videos: Always include [[YouTube]]
-   - Articles: Create backlink to site, e.g., [[Go Documentation]], [[GitHub Blog]]
-   - If site page doesn't exist, create the backlink anyway (user can create page later)
+3. **Include Platform Reference (Use Discretion)**
+   - Videos: Always include [[YouTube]] (or other hosting platform like Vimeo)
+   - Articles: Only include platform reference for hosting sites like [[Medium]]
+     - Do NOT repeat the site link for regular articles - it's already in the INFO callout above
+     - Regular article sites (blogs, documentation, personal sites) don't need duplication
+     - Only include hosting platforms where multiple different publications/authors are hosted
 
 4. **Add Related Resources**
    - Backlink to related gems if relevant
@@ -186,7 +188,7 @@ Discover and create backlinks to relevant pages throughout the vault.
 5. **Format as Bulleted List**
    ```markdown
    ## Related Topics
-   - [[Site/Platform Reference]]
+   - [[Platform Reference]]  # Only for hosting platforms (YouTube, Medium, etc.)
    - [[Concept Page 1]]
    - [[Concept Page 2]]
    - [[My Tool]]
@@ -229,7 +231,7 @@ Discover and create backlinks to relevant pages throughout the vault.
 
 **Related Topics:**
 - ❌ Don't limit backlink search to just `Concept/` folder
-- ❌ Don't forget the platform reference ([[YouTube]], [[Site Name]])
+- ❌ Don't repeat article site backlinks (already in INFO callout) - only include hosting platforms
 - ❌ Don't include every possible link - be selective and relevant
 
 **General:**
