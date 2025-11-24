@@ -33,13 +33,20 @@ Videos use these fields in the INFO callout:
 - Wrap in angle brackets: `<https://youtu.be/VIDEO_ID>`
 
 **Channel:**
-- Format as markdown link: `[Channel Name](channel-url)`
+- Always a **web link** to the YouTube channel: `[Channel Name](channel-url)`
+- This is the online presence, not a vault backlink
 - Use `@ChannelHandle` format when available
 
-**Event:**
-- Extract from video title, description, or channel
-- Format with backlink: `[[Event Name]] YEAR`
-- If no event detected, REMOVE this line
+**Event / Taxonomy:**
+- A **vault backlink** to the real-world entity behind the content
+- Extract from video title, description, tags, or channel metadata
+- Format: `[[Entity Name]] YEAR` (year when relevant)
+- Common patterns:
+  - Conference talk: `[[GopherCon]] 2024`
+  - Organization webinar: `[[Cloud Native Computing Foundation]]`
+  - Series: `[[Advent of Code]] 2023`
+- If no notable taxonomy detected, REMOVE this line
+- Other organizational affiliations can go in Related Topics instead
 
 **Speakers:**
 - List names separated by commas
@@ -49,11 +56,12 @@ Videos use these fields in the INFO callout:
 - Use full YouTube URL: `![](https://www.youtube.com/watch?v=VIDEO_ID)`
 - Renders as embedded player in Obsidian
 
-### Channel vs Event (Mutually Exclusive in Practice)
+### Channel and Event Serve Different Purposes
 
-- **Conference talks**: Have Event field, may omit Channel
-- **YouTube channel videos**: Have Channel field, typically no Event
-- Include both only when genuinely applicable
+- **Channel** = web link to the YouTube presence (always include)
+- **Event/Taxonomy** = vault backlink to real-world entity (when applicable)
+
+Both can coexist: a GopherCon talk has Channel (web link to GopherCon's YouTube) AND Event ([[GopherCon]] 2024 backlink). Random YouTubers have only Channel.
 
 ## Video Description Strategy
 
