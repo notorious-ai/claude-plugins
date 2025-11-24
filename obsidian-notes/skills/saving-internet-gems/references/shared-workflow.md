@@ -67,7 +67,7 @@ For good/bad examples, see `examples/quality-patterns.md`.
 
 ## Personal Takeaways Workflow
 
-This section requires understanding user's interests and note-taking patterns.
+This section requires understanding user's interests and iterative refinement.
 
 **Steps:**
 
@@ -77,35 +77,52 @@ This section requires understanding user's interests and note-taking patterns.
    - Note recurring themes and interests
    - Understand user's writing style
 
-2. **Generate Suggestions**
+2. **Generate Initial Suggestions**
    - Generate 3-5 potential takeaways based on content and user patterns
    - Write in FIRST PERSON (I/my) as user's voice
    - Focus on PERSONAL INSIGHTS derived from content, not summaries
    - Express: realizations, connections to own work, discoveries, shifts in thinking
 
-3. **Interactive Refinement**
+3. **First Question**
    - Use AskUserQuestion tool with `multiSelect: true`
    - Present suggestions as selectable options
-   - User can select multiple, add custom via "Other", or reject all
+   - User can select multiple, add custom via "Other", or skip
 
-4. **Incorporate Feedback**
-   - Include all user-selected takeaways
-   - Use user's exact wording for custom takeaways
-   - If user rejects all, leave section with placeholder note
+4. **Interpret Response**
+   - Analyze what the user selected - what themes resonate?
+   - Parse any custom input - what direction are they taking?
+   - Understand the GAP between your suggestions and their actual insights
+
+5. **Iterate (ask again)**
+   - REMOVE unselected options (they didn't resonate)
+   - KEEP selected options (confirmed)
+   - ADD 2-3 NEW options based on user's input direction
+   - If user provided custom text, integrate its meaning into new suggestions
+   - Ask again with refined options
+
+6. **Repeat Until Done**
+   - Continue iterating until user confirms final selection
+   - User may signal completion by selecting without adding new input
+   - Or explicitly say "done" / "that's all"
+
+7. **Write Final Takeaways**
+   - Include all confirmed takeaways
+   - Use user's exact wording for custom input
    - Write in FIRST PERSON (I/my)
+   - If user rejected all after iterations, leave section with placeholder
 
-**Example AskUserQuestion:**
+**Example Iteration Flow:**
+
 ```
-questions: [{
-  question: "Which personal takeaways resonate with you?",
-  header: "Takeaways",
-  multiSelect: true,
-  options: [
-    { label: "I realized...", description: "Personal insight about..." },
-    { label: "This changed how I think about...", description: "Shift in understanding..." },
-    { label: "I didn't know...", description: "Discovery that clarifies..." }
-  ]
-}]
+Round 1:
+  Options: A, B, C, D
+  User selects: B, adds custom "Something about X"
+
+Round 2:
+  Options: B (kept), E (new, inspired by X), F (new, inspired by X)
+  User selects: B, E
+
+Done → Final takeaways: B, E
 ```
 
 For good/bad examples, see `examples/quality-patterns.md`.
