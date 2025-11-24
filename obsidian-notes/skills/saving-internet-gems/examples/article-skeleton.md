@@ -4,10 +4,10 @@ This file shows the structure of an article note with explanatory comments. Use 
 
 ```markdown
 ---
-type: online-resource
 # NOTE: Articles do NOT have 'watched:' field - that's video-specific
 tags:
-  # Suggest 2-4 relevant tags based on article content
+  - external/article  # MANDATORY - Must be first tag
+  # Suggest 2-4 additional relevant tags based on article content
   # Examples: tricks, shareworthy, styleguide, golang, architecture
 ---
 
@@ -181,6 +181,7 @@ tags:
 
 | Element | Videos | Articles |
 |---------|--------|----------|
+| First tag | `external/video` (mandatory) | `external/article` (mandatory) |
 | `watched:` field | Include (leave empty) | Omit entirely |
 | Video embed | Include: `![](url)` | Omit |
 | Source URL | Short youtu.be format | Full article URL |

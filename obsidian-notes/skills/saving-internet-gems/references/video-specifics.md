@@ -58,11 +58,14 @@ Videos use the `watched` field in frontmatter:
 
 ```yaml
 ---
-type: online-resource
 watched: # Leave empty initially - user fills after watching
-tags: # Suggest tags based on content
+tags:
+  - external/video  # MANDATORY - Must be first tag
+  # Additional tags (2-4 suggested based on content)
 ---
 ```
+
+**Critical:** First tag must be `external/video`.
 
 Leave `watched:` field empty (no value). User will fill in date after watching.
 

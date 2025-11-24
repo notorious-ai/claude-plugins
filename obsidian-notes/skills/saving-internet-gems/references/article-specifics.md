@@ -48,10 +48,13 @@ Articles do NOT use the `watched` field:
 
 ```yaml
 ---
-type: online-resource
-tags: # Suggest tags based on content
+tags:
+  - external/article  # MANDATORY - Must be first tag
+  # Additional tags (2-4 suggested based on content)
 ---
 ```
+
+**Critical:** First tag must be `external/article`.
 
 The `watched:` field is video-specific. Omit it entirely for articles.
 

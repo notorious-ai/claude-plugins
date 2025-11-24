@@ -32,11 +32,15 @@ All gems start with YAML frontmatter:
 
 ```yaml
 ---
-type: online-resource
 watched: # For videos: leave empty initially. For articles: omit this field entirely
-tags: # Suggest relevant tags based on content analysis
+tags:
+  - external/video    # For videos (mandatory, must be first tag)
+  - external/article  # For articles (mandatory, must be first tag)
+  # Additional tags based on content analysis (2-4 suggested)
 ---
 ```
+
+**Critical:** The first tag MUST be either `external/video` or `external/article` depending on content type.
 
 ## INFO Callout Format
 

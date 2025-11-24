@@ -4,10 +4,10 @@ This file shows the structure of a video note with explanatory comments. Use thi
 
 ```markdown
 ---
-type: online-resource
 watched: # LEAVE EMPTY - User fills in date after watching (format: YYYY-MM-DD)
 tags:
-  # Suggest 2-4 relevant tags based on video content
+  - external/video  # MANDATORY - Must be first tag
+  # Suggest 2-4 additional relevant tags based on video content
   # Examples: shareworthy, ai, golang, distributed-systems, architecture
 ---
 
