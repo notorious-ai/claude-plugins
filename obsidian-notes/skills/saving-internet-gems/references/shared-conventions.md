@@ -175,10 +175,10 @@ Discover and create backlinks to relevant pages throughout the vault.
 
 3. **Include Platform Reference (Use Discretion)**
    - Videos: Always include [[YouTube]] (or other hosting platform like Vimeo)
-   - Articles: Only include platform reference for hosting sites like [[Medium]]
-     - Do NOT repeat the site link for regular articles - it's already in the INFO callout above
-     - Regular article sites (blogs, documentation, personal sites) don't need duplication
-     - Only include hosting platforms where multiple different publications/authors are hosted
+   - Articles: Do NOT repeat the Site backlink from the INFO callout - it's already linked above
+     - The Site field represents the logical brand/publication (not just domain)
+     - Whether it's a hosting platform (Medium), blog series, or standalone site, avoid duplication
+     - Only include the platform backlink if it differs from the Site field (e.g., Site is "Better Programming" → could add [[Medium]])
 
 4. **Add Related Resources**
    - Backlink to related gems if relevant

@@ -27,10 +27,12 @@ Articles use these specific fields in the INFO callout:
 - Preserve the original URL (don't shorten)
 
 ### Site Field
-- Extract the site or publication name (e.g., "Go Documentation", "GitHub Blog", "research!rsc")
+- Identify the logical brand, publication, or series - not just the domain
+- For blog series or author publications: use the series/author name (e.g., "research!rsc", "Martin Fowler's Bliki")
+- For sub-publications: use the specific publication within a hosting platform (e.g., "Better Programming" on Medium)
+- For standalone sites: use the site name (e.g., "Go Documentation", "GitHub Blog")
 - Format as backlink: `[[Site Name]]`
-- Create backlink even if site page doesn't exist yet in vault
-- Examples: `[[Go Documentation]]`, `[[GitHub Blog]]`, `[[research!rsc]]`
+- Create backlink even if page doesn't exist yet in vault
 
 ### Authors Field
 - Extract author names from article metadata
