@@ -5,11 +5,10 @@ following your personal note-taking system.
 
 ## Vision
 
-This plugin provides automated capture skills for different types of content
+This plugin provides intent-based capture skills for different types of content
 you want to preserve in your personal knowledge base:
 
-- **YouTube Videos** (available)
-- **Articles & Blog Posts** (planned)
+- **Videos & Articles** - Save online content when you express intent (available)
 - **Podcasts** (planned)
 - **Research Papers** (planned)
 
@@ -23,6 +22,8 @@ your vault.
   Obsidian vault (the directory containing `.obsidian/`)
 - **yt-dlp**: Required for YouTube video capture. Install on macOS via: `brew
   install yt-dlp`
+- **yq**: Required for tag extraction from vault notes. Install on macOS via:
+  `brew install yq`
 
 ### Vault Structure
 
@@ -31,71 +32,89 @@ Your vault should have the following structure for this plugin to work optimally
 ```
 YourVault/
 ├── .obsidian/              # Obsidian configuration (automatic)
-├── _templates/
-│   └── YouTube Resource.md # Your YouTube note template (optional, has fallback)
-├── Resources/
-│   └── Videos/             # YouTube notes are created here
-│   └── ...
-└── Concept/                # Concept pages for backlinking
+├── Gems/
+│   ├── Videos/             # Video notes are created here
+│   └── Articles/           # Article notes are created here
+├── Concept/                # Concept pages for backlinking (optional)
+├── My Tools/               # Tool pages for backlinking (optional)
+├── My Stack/               # Technology pages for backlinking (optional)
+└── [Other folders]         # Skill discovers all top-level folders for backlinking
 ```
 
-If required directories (such as `Resources/Videos/`) do not exist, the skill will skip execution for those resources and no notes will be created. The plugin does not create missing directories automatically, and no error message will be shown. Please ensure all required directories exist in your vault before running the skill.
+If required directories (such as `Gems/Videos/` or `Gems/Articles/`) do not exist, the skill will skip execution for those resources and no notes will be created. The plugin does not create missing directories automatically, and no error message will be shown. Please ensure all required directories exist in your vault before running the skill.
 
 ## Skills Definitions
 
 **Usage tips:**
 - Always run Claude Code from your Obsidian vault's root directory
-- The skill automatically discovers concepts from your `Concept/` folder for
-  backlinking
-- Existing notes in `Resources/` are analyzed to match your personal takeaway
-  style
-- You can share multiple resource URLs in a single message - each will be
-  captured separately
-- Customize the output format by editing templates (in the `_templates/`
-  folder) in your vault
+- The skill automatically discovers backlink pages from all top-level vault folders
+- Existing gems in `Gems/Videos/` and `Gems/Articles/` are analyzed to match your personal style
+- You can share multiple URLs in a single message - each will be captured separately
+- Express clear intent like "save this", "bookmark this", or "capture this article"
 
-### YouTube Video Capture
+### Saving Internet Gems
 
-Automatically captures YouTube videos as structured markdown notes when URLs
-are detected in conversation.
+**Intent-based capture** for online content (videos and articles) as structured markdown notes.
 
-**Activation**: Mention or paste a YouTube URL while working inside your
-Obsidian vault.
+**Activation**: Express desire to save content combined with a URL. The skill activates when you say things like:
+- "Save this video for later"
+- "Bookmark this article"
+- "Capture this for my vault"
+- "Add this to my notes"
+
+**Does NOT activate** on URL presence alone - you must indicate capture intent.
 
 **What it does**:
 1. Validates you're in an Obsidian vault (checks for `.obsidian` directory)
-2. Extracts video metadata using `yt-dlp` (title, channel, description, etc.)
-3. Downloads and parses video transcript/captions
-4. Reads your YouTube Resource template from `_templates/YouTube Resource.md` (or uses embedded fallback)
-5. Generates a clean filename from the video title
-6. Creates a properly formatted note in `Resources/Videos/` directory
-7. Fills all template sections following embedded `<instructions>` precisely
-8. Generates personal takeaways by examining your existing notes
-9. Creates backlinks to existing concepts in your `Concept/` folder
+2. Detects content type (video vs article, or asks if uncertain)
+3. Extracts comprehensive metadata and content:
+   - **Videos**: metadata, transcript, channel info using yt-dlp
+   - **Articles**: content, author, publication using web extraction
+4. Analyzes 2-3 existing gems from target directory to understand your style
+5. Creates structured note in `Gems/Videos/` or `Gems/Articles/`
+6. Generates compelling TL;DR matching your writing style
+7. Creates personal takeaways interactively (presents suggestions, you select)
+8. Discovers backlinks across all top-level vault folders (Concept/, My Tools/, My Stack/, etc.)
 
 **Example usage**:
 
 ```
-You: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+You: Save this for later: https://www.youtube.com/watch?v=abc123
 
-Claude: I'll capture this YouTube video as a structured note in your vault.
-[Extracts metadata, creates formatted note in Resources/Videos/]
+Claude: I'll capture this YouTube video as a structured note in your Gems/Videos/ directory.
+[Extracts metadata, analyzes your style, creates formatted note]
+```
+
+```
+You: Bookmark this article: https://blog.example.com/great-post
+
+Claude: I'll capture this article as a structured note in your Gems/Articles/ directory.
+[Extracts content, matches your style, creates formatted note]
 ```
 
 **Safety features**:
 - Only operates within Obsidian vaults (requires `.obsidian` directory)
-- Only creates/modifies files in `Resources/Videos/` directory
-- Never touches template files or other vault content
-- No temporary files left in working directory
-
-**Template handling**:
-- **Primary**: Reads from your vault's `_templates/YouTube Resource.md`
-- **Fallback**: Uses embedded template if vault template not found
-- This allows you to evolve your template over time while maintaining plugin compatibility
+- Only creates/modifies files in `Gems/Videos/` and `Gems/Articles/` directories
+- Never touches other vault files
+- Intent-based activation prevents unwanted captures during casual URL sharing
 
 ## Development & Testing
 
-To test this plugin locally during development:
+To test this plugin locally during development, use the `--plugin-dir` flag for quick iteration:
+
+### Method 1: Using --plugin-dir Flag (Recommended)
+
+The simplest way to test the plugin:
+
+```bash
+claude --plugin-dir /absolute/path/to/obsidian-notes
+```
+
+To test changes, simply exit the session and restart with the same flag.
+
+### Method 2: Using Development Marketplace
+
+For testing marketplace integration:
 
 1. **Create development marketplace** at the repository root:
 
@@ -131,12 +150,12 @@ claude plugin install obsidian-notes@dev-marketplace
 
 5. **Iterate on changes**:
 ```bash
-claude plugin uninstall obsidian-notes@dev-marketplace
-claude plugin install obsidian-notes@dev-marketplace
+claude plugin marketplace update dev-marketplace
 ```
 
 6. **Clean up when done**:
 ```bash
+claude plugin uninstall obsidian-notes@dev-marketplace
 claude plugin marketplace remove dev-marketplace
 ```
 

@@ -6,7 +6,8 @@
   "plugins": [
     {
       "name": "obsidian-notes",
-      "source": "./obsidian-notes"
+      "source": "./obsidian-notes",
+      "category": "productivity"
     }
   ]
 }

@@ -53,6 +53,8 @@ When a user requests a new plugin, **ALWAYS** start with planning. Never immedia
    - What should the plugin be named? (kebab-case)
    - Should this integrate with existing plugins?
 
+   **For technical component details**: Invoke **plugin-structure** skill for overall structure, or component-specific skills (**command-development**, **skill-development**, **agent-development**, **hook-development**, **mcp-integration**).
+
 ### Component Selection Guide
 
 When planning which component types to use, consider these guidelines based on activation patterns and use cases:
@@ -123,94 +125,22 @@ When planning which component types to use, consider these guidelines based on a
 
 ## Creating a New Plugin
 
-### Step 1: Create Plugin Directory
+Invoke `/plugin-dev:create-plugin` to create the plugin structure, manifest, components, and documentation.
 
-Create a top-level directory with your plugin name in kebab-case:
+After the command completes, make these repository-specific amendments:
 
-```bash
-mkdir plugin-name
-cd plugin-name
+### Update Repository README
+
+Update [README.md](README.md) to add the plugin to the "Available Plugins" section:
+
+```markdown
+- [plugin-name](plugin-name/) - One-line description
 ```
 
-### Step 2: Create Plugin Manifest
+### Update Marketplace File
 
-Create `.claude-plugin/plugin.json` following the [plugin manifest schema][manifest-schema]:
+Update `.claude-plugin/marketplace.json` to add the plugin:
 
-```bash
-mkdir .claude-plugin
-```
-
-Create a minimal manifest:
-```json
-{
-  "name": "plugin-name",
-  "version": "1.0.0",
-  "description": "Brief description of what the plugin does",
-  "author": {
-    "name": "Person of contact for this plugin",
-    "url": "https://github.com/USERNAME"
-  }
-}
-```
-
-See the [manifest schema documentation][manifest-schema] for complete schema details and optional fields.
-
-### Step 3: Create Plugin Directory Structure
-
-Follow the [plugin directory structure][structure-docs] standard. Create only the component directories you need:
-
-```bash
-# Only create directories for components you're actually using
-mkdir commands    # if using slash commands
-mkdir agents      # if using subagents
-mkdir skills      # if using skills
-mkdir hooks       # if using hooks
-touch .mcp.json   # if using MCP server
-```
-
-### Step 4: Create Component Files
-
-Create component files based on your plan. Refer to the official documentation for each component type:
-- [Slash commands][commands-docs] - Command instruction files
-- [Subagents][agents-docs] - Agent configuration files
-- [Agent Skills][skills-docs] - Skill directories with `SKILL.md`
-- [Hooks][hooks-docs] - Event hook configurations in `hooks.json`
-- [MCP servers][mcp-docs] - `.mcp.json` configuration
-
-**For Agent Skills specifically:**
-- Skills MUST start with YAML frontmatter containing `name` and `description` fields
-- Read the [skill structure requirements][skills-docs] before creating
-- Understand [YAML frontmatter format][skill-structure]
-- The `name` must be lowercase alphanumeric with hyphens only (max 64 characters)
-- The `description` must explain both what the skill does AND when Claude should use it (max 1024 characters)
-
-### Step 5: Create README.md
-
-Create a `README.md` at the plugin root documenting:
-- Plugin purpose (single responsibility)
-- Usage instructions with examples
-- Dependencies or prerequisites
-- Configuration options
-
-### Step 6: Create CHANGELOG.md
-
-Create a `CHANGELOG.md` to track changes across versions. Organize entries by **component** (e.g. skill names, agent names, command names) rather than by change type.
-
-### Step 7: Update Repository README
-
-**IMPORTANT**: After creating a new plugin, update the repository's [README.md](README.md) to include the new plugin in the "Available Plugins" section.
-
-Add an entry with:
-- Plugin name (linked to its directory)
-- One-line description of what it does
-
-This keeps the repository documentation current and helps users discover available plugins.
-
-### Step 8: Update Marketplace File
-
-**IMPORTANT**: After creating a new plugin, update the repository's marketplace file at `.claude-plugin/marketplace.json` to include the new plugin.
-
-Add an entry to the `plugins` array:
 ```json
 {
   "name": "plugin-name",
@@ -218,40 +148,29 @@ Add an entry to the `plugins` array:
 }
 ```
 
-This enables users to discover and install your plugin through the marketplace.
+### Verify CHANGELOG.md
+
+Ensure `CHANGELOG.md` exists at plugin root. Organize entries by **component** (skill/agent/command names) not by change type.
+
+## Working with Individual Components
+
+When creating or modifying components after initial plugin setup:
+
+**Commands**: Invoke **command-development** skill
+**Skills**: Invoke **skill-development** skill, then invoke **plugin-dev:skill-reviewer** agent after creating the skill
+**Agents**: Invoke **agent-development** skill
+**Hooks**: Invoke **hook-development** skill
+**MCP**: Invoke **mcp-integration** skill
 
 ## Validating Plugin Components
 
-Before proceeding to testing, validate that all plugin components are correctly structured. This is especially critical for skills.
+Before testing, validate components are correctly structured.
 
-### Validating Agent Skills
+**Skills**: Invoke **plugin-dev:skill-reviewer** agent to validate structure, quality, and best practices.
 
-Skills must pass all validation checks before testing. Use the WebFetch tool to access specific documentation sections:
+**Other components**: Reference the relevant skill used during creation (**command-development**, **agent-development**, **hook-development**, **mcp-integration**) for validation guidance.
 
-**1. Structure Validation:**
-- Verify YAML frontmatter exists at the top of SKILL.md
-- Check `name` field: lowercase alphanumeric with hyphens only, max 64 characters
-- Check `description` field: non-empty, max 1024 characters, explains WHAT and WHEN
-- Reference: [Skill Structure Requirements][skill-structure]
-
-**2. Quality Checklist:**
-- SKILL.md body under 500 lines
-- Description is specific with key terms and usage triggers
-- No time-sensitive information
-- Consistent terminology throughout
-- Concrete examples provided
-- File references one level deep from SKILL.md
-- Forward slashes only in file paths
-- Reference: [Checklist for Effective Skills][skill-checklist]
-
-**3. Technical Requirements:**
-- All file paths use forward slashes (Unix-style)
-- Required packages are documented
-- Scripts include error handling
-- Progressive disclosure of information
-- Reference: [Technical Notes][skill-technical]
-
-**IMPORTANT:** If any validation fails, fix the issues before proceeding to testing. Invalid skills will not activate properly.
+**IMPORTANT:** Fix all validation issues before testing. Invalid components will not activate properly.
 
 ## Helping Users Test Their Plugin
 
