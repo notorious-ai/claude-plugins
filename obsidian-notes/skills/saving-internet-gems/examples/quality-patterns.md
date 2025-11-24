@@ -195,33 +195,80 @@ This file shows good vs bad examples for each section type to help Claude make b
 ### Good Examples
 
 **Example 1 (Video):**
+```markdown
+> [!INFO]
+> **Channel:** [GopherCon](...)
+
+## Related Topics
 - [[YouTube]]
 - [[Systems Architecture]]
-- [[Systems Engineering]]
+- [[Golang]]
+```
 
 **Why it works:**
-- Includes platform reference (YouTube)
+- Videos ALWAYS include platform ([[YouTube]])
+- Channel is in INFO callout, not repeated here
 - Relevant concept backlinks
 - Selective (only 3 items)
-- All genuinely relate to content
 
 ---
 
-**Example 2 (Article):**
+**Example 2 (Article on hosting platform - Medium):**
+```markdown
+> [!INFO]
+> **Site:** [[Better Programming]]
+
+## Related Topics
+- [[Medium]]
+- [[Software Engineering]]
+- [[Career]]
+```
+
+**Why it works:**
+- Site (Better Programming) is the content identity in INFO
+- Hosting platform ([[Medium]]) noted in Related Topics
+- No duplication - these are different things
+
+---
+
+**Example 3 (Article on standalone site):**
+```markdown
+> [!INFO]
+> **Site:** [[Brave New Geek]]
+
+## Related Topics
 - [[microservices]]
 - [[Distributed Systems]]
 - [[Systems Architecture]]
+```
 
 **Why it works:**
-- Does NOT repeat [[Site Name]] from INFO callout
-- Concept backlinks are relevant
-- Selective list
+- Standalone site = NO hosting platform to mention
+- Does NOT include [[Brave New Geek]] (already in INFO)
+- Only concept backlinks relevant to content
+
+---
+
+**Example 4 (Article on domain subsection):**
+```markdown
+> [!INFO]
+> **Site:** [[The Go Blog]]
+
+## Related Topics
+- [[Golang]]
+- [[Concurrency]]
+```
+
+**Why it works:**
+- Site is [[The Go Blog]], NOT [[go.dev]]
+- NO [[go.dev]] in Related Topics (same domain, different section)
+- Focused concept backlinks
 
 ---
 
 ### Bad Examples
 
-**Example 1:**
+**Example 1 (Too generic):**
 - [[YouTube]]
 - [[Programming]]
 - [[Software]]
@@ -233,20 +280,42 @@ This file shows good vs bad examples for each section type to help Claude make b
 
 **Why it fails:**
 - Too many items (8+)
-- Most are too generic
+- Most are too generic to be useful
 - Forced connections that add no value
 - Not selective
 
 ---
 
-**Example 2 (Article):**
-- [[Brave New Geek]]
+**Example 2 (Duplicates Site in Related Topics):**
+```markdown
+> [!INFO]
+> **Site:** [[Brave New Geek]]
+
+## Related Topics
+- [[Brave New Geek]]  <-- WRONG
 - [[microservices]]
-- [[Systems Architecture]]
+```
 
 **Why it fails:**
-- Repeats Site backlink from INFO callout ([[Brave New Geek]])
+- Repeats Site backlink from INFO callout
 - Creates duplication within the same note
+
+---
+
+**Example 3 (Wrong platform for domain subsection):**
+```markdown
+> [!INFO]
+> **Site:** [[The Go Blog]]
+
+## Related Topics
+- [[go.dev]]  <-- WRONG
+- [[Golang]]
+```
+
+**Why it fails:**
+- [[go.dev]] is the same domain as the Site
+- This isn't a hosting platform relationship
+- The Go Blog IS part of go.dev, just a different section
 
 ---
 
@@ -257,4 +326,13 @@ This file shows good vs bad examples for each section type to help Claude make b
 | TL;DR | Punchy, value-focused, includes context | Generic topic list, no hook |
 | Takeaways | First-person insights, personal realizations | Content summaries, generic advice |
 | Description | Clean index, structured, preserves quotes | Spam-filled, full copy-paste |
-| Related Topics | Selective, relevant, no duplication | Too many, forced, duplicates INFO |
+| Related Topics | Selective, relevant, platform only when hosted | Too many, duplicates INFO, wrong platform logic |
+
+### Platform Reference Quick Guide
+
+| Content Type | INFO Field | Related Topics Platform |
+|--------------|------------|------------------------|
+| Video (any) | Channel: [[Creator]] | Always [[YouTube]] |
+| Article (Medium/dev.to) | Site: [[Publication]] | Include [[Medium]] or [[dev.to]] |
+| Article (standalone) | Site: [[Site Name]] | NO platform needed |
+| Article (domain subsection) | Site: [[Subsection Name]] | NO same-domain backlink |

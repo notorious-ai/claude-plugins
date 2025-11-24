@@ -30,12 +30,24 @@ Articles use these fields in the INFO callout:
 - Preserve the original URL (don't shorten)
 
 **Site:**
-- Identify the logical brand, publication, or series - not just the domain
-- For blog series: use the series/author name (e.g., "research!rsc", "Martin Fowler's Bliki")
-- For sub-publications: use the specific publication within a hosting platform (e.g., "Better Programming" on Medium)
-- For standalone sites: use the site name (e.g., "Go Documentation", "GitHub Blog")
+- Identify the **content identity** - the publication, brand, blog, or author
+- This is the "who" behind the content, NEVER the hosting platform
 - Format as backlink: `[[Site Name]]`
 - Create backlink even if page doesn't exist yet in vault
+
+**Determining Site identity:**
+
+| URL Pattern | Site Field | Reasoning |
+|-------------|------------|-----------|
+| `medium.com/better-programming/...` | [[Better Programming]] | Publication on Medium (platform goes in Related Topics) |
+| `dev.to/author-name/...` | [[Author Name]] | Author's blog on dev.to (platform goes in Related Topics) |
+| `go.dev/blog/...` | [[The Go Blog]] | Distinct section, NOT [[go.dev]] or [[Go Documentation]] |
+| `go.dev/doc/effective_go` | [[Go Documentation]] | Documentation section of go.dev |
+| `bravenewgeek.com/...` | [[Brave New Geek]] | Standalone site (no platform distinction needed) |
+| `research.swtch.com/...` | [[research!rsc]] | Author's blog series |
+| `martinfowler.com/bliki/...` | [[Martin Fowler's Bliki]] | Author's blog section |
+
+**Key principle:** The Site field captures content identity. Hosting platforms (Medium, dev.to) are noted in Related Topics, not here.
 
 **Authors:**
 - Extract author names from article metadata

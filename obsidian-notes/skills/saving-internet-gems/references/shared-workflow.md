@@ -128,14 +128,26 @@ Discover and create backlinks to relevant pages throughout the vault.
    - Check `My Stack/` for technologies discussed
    - Match content keywords to page names
 
-3. **Include Platform Reference**
-   - Videos: Always include [[YouTube]] (or hosting platform)
-   - Articles: Do NOT repeat Site backlink from INFO callout
+3. **Include Platform Reference (when applicable)**
+
+   **Videos:** Always include [[YouTube]] (or Vimeo, etc.) - the platform is always distinct from Channel identity.
+
+   **Articles:** Include hosting platform ONLY when it's distinct from the Site identity in INFO callout:
+
+   | Scenario | Site (INFO) | Related Topics |
+   |----------|-------------|----------------|
+   | `medium.com/better-programming/...` | [[Better Programming]] | Include [[Medium]] |
+   | `dev.to/author/...` | [[Author]] | Include [[dev.to]] |
+   | `bravenewgeek.com/...` | [[Brave New Geek]] | NO platform (standalone) |
+   | `go.dev/blog/...` | [[The Go Blog]] | NO [[go.dev]] (same domain) |
+
+   **Key principle:** Don't duplicate Site, but DO note hosting platforms when the content identity differs from the host.
 
 4. **Format as Bulleted List**
    ```markdown
    ## Related Topics
-   - [[Platform Reference]]
+   - [[YouTube]]  <!-- videos: always -->
+   - [[Medium]]   <!-- articles: only if hosted, not standalone -->
    - [[Concept Page]]
    - [[Tool]]
    ```
