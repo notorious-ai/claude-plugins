@@ -9,5 +9,12 @@
         "repo": "anthropics/claude-code"
       }
     }
+  },
+  "permissions": {
+    "allow": [
+      "Skill(plugin-dev:*)"
+    ],
+    "deny": [],
+    "ask": []
   }
 }
