@@ -2,7 +2,55 @@
 
 Real and representative examples of commits for non-Go files in Go-centric codebases.
 
+## Examples with Full Context
+
+<example>
+<context>
+Adding automated release workflow that creates git tags when version changes.
+</context>
+<diff>
+.github/workflows/release.yml: New workflow triggered on push to main.
+Checks if version.go changed, extracts version string, creates signed tag,
+pushes to origin. Uses actions/checkout@v4 and softprops/action-gh-release.
+</diff>
+<message>
+github: automate release tagging on version bumps
+
+The workflow triggers when a commit to main updates the
+version constant in version.go. It creates a signed tag
+and pushes to origin.
+
+Requires RELEASE_TOKEN secret with repo and workflow scope.
+</message>
+<why_good>
+Verb "automate" describes what GitHub now does (automation). Body explains
+the trigger mechanism and secret requirement not visible in YAML alone.
+</why_good>
+</example>
+
+<example>
+<context>
+Dependabot PRs need consistent labeling for filtering in PR list.
+</context>
+<diff>
+.github/workflows/labeler.yml: New workflow triggered on pull_request from
+dependabot[bot]. Adds "dependencies" label using actions/labeler.
+</diff>
+<message>
+github: label Dependabot PRs with "dependencies"
+
+Automated labeling helps filter and track dependency updates
+in the PR list. The workflow triggers on Dependabot PRs only.
+</message>
+<why_good>
+Body explains the WHY (filtering) not visible in workflow definition.
+Verb "label" describes the resulting action.
+</why_good>
+</example>
+
 ## Module Dependencies (go.mod)
+
+CLI-style verbs match `go` command semantics:
 
 ```
 go.mod: tidy
@@ -68,25 +116,6 @@ github: simplify the telemetry proposal template
 
 ```
 github: clean up issue forms
-```
-
-With body:
-
-```
-github: automate release tagging on version bumps
-
-The workflow triggers when a commit to main updates the
-version constant in version.go. It creates a signed tag
-and pushes to origin.
-
-Requires RELEASE_TOKEN secret with repo and workflow scope.
-```
-
-```
-github: label Dependabot PRs with "dependencies"
-
-Automated labeling helps filter and track dependency updates
-in the PR list. The workflow triggers on Dependabot PRs only.
 ```
 
 ## Git Configuration

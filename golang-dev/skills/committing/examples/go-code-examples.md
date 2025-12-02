@@ -2,17 +2,97 @@
 
 Real examples from the Go standard library and representative application commits.
 
-## From Go Standard Library
+## Examples with Full Context
 
-### One-Liners (No Body Needed)
+<example>
+<context>
+Adding support for MAC address formats without colons or hyphens (e.g., "0123456789ab").
+</context>
+<diff>
+src/net/mac.go: Added new case in ParseMAC for 12-character strings without
+separators. Validates length, parses as hex, returns 6-byte hardware address.
+Added format to docstring.
 
-```
+src/net/mac_test.go: Added test cases for "0123456789ab" (valid) and
+"0123.4567.89ab" (invalid - dots not supported).
+</diff>
+<message>
 net: parse addresses without separators in ParseMac
-```
+</message>
+<why_good>
+Verb "parse" describes what the package now does. Completes: "This change
+modifies net to parse addresses without separators in ParseMac."
+</why_good>
+</example>
 
-```
+<example>
+<context>
+HostnameError.Error() method concatenates many SAN names, causing memory
+exhaustion with malicious certificates containing thousands of names.
+</context>
+<diff>
+src/crypto/x509/verify.go: Changed Error() to use strings.Builder instead of
+repeated concatenation. Added 100-name limit with "... (and N more)" suffix.
+
+src/crypto/x509/verify_test.go: Added test with 1000 DNS names verifying the
+limit is enforced.
+</diff>
+<message>
+crypto/x509: prevent HostnameError.Error() from consuming excessive resource
+
+The Error method could allocate excessive memory when
+formatting a hostname verification failure. Limit the
+displayed hostname length to prevent resource exhaustion.
+</message>
+<why_good>
+Body explains the security motivation not visible in diff. Verb "prevent"
+describes resulting behavior (defense against resource exhaustion).
+</why_good>
+</example>
+
+<example>
+<context>
+QUIC implementation needs to surface TLS errors to application layer.
+</context>
+<diff>
+(Diff unavailable - reconstructed from commit message context)
+New exported type QUICEncryptionLevel and QUICEvent types added. QUICConn
+gains methods to retrieve error events during handshake.
+</diff>
+<message>
 crypto/tls: expose QUIC error events
-```
+</message>
+<why_good>
+Verb "expose" indicates making internal functionality available externally.
+Avoids "add QUIC error support" which describes developer action.
+</why_good>
+</example>
+
+<example>
+<context>
+Memory sanitizer interferes with stack growth detection, causing test flakes.
+</context>
+<diff>
+(Diff unavailable - reconstructed from commit message context)
+Added build constraint or runtime check to skip stack allocation tests when
+MSAN is active.
+</diff>
+<message>
+runtime: disable stack allocation tests on sanitizers
+
+The memory sanitizer interferes with the stack growth
+detection logic, causing spurious test failures. Skip
+these tests when running under sanitizers.
+</message>
+<why_good>
+Body provides context about WHY (sanitizer interference) that diff alone
+cannot convey. Future readers will understand the skip is intentional.
+</why_good>
+</example>
+
+## One-Liners (No Body Needed)
+
+These commits are self-explanatory from the one-liner plus diff:
 
 ```
 net/url: permit colons in the host of postgresql:// URLs
@@ -58,6 +138,8 @@ debug/elf: validate empty symbol sections consistently
 mime: include missing mime type paths in godoc
 ```
 
+**With alternatives:**
+
 ```
 net/http: deflake TestClientConnReserveAndConsume
 
@@ -72,24 +154,6 @@ net/http/httputil: wrap ReverseProxy's outbound request body so Close is a noop
 net/http/httputil: ignore Close on ReverseProxy outbound body
 ```
 
-### With Body (Context Needed)
-
-```
-crypto/x509: prevent HostnameError.Error() from consuming excessive resource
-
-The Error method could allocate excessive memory when
-formatting a hostname verification failure. Limit the
-displayed hostname length to prevent resource exhaustion.
-```
-
-```
-runtime: disable stack allocation tests on sanitizers
-
-The memory sanitizer interferes with the stack growth
-detection logic, causing spurious test failures. Skip
-these tests when running under sanitizers.
-```
-
 ## Cross-Cutting Changes
 
 ```
@@ -97,7 +161,7 @@ all: upgrade vendored dependencies
 ```
 
 ```
-# From internal/runtime/cgroup
+# From internal/runtime/cgroup - two-segment rule applied
 internal/runtime/cgroup: enforce stricter unescapePath
 runtime/cgroup: resolve path on non-root mount point
 ```
