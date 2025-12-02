@@ -168,6 +168,7 @@ Future readers will understand the skip is intentional, not a gap in coverage.
 <message>runtime: eliminate _Psyscall</message>
 <message>internal/runtime/sys,math/bits: eliminate bounds checks on len8tab</message>
 <message>cmd/compile: eliminate nil checks on .dict arg</message>
+<message>cmd/compile: stack allocate backing stores during append</message>
 </examples>
 
 ### Security
@@ -246,6 +247,11 @@ Future readers will understand the skip is intentional, not a gap in coverage.
 <message>cmd/go: improve TestScript/reuse_git</message>
 </examples>
 
+<examples category="testing-alternatives" context="Test reliability improvements">
+<message>net/http: deflake TestClientConnReserveAndConsume</message>
+<better>net/http: stabilize TestClientConnReserveAndConsume</better>
+</examples>
+
 ### Refactoring
 
 <examples category="refactoring" context="Restructuring without functional change">
@@ -256,7 +262,11 @@ Future readers will understand the skip is intentional, not a gap in coverage.
 <message>cmd/go: refactor usage of workFilePath</message>
 <message>go/types,types2: wrap Named.fromRHS into Named.rhs</message>
 <message>runtime: wrap procyield assembly and check for 0</message>
+</examples>
+
+<examples category="refactoring-alternatives" context="Concise alternatives to verbose messages">
 <message>net/http/httputil: wrap ReverseProxy's outbound request body so Close is a noop</message>
+<better>net/http/httputil: ignore Close on ReverseProxy outbound body</better>
 </examples>
 
 ## Cross-Cutting Changes
