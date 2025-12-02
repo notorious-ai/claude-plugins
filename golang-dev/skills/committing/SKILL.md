@@ -120,7 +120,6 @@ Include body when:
 - One-liner alone lacks sufficient context
 - Non-obvious design decisions were made
 - Future readers need explanation
-- Uncertain about details (use QUESTION: prefix)
 
 Skip body when:
 - Change is self-explanatory from one-liner + diff
@@ -135,9 +134,6 @@ target: verb phrase
 
 Body paragraph explaining context and reasoning.
 Hard wrap at 72 characters per line.
-
-QUESTION: Mark uncertainties explicitly.
-TODO: Note follow-up work if needed.
 ```
 
 ## Message Structure
@@ -172,8 +168,6 @@ Before presenting the commit message:
 - [ ] Provides context NOT visible in diff
 - [ ] Plaintext only (no Markdown)
 - [ ] Lines wrapped at 72 characters
-- [ ] Questions marked with QUESTION:
-- [ ] TODOs marked with TODO:
 
 **Overall:**
 - [ ] Will make sense in 6 months during git blame
