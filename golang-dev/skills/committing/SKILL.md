@@ -33,7 +33,7 @@ Before deciding on target format, check how similar files were committed:
 
 ```bash
 git log --oneline -10 -- <changed-file>
-git log --oneline -20 --all
+git log --oneline -20
 ```
 
 Look for patterns:
