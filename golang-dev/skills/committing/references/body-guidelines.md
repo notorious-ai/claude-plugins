@@ -115,7 +115,8 @@ Only include these when they are strictly present in the conversation context.
 
 **When available:**
 - Embed within sentences for natural context
-- Use full form: `owner/repo#123` (not just `#123`)
+- Use short form: `owner/repo#123` (not just `#123`)
+- Transform full URLs: `https://github.com/acme/repo/issues/123` → `acme/repo#123`
 - Show relationship: "Contributes to...", "Addresses..."
 
 ```
@@ -141,6 +142,8 @@ caused timeouts.
 - [ ] URLs wrapped in angle brackets
 - [ ] Explains WHY, not WHAT (diff shows what)
 - [ ] Will make sense in 6 months during git blame
+
+**Before finalizing:** Re-read the diff alongside the body. Delete any sentence that just describes what changed (e.g., "renamed function X to Y") - the diff already shows that. Keep only what the diff cannot tell: why, what alternatives were rejected, what comes next.
 
 ## Examples
 
