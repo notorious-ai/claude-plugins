@@ -92,162 +92,132 @@ cannot convey. Future readers will understand the skip is intentional.
 
 ## One-Liners (No Body Needed)
 
-These commits are self-explanatory from the one-liner plus diff:
+<examples category="feature" context="Adding new behavior or capability to a package">
+<message>net/url: permit colons in the host of postgresql:// URLs</message>
+<message>os/signal: propagate cancellation cause from NotifyContext</message>
+<message>runtime: track goroutine location until actual STW</message>
+<message>runtime: select GC mark workers during start-the-world</message>
+<message>cmd/compile: stack allocate backing stores during append</message>
+</examples>
 
-```
-net/url: permit colons in the host of postgresql:// URLs
-```
+<examples category="cleanup" context="Removing unused code, dead fields, deprecated symbols">
+<message>encoding/json: remove linknames</message>
+<message>net/http: drop unused 'broken' field from persistConn</message>
+</examples>
 
-```
-encoding/json: remove linknames
-```
+<examples category="correctness" context="Fixing incorrect behavior without major restructuring">
+<message>net/http: correctly close fake net.Conns</message>
+<message>debug/elf: validate empty symbol sections consistently</message>
+</examples>
 
-```
-os/signal: propagate cancellation cause from NotifyContext
-```
+<examples category="documentation" context="Improving godoc, comments, or inline documentation">
+<message>fmt: document space behavior of Append</message>
+<message>mime: include missing mime type paths in godoc</message>
+</examples>
 
-```
-net/http: drop unused 'broken' field from persistConn
-```
+<examples category="test-stability" context="Making flaky tests reliable">
+<message>net/http: deflake TestClientConnReserveAndConsume</message>
+<message-better>net/http: stabilize TestClientConnReserveAndConsume</message-better>
+</examples>
 
-```
-net/http: correctly close fake net.Conns
-```
-
-```
-runtime: track goroutine location until actual STW
-```
-
-```
-runtime: select GC mark workers during start-the-world
-```
-
-```
-cmd/compile: stack allocate backing stores during append
-```
-
-```
-fmt: document space behavior of Append
-```
-
-```
-debug/elf: validate empty symbol sections consistently
-```
-
-```
-mime: include missing mime type paths in godoc
-```
-
-**With alternatives:**
-
-```
-net/http: deflake TestClientConnReserveAndConsume
-
-# Better
-net/http: stabilize TestClientConnReserveAndConsume
-```
-
-```
-net/http/httputil: wrap ReverseProxy's outbound request body so Close is a noop
-
-# Better
-net/http/httputil: ignore Close on ReverseProxy outbound body
-```
+<examples category="simplification" context="Reducing complexity or verbosity">
+<message>net/http/httputil: wrap ReverseProxy's outbound request body so Close is a noop</message>
+<message-better>net/http/httputil: ignore Close on ReverseProxy outbound body</message-better>
+</examples>
 
 ## Cross-Cutting Changes
 
-```
-all: upgrade vendored dependencies
-```
+<examples category="cross-cutting" context="Changes spanning multiple packages or orthogonal to domain">
+<message>all: upgrade vendored dependencies</message>
+</examples>
 
-```
-# From internal/runtime/cgroup - two-segment rule applied
-internal/runtime/cgroup: enforce stricter unescapePath
-runtime/cgroup: resolve path on non-root mount point
-```
+<examples category="deep-package" context="Packages with paths deeper than two segments - use last two">
+<message>internal/runtime/cgroup: enforce stricter unescapePath</message>
+<message>runtime/cgroup: resolve path on non-root mount point</message>
+</examples>
 
 ## Documentation Commits
 
-```
-spec: clarify built-in function new with more precise prose
-```
+<examples category="spec" context="Language specification changes">
+<message>spec: clarify built-in function new with more precise prose</message>
+<message>spec: permit type parameters on RHS of alias declarations</message>
+</examples>
 
-```
-spec: permit type parameters on RHS of alias declarations
-```
-
-```
-doc: document go tool pprof -http default change
-```
+<examples category="doc" context="Project-level documentation outside godoc">
+<message>doc: document go tool pprof -http default change</message>
+</examples>
 
 ## Bug Fixes
 
-The verb "fix" is widely accepted in the Go community:
+<examples category="bug-fix" context="Correcting incorrect behavior - 'fix' is accepted, alternatives describe resulting behavior">
+<message>cmd/compile: fix integer overflow in prove pass</message>
+<message-better>cmd/compile: prevent integer overflow in prove pass</message-better>
+<message-better>cmd/compile: handle integer overflow in prove pass</message-better>
+<message-better>cmd/compile: bound integer values in prove pass</message-better>
+</examples>
 
-**GOOD:**
-```
-cmd/compile: fix integer overflow in prove pass
-```
+<examples category="bug-fix" context="Race condition fixes">
+<message>sync: fix race condition in WaitGroup counter updates</message>
+<message-better>sync: prevent race condition in WaitGroup counter updates</message-better>
+<message-better>sync: serialize WaitGroup counter updates</message-better>
+</examples>
 
-**BETTER** - describes the resulting behavior:
-```
-cmd/compile: prevent integer overflow in prove pass
-cmd/compile: handle integer overflow in prove pass
-cmd/compile: bound integer values in prove pass
-```
+<examples category="bug-fix" context="Timeout and deadline handling">
+<message>net/http: fix timeout handling during TLS handshake</message>
+<message-better>net/http: respect timeout during TLS handshake</message-better>
+<message-better>net/http: enforce timeout during TLS handshake</message-better>
+</examples>
 
-**GOOD:**
-```
-sync: fix race condition in WaitGroup counter updates
-```
+## Anti-Patterns
 
-**BETTER:**
-```
-sync: prevent race condition in WaitGroup counter updates
-sync: serialize WaitGroup counter updates
-```
+### ❌ Developer-Action Verbs
 
-**GOOD:**
-```
-net/http: fix timeout handling during TLS handshake
-```
+<anti-pattern>
+<bad>net/http: add timeout handling</bad>
+<why_bad>Verb "add" describes what the developer did, not what net/http now does.</why_bad>
+<good>net/http: enforce timeout during TLS handshake</good>
+</anti-pattern>
 
-**BETTER:**
-```
-net/http: respect timeout during TLS handshake
-net/http: enforce timeout during TLS handshake
-```
+<anti-pattern>
+<bad>crypto/tls: create QUICErrorType</bad>
+<why_bad>Verb "create" describes developer action, not package behavior.</why_bad>
+<good>crypto/tls: expose QUIC error events</good>
+</anti-pattern>
 
-## Anti-Pattern Examples (What NOT to Do)
+<anti-pattern>
+<bad>encoding/json: implement new decoder</bad>
+<why_bad>Verb "implement" describes developer work, not what encoding/json does.</why_bad>
+<good>encoding/json: decode streaming responses</good>
+</anti-pattern>
 
-### Bad: Developer-Action Verbs
+<anti-pattern>
+<bad>spec: adjust rule for type parameter on RHS of alias declaration</bad>
+<why_bad>Verb "adjust" describes editorial action, not what spec now permits.</why_bad>
+<good>spec: permit type parameters on RHS of alias declarations</good>
+</anti-pattern>
 
-```
-# BAD
-net/http: add timeout handling
-crypto/tls: create QUICErrorType
-encoding/json: implement new decoder
-spec: adjust rule for type parameter on RHS of alias declaration
+### ❌ Vague Descriptions
 
-# GOOD
-net/http: enforce timeout during TLS handshake
-crypto/tls: expose QUIC error events
-encoding/json: decode streaming responses
-spec: permit type parameters on RHS of alias declarations
-```
+<anti-pattern>
+<bad>runtime: update code</bad>
+<why_bad>Verb "update" says nothing about what runtime does differently.</why_bad>
+<good>runtime: track goroutine location until actual STW</good>
+</anti-pattern>
 
-### Bad: Vague Descriptions
+<anti-pattern>
+<bad>net: change behavior</bad>
+<why_bad>Verb "change" provides no information about the new behavior.</why_bad>
+<good>net: parse addresses without separators in ParseMac</good>
+</anti-pattern>
 
-```
-# BAD
-runtime: update code
-net: change behavior
-cmd/compile: modify logic
-spec: more precise prose for built-in function new
+<anti-pattern>
+<bad>cmd/compile: modify logic</bad>
+<why_bad>Verb "modify" is generic and doesn't describe the optimization.</why_bad>
+<good>cmd/compile: stack allocate backing stores during append</good>
+</anti-pattern>
 
-# GOOD
-runtime: track goroutine location until actual STW
-net: parse addresses without separators in ParseMac
-cmd/compile: stack allocate backing stores during append
-spec: clarify built-in function new with more precise prose
-```
+<anti-pattern>
+<bad>spec: more precise prose for built-in function new</bad>
+<why_bad>Describes the prose style, not what spec now clarifies.</why_bad>
+<good>spec: clarify built-in function new with more precise prose</good>
+</anti-pattern>
