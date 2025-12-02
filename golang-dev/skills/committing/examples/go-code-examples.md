@@ -277,19 +277,19 @@ The verb "fix" is widely accepted, but alternatives can be more descriptive:
 
 <examples category="bug-fix-alternatives" context="'fix' is acceptable, alternatives describe resulting behavior">
 <message>cmd/compile: fix integer overflow in prove pass</message>
-<message-better>cmd/compile: prevent integer overflow in prove pass</message-better>
-<message-better>cmd/compile: bound integer values in prove pass</message-better>
+<better>cmd/compile: prevent integer overflow in prove pass</better>
+<better>cmd/compile: bound integer values in prove pass</better>
 </examples>
 
 <examples category="bug-fix-alternatives" context="Race condition fixes">
 <message>sync: fix race condition in WaitGroup counter updates</message>
-<message-better>sync: serialize WaitGroup counter updates</message-better>
+<better>sync: serialize WaitGroup counter updates</better>
 </examples>
 
 <examples category="bug-fix-alternatives" context="Timeout handling">
 <message>net/http: fix timeout handling during TLS handshake</message>
-<message-better>net/http: respect timeout during TLS handshake</message-better>
-<message-better>net/http: enforce timeout during TLS handshake</message-better>
+<better>net/http: respect timeout during TLS handshake</better>
+<better>net/http: enforce timeout during TLS handshake</better>
 </examples>
 
 ## Anti-Patterns

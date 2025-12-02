@@ -186,12 +186,21 @@ Load these as needed based on content type:
 
 ## Example Files
 
-Working examples for reference:
-
 | File | Contains |
 |------|----------|
 | `examples/go-code-examples.md` | Real Go package commit examples |
 | `examples/non-go-examples.md` | Docs, config, CI commit examples |
+
+**When to load examples:**
+
+1. **Trivial changes** - Skip examples. The workflow above suffices for straightforward commits where target and verb are obvious.
+
+2. **Ambiguous target or verb** - Search examples for clues. Use grep to find similar patterns:
+   ```bash
+   grep -i "verb-keyword" examples/go-code-examples.md
+   ```
+
+3. **Sparse repository history** - Load examples in full. When the working repository lacks good commit samples to learn from, use the example files as primary reference for style and verb selection.
 
 ## Special Cases
 
