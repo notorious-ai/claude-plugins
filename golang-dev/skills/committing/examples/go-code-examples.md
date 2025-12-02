@@ -1,81 +1,127 @@
 # Go Code Commit Examples
 
-Real examples from the Go standard library and representative application commits.
+Real examples from the Go standard library organized by work type.
 
 ## Examples with Full Context
 
 <example>
+<category>feature</category>
 <context>
-Adding support for MAC address formats without colons or hyphens (e.g., "0123456789ab").
+IEEE EUI guidelines state that MAC addresses can be represented as pure hex
+without separators (e.g., "00005e005301"). Azure Instance Metadata Service
+uses this format. ParseMAC only accepted colon, hyphen, or dot separators.
 </context>
 <diff>
-src/net/mac.go: Added new case in ParseMAC for 12-character strings without
-separators. Validates length, parses as hex, returns 6-byte hardware address.
-Added format to docstring.
+src/net/mac.go:
+- Changed minimum length check from 14 to 12 characters
+- Added new branch for separator-less format: validates even length,
+  checks for valid sizes (6, 8, or 20 bytes), parses pairs of hex digits
+- Updated docstring to show "00005e005301" format
 
-src/net/mac_test.go: Added test cases for "0123456789ab" (valid) and
-"0123.4567.89ab" (invalid - dots not supported).
+src/net/mac_test.go:
+- Added test case "00005e005301" (valid 6-byte)
+- Added test case "0123456789ab" (valid)
+- Added test case "0123.4567.89ab" (invalid - dots require 4-char groups)
 </diff>
 <message>
 net: parse addresses without separators in ParseMac
 </message>
 <why_good>
-Verb "parse" describes what the package now does. Completes: "This change
-modifies net to parse addresses without separators in ParseMac."
+Verb "parse" describes what net package now does. The diff shows new parsing
+capability. Completes: "This change modifies net to parse addresses..."
 </why_good>
 </example>
 
 <example>
+<category>security</category>
 <context>
-HostnameError.Error() method concatenates many SAN names, causing memory
-exhaustion with malicious certificates containing thousands of names.
+CVE-2025-61729: HostnameError.Error() used string concatenation in a loop,
+causing O(N^2) runtime. A malicious certificate with thousands of SAN names
+could exhaust memory. Reported by Philippe Antoine (Catena cyber).
 </context>
 <diff>
-src/crypto/x509/verify.go: Changed Error() to use strings.Builder instead of
-repeated concatenation. Added 100-name limit with "... (and N more)" suffix.
+src/crypto/x509/verify.go:
+- Changed from string concatenation to strings.Builder
+- Added maxNamesIncluded = 100 constant
+- Early return with count when >= 100 names: "valid for %d names, none matched"
+- Uses WriteString instead of += for building output
 
-src/crypto/x509/verify_test.go: Added test with 1000 DNS names verifying the
-limit is enforced.
+src/crypto/x509/verify_test.go:
+- Added test with certificate containing 1000 DNS names
 </diff>
 <message>
 crypto/x509: prevent HostnameError.Error() from consuming excessive resource
 
-The Error method could allocate excessive memory when
-formatting a hostname verification failure. Limit the
-displayed hostname length to prevent resource exhaustion.
+Constructing HostnameError.Error() takes O(N^2) runtime due to using
+string concatenation in a loop. A malicious certificate with many names
+could unfairly consume resources.
+
+Use strings.Builder and limit displayed names to 100.
+
+Fixes CVE-2025-61729
 </message>
 <why_good>
-Body explains the security motivation not visible in diff. Verb "prevent"
-describes resulting behavior (defense against resource exhaustion).
+Security fix needs body explaining the vulnerability. Verb "prevent" describes
+defensive behavior. CVE reference provides traceability.
 </why_good>
 </example>
 
 <example>
+<category>performance</category>
 <context>
-QUIC implementation needs to surface TLS errors to application layer.
+io.ReadAll allocated excessive intermediate memory during slice growth.
+Real-world reports showed 60% more bytes allocated than alternatives,
+and 5x more than input size for ~5MiB inputs. Issue #50774.
 </context>
 <diff>
-(Diff unavailable - reconstructed from commit message context)
-New exported type QUICEncryptionLevel and QUICEvent types added. QUICConn
-gains methods to retrieve error events during handshake.
+src/io/io.go:
+- Changed growth strategy: read into exponentially growing chunks
+- Starting read size 256, grows at 1.5x rate
+- Final step copies all chunks into perfectly-sized result slice
+- Benchmarks show ~50% reduction in allocations, ~50% faster
+
+Key change: instead of append(b, 0)[:len(b)] growth pattern,
+uses chunked reads then single final copy.
 </diff>
 <message>
-crypto/tls: expose QUIC error events
+io: reduce intermediate allocations in ReadAll and have a smaller final result
 </message>
 <why_good>
-Verb "expose" indicates making internal functionality available externally.
-Avoids "add QUIC error support" which describes developer action.
+Verb "reduce" describes the performance improvement. The phrase "intermediate
+allocations" and "smaller final result" precisely describe both wins.
 </why_good>
 </example>
 
 <example>
+<category>cleanup</category>
 <context>
-Memory sanitizer interferes with stack growth detection, causing test flakes.
+Two concurrent CLs (723241 and 723581) both added identical readString
+function definitions. After both merged, the file had duplicate code.
 </context>
 <diff>
-(Diff unavailable - reconstructed from commit message context)
-Added build constraint or runtime check to skip stack allocation tests when
-MSAN is active.
+src/internal/runtime/cgroup/line_reader_test.go:
+- Removed one of two identical readString function definitions
+</diff>
+<message>
+internal/runtime/cgroup: remove duplicate readString definition
+
+Both CL 723241 and CL 723581 added identical definitions.
+</message>
+<why_good>
+Body explains HOW the duplication happened (merge timing). Verb "remove"
+is appropriate for cleanup. Future readers understand it wasn't a mistake.
+</why_good>
+</example>
+
+<example>
+<category>testing</category>
+<context>
+Memory sanitizer interferes with stack growth detection, causing test flakes.
+Need to skip these tests when running under sanitizers.
+</context>
+<diff>
+Added build constraint or runtime check to skip stack allocation tests
+when MSAN is active.
 </diff>
 <message>
 runtime: disable stack allocation tests on sanitizers
@@ -85,177 +131,162 @@ detection logic, causing spurious test failures. Skip
 these tests when running under sanitizers.
 </message>
 <why_good>
-Body provides context about WHY (sanitizer interference) that diff alone
-cannot convey. Future readers will understand the skip is intentional.
+Body explains WHY (sanitizer interference) that diff alone cannot convey.
+Future readers will understand the skip is intentional, not a gap in coverage.
 </why_good>
 </example>
 
-## One-Liners (No Body Needed)
+## One-Liners by Work Type
 
-<examples category="prevent" context="Security, safety, and defensive programming">
+### Feature
+
+<examples category="feature" context="New capability, API addition, enabling functionality">
+<message>net: parse addresses without separators in ParseMac</message>
+<message>mime: parse media types that contain braces</message>
+<message>crypto/tls: expose QUIC error events</message>
+<message>crypto/tls: expose HelloRetryRequest state</message>
+<message>crypto/hpke: expose crypto/internal/hpke</message>
+<message>os/signal: propagate cancellation cause from NotifyContext</message>
+<message>net/url: permit colons in the host of postgresql:// URLs</message>
+<message>spec: permit type parameters on RHS of alias declarations</message>
+<message>internal/abi: define s390x ABI constants</message>
+<message>runtime: define PanicBounds in funcdata.h</message>
+</examples>
+
+### Performance
+
+<examples category="performance" context="Speed, memory, allocation improvements">
+<message>io: reduce intermediate allocations in ReadAll and have a smaller final result</message>
+<message>crypto/sha3: reduce cSHAKE allocations</message>
+<message>mime: reduce allocs incurred by ParseMediaType</message>
+<message>net/url: reduce allocs in Encode</message>
+<message>cmd/compile: optimize comparisons with single bit difference</message>
+<message>cmd/compile: optimize liveness in stackalloc</message>
+<message>cmd/compile: optimize Add64carry with unused carries into plain Add64</message>
+<message>strconv: optimize int-to-decimal and use consistently</message>
+<message>runtime: hoist invariant code out of heapBitsSmallForAddrInline</message>
+<message>runtime: eliminate _Psyscall</message>
+<message>internal/runtime/sys,math/bits: eliminate bounds checks on len8tab</message>
+<message>cmd/compile: eliminate nil checks on .dict arg</message>
+</examples>
+
+### Security
+
+<examples category="security" context="Preventing resource exhaustion, fixing vulnerabilities">
+<message>crypto/x509: prevent HostnameError.Error() from consuming excessive resource</message>
 <message>runtime: prevent time.Timer.Reset(0) from deadlocking testing/synctest tests</message>
 <message>debug/elf: prevent offset overflow</message>
 <message>encoding/asn1: prevent memory exhaustion when parsing using internal/saferio</message>
 </examples>
 
-<examples category="handle" context="Problem solving, edge cases, special conditions">
-<message>cmd/compile: handle loops better during stack allocation of slices</message>
-<message>cmd/internal/obj/x86: handle global reference in From3 in dynlink mode</message>
-<message>internal/strconv: handle %f with fixedFtoa when possible</message>
-<message>cmd/compile: handle rematerialized op for incompatible reg constraint</message>
-<message>cmd/link: handle -w flag in external linking mode</message>
+### Bug Fix
+
+<examples category="bug-fix" context="Correcting incorrect behavior">
+<message>cmd/compile: fix integer overflow in prove pass</message>
+<message>sync: fix race condition in WaitGroup counter updates</message>
+<message>net/http: fix timeout handling during TLS handshake</message>
+<message>net/http: correctly close fake net.Conns</message>
+<message>internal/runtime/cgroup: fix path on non-root mount point</message>
 </examples>
 
-<examples category="parse" context="Data processing, input handling">
-<message>net: parse addresses without separators in ParseMac</message>
-<message>mime: parse media types that contain braces</message>
-</examples>
+### Cleanup
 
-<examples category="optimize" context="Performance improvements">
-<message>cmd/compile: optimize comparisons with single bit difference</message>
-<message>cmd/compile: optimize liveness in stackalloc</message>
-<message>cmd/compile: optimize Add64carry with unused carries into plain Add64</message>
-<message>strconv: optimize int-to-decimal and use consistently</message>
-</examples>
-
-<examples category="remove" context="Cleanup, dead code elimination">
-<message>spec: remove restriction on channel element types for close built-in</message>
+<examples category="cleanup" context="Removing dead code, simplifying, deduplicating">
 <message>internal/runtime/cgroup: remove duplicate readString definition</message>
 <message>cmd/internal/obj/loong64: remove the incorrect unsigned instructions</message>
 <message>encoding/json: remove linknames</message>
 <message>net/http: drop unused 'broken' field from persistConn</message>
-</examples>
-
-<examples category="simplify" context="Reducing complexity, improving clarity">
 <message>internal/runtime/cgroup: simplify escapePath in test</message>
 <message>cmd/compile: simplify negative on multiplication</message>
 <message>crypto/x509: simplify candidate chain filtering</message>
 <message>internal/poll: simplify WriteMsg and ReadMsg on Windows</message>
 <message>cmd/link: simplify PE relocations mapping</message>
-</examples>
-
-<examples category="eliminate" context="Removing entire concepts or subsystems">
-<message>runtime: eliminate _Psyscall</message>
-<message>internal/runtime/sys,math/bits: eliminate bounds checks on len8tab</message>
-<message>cmd/go: eliminate additional global variable</message>
-<message>cmd/compile: eliminate nil checks on .dict arg</message>
+<message>runtime: deduplicate pMask resize code</message>
+<message>runtime: deduplicate syscall assembly for darwin</message>
 <message>all: eliminate unnecessary type conversions</message>
+<message>cmd/go: eliminate additional global variable</message>
 </examples>
 
-<examples category="reduce" context="Efficiency improvements, allocation reduction">
-<message>io: reduce intermediate allocations in ReadAll and have a smaller final result</message>
-<message>crypto/sha3: reduce cSHAKE allocations</message>
-<message>mime: reduce allocs incurred by ParseMediaType</message>
-<message>net/url: reduce allocs in Encode</message>
-</examples>
+### Correctness
 
-<examples category="expose" context="Making internal functionality available">
-<message>crypto/hpke: expose crypto/internal/hpke</message>
-<message>crypto/tls: expose HelloRetryRequest state</message>
-<message>crypto/tls: expose QUIC error events</message>
-</examples>
-
-<examples category="track" context="Monitoring, state management">
+<examples category="correctness" context="Consistent behavior, handling edge cases">
+<message>cmd/compile: handle loops better during stack allocation of slices</message>
+<message>cmd/internal/obj/x86: handle global reference in From3 in dynlink mode</message>
+<message>internal/strconv: handle %f with fixedFtoa when possible</message>
+<message>cmd/compile: handle rematerialized op for incompatible reg constraint</message>
+<message>cmd/link: handle -w flag in external linking mode</message>
+<message>net/url: enforce stricter parsing of bracketed IPv6 hostnames</message>
+<message>internal/runtime/cgroup: enforce stricter unescapePath</message>
+<message>debug/elf: validate empty symbol sections consistently</message>
+<message>crypto/rsa: check for post-Precompute changes in Validate</message>
 <message>runtime: track goroutine location until actual STW</message>
 <message>runtime: select GC mark workers during start-the-world</message>
 </examples>
 
-<examples category="propagate" context="Communication, data flow">
-<message>os/signal: propagate cancellation cause from NotifyContext</message>
-<message>cmd/compile: propagate unsigned relations for Rsh if arguments are positive</message>
-<message>cmd/compile: propagate len([]T{}) to make builtin to allow stack allocation</message>
-</examples>
+### Documentation
 
-<examples category="enforce" context="Compliance, validation, strictness">
-<message>net/url: enforce stricter parsing of bracketed IPv6 hostnames</message>
-<message>internal/runtime/cgroup: enforce stricter unescapePath</message>
-</examples>
-
-<examples category="define" context="Establishing new types, constants, concepts">
-<message>internal/abi: define s390x ABI constants</message>
-<message>runtime: define PanicBounds in funcdata.h</message>
-</examples>
-
-<examples category="wrap" context="Encapsulation, delegation">
-<message>net/http/httputil: wrap ReverseProxy's outbound request body so Close is a noop</message>
-<message>go/types,types2: wrap Named.fromRHS into Named.rhs</message>
-<message>runtime: wrap procyield assembly and check for 0</message>
-</examples>
-
-<examples category="clarify" context="Documentation improvements">
+<examples category="documentation" context="Godoc, comments, specs, release notes">
 <message>go/types,types2: clarify docs for resolveUnderlying</message>
 <message>net/http: clarify panic conditions in Handle, HandleFunc, AddInsecureBypassPattern</message>
 <message>cmd/go: clarify the -o testflag is only for copying the binary</message>
 <message>fmt: document space behavior of Append</message>
 <message>mime: include missing mime type paths in godoc</message>
+<message>spec: clarify built-in function new with more precise prose</message>
+<message>spec: remove restriction on channel element types for close built-in</message>
+<message>doc: document go tool pprof -http default change</message>
 </examples>
 
-<examples category="deduplicate" context="Code reduction, DRY principle">
-<message>runtime: deduplicate pMask resize code</message>
-<message>runtime: deduplicate syscall assembly for darwin</message>
+### Testing
+
+<examples category="testing" context="New tests, test fixes, test infrastructure">
+<message>runtime: disable stack allocation tests on sanitizers</message>
+<message>cmd/link: test that moduledata is in its own section</message>
+<message>cmd/link: test that findfunctab is in gopclntab section</message>
+<message>cmd/link: test that funcdata values are in gopclntab section</message>
+<message>cmd/go: improve TestScript/reuse_git</message>
 </examples>
 
-<examples category="hoist" context="Loop optimization, invariant code motion">
-<message>runtime: hoist invariant code out of heapBitsSmallForAddrInline</message>
-</examples>
+### Refactoring
 
-<examples category="validate" context="Verification, correctness checks">
-<message>crypto/rsa: check for post-Precompute changes in Validate</message>
-<message>debug/elf: validate empty symbol sections consistently</message>
-</examples>
-
-<examples category="permit" context="Relaxing restrictions, enabling features">
-<message>net/url: permit colons in the host of postgresql:// URLs</message>
-<message>spec: permit type parameters on RHS of alias declarations</message>
-</examples>
-
-<examples category="refactor" context="Restructuring without functional changes">
+<examples category="refactoring" context="Restructuring without functional change">
 <message>cmd/go: refactor usage of requirements</message>
 <message>cmd/go: refactor injection of modload.LoaderState</message>
 <message>cmd/go: refactor usage of RootMode</message>
+<message>cmd/go: refactor usage of modRoots</message>
+<message>cmd/go: refactor usage of workFilePath</message>
+<message>go/types,types2: wrap Named.fromRHS into Named.rhs</message>
+<message>runtime: wrap procyield assembly and check for 0</message>
+<message>net/http/httputil: wrap ReverseProxy's outbound request body so Close is a noop</message>
 </examples>
 
 ## Cross-Cutting Changes
 
-<examples category="cross-cutting" context="Changes spanning multiple packages or orthogonal to domain">
+<examples category="cross-cutting" context="Changes spanning multiple packages">
 <message>all: upgrade vendored dependencies</message>
 <message>all: eliminate unnecessary type conversions</message>
 </examples>
 
 <examples category="deep-package" context="Packages with paths deeper than two segments - use last two">
 <message>internal/runtime/cgroup: enforce stricter unescapePath</message>
-<message>runtime/cgroup: resolve path on non-root mount point</message>
 <message>crypto/internal/fips140/aes: optimize ctrBlocks8Asm on amd64</message>
 </examples>
 
-## Documentation Commits
+## Bug Fix Verb Alternatives
 
-<examples category="spec" context="Language specification changes">
-<message>spec: clarify built-in function new with more precise prose</message>
-<message>spec: permit type parameters on RHS of alias declarations</message>
-<message>spec: remove restriction on channel element types for close built-in</message>
-</examples>
+The verb "fix" is widely accepted, but alternatives can be more descriptive:
 
-<examples category="doc" context="Project-level documentation outside godoc">
-<message>doc: document go tool pprof -http default change</message>
-</examples>
-
-## Bug Fixes
-
-<examples category="bug-fix" context="Correcting incorrect behavior - 'fix' is accepted, alternatives describe resulting behavior">
+<examples category="bug-fix-alternatives" context="'fix' is acceptable, alternatives describe resulting behavior">
 <message>cmd/compile: fix integer overflow in prove pass</message>
 <message-better>cmd/compile: prevent integer overflow in prove pass</message-better>
-<message-better>cmd/compile: handle integer overflow in prove pass</message-better>
 <message-better>cmd/compile: bound integer values in prove pass</message-better>
 </examples>
 
-<examples category="bug-fix" context="Race condition fixes">
+<examples category="bug-fix-alternatives" context="Race condition fixes">
 <message>sync: fix race condition in WaitGroup counter updates</message>
-<message-better>sync: prevent race condition in WaitGroup counter updates</message-better>
 <message-better>sync: serialize WaitGroup counter updates</message-better>
 </examples>
 
-<examples category="bug-fix" context="Timeout and deadline handling">
+<examples category="bug-fix-alternatives" context="Timeout handling">
 <message>net/http: fix timeout handling during TLS handshake</message>
 <message-better>net/http: respect timeout during TLS handshake</message-better>
 <message-better>net/http: enforce timeout during TLS handshake</message-better>
@@ -306,7 +337,7 @@ cannot convey. Future readers will understand the skip is intentional.
 <anti-pattern>
 <bad>cmd/compile: modify logic</bad>
 <why_bad>Verb "modify" is generic and doesn't describe the optimization.</why_bad>
-<good>cmd/compile: stack allocate backing stores during append</good>
+<good>cmd/compile: optimize comparisons with single bit difference</good>
 </anti-pattern>
 
 <anti-pattern>
