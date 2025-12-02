@@ -1,71 +1,74 @@
-# Article-Specific Conventions
+# Article Capture Details
 
-Load this file ONLY when capturing article content (blogs, documentation, essays, etc.). For shared conventions across all gems, see `shared-conventions.md`.
+This file extends the workflow in SKILL.md with article-specific details. Load this when capturing article content (blogs, documentation, essays, etc.).
 
 ## Article Content Extraction
 
 Extract article content using appropriate tools:
 - WebFetch for fetching and processing web content
 - Extract main article text, author information, publication details
-- Get publication date, reading time if available
+- Get publication date if available
 - Identify site/publication name
 
-## INFO Callout Fields (Article-Specific)
+## INFO Callout Fields
 
-Articles use these specific fields in the INFO callout:
+Articles use these fields in the INFO callout:
 
 ```markdown
 > [!INFO]
 > **Source:** <https://example.com/article-url>
 > **Site:** [[Site Name]]
 > **Authors:** Author names
+> **Published:** Month Day, Year
 ```
 
-### Source Field
+### Field Details
+
+**Source:**
 - Use the article's full URL
 - Wrap in angle brackets: `<https://example.com/article>`
 - Preserve the original URL (don't shorten)
 
-### Site Field
-- Identify the logical brand, publication, or series - not just the domain
-- For blog series or author publications: use the series/author name (e.g., "research!rsc", "Martin Fowler's Bliki")
-- For sub-publications: use the specific publication within a hosting platform (e.g., "Better Programming" on Medium)
-- For standalone sites: use the site name (e.g., "Go Documentation", "GitHub Blog")
+**Site:**
+- Identify the **content identity** - the publication, brand, blog, or author
+- This is the "who" behind the content, NEVER the hosting platform
 - Format as backlink: `[[Site Name]]`
 - Create backlink even if page doesn't exist yet in vault
 
-### Authors Field
+**Determining Site identity:**
+
+| URL Pattern | Site Field | Reasoning |
+|-------------|------------|-----------|
+| `medium.com/better-programming/...` | [[Better Programming]] | Publication on Medium (platform goes in Related Topics) |
+| `dev.to/author-name/...` | [[Author Name]] | Author's blog on dev.to (platform goes in Related Topics) |
+| `go.dev/blog/...` | [[The Go Blog]] | Distinct section, NOT [[go.dev]] or [[Go Documentation]] |
+| `go.dev/doc/effective_go` | [[Go Documentation]] | Documentation section of go.dev |
+| `bravenewgeek.com/...` | [[Brave New Geek]] | Standalone site (no platform distinction needed) |
+| `research.swtch.com/...` | [[research!rsc]] | Author's blog series |
+| `martinfowler.com/bliki/...` | [[Martin Fowler's Bliki]] | Author's blog section |
+
+**Key principle:** The Site field captures content identity. Hosting platforms (Medium, dev.to) are noted in Related Topics, not here.
+
+**Authors:**
 - Extract author names from article metadata
 - List multiple authors separated by commas
 - Use "The [Team] team" format for team-authored content (e.g., "The Golang team")
-- If no author identified, you may remove this line or note "Unknown"
+- If no author identified, REMOVE this line
+
+**Published:**
+- Extract publication date from article
+- Format as: `Month Day, Year` (e.g., "June 7, 2015")
+- If no date found, REMOVE this line
 
 ### No Video Embed
 - Articles do not include video embeds
-- If a notable image is present, embed it
+- If a notable hero image is present, consider embedding it
 
-## Frontmatter (Article-Specific)
+## Article Description Strategy
 
-Articles use the `starred` field:
+This section presents the article's content to help the user decide whether to read.
 
-```yaml
----
-starred: # Fill with today's date when saving (format: YYYY-MM-DD)
-tags:
-  - external/article  # MANDATORY - Must be first tag
-  # Additional tags (2-4 suggested based on content)
----
-```
-
-**Critical:** First tag must be `external/article`.
-
-Fill `starred:` field with today's date when saving the gem.
-
-## Article Description Section
-
-This section presents the article's content to help the user decide whether to read and what to expect.
-
-**Strategy:**
+**Steps:**
 
 1. **Extract and clean main content:**
    - Use WebFetch or similar to get article text
@@ -86,26 +89,6 @@ This section presents the article's content to help the user decide whether to r
 - Help user decide whether to read in full
 
 **Goal**: Give user enough context to understand the article's value and decide whether to invest time reading it.
-
-## TL;DR for Articles
-
-Articles use slightly different TL;DR phrasing:
-
-**Context sentences:**
-- "Read again when..." describing situations where article would be valuable
-- "Send this to a friend who..." describing who would benefit
-- "Reference this when..." describing use cases
-
-Examples from existing articles:
-- "Read the full guide if you're building performance-critical Go applications..."
-- "Send this to a friend who: Feels frustrated by rigid programming communities..."
-
-## Example Article Note Structure
-
-See `examples/article-skeleton.md` for annotated structure showing:
-- How each section should be filled
-- What information goes where
-- Common patterns for articles
 
 ## Article-Specific Considerations
 
@@ -134,10 +117,4 @@ See `examples/article-skeleton.md` for annotated structure showing:
 - May want to capture other parts separately
 - Include navigation links if available
 
-## Common Article Mistakes to Avoid
-
-- ❌ Don't include the full article text (summarize and index instead)
-- ❌ Don't include article navigation, ads, or footer content
-- ❌ Don't skip cleaning promotional elements
-- ❌ Don't include newsletter signup prompts or social sharing widgets
-- ❌ Don't forget to create [[Site Name]] backlink
+For common mistakes to avoid, see `examples/common-mistakes.md`.

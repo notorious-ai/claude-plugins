@@ -1,167 +1,102 @@
 ---
 name: saving-internet-gems
-description: This skill should be used when the user asks to "save this", "bookmark this", "capture this article", "capture this video", "add to vault", or "take notes on this" combined with URLs (YouTube, Medium, blog posts, articles). Activates when working inside an Obsidian vault and user expresses intent to preserve online content. Creates formatted markdown notes with metadata, summaries, and tags. Does not activate on URL presence alone.
+description: This skill should be used when the user asks to "save this", "bookmark this", "capture this article", "capture this video", "add to vault", "take notes on this", or "refresh this note" combined with URLs (YouTube, Medium, blog posts, articles). CRITICAL - Only activate when inside an Obsidian vault (.obsidian directory present). Does not activate on URL presence alone.
 ---
 
-Use this skill to capture online content (videos, articles, blog posts) as structured markdown notes in an Obsidian vault. The skill activates based on user intent to save content, not mere URL presence.
+# Saving Internet Gems
+
+Capture videos and articles as structured markdown notes in an Obsidian vault.
 
 ## Activation Conditions
 
-This skill activates when ALL of the following are true:
-- The current working directory contains a `.obsidian` directory (working at vault root)
-- User expresses capture intent with phrases like:
-  - "save this"
-  - "bookmark this"
-  - "capture this video/article"
-  - "add to vault"
-  - "take notes on this"
-- A content URL is present (YouTube, blog, article, etc.)
+Activate when ALL conditions are met:
+1. User expresses capture intent ("save this", "bookmark", "capture", "add to vault", "take notes on")
+2. Message contains a URL (YouTube, Medium, blog, article)
+3. Working directory contains `.obsidian` (is an Obsidian vault)
 
-**CRITICAL**: Do NOT activate on URL presence alone. User must indicate desire to capture content.
+For comprehensive positive/negative activation corpus, see `examples/activation-decisions.md`.
 
-## Examples
+**Brief inline example (activate):**
+> User: "Save this video for me: https://youtube.com/watch?v=abc123"
+> Activate: clear capture intent + URL + (verify .obsidian exists)
 
-<example>
-Context: User is working inside Obsidian vault and wants to save a video
-user: "Save this for later: https://www.youtube.com/watch?v=abc123"
-assistant: "I'll capture this YouTube video as a structured note in your Gems/Videos/ directory."
-<commentary>
-Clear capture intent + URL + .obsidian present → activate skill and capture video
-</commentary>
-</example>
+**Brief inline example (don't activate):**
+> User: "What do you think about this video? https://youtube.com/watch?v=abc123"
+> Don't activate: discussion intent, not capture intent
 
-<example>
-Context: User shares URL for discussion, not capture
-user: "What do you think about this video? https://youtube.com/watch?v=abc123"
-assistant: [Regular response discussing the video, skill does NOT activate]
-<commentary>
-URL present but no capture intent signals → don't activate. User wants discussion, not capture.
-</commentary>
-</example>
+## Safety Rules
 
-<example>
-Context: User wants to bookmark multiple articles
-user: "Bookmark these articles for me: https://blog.example.com/post1 and https://example.org/article"
-assistant: "I'll capture both articles as structured notes in your Gems/Articles/ directory."
-<commentary>
-Multiple URLs with explicit bookmark intent → activate for each URL and create separate notes
-</commentary>
-</example>
+**CRITICAL - NEVER VIOLATE:**
+- Only create or modify files within `Gems/Videos/` and `Gems/Articles/` directories
+- Never modify files outside Gems/
+- Never edit template files or other vault files
+- Each URL capture creates exactly ONE file in the appropriate Gems/ subdirectory
+- If file already exists for same URL, may update only that specific file
 
-<example>
-Context: Working outside Obsidian vault
-user: "Save this video: https://youtube.com/watch?v=xyz"
-assistant: [Regular response, skill does NOT activate]
-<commentary>
-No .obsidian directory found → don't activate. Skill only works within Obsidian vaults.
-</commentary>
-</example>
-
----
-
-This skill captures and structures online knowledge into Obsidian vault notes following the user's established patterns and conventions.
-
-## Content Type Detection
-
-Analyze URL patterns to determine content type:
-- `youtube.com`, `youtu.be`, `vimeo.com` → Video
-- Blog domains, article URLs, Medium, Substack → Article
-- **When uncertain**: Use AskUserQuestion to let user choose between video and article
-
-## Workflow
+## Workflow Overview
 
 When activation conditions are met:
 
 ### 1. Validate Environment
 
-Check that `.obsidian` directory exists in current working directory:
 ```bash
 test -d .obsidian
 ```
-
-If not found, do not proceed. Inform user this skill only works from Obsidian vault root.
+If not found, inform user this skill only works from Obsidian vault root.
 
 ### 2. Detect Content Type
 
-Analyze the URL to determine if it's a video or article. If uncertain, ask the user.
+- `youtube.com`, `youtu.be`, `vimeo.com` -> Video
+- Blog domains, Medium, Substack, article URLs -> Article
+- **When uncertain**: Use AskUserQuestion to let user choose
 
-### 3. Load Shared Conventions
+### 3. Load Type-Specific Reference
 
-See `references/shared-conventions.md` for:
-- Directory structure (Gems/Videos/, Gems/Articles/)
-- Shared template sections (INFO callout, TL;DR, Personal Takeaways, Related Topics)
-- Backlink discovery across vault folders
-- Safety rules (only modify Gems/)
+- **Videos**: Read `references/video-capture.md`
+- **Articles**: Read `references/article-capture.md`
 
-### 4. Load Content-Specific Details
+### 4. Extract Content & Build Note Structure
 
-Based on detected content type:
-- **Videos**: See `references/video-specifics.md` for video extraction and formatting
-- **Articles**: See `references/article-specifics.md` for article extraction and formatting
+Follow the extraction strategy and INFO callout format from the type-specific reference.
 
-### 5. Extract Content
+### 5. Load Shared Workflow
 
-Use appropriate tools to extract metadata and content:
-- Videos: Extract metadata, transcript, and video information
-- Articles: Extract article content, author, and publication details
+Read `references/shared-workflow.md` for:
+- Directory structure and filename generation
+- Tag discovery strategy
+- TL;DR section workflow
+- Personal Takeaways interactive workflow
+- Related Topics discovery workflow
+- Migration workflow (for refreshing older notes)
 
-### 6. Analyze Existing Style
-
-Before creating note:
-- Read 2-3 existing gems from the target directory (Gems/Videos/ or Gems/Articles/)
-- Understand user's writing style for TL;DR and Personal Takeaways
-- Identify patterns in what user finds valuable
-
-### 7. Create Note
-
-Generate markdown file in appropriate directory:
-- Videos: `Gems/Videos/[Title].md`
-- Articles: `Gems/Articles/[Title].md`
-
-Follow structure from annotated skeletons:
-- Videos: `examples/video-skeleton.md`
-- Articles: `examples/article-skeleton.md`
-
-### 8. Generate Personal Takeaways Interactively
-
-After analyzing existing notes and understanding user's patterns:
-- Generate 3-5 personal takeaway suggestions based on content
-- Use AskUserQuestion tool to present suggestions
-- Allow multi-select and custom input via "Other"
-- Include selected takeaways in note
-
-### 9. Validate
+### 6. Validate Output
 
 Ensure:
 - File created in correct Gems/ subdirectory only
 - All required sections populated
 - Proper formatting (embeds, links, backlinks)
-- Backlinks discovered from relevant vault folders
 - No other files were modified
 
-## Safety Rules
+### 7. Confirm to User
 
-**CRITICAL - NEVER VIOLATE THESE RULES:**
-- Only create or modify files within `Gems/Videos/` and `Gems/Articles/` directories
-- Never edit, modify, or delete files outside Gems/
-- Never modify template files or other vault files
-- Each URL capture results in exactly ONE file operation in Gems/
-- If file already exists for same URL, may update only that specific file
-
-## Output
-
-Confirm successful capture with:
+Report:
 - Created filename and full path
-- Brief summary of captured content (title and source)
-- Report any issues encountered
+- Brief summary of captured content
+- Any issues encountered
 
-## Additional Resources
+## Reference Files
 
-**For detailed conventions:**
-- `references/shared-conventions.md` - Common elements across all gems
-- `references/video-specifics.md` - Video-only details and formatting
-- `references/article-specifics.md` - Article-only details and formatting
+| File | Contains | Load When |
+|------|----------|-----------|
+| `references/shared-workflow.md` | Shared workflows (TL;DR, Takeaways, Topics, Tags, Migration) | Always after type-specific |
+| `references/video-capture.md` | Video extraction, INFO fields, description strategy | Content is video |
+| `references/article-capture.md` | Article extraction, INFO fields, description strategy | Content is article |
 
-**For structure reference:**
-- `examples/video-skeleton.md` - Annotated video note structure
-- `examples/article-skeleton.md` - Annotated article note structure
+## Decision Support
+
+When uncertain, consult these examples:
+- **`examples/activation-decisions.md`** - Comprehensive positive/negative activation cases
+- **`examples/quality-patterns.md`** - Good vs bad examples for each section type
+- **`examples/common-mistakes.md`** - Errors to avoid with explanations
+
+For output structure reference, analyze 2-3 existing gems in the user's vault (`Gems/Videos/` or `Gems/Articles/`).
