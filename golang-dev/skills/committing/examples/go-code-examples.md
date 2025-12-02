@@ -186,7 +186,7 @@ Future readers will understand the skip is intentional, not a gap in coverage.
 <message>sync: fix race condition in WaitGroup counter updates</message>
 <message>net/http: fix timeout handling during TLS handshake</message>
 <message>net/http: correctly close fake net.Conns</message>
-<message>internal/runtime/cgroup: fix path on non-root mount point</message>
+<message>internal/runtime/cgroup: resolve path on non-root mount point</message>
 </examples>
 
 ### Cleanup
