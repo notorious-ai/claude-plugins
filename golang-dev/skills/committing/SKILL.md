@@ -202,6 +202,20 @@ Load these as needed based on content type:
 
 3. **Sparse repository history** - Load examples in full. When the working repository lacks good commit samples to learn from, use the example files as primary reference for style and verb selection.
 
+**XML tags for selective searching:**
+
+| Tag | Purpose | Search Pattern |
+|-----|---------|----------------|
+| `<example>` | Full example with context, diff, explanation | Detailed learning |
+| `<examples category="...">` | Grouped one-liners by work type | Quick verb/pattern lookup |
+| `<message>` | Commit message (good example) | Pattern matching |
+| `<context>` | Background explaining the change | Understanding intent |
+| `<why_good>` | Explanation of quality | Learning principles |
+| `<anti-pattern>` | What NOT to do | Avoiding mistakes |
+| `<bad>` | Bad commit message | Counter-examples |
+| `<good>` | Corrected version | Fix patterns |
+| `<better>` | Alternative improvement | Verb alternatives |
+
 ## Special Cases
 
 ### Mixed Changes
