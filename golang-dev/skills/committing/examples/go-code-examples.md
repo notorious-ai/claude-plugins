@@ -212,9 +212,9 @@ Future readers will understand the skip is intentional, not a gap in coverage.
 <examples category="correctness" context="Consistent behavior, handling edge cases">
 <message>cmd/compile: handle loops better during stack allocation of slices</message>
 <message>cmd/internal/obj/x86: handle global reference in From3 in dynlink mode</message>
-<message>internal/strconv: handle %f with fixedFtoa when possible</message>
-<message>cmd/compile: handle rematerialized op for incompatible reg constraint</message>
-<message>cmd/link: handle -w flag in external linking mode</message>
+<message>internal/strconv: format %f with fixedFtoa when possible</message>
+<message>cmd/compile: support rematerialized op for incompatible reg constraint</message>
+<message>cmd/link: respect -w flag in external linking mode</message>
 <message>net/url: enforce stricter parsing of bracketed IPv6 hostnames</message>
 <message>internal/runtime/cgroup: enforce stricter unescapePath</message>
 <message>debug/elf: validate empty symbol sections consistently</message>
