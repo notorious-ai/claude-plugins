@@ -8,7 +8,11 @@ Use at most TWO leaf segments of the path from the Go module root.
 
 ### The Two-Segment Rule
 
-Always use the **last two segments** of the package path:
+Use **at most two leaf segments** of the package path from the module root:
+
+- Single-segment packages: use one segment (`fmt`, `context`)
+- Multi-segment packages: use the last two segments (`net/http`, `encoding/json`)
+- Deep nesting: still only use the last two segments
 
 | Full Package Path | Target |
 |-------------------|--------|
