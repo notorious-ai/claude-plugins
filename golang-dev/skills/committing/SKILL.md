@@ -204,17 +204,19 @@ Load these as needed based on content type:
 
 **XML tags for selective searching:**
 
-| Tag | Purpose | Search Pattern |
-|-----|---------|----------------|
+| Tag | Purpose | Context |
+|-----|---------|---------|
 | `<example>` | Full example with context, diff, explanation | Detailed learning |
 | `<examples category="...">` | Grouped one-liners by work type | Quick verb/pattern lookup |
-| `<message>` | Commit message (good example) | Pattern matching |
-| `<context>` | Background explaining the change | Understanding intent |
-| `<why_good>` | Explanation of quality | Learning principles |
-| `<anti-pattern>` | What NOT to do | Avoiding mistakes |
-| `<bad>` | Bad commit message | Counter-examples |
-| `<good>` | Corrected version | Fix patterns |
-| `<better>` | Alternative improvement | Verb alternatives |
+| `<message>` | Commit message to emulate | Good examples; also baseline in Verb Alternatives |
+| `<better>` | Improved alternative to `<message>` | Only in Verb Alternatives section |
+| `<anti-pattern>` | What NOT to do | Anti-Patterns section |
+| `<bad>` | Bad commit message | Inside `<anti-pattern>` |
+| `<good>` | Corrected version of `<bad>` | Inside `<anti-pattern>` |
+
+**Tag relationships:**
+- `<message>` + `<better>`: In Verb Alternatives, `<message>` is acceptable, `<better>` is preferred
+- `<bad>` + `<good>`: In Anti-Patterns, `<bad>` is wrong, `<good>` is the fix
 
 ## Special Cases
 

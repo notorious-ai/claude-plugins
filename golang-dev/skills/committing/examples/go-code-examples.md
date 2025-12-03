@@ -247,11 +247,6 @@ Future readers will understand the skip is intentional, not a gap in coverage.
 <message>cmd/go: improve TestScript/reuse_git</message>
 </examples>
 
-<examples category="testing-alternatives" context="Test reliability improvements">
-<message>net/http: deflake TestClientConnReserveAndConsume</message>
-<better>net/http: stabilize TestClientConnReserveAndConsume</better>
-</examples>
-
 ### Refactoring
 
 <examples category="refactoring" context="Restructuring without functional change">
@@ -262,11 +257,6 @@ Future readers will understand the skip is intentional, not a gap in coverage.
 <message>cmd/go: refactor usage of workFilePath</message>
 <message>go/types,types2: wrap Named.fromRHS into Named.rhs</message>
 <message>runtime: wrap procyield assembly and check for 0</message>
-</examples>
-
-<examples category="refactoring-alternatives" context="Concise alternatives to verbose messages">
-<message>net/http/httputil: wrap ReverseProxy's outbound request body so Close is a noop</message>
-<better>net/http/httputil: ignore Close on ReverseProxy outbound body</better>
 </examples>
 
 ## Cross-Cutting Changes
@@ -281,9 +271,11 @@ Future readers will understand the skip is intentional, not a gap in coverage.
 <message>crypto/internal/fips140/aes: optimize ctrBlocks8Asm on amd64</message>
 </examples>
 
-## Bug Fix Verb Alternatives
+## Verb Alternatives
 
-The verb "fix" is widely accepted, but alternatives can be more descriptive:
+Some verbs are acceptable but alternatives can be more descriptive. Each block shows a `<message>` (acceptable) with `<better>` alternatives.
+
+### Bug Fix Alternatives
 
 <examples category="bug-fix-alternatives" context="'fix' is acceptable, alternatives describe resulting behavior">
 <message>cmd/compile: fix integer overflow in prove pass</message>
@@ -300,6 +292,20 @@ The verb "fix" is widely accepted, but alternatives can be more descriptive:
 <message>net/http: fix timeout handling during TLS handshake</message>
 <better>net/http: respect timeout during TLS handshake</better>
 <better>net/http: enforce timeout during TLS handshake</better>
+</examples>
+
+### Testing Alternatives
+
+<examples category="testing-alternatives" context="Test reliability improvements">
+<message>net/http: deflake TestClientConnReserveAndConsume</message>
+<better>net/http: stabilize TestClientConnReserveAndConsume</better>
+</examples>
+
+### Refactoring Alternatives
+
+<examples category="refactoring-alternatives" context="Concise alternatives to verbose messages">
+<message>net/http/httputil: wrap ReverseProxy's outbound request body so Close is a noop</message>
+<better>net/http/httputil: ignore Close on ReverseProxy outbound body</better>
 </examples>
 
 ## Anti-Patterns
