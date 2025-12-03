@@ -7,6 +7,7 @@ agents, hooks, and integrations.
 
 ## ✨ Available Plugins
 
+- [golang-dev](golang-dev/) - Comprehensive Go development experience with skills for committing, documentation, and testing
 - [obsidian-notes](obsidian-notes/) - Save internet gems (videos, articles) to your Obsidian vault with intent-based capture
 
 This collection is growing. To browse available plugins:
