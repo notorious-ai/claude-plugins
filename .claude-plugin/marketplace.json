@@ -5,6 +5,11 @@
   },
   "plugins": [
     {
+      "name": "golang-dev",
+      "source": "./golang-dev",
+      "category": "development"
+    },
+    {
       "name": "obsidian-notes",
       "source": "./obsidian-notes",
       "category": "productivity"
