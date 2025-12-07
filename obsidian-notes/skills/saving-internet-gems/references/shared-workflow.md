@@ -38,8 +38,9 @@ tags:
 
 1. **Discover existing tags:**
    ```bash
-   scripts/list-vault-tags.sh
+   find . -name "*.md" -type f -exec yq -f extract '.tags[]' {} \; 2>/dev/null | sort -u
    ```
+   If this fails, see `scripts/list-vault-tags.sh` in the skill directory for reference.
 
 2. **Match content to existing tags** - prioritize tags already in vault
 

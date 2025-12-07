@@ -242,7 +242,7 @@ This file consolidates common mistakes across all gem types with explanations of
 
 **Why it's wrong:** Creates tag fragmentation in the vault.
 
-**Correct approach:** Run `scripts/list-vault-tags.sh` first and prefer existing tags. Only create new tags when no existing tag fits.
+**Correct approach:** Discover existing tags first (see `scripts/list-vault-tags.sh` in the skill directory) and prefer them. Only create new tags when no existing tag fits.
 
 ---
 
