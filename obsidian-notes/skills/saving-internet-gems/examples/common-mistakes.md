@@ -203,6 +203,20 @@ This file consolidates common mistakes across all gem types with explanations of
 
 ---
 
+### Mistake: Reference-style syntax for hero image embed
+**What's wrong:**
+```markdown
+![Hero][img]
+
+[img]: https://example.com/hero.jpg
+```
+
+**Why it's wrong:** Obsidian requires inline format for image embeds to render.
+
+**Correct approach:** Use inline format: `![](https://example.com/hero.jpg)`
+
+---
+
 ## General Mistakes
 
 ### Mistake: Creating files outside Gems/

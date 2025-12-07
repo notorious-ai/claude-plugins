@@ -62,7 +62,7 @@ Articles use these fields in the INFO callout:
 
 ### No Video Embed
 - Articles do not include video embeds
-- If a notable hero image is present, consider embedding it
+- If a notable hero image is present, embed it using inline format: `![](image-url)`
 
 ## Article Description Strategy
 
