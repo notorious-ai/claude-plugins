@@ -65,21 +65,23 @@ Articles use these fields in the INFO callout:
 
 ## Article Description Strategy
 
-This section presents the article's content to help the user decide whether to read.
+This section preserves knowledge about the article and entices the reader to engage with the original.
+
+**Key principle:** Extract, don't summarize. Summaries replace reading; extracts invite reading.
 
 **Steps:**
 
 1. **Extract and clean main content:**
-   - Use WebFetch or similar to get article text
    - Remove navigation elements, ads, footers, sidebars
    - Remove promotional elements and newsletter signups
-   - Preserve the article's core message and structure
+   - Identify sections with HTML anchor IDs for deep linking
 
-2. **Create navigable summary:**
-   - Summarize key arguments and main points
-   - Include notable examples or case studies mentioned
-   - Highlight unique insights or perspectives
-   - Create an index of the article's structure
+2. **Create a navigable index with extracts:**
+   - Structure as an index of the article's sections
+   - Pull direct quotes that capture key insights
+   - Highlight surprising claims or counterintuitive ideas
+   - Note memorable examples or case studies
+   - Deep link to sections using reference-style: `[section title][section-id]`
 
 3. **Preserve contextual images:**
    - Embed diagrams, illustrations, or screenshots that clarify the surrounding text: `![](image-url)`
@@ -87,12 +89,12 @@ This section presents the article's content to help the user decide whether to r
    - Skip decorative images that don't add informational content
 
 **Requirements:**
-- Focus on helping user understand what the article covers
-- Don't include full article text - create a summary/index
-- Preserve important quotes or key insights
-- Help user decide whether to read in full
+- Extracts should pull the reader toward the original article
+- Deep link to specific sections, not just the article URL
+- Preserve the article's voice through direct quotes
+- Do NOT restate or paraphrase the article's content
 
-**Goal**: Give user enough context to understand the article's value and decide whether to invest time reading it.
+**Goal**: Capture knowledge hooks that make the reader want to revisit specific sections of the original.
 
 ## Article-Specific Considerations
 
