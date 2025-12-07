@@ -28,6 +28,7 @@ Articles use these fields in the INFO callout:
 - Use the article's full URL
 - Wrap in angle brackets: `<https://example.com/article>`
 - Preserve the original URL (don't shorten)
+- Remove trailing slashes
 
 **Site:**
 - Identify the **content identity** - the publication, brand, blog, or author
