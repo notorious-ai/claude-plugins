@@ -67,7 +67,9 @@ Articles use these fields in the INFO callout:
 
 This section preserves knowledge about the article and entices the reader to engage with the original.
 
-**Key principle:** Extract, don't summarize. Summaries replace reading; extracts invite reading.
+**Key principle:** Extract, don't summarize. Summaries replace reading; extracts invite reading. Short or straightforward content may warrant a brief summary, but default to extracts for substantive articles.
+
+**Quality expectation:** Writing a good description is high-cognitive work. Spend time refining it, paying attention to nuances. Don't settle for a first draft.
 
 **Steps:**
 
@@ -102,6 +104,7 @@ This section preserves knowledge about the article and entices the reader to eng
 - Note which version/date documentation is current as of
 - Highlight key sections or concepts covered
 - May include direct quotes of important definitions
+- Copy short code snippets (a few lines) directly; link to longer ones
 
 **Blog posts:**
 - Capture author's main argument or thesis
