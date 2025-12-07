@@ -81,6 +81,11 @@ This section presents the article's content to help the user decide whether to r
    - Highlight unique insights or perspectives
    - Create an index of the article's structure
 
+3. **Preserve contextual images:**
+   - Embed diagrams, illustrations, or screenshots that clarify the surrounding text: `![](image-url)`
+   - Place each image where it provides value to the reader (not grouped at the end)
+   - Skip decorative images that don't add informational content
+
 **Requirements:**
 - Focus on helping user understand what the article covers
 - Don't include full article text - create a summary/index
