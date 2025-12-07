@@ -60,9 +60,8 @@ Articles use these fields in the INFO callout:
 - Format as: `Month Day, Year` (e.g., "June 7, 2015")
 - If no date found, REMOVE this line
 
-### No Video Embed
-- Articles do not include video embeds
-- If a notable hero image is present, embed it using inline format: `![](image-url)`
+### Hero Image
+- If the article has a notable hero image, embed it at the end of the INFO callout: `![](image-url)`
 
 ## Article Description Strategy
 
