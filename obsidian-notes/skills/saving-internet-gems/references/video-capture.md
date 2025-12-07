@@ -32,6 +32,7 @@ Videos use these fields in the INFO callout:
 - Prefer short YouTube URL format: `https://youtu.be/VIDEO_ID`
 - Wrap in angle brackets: `<https://youtu.be/VIDEO_ID>`
 - Remove trailing slashes
+- Strip unnecessary query parameters (tracking, referral, etc.)
 
 **Channel:**
 - Always a **web link** to the YouTube channel: `[Channel Name](channel-url)`
