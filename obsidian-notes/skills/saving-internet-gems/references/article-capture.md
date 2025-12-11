@@ -63,6 +63,7 @@ Articles use these fields in the INFO callout:
 
 ### Hero Image
 - If the article has a notable hero image, embed it at the end of the INFO callout: `![](image-url)`
+- Always place an empty callout line (`>`) before the embed
 
 ## Article Description Strategy
 

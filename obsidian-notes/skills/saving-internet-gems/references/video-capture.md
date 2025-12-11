@@ -56,6 +56,7 @@ Videos use these fields in the INFO callout:
 
 **Video Embed:**
 - Use full YouTube URL: `![](https://www.youtube.com/watch?v=VIDEO_ID)`
+- Always place an empty callout line (`>`) before the embed
 - Renders as embedded player in Obsidian
 
 ### Channel and Event Serve Different Purposes
