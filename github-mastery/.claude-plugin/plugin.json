@@ -1,0 +1,8 @@
+{
+  "name": "github-mastery",
+  "version": "0.1.0",
+  "description": "Guide Claude toward professional GitHub collaboration practices",
+  "author": {
+    "name": "Daniel Orbach"
+  }
+}
