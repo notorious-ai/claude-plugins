@@ -5,6 +5,11 @@
   },
   "plugins": [
     {
+      "name": "github-author",
+      "source": "./github-author",
+      "category": "development"
+    },
+    {
       "name": "golang-dev",
       "source": "./golang-dev",
       "category": "development"
