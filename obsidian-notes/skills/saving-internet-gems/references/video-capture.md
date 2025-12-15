@@ -109,4 +109,29 @@ This section presents video content to help user decide whether to watch.
 - Treat same as regular videos
 - Check if description updated post-stream
 
+## Extracting External Links for Further Reading
+
+While processing the video, collect external links the speaker references for the Further Reading subsection (see `references/shared-workflow.md`).
+
+**Where to look:**
+- Video description links section
+- Pinned comments from the creator
+- Links mentioned verbally in the transcript
+- Slides (if linked in description)
+- "Resources" or "Links" sections in description
+
+**What makes a good Further Reading link:**
+- GitHub repositories with code samples from the talk
+- Wikipedia pages explaining concepts discussed
+- Documentation for tools or libraries demonstrated
+- Related talks or videos the speaker recommends
+- Blog posts or articles that expand on the topic
+- Slides or presentation materials
+
+**Skip:**
+- Channel subscription/social media links
+- Sponsor links or affiliate URLs
+- Generic "follow me" links
+- Timestamps (these belong in Description, not Further Reading)
+
 For common mistakes to avoid, see `examples/common-mistakes.md`.

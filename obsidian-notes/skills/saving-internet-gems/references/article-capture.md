@@ -128,4 +128,27 @@ This section preserves knowledge about the article and entices the reader to eng
 - May want to capture other parts separately
 - Include navigation links if available
 
+## Extracting External Links for Further Reading
+
+While processing the article, collect external links the author references for the Further Reading subsection (see `references/shared-workflow.md`).
+
+**Where to look:**
+- Inline hyperlinks within the body text
+- Footnotes and endnotes
+- "Further Reading" or "References" sections
+- Embedded resources (GitHub repos, Wikipedia, papers)
+- "See also" or related links sections
+
+**What makes a good Further Reading link:**
+- Wikipedia pages explaining technical concepts mentioned
+- GitHub repositories with code samples or related projects
+- Other articles the author explicitly recommends
+- Documentation pages for tools or libraries discussed
+- Academic papers or research the author references
+
+**Skip:**
+- Author's own social media or newsletter signups
+- Generic site links (just "github.com" vs. specific repo)
+- Internal navigation links within the same site
+
 For common mistakes to avoid, see `examples/common-mistakes.md`.

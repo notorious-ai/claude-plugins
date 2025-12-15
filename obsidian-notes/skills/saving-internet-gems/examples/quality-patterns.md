@@ -319,6 +319,140 @@ This file shows good vs bad examples for each section type to help Claude make b
 
 ---
 
+## Further Reading Subsection
+
+This subsection captures external resources that the content author/speaker explicitly recommends or references.
+
+### Good Examples
+
+**Example 1 (Conference talk with code samples):**
+```markdown
+## Related Topics
+- [[YouTube]]
+- [[Golang]]
+- [[Concurrency]]
+
+### Further Reading
+- [sync package](https://pkg.go.dev/sync) - standard library reference for primitives discussed
+- [errgroup example](https://github.com/golang/go/blob/master/src/sync/errgroup/errgroup_example_test.go) - code samples from the talk
+- [Concurrency is not Parallelism](https://youtu.be/oV9rvDllKEg) - related talk by Rob Pike mentioned
+```
+
+**Why it works:**
+- Clear subsection header for author-recommended resources
+- Brief context after each link explaining WHY the author linked it
+- Mix of documentation, code, and related content
+- All links are substantive references, not promotional
+
+---
+
+**Example 2 (Technical article with Wikipedia references):**
+```markdown
+## Related Topics
+- [[Medium]]
+- [[Distributed Systems]]
+- [[CAP Theorem]]
+
+### Further Reading
+- [CAP theorem on Wikipedia](https://en.wikipedia.org/wiki/CAP_theorem) - background on the impossibility result
+- [Jepsen Analyses](https://jepsen.io/analyses) - testing reports mentioned for verifying consistency claims
+- [Designing Data-Intensive Applications](https://dataintensive.net/) - book recommended for deeper study
+```
+
+**Why it works:**
+- Wikipedia link provides background context for technical concept
+- Each resource has clear relevance to article topic
+- Descriptions explain the resource's role in the original content
+- Links to specific pages (analyses), not just homepage
+
+---
+
+**Example 3 (Video with slides and further reading):**
+```markdown
+## Related Topics
+- [[YouTube]]
+- [[Systems Architecture]]
+
+### Further Reading
+- [Slides (PDF)](https://speakerdeck.com/author/talk-slides) - presentation slides
+- [Author's Blog Post](https://blog.example.com/deeper-dive) - expanded version of this talk
+- [DDIA Chapter 5](https://dataintensive.net/ch05.html) - recommended reading on replication
+```
+
+**Why it works:**
+- Includes complementary resources (slides for visual reference)
+- Links to author's expanded writing on the topic
+- Specific chapter reference, not just generic book link
+
+---
+
+### Bad Examples
+
+**Example 1 (Self-promotional links):**
+```markdown
+### Further Reading
+- [Follow me on Twitter](https://twitter.com/author)
+- [Subscribe to my newsletter](https://author.substack.com)
+- [My course on Udemy](https://udemy.com/author-course)
+- [Buy my book](https://amazon.com/author-book)
+```
+
+**Why it fails:**
+- All links are self-promotional
+- These should be SKIPPED entirely
+- No substantive external resources
+- The subsection should not exist if these are the only links
+
+---
+
+**Example 2 (Missing context and formatting):**
+```markdown
+### Further Reading
+- https://en.wikipedia.org/wiki/Consensus_(computer_science)
+- https://github.com/etcd-io/etcd
+- https://raft.github.io/
+```
+
+**Why it fails:**
+- Raw URLs without descriptive titles
+- Missing the "- context" explanation after each link
+- Reader can't understand relevance without clicking
+- Should use markdown link format with meaningful titles
+
+---
+
+**Example 3 (Generic domain links):**
+```markdown
+### Further Reading
+- [Go website](https://golang.org)
+- [GitHub](https://github.com)
+- [Stack Overflow](https://stackoverflow.com)
+```
+
+**Why it fails:**
+- Links to generic homepages, not specific resources
+- No clear connection to content topics
+- Should link to SPECIFIC pages, repos, or questions
+- These add no value - reader already knows these sites exist
+
+---
+
+**Example 4 (Claude's suggestions, not author's):**
+```markdown
+### Further Reading
+- [Related concept on Wikipedia](https://en.wikipedia.org/wiki/Some_term) - you might find this interesting
+- [Popular repo](https://github.com/popular/repo) - this could help with implementation
+- [Tutorial](https://example.com/tutorial) - good starting point for beginners
+```
+
+**Why it fails:**
+- Phrasing suggests Claude's recommendations ("you might find", "could help")
+- Author never mentioned these resources
+- This subsection is for resources the author recommended only
+- Claude's suggestions belong elsewhere (or not at all)
+
+---
+
 ## Key Principles Summary
 
 | Section | Good Pattern | Bad Pattern |
@@ -327,6 +461,7 @@ This file shows good vs bad examples for each section type to help Claude make b
 | Takeaways | First-person insights, personal realizations | Content summaries, generic advice |
 | Description | Clean index, structured, preserves quotes | Spam-filled, full copy-paste |
 | Related Topics | Selective, relevant, platform only when hosted | Too many, duplicates INFO, wrong platform logic |
+| Further Reading | Specific resources author linked, with context | Promotional, generic homepages, Claude suggestions |
 
 ### Platform Reference Quick Guide
 
