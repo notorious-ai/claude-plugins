@@ -40,7 +40,8 @@ tags:
    ```bash
    find . -name "*.md" -type f -exec yq -f extract '.tags[]' {} \; 2>/dev/null | sort -u
    ```
-   If this fails, see `scripts/list-vault-tags.sh` in the skill directory for reference.
+
+   **IMPORTANT:** Run this exact command. The `-f extract` flag ensures `yq` parses YAML frontmatter correctly.
 
 2. **Match content to existing tags** - prioritize tags already in vault
 
