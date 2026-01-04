@@ -162,6 +162,20 @@ For tracking relationships, use GitHub keywords:
 - `Depends on org/repo#123` - indicates blocking dependency
 - `Blocked by org/repo#123` - indicates this issue is blocked
 
+## Follow-up Tasks
+
+When issues identify post-completion work, list it clearly:
+
+```markdown
+The following tasks are important to tidy after completion:
+
+- [ ] Rename labels on GitHub
+- [ ] Port documentation changes to external docs site
+- [ ] Notify dependent teams of the change
+```
+
+Use checkboxes for trackable items. Place at the end of the issue body, after the main content.
+
 ## Common Anti-Patterns
 
 ### Implementation Prescription
