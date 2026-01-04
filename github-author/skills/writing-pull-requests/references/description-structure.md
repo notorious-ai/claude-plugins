@@ -211,3 +211,15 @@ Smaller, focused PRs are easier to review than omnibus changes. When a large PR 
 Call out areas of uncertainty, highlight breaking changes, and note any temporary code or follow-up work needed.
 
 For UI changes, include screenshots or recordings. Before/after comparisons help reviewers understand visual changes without checking out the branch.
+
+## Draft PRs
+
+Use draft PRs for:
+- Work-in-progress needing early feedback
+- Changes blocked on dependent PRs
+- Proposals for design discussion
+
+Convert to ready-for-review when:
+- All commits are complete
+- CI passes
+- Self-review is done
