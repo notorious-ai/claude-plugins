@@ -105,6 +105,16 @@ Checklists suit tracking scope or acceptance criteria as **outcomes**:
 
 These are outcomes to achieve, not steps to implement.
 
+### Definition of Done
+
+Include a clear outcome statement. The pattern "By the time this Issue is complete, the system will have..." works well for defining scope and completion criteria.
+
+**Examples**:
+- "By the time this Issue is complete, users will be able to specify their timezone so notifications respect their local time."
+- "By the time this Issue is complete, the API will validate all input before processing."
+
+This framing forces clarity about what "done" means and helps prevent scope creep.
+
 ## Issue Templates
 
 Before creating an issue, check for templates in `.github/ISSUE_TEMPLATE/`. Templates encode repository-specific conventions. When a template applies to the issue type, follow its structure.
@@ -116,6 +126,10 @@ While uniform principles apply to all issues, certain types benefit from specifi
 - **Bug reports**: Environment, reproduction steps, expected vs actual behavior
 - **Feature requests**: User impact, success criteria
 - **Discussion issues**: Decision framing, questions to consider
+
+## Follow-up Tasks
+
+When an issue identifies post-completion work, list it clearly at the end. See `references/body-structure.md` for formatting.
 
 ## Workflow
 
