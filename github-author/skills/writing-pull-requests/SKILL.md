@@ -71,6 +71,28 @@ Draw context from the discussion that led to the changes:
 
 When context is missing, ask proactively. The motivation behind a change is essential for a good PR.
 
+## Repository Templates
+
+Before drafting, check for repository-specific templates that encode team conventions.
+
+### Locating Templates
+
+Search these paths (first match wins):
+1. `.github/pull_request_template.md`
+2. `.github/PULL_REQUEST_TEMPLATE.md`
+3. `docs/pull_request_template.md`
+4. `pull_request_template.md` (root)
+5. `.github/PULL_REQUEST_TEMPLATE/` (multiple templates)
+
+### Using Templates
+
+When a template exists, evaluate fit:
+- **Good fit**: Follow the template structure
+- **Partial fit**: Use relevant sections, adapt others with judgment
+- **Poor fit**: Draft freely but note why the template didn't apply
+
+Templates are guides, not rigid forms.
+
 ## Description Philosophy
 
 The description explains **why** this change exists. For PRs, focus on motivation over mechanics. For Issues linked to the PR, focus on **why** over **how** - the desired outcome rather than implementation steps.
@@ -80,6 +102,21 @@ The first paragraph immediately follows the title without a header. This opening
 **When an issue is linked**: The description can be brief since the issue provides context.
 
 **When no issue exists**: The description must compensate by providing that context directly - background, how the problem was discovered, impact if unaddressed, and constraints.
+
+## PR Scope
+
+Keep PRs focused on a single logical change.
+
+**Signs of good scope**:
+- Reviewable in one sitting (under 400 lines typical)
+- Single purpose evident from title
+- All changes relate to stated intent
+
+**Signs of scope creep**:
+- "Also fixes..." or "While I was here..." in description
+- Multiple unrelated file groups changed
+
+When scope grows, split into stacked PRs or separate unrelated changes.
 
 ## Proofs
 
@@ -110,9 +147,15 @@ For detailed guidance, consult:
 | `references/description-structure.md` | Description format, prose flow, headers, anti-patterns |
 | `examples/pr-examples.md` | Complete PR examples with titles and descriptions |
 
-## Validation Checklist
+## Self-Review Checklist
 
 Before presenting the PR:
+
+**Process**:
+- [ ] Read the diff as if seeing it for the first time
+- [ ] Confirm CI passes (don't waste reviewer time on broken builds)
+- [ ] Remove debug code and commented-out blocks
+- [ ] Verify scope - no unrelated changes snuck in
 
 **Title**:
 - [ ] Begins with imperative verb describing repository capability
