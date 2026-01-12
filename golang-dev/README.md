@@ -16,6 +16,7 @@ This plugin shapes Claude into a **professional Go developer** who thinks and ac
 ### Tier 1 (Current)
 
 - **committing** - Write commit messages that match Go project conventions for all files in Go-centric codebases
+- **naming** - Name Go identifiers following Go team conventions
 
 ### Tier 2 (Planned)
 
