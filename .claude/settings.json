@@ -1,6 +1,13 @@
 {
+  "permissions": {
+    "allow": [
+      "Skill(plugin-dev:*)"
+    ],
+    "deny": [],
+    "ask": []
+  },
   "enabledPlugins": {
-    "plugin-dev@claude-code-plugins": true
+    "plugin-dev@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-code-plugins": {
@@ -9,12 +16,5 @@
         "repo": "anthropics/claude-code"
       }
     }
-  },
-  "permissions": {
-    "allow": [
-      "Skill(plugin-dev:*)"
-    ],
-    "deny": [],
-    "ask": []
   }
 }
