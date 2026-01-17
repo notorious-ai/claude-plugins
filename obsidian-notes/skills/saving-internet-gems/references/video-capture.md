@@ -31,6 +31,8 @@ Videos use these fields in the INFO callout:
 **Source:**
 - Prefer short YouTube URL format: `https://youtu.be/VIDEO_ID`
 - Wrap in angle brackets: `<https://youtu.be/VIDEO_ID>`
+- Remove trailing slashes
+- Strip unnecessary query parameters (tracking, referral, etc.)
 
 **Channel:**
 - Always a **web link** to the YouTube channel: `[Channel Name](channel-url)`
@@ -54,6 +56,7 @@ Videos use these fields in the INFO callout:
 
 **Video Embed:**
 - Use full YouTube URL: `![](https://www.youtube.com/watch?v=VIDEO_ID)`
+- Always place an empty callout line (`>`) before the embed
 - Renders as embedded player in Obsidian
 
 ### Channel and Event Serve Different Purposes
@@ -105,5 +108,30 @@ This section presents video content to help user decide whether to watch.
 **Live streams and premieres:**
 - Treat same as regular videos
 - Check if description updated post-stream
+
+## Extracting External Links for Further Reading
+
+While processing the video, collect external links the speaker references for the Further Reading subsection (see `references/shared-workflow.md`).
+
+**Where to look:**
+- Video description links section
+- Pinned comments from the creator
+- Links mentioned verbally in the transcript
+- Slides (if linked in description)
+- "Resources" or "Links" sections in description
+
+**What makes a good Further Reading link:**
+- GitHub repositories with code samples from the talk
+- Wikipedia pages explaining concepts discussed
+- Documentation for tools or libraries demonstrated
+- Related talks or videos the speaker recommends
+- Blog posts or articles that expand on the topic
+- Slides or presentation materials
+
+**Skip:**
+- Channel subscription/social media links
+- Sponsor links or affiliate URLs
+- Generic "follow me" links
+- Timestamps (these belong in Description, not Further Reading)
 
 For common mistakes to avoid, see `examples/common-mistakes.md`.

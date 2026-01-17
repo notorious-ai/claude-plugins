@@ -38,8 +38,10 @@ tags:
 
 1. **Discover existing tags:**
    ```bash
-   scripts/list-vault-tags.sh
+   find . -name "*.md" -type f -exec yq -f extract '.tags[]' {} \; 2>/dev/null | sort -u
    ```
+
+   **IMPORTANT:** Run this exact command. The `-f extract` flag ensures `yq` parses YAML frontmatter correctly.
 
 2. **Match content to existing tags** - prioritize tags already in vault
 
@@ -160,19 +162,60 @@ Discover and create backlinks to relevant pages throughout the vault.
 
    **Key principle:** Don't duplicate Site, but DO note hosting platforms when the content identity differs from the host.
 
-4. **Format as Bulleted List**
+4. **Extract Author-Recommended Resources**
+
+   Capture external links that the **author/speaker explicitly recommends or references**. These are valuable because they represent curated resources from someone knowledgeable on the topic.
+
+   **What to extract:**
+   - Wikipedia links for technical terms or concepts
+   - GitHub repositories with code samples or related projects
+   - Research papers or academic references
+   - Other articles/blog posts the author recommends
+   - Tools, libraries, or documentation the author points to
+   - Conference talks or videos mentioned
+
+   **Where to find them:**
+   - **Articles:** Inline hyperlinks, footnotes, "Further Reading" sections, bibliography
+   - **Videos:** Description links, pinned comments, transcript mentions, slides (if linked)
+
+   **What to skip:**
+   - Author's own social media or promotional links
+   - Generic "Subscribe" or "Follow me" links
+   - Sponsor links or affiliate URLs
+   - Links to the same site/channel (internal navigation)
+
+   **Format with attribution:**
+   ```markdown
+   ### Further Reading
+   - [Term on Wikipedia](https://en.wikipedia.org/wiki/Term) - background on X concept
+   - [project/repo](https://github.com/project/repo) - code samples from the talk
+   - [Related Article Title](https://example.com/article) - deeper dive on Y
+   ```
+
+   **Key principle:** These are resources the author recommended, not Claude's suggestions. The brief description after the dash should explain *why* the author linked it (context from the content).
+
+   **When to include:** Only when the content has meaningful external references. Skip this subsection entirely if:
+   - Links are purely self-promotional
+   - Links are generic (e.g., just linking to "golang.org" without specific resource)
+   - The content doesn't reference external resources
+
+5. **Format as Bulleted List**
    ```markdown
    ## Related Topics
    - [[YouTube]]  <!-- videos: always -->
    - [[Medium]]   <!-- articles: only if hosted, not standalone -->
    - [[Concept Page]]
    - [[Tool]]
+
+   ### Further Reading
+   - [Resource Title](url) - brief context
    ```
 
-5. **User Refinement (when needed)**
+6. **User Refinement (when needed)**
    - If list exceeds 8 items: ask user to select most relevant
    - If uncertain about relevance: present as options
    - Always retain mandatory platform reference
+   - Further Reading entries are generally kept as-is (they're curated by the author)
 
 For good/bad examples, see `examples/quality-patterns.md`.
 
@@ -205,6 +248,7 @@ Use this workflow to update older notes to current format while preserving user 
    | Description | **MOST FLEXIBLE** - can fully replace with fresh extraction |
    | Personal Takeaways | **SACRED** - preserve exactly, only add if user requests |
    | Related Topics | Keep existing backlinks, suggest additions if discovered |
+   | Further Reading | Re-extract from source; merge with any user additions |
 
 4. **Present Diff to User**
    - Show what will change

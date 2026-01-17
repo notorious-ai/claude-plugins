@@ -27,7 +27,8 @@ Articles use these fields in the INFO callout:
 **Source:**
 - Use the article's full URL
 - Wrap in angle brackets: `<https://example.com/article>`
-- Preserve the original URL (don't shorten)
+- Remove trailing slashes
+- Strip unnecessary query parameters (tracking, referral, etc.)
 
 **Site:**
 - Identify the **content identity** - the publication, brand, blog, or author
@@ -60,35 +61,44 @@ Articles use these fields in the INFO callout:
 - Format as: `Month Day, Year` (e.g., "June 7, 2015")
 - If no date found, REMOVE this line
 
-### No Video Embed
-- Articles do not include video embeds
-- If a notable hero image is present, consider embedding it
+### Hero Image
+- If the article has a notable hero image, embed it at the end of the INFO callout: `![](image-url)`
+- Always place an empty callout line (`>`) before the embed
 
 ## Article Description Strategy
 
-This section presents the article's content to help the user decide whether to read.
+This section preserves knowledge about the article and entices the reader to engage with the original.
+
+**Key principle:** Extract, don't summarize. Summaries replace reading; extracts invite reading. Short or straightforward content may warrant a brief summary, but default to extracts for substantive articles.
+
+**Quality expectation:** Writing a good description is high-cognitive work. Spend time refining it, paying attention to nuances. Don't settle for a first draft.
 
 **Steps:**
 
 1. **Extract and clean main content:**
-   - Use WebFetch or similar to get article text
    - Remove navigation elements, ads, footers, sidebars
    - Remove promotional elements and newsletter signups
-   - Preserve the article's core message and structure
+   - Identify sections with HTML anchor IDs for deep linking
 
-2. **Create navigable summary:**
-   - Summarize key arguments and main points
-   - Include notable examples or case studies mentioned
-   - Highlight unique insights or perspectives
-   - Create an index of the article's structure
+2. **Create a navigable index with extracts:**
+   - Structure as an index of the article's sections
+   - Pull direct quotes that capture key insights
+   - Highlight surprising claims or counterintuitive ideas
+   - Note memorable examples or case studies
+   - Deep link to sections using reference-style: `[section title][section-id]`
+
+3. **Preserve contextual images:**
+   - Embed diagrams, illustrations, or screenshots that clarify the surrounding text: `![](image-url)`
+   - Place each image where it provides value to the reader (not grouped at the end)
+   - Skip decorative images that don't add informational content
 
 **Requirements:**
-- Focus on helping user understand what the article covers
-- Don't include full article text - create a summary/index
-- Preserve important quotes or key insights
-- Help user decide whether to read in full
+- Extracts should pull the reader toward the original article
+- Deep link to specific sections, not just the article URL
+- Preserve the article's voice through direct quotes
+- Do NOT restate or paraphrase the article's content
 
-**Goal**: Give user enough context to understand the article's value and decide whether to invest time reading it.
+**Goal**: Capture knowledge hooks that make the reader want to revisit specific sections of the original.
 
 ## Article-Specific Considerations
 
@@ -96,6 +106,7 @@ This section presents the article's content to help the user decide whether to r
 - Note which version/date documentation is current as of
 - Highlight key sections or concepts covered
 - May include direct quotes of important definitions
+- Copy short code snippets (a few lines) directly; link to longer ones
 
 **Blog posts:**
 - Capture author's main argument or thesis
@@ -116,5 +127,28 @@ This section presents the article's content to help the user decide whether to r
 - Note if article is part of a series
 - May want to capture other parts separately
 - Include navigation links if available
+
+## Extracting External Links for Further Reading
+
+While processing the article, collect external links the author references for the Further Reading subsection (see `references/shared-workflow.md`).
+
+**Where to look:**
+- Inline hyperlinks within the body text
+- Footnotes and endnotes
+- "Further Reading" or "References" sections
+- Embedded resources (GitHub repos, Wikipedia, papers)
+- "See also" or related links sections
+
+**What makes a good Further Reading link:**
+- Wikipedia pages explaining technical concepts mentioned
+- GitHub repositories with code samples or related projects
+- Other articles the author explicitly recommends
+- Documentation pages for tools or libraries discussed
+- Academic papers or research the author references
+
+**Skip:**
+- Author's own social media or newsletter signups
+- Generic site links (just "github.com" vs. specific repo)
+- Internal navigation links within the same site
 
 For common mistakes to avoid, see `examples/common-mistakes.md`.

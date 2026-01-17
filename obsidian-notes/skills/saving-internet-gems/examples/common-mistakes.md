@@ -203,6 +203,20 @@ This file consolidates common mistakes across all gem types with explanations of
 
 ---
 
+### Mistake: Reference-style syntax for hero image embed
+**What's wrong:**
+```markdown
+![Hero][img]
+
+[img]: https://example.com/hero.jpg
+```
+
+**Why it's wrong:** Obsidian requires inline format for image embeds to render.
+
+**Correct approach:** Use inline format: `![](https://example.com/hero.jpg)`
+
+---
+
 ## General Mistakes
 
 ### Mistake: Creating files outside Gems/
@@ -228,7 +242,7 @@ This file consolidates common mistakes across all gem types with explanations of
 
 **Why it's wrong:** Creates tag fragmentation in the vault.
 
-**Correct approach:** Run `scripts/list-vault-tags.sh` first and prefer existing tags. Only create new tags when no existing tag fits.
+**Correct approach:** Discover existing tags first (see `scripts/list-vault-tags.sh` in the skill directory) and prefer them. Only create new tags when no existing tag fits.
 
 ---
 
