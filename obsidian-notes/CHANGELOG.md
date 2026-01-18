@@ -2,6 +2,29 @@
 
 All notable changes to the Obsidian Notes plugin will be documented in this file.
 
+## [3.1.0] - 2026-01-17
+
+### Saving Internet Gems Skill
+
+**Restructured with Decision-Focused Examples**
+
+- Replaced static skeleton templates with decision-focused examples that demonstrate activation reasoning and quality patterns
+- Made SKILL.md a lean table of contents pointing to specialized reference files for on-demand loading
+- Added activation-decisions reference with clear examples of when the skill should and shouldn't activate
+- Added common-mistakes reference to help distinguish quality output from poor output
+- Improved Personal Takeaways workflow with iterative refinement loop
+- Clarified taxonomy distinctions (Channel vs Event for videos, Site vs Platform for articles)
+
+**Refined Markdown Formatting and Extraction Patterns**
+
+- Strip tracking query parameters and trailing slashes from source URLs
+- Require empty callout line before hero image/video embeds
+- Enforce exact `yq -f extract` command for reliable YAML frontmatter parsing
+- Capture author-recommended resources in a Further Reading subsection
+- Added quality-patterns reference with good/bad examples for all note sections
+- Included guidance on code snippets and contextual image embeds
+- Reframed article descriptions as curated extracts with deep links (preserving author's voice rather than summarizing)
+
 ## [3.0.0] - 2025-11-24
 
 ### Saving Internet Gems Skill
