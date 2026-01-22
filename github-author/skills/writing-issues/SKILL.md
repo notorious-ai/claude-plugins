@@ -175,8 +175,9 @@ For detailed guidance, consult:
 
 | File | Contains |
 |------|----------|
-| `references/body-structure.md` | Body format, prose flow, type specializations, anti-patterns |
-| `examples/issue-examples.md` | Complete issue examples with titles and bodies |
+| `references/body-structure.md` | Body format, prose flow, type specializations, see-also pattern |
+| `examples/good-issue-examples.md` | Effective issue examples with probe tags showing context discovery |
+| `examples/bad-issue-examples.md` | Anti-patterns with detailed rationale for why they fail |
 
 ## What to Avoid
 
