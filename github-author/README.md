@@ -6,8 +6,8 @@ Enrich Claude's knowledge for authoring high-quality GitHub contributions. This 
 
 ### Skills
 
-- **writing-pull-requests** - Automatically activates when Claude helps with PR creation, providing advanced knowledge for crafting effective titles, descriptions, and review-friendly contributions
-- **writing-issues** - Automatically activates when Claude helps with issue creation, encoding principles for clear task tracking, bug reports, feature requests, and discussions
+- **writing-pull-requests** - Activates when Claude helps with PR creation. Teaches the "fill in the blank" technique for titles ("After this PR merges, the repository will _____"), motivation-focused descriptions, and context surfacing through probe questions
+- **writing-issues** - Activates when Claude helps with issue creation. Encodes present progressive titles ("Supporting...", "Fixing..."), outcome-focused bodies, and the "By the time this Issue is complete..." pattern for definition of done
 
 ### Commands
 
