@@ -11,16 +11,20 @@ Effective pull requests communicate the **why** behind changes, not the **what**
 
 The PR title describes how the **repository** changes when the PR merges. The verb targets the repository capability, not the developer action.
 
-**Think**: "This PR modifies the repository to _____"
+### The "Fill in the Blank" Technique
 
-| Developer Action (avoid) | Repository Capability (prefer) |
-|--------------------------|-------------------------------|
-| Add rate limiting | Limit authentication attempts |
-| Implement caching | Cache API responses |
-| Create validation | Validate user input before processing |
-| Write error handling | Handle connection timeouts gracefully |
+Complete this sentence with your title: "After this PR merges, the repository will _____."
 
-The verbs "add", "implement", "create", and "write" describe developer work. Prefer verbs that describe what the repository **does** after the change: parse, handle, support, expose, enable, optimize, simplify, prevent, serialize, validate, extract.
+The verb must make grammatical sense in this frame. Developer-action verbs fail the test:
+
+| Verb | "The repository will _____" | Works? |
+|------|----------------------------|--------|
+| Parse MAC addresses | "The repository will parse MAC addresses" | Yes |
+| Add rate limiting | "The repository will add rate limiting" | No |
+| Handle nil emails | "The repository will handle nil emails" | Yes |
+| Implement caching | "The repository will implement caching" | No |
+
+Developer-action verbs (add, implement, create, write, update, change) describe what the developer did. Repository-capability verbs (parse, handle, support, expose, enable, optimize, simplify, prevent, serialize, validate, extract) describe what the code does.
 
 ## Title Structure
 
@@ -70,6 +74,32 @@ Draw context from the discussion that led to the changes:
 3. What constraints shaped the solution?
 
 When context is missing, ask proactively. The motivation behind a change is essential for a good PR.
+
+## Surfacing Hidden Context
+
+PRs live in the solution-space: the author has made decisions and the changeset reflects those decisions. The description must surface the context that led to this solution.
+
+### What the Prose Must Capture
+
+The diff shows **what** changed. The description must explain what the diff cannot convey:
+
+- **Expected outcome**: What the change accomplishes (verifiable against the changeset)
+- **Intent behind the change**: Why this change, why now
+- **Trade-offs accepted**: What was sacrificed and why it was acceptable
+- **Alternatives rejected**: Other approaches considered and why they were not chosen
+- **Constraints that shaped the solution**: Technical, organizational, or timeline limitations
+- **Assumptions made**: What must remain true for this solution to work
+- **Future considerations deferred**: What this change explicitly does not address
+
+### Detecting Missing Context
+
+Use intelligence to detect when essential context is missing. When gaps exist, ask targeted questions before drafting:
+
+- "What led to choosing X over Y for this approach?"
+- "What constraint prevented the simpler solution?"
+- "What should reviewers verify to confirm this works as intended?"
+
+If the user cannot provide the information after being asked, use `[FILL: rationale for approach]` placeholders to indicate where context is needed.
 
 ## Repository Templates
 
