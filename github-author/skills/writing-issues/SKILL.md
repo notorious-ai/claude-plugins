@@ -1,6 +1,6 @@
 ---
 name: Writing Issues
-description: Activates when the user asks to "write an issue", "draft an issue", "create a GitHub issue", "file a bug report", "submit a feature request", "track this work", or "open an issue". Also triggers proactively when preparing to create an issue with `gh issue create` or when discussing work that should be tracked. Covers issue authoring for bugs, features, tasks, and discussions.
+description: This skill should be used when the user asks to "write an issue", "draft an issue", "create a GitHub issue", "file a bug report", "submit a feature request", "track this work", or "open an issue". Also activates proactively when preparing to create an issue with `gh issue create` or when discussing work that should be tracked. Covers issue authoring for bugs, features, tasks, and discussions.
 ---
 
 # Writing Issues
@@ -182,9 +182,11 @@ For detailed guidance, consult:
 
 | File | Contains |
 |------|----------|
-| `references/body-structure.md` | Body format, prose flow, type specializations, see-also pattern |
+| `references/body-structure.md` | Body format, prose flow, type specializations, linking related resources |
 | `examples/good-issue-examples.md` | Effective issue examples with probe tags showing context discovery |
 | `examples/bad-issue-examples.md` | Anti-patterns with detailed rationale for why they fail |
+
+**About probe tags**: Example files use `<probe>` tags to demonstrate targeted questions that surface essential context. Each probe shows what to ask ("Who is affected?", "What's the impact?") and the information it reveals. Use this pattern when gathering context before drafting.
 
 ## What to Avoid
 
