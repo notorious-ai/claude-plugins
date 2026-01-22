@@ -68,7 +68,8 @@ Issues describe what the diff cannot convey (because the diff doesn't exist yet)
 - **Impact if unaddressed**: What happens if this issue is never resolved
 - **What outcome would resolve this**: The verifiable end state (see "Definition of Done")
 - **Constraints limiting solutions**: Technical, organizational, or timeline boundaries
-- **Related prior attempts**: What has been tried before and why it didn't work
+- **Scope boundaries**: What is explicitly not part of this issue's definition of done
+- **Related prior attempts**: What has been tried before and why it didn't work (brief context, not exhaustive history)
 
 ### Detecting Missing Context
 

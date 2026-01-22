@@ -85,18 +85,21 @@ The diff shows **what** changed. The description must explain what the diff cann
 
 - **Expected outcome**: What the change accomplishes (verifiable against the changeset)
 - **Intent behind the change**: Why this change, why now
-- **Trade-offs accepted**: What was sacrificed and why it was acceptable
-- **Alternatives rejected**: Other approaches considered and why they were not chosen
-- **Constraints that shaped the solution**: Technical, organizational, or timeline limitations
+- **Constraints that shaped the solution**: Technical, organizational, or timeline limitations that drove this approach
+- **Designed exclusions**: What this change explicitly does not address and why that's intentional
+- **Reevaluation triggers**: Conditions under which this decision should be revisited
 - **Assumptions made**: What must remain true for this solution to work
-- **Future considerations deferred**: What this change explicitly does not address
+- **Trade-offs accepted**: What was sacrificed and why it was acceptable
+
+Alternatives considered may be worth brief mention, but focus on constraints and exclusions over exhaustive comparison of rejected options.
 
 ### Detecting Missing Context
 
 Use intelligence to detect when essential context is missing. When gaps exist, ask targeted questions before drafting:
 
-- "What led to choosing X over Y for this approach?"
 - "What constraint prevented the simpler solution?"
+- "What is explicitly out of scope for this change, and why?"
+- "Under what conditions should we revisit this approach?"
 - "What should reviewers verify to confirm this works as intended?"
 
 If the user cannot provide the information after being asked, insert actionable placeholders that specify exactly what information is missing and how to obtain it:
