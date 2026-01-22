@@ -178,6 +178,33 @@ For detailed guidance, consult:
 | `references/body-structure.md` | Body format, prose flow, type specializations, anti-patterns |
 | `examples/issue-examples.md` | Complete issue examples with titles and bodies |
 
+## What to Avoid
+
+<negative>
+<pattern>Prescribing implementation steps instead of outcomes</pattern>
+<reason>Issues define what needs to happen, not how. "Add a database column" prescribes; "Users need to specify timezone" describes outcome.</reason>
+</negative>
+
+<negative>
+<pattern>Using imperative titles: "Add timezone support", "Fix search crash"</pattern>
+<reason>Imperative mood suits PRs (commands that execute). Issues use present progressive to indicate ongoing work: "Supporting timezone preferences".</reason>
+</negative>
+
+<negative>
+<pattern>Skipping the "why does this matter" opening</pattern>
+<reason>The opening paragraph must establish motivation. Without it, readers don't know why they should care about this issue.</reason>
+</negative>
+
+<negative>
+<pattern>Creating task-like issues for small items: "Update button color"</pattern>
+<reason>Small tasks belong in parent issue checklists, not standalone issues. Issues track meaningful work with clear outcomes.</reason>
+</negative>
+
+<negative>
+<pattern>Framing missing features as bugs: "Bug: no dark mode"</pattern>
+<reason>Missing functionality is a feature request, not a bug. Bugs describe incorrect behavior; features describe new capability.</reason>
+</negative>
+
 ## Validation Checklist
 
 Before presenting the issue:
