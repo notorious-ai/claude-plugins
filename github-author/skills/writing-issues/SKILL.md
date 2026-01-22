@@ -92,9 +92,11 @@ Use `gh issue list` to discover related work. Reference relevant issues to conne
 
 ## Body Philosophy
 
-The body explains **why** this issue exists and **what** outcome is needed. Leave the **how** to the assignee.
+Issues are **problem-space** documents. They define what needs solving and why it matters. PRs (solution-space) explain how; issues explain why.
 
-The first paragraph immediately follows the title without a header. This opening establishes context and motivation.
+The body explains **why** this issue exists and **what** outcome is needed. Leave the **how** to the assignee. Implementation prescription removes agency from the person doing the work and often misses better approaches.
+
+The first paragraph immediately follows the title without a header. This opening establishes context and motivation - the "why does this matter" that pulls readers in.
 
 ### Prose Over Checklists
 
