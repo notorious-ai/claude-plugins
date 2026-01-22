@@ -179,6 +179,33 @@ For detailed guidance, consult:
 | `references/description-structure.md` | Description format, prose flow, headers, anti-patterns |
 | `examples/pr-examples.md` | Complete PR examples with titles and descriptions |
 
+## What to Avoid
+
+<negative>
+<pattern>Rehashing commits in bullet lists</pattern>
+<reason>The git log shows commits; the description explains intent the diff cannot convey.</reason>
+</negative>
+
+<negative>
+<pattern>Describing file-by-file changes</pattern>
+<reason>The diff shows which files changed. Describe the capability, not the file list.</reason>
+</negative>
+
+<negative>
+<pattern>Starting with "This PR adds/implements/creates..."</pattern>
+<reason>This describes developer action. Start with why this change matters or what outcome it achieves.</reason>
+</negative>
+
+<negative>
+<pattern>Skipping context when no issue exists</pattern>
+<reason>Without a linked issue, the description must provide problem-space context. "Fixes the bug" with no issue is meaningless.</reason>
+</negative>
+
+<negative>
+<pattern>Using developer-action verbs in titles: add, create, implement, write, update, change</pattern>
+<reason>These describe what the developer did, not what the repository now does. See `examples/bad-pr-examples.md` for detailed guidance.</reason>
+</negative>
+
 ## Self-Review Checklist
 
 Before presenting the PR:
