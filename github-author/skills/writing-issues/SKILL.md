@@ -78,7 +78,13 @@ Use intelligence to detect when essential context is missing. When gaps exist, a
 - "What happens to them if this remains unaddressed?"
 - "What would 'done' look like - what should be true when this is resolved?"
 
-If the user cannot provide the information after being asked, use `[FILL: who is affected and how]` placeholders to indicate where context is needed.
+If the user cannot provide the information after being asked, insert actionable placeholders that specify exactly what information is missing and how to obtain it:
+
+- `[FILL: Interview support team for frequency of this complaint]`
+- `[FILL: Check analytics for user journey drop-off data]`
+- `[FILL: Ask product owner for priority relative to roadmap]`
+
+Placeholders must be specific enough that someone can act on them immediately.
 
 ### From the Repository
 

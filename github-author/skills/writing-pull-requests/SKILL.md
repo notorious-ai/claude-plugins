@@ -99,7 +99,13 @@ Use intelligence to detect when essential context is missing. When gaps exist, a
 - "What constraint prevented the simpler solution?"
 - "What should reviewers verify to confirm this works as intended?"
 
-If the user cannot provide the information after being asked, use `[FILL: rationale for approach]` placeholders to indicate where context is needed.
+If the user cannot provide the information after being asked, insert actionable placeholders that specify exactly what information is missing and how to obtain it:
+
+- `[FILL: Ask the original author why X was chosen over Y]`
+- `[FILL: Check git blame for commit message explaining this constraint]`
+- `[FILL: Review linked issue for context on why this approach]`
+
+Placeholders must be specific enough that someone can act on them immediately.
 
 ## Repository Templates
 
