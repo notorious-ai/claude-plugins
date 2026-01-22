@@ -110,6 +110,17 @@ If the user cannot provide the information after being asked, insert actionable 
 
 Placeholders must be specific enough that someone can act on them immediately.
 
+### Embedding Rationale in Code
+
+When rationale is uncovered, check the changeset for appropriate places to embed it permanently:
+
+- **Code comments**: Constraints, reevaluation triggers, and non-obvious decisions belong near the code they affect
+- **Doc strings**: API contracts, assumptions, and usage caveats belong in function/method documentation
+- **README sections**: Architectural decisions and design constraints belong in project documentation
+- **ADR files**: Significant decisions with long-term implications may warrant a dedicated architecture decision record
+
+Not all rationale belongs in the PR description. If a constraint or decision will matter to future maintainers reading the code, it should live in the code. The PR description explains intent for reviewers; code comments explain intent for maintainers.
+
 ## Repository Templates
 
 Before drafting, check for repository-specific templates that encode team conventions.
