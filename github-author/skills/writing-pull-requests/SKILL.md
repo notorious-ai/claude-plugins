@@ -1,6 +1,6 @@
 ---
 name: Writing Pull Requests
-description: Activates when the user asks to "write a PR", "draft a pull request", "create PR description", "improve PR title", "make PR easier to review", "help with pull request", or "open a PR". Also triggers proactively when preparing to create a pull request with `gh pr create` or when reviewing staged changes for contribution. Covers PR authoring, titles, and descriptions.
+description: This skill should be used when the user asks to "write a PR", "draft a pull request", "create PR description", "improve PR title", "make PR easier to review", "help with pull request", or "open a PR". Also activates proactively when preparing to create a pull request with `gh pr create` or when reviewing staged changes for contribution. Covers PR authoring, titles, and descriptions.
 ---
 
 # Writing Pull Requests
@@ -205,6 +205,8 @@ For detailed guidance, consult:
 | `references/description-structure.md` | Description format, prose flow, issue linking, post-merge patterns |
 | `examples/good-pr-examples.md` | Effective PR examples with probe tags showing context discovery |
 | `examples/bad-pr-examples.md` | Anti-patterns with detailed rationale for why they fail |
+
+**About probe tags**: Example files use `<probe>` tags to demonstrate targeted questions that surface essential context. Each probe shows what to ask ("What constraint prevented the simpler solution?", "What's the proof?") and the information it reveals. Use this pattern when gathering context before drafting.
 
 ## What to Avoid
 
