@@ -12,6 +12,41 @@ The first paragraph immediately follows the PR title without a header. This para
 
 When an issue is linked, the opening can be brief since the issue provides context. When no issue exists, the opening must compensate by providing that context directly.
 
+### Opening with Intent
+
+The opening sentence establishes the change's purpose. Start with outcome or motivation, not developer action.
+
+**Prefer** (outcome-focused):
+```markdown
+Users with large datasets experience 10+ second page loads, causing
+15% to abandon the dashboard before it finishes rendering.
+```
+
+```markdown
+Security review identified that authentication endpoints accept
+unlimited attempts, making the system vulnerable to brute-force attacks.
+```
+
+```markdown
+The current parser rejects MAC addresses in Azure IMDS format, blocking
+integration with Azure Instance Metadata Service.
+```
+
+**Avoid** (developer-action focused):
+```markdown
+This PR adds caching to improve performance.
+```
+
+```markdown
+I implemented rate limiting for the auth endpoints.
+```
+
+```markdown
+Added support for MAC address parsing.
+```
+
+The "avoid" examples describe what the developer did. The "prefer" examples explain why the change matters.
+
 ## Prose Flow
 
 Write descriptions as flowing paragraphs rather than templated sections. Subsequent paragraphs naturally expand on:
@@ -40,6 +75,26 @@ Prefer reference-style links (`[text][anchor]` with `[anchor]: url` at the botto
 When URLs appear as text (not as link targets), wrap in angle brackets: `<https://...>`.
 
 GitHub issues and PRs use the full short syntax: `org/repo#123`.
+
+### Issue Linking Keywords
+
+GitHub recognizes keywords that automatically close issues when the PR merges. These keywords have specific semantics:
+
+| Keyword | Semantics | Use When |
+|---------|-----------|----------|
+| `Closes` | Completes the work described in the issue | The PR fully addresses the issue's scope |
+| `Fixes` | Resolves a defect or bug | The PR corrects incorrect behavior |
+| `Resolves` | Addresses a discussion or decision | The PR implements a decided approach |
+
+All three close the linked issue on merge. The choice signals intent to future readers:
+
+```markdown
+Closes org/repo#123          # This PR completes issue #123
+Fixes org/repo#456           # This PR fixes bug #456
+Resolves org/repo#789        # This PR implements the decision from #789
+```
+
+Use `Relates to org/repo#123` when the PR is connected but doesn't fully address the issue.
 
 ## Headers in Long Descriptions
 
@@ -89,6 +144,48 @@ Closes org/repo#456
 ```
 
 Avoid templated headers for short descriptions. A single prose paragraph often suffices.
+
+## Post-Merge Follow-up
+
+When a PR requires action after merging, document it explicitly. Use a `## Post-Merge` or `## Follow-up` section with checkboxes for trackable items:
+
+```markdown
+## Post-Merge
+
+- [ ] Update downstream consumers in `service-a` and `service-b`
+- [ ] Notify #platform-eng channel of the breaking change
+- [ ] Create follow-up issue for deprecation timeline
+```
+
+### Follow-up PRs
+
+When this PR is part of a sequence, reference the relationship:
+
+```markdown
+## Follow-up
+
+This PR handles the backend changes. Frontend integration follows in
+a separate PR once this merges and the API is stable.
+
+See also: org/repo#890 (frontend tracking issue)
+```
+
+### Deferred Work
+
+When the PR intentionally defers scope, document what was deferred and why:
+
+```markdown
+## Not in Scope
+
+This PR focuses on the core caching mechanism. The following are
+intentionally deferred:
+
+- Cache invalidation strategies (requires design discussion)
+- Metrics and observability (separate instrumentation PR)
+- Configuration hot-reloading (nice-to-have, not blocking)
+```
+
+Explicit scoping prevents reviewers from requesting out-of-scope changes and creates a record of intentional decisions.
 
 ## Proofs
 
