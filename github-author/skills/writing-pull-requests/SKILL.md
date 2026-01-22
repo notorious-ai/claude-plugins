@@ -112,14 +112,20 @@ Placeholders must be specific enough that someone can act on them immediately.
 
 ### Embedding Rationale in Code
 
-When rationale is uncovered, check the changeset for appropriate places to embed it permanently:
+When rationale is uncovered, check the changeset for appropriate places to embed it permanently. Respect existing project conventions - do not introduce new documentation patterns.
 
-- **Code comments**: Constraints, reevaluation triggers, and non-obvious decisions belong near the code they affect
-- **Doc strings**: API contracts, assumptions, and usage caveats belong in function/method documentation
-- **README sections**: Architectural decisions and design constraints belong in project documentation
-- **ADR files**: Significant decisions with long-term implications may warrant a dedicated architecture decision record
+**Preferred locations** (in order of preference):
 
-Not all rationale belongs in the PR description. If a constraint or decision will matter to future maintainers reading the code, it should live in the code. The PR description explains intent for reviewers; code comments explain intent for maintainers.
+1. **Code comments**: Near the code the rationale affects - constraints, reevaluation triggers, non-obvious decisions
+2. **Doc strings**: In existing function/method documentation - API contracts, assumptions, usage caveats
+3. **Existing documentation**: If the project has architecture docs, design docs, or similar markdown files that already cover this area
+
+**Do not**:
+- Create ADR files if the project has no ADR convention
+- Add niche sections to an otherwise generic README
+- Introduce documentation patterns the project doesn't use
+
+If no trivial code location exists, include the rationale in the PR description. The PR is the fallback, not the first choice - but it's better there than nowhere.
 
 ## Repository Templates
 
