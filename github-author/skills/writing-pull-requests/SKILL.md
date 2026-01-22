@@ -125,13 +125,15 @@ Templates are guides, not rigid forms.
 
 ## Description Philosophy
 
-The description explains **why** this change exists. For PRs, focus on motivation over mechanics. For Issues linked to the PR, focus on **why** over **how** - the desired outcome rather than implementation steps.
+PRs are **solution-space** documents. Issues define what needs solving (problem-space); PRs explain why this particular solution was chosen and what outcome it achieves.
+
+The description explains **why** this solution exists and **what outcome** it delivers. The expected outcome must be verifiable: reviewers should be able to confirm the changeset achieves the stated intent.
 
 The first paragraph immediately follows the title without a header. This opening carries the weight of explaining the change purpose.
 
-**When an issue is linked**: The description can be brief since the issue provides context.
+**When an issue is linked**: The description can be brief since the issue provides problem-space context. Focus on the solution rationale: why this approach, what trade-offs were accepted.
 
-**When no issue exists**: The description must compensate by providing that context directly - background, how the problem was discovered, impact if unaddressed, and constraints.
+**When no issue exists**: The description must compensate by providing both problem-space context (what prompted the change, who is affected) and solution-space rationale (why this approach over alternatives).
 
 ## PR Scope
 
