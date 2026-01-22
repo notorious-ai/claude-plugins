@@ -55,6 +55,31 @@ Draw from the discussion that surfaced the need:
 
 When context is incomplete, ask proactively. The motivation behind an issue is essential for effective tracking.
 
+## Surfacing Hidden Context
+
+Issues live in the problem-space: they define what needs solving without prescribing how. The body must surface the context that makes the problem clear and the outcome verifiable.
+
+### What the Prose Must Capture
+
+Issues describe what the diff cannot convey (because the diff doesn't exist yet). The body must explain:
+
+- **Who is affected**: Which users, systems, or processes experience this problem
+- **How they are affected**: The specific pain, limitation, or risk
+- **Impact if unaddressed**: What happens if this issue is never resolved
+- **What outcome would resolve this**: The verifiable end state (see "Definition of Done")
+- **Constraints limiting solutions**: Technical, organizational, or timeline boundaries
+- **Related prior attempts**: What has been tried before and why it didn't work
+
+### Detecting Missing Context
+
+Use intelligence to detect when essential context is missing. When gaps exist, ask targeted questions before drafting:
+
+- "Who specifically encounters this problem and in what situation?"
+- "What happens to them if this remains unaddressed?"
+- "What would 'done' look like - what should be true when this is resolved?"
+
+If the user cannot provide the information after being asked, use `[FILL: who is affected and how]` placeholders to indicate where context is needed.
+
 ### From the Repository
 
 Check for existing context:
