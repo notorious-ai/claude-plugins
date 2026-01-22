@@ -355,9 +355,8 @@ coordinating with other teams.
 - Cannot require downtime for migration
 - Team capacity limits parallel work streams
 
-See also:
-- org/repo#345 (prior architecture discussion)
-- [Service boundaries ADR][adr-services]
+Prior discussion in org/repo#345 explored several decomposition strategies.
+The [service boundaries ADR][adr-services] documents the agreed approach.
 
 [adr-services]: https://docs.example.com/adr/0023-service-boundaries
 </body>
@@ -365,7 +364,7 @@ See also:
 <why_good>
 Title describes the outcome (independent deployment). Body uses the
 "By the time this issue is complete..." pattern for clear definition
-of done. Constraints help future implementers understand boundaries.
+of done. Links are woven into prose with context, not dumped in a list.
 </why_good>
 </example>
 
@@ -512,13 +511,12 @@ failover capabilities.
 - Schema optimizations (separate issue)
 - Application-level caching changes
 - Connection pooling improvements
-
-See also: org/repo#890, org/repo#891 (recent incidents)
 </body>
 
 <why_good>
 Title describes the migration outcome. Body explains drivers (incidents,
 timeline, operational burden), uses definition of done pattern, and
-explicitly scopes out related but separate work.
+explicitly scopes out related but separate work. Links to incidents
+appear in context where they support the narrative.
 </why_good>
 </example>
