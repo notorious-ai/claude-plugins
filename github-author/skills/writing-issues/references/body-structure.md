@@ -176,6 +176,27 @@ The following tasks are important to tidy after completion:
 
 Use checkboxes for trackable items. Place at the end of the issue body, after the main content.
 
+## See Also Closing
+
+End issues with a "See also" section to connect readers to related context without cluttering the main body:
+
+```markdown
+See also:
+- org/repo#234 (prior attempt at timezone support)
+- org/repo#567 (related notification system discussion)
+- [Timezone handling RFC][tz-rfc]
+
+[tz-rfc]: https://docs.example.com/rfcs/timezone-handling
+```
+
+The "See also" pattern works well for:
+- **Prior attempts**: Links to closed issues that tried to solve similar problems
+- **Related discussions**: Links to RFCs, ADRs, or discussion threads
+- **Dependent issues**: Issues that will be affected by or build on this work
+- **External resources**: Documentation, specifications, or research
+
+Keep "See also" brief. If relationships are central to understanding the issue, weave them into the prose instead.
+
 ## Common Anti-Patterns
 
 ### Implementation Prescription
