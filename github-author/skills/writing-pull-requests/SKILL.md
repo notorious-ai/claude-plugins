@@ -176,8 +176,9 @@ For detailed guidance, consult:
 
 | File | Contains |
 |------|----------|
-| `references/description-structure.md` | Description format, prose flow, headers, anti-patterns |
-| `examples/pr-examples.md` | Complete PR examples with titles and descriptions |
+| `references/description-structure.md` | Description format, prose flow, issue linking, post-merge patterns |
+| `examples/good-pr-examples.md` | Effective PR examples with probe tags showing context discovery |
+| `examples/bad-pr-examples.md` | Anti-patterns with detailed rationale for why they fail |
 
 ## What to Avoid
 
