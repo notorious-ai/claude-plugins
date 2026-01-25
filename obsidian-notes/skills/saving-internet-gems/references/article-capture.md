@@ -151,4 +151,4 @@ While processing the article, collect external links the author references for t
 - Generic site links (just "github.com" vs. specific repo)
 - Internal navigation links within the same site
 
-For common mistakes to avoid, see `examples/common-mistakes.md`.
+For common mistakes to avoid, see `common-mistakes.md`.

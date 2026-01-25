@@ -134,4 +134,4 @@ While processing the video, collect external links the speaker references for th
 - Generic "follow me" links
 - Timestamps (these belong in Description, not Further Reading)
 
-For common mistakes to avoid, see `examples/common-mistakes.md`.
+For common mistakes to avoid, see `common-mistakes.md`.
