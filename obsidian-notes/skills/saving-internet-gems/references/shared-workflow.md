@@ -65,7 +65,7 @@ Write a compelling, punchy summary about WHY this content is valuable.
 
 **Keep this section SHORT** - 3-4 sentences total.
 
-For good/bad examples, see `examples/quality-patterns.md`.
+For good/bad examples, see `quality-patterns.md`.
 
 ## Personal Takeaways Workflow
 
@@ -127,7 +127,7 @@ Round 2:
 Done → Final takeaways: B, E
 ```
 
-For good/bad examples, see `examples/quality-patterns.md`.
+For good/bad examples, see `quality-patterns.md`.
 
 ## Related Topics Workflow
 
@@ -217,7 +217,7 @@ Discover and create backlinks to relevant pages throughout the vault.
    - Always retain mandatory platform reference
    - Further Reading entries are generally kept as-is (they're curated by the author)
 
-For good/bad examples, see `examples/quality-patterns.md`.
+For good/bad examples, see `quality-patterns.md`.
 
 ## Migration Workflow
 

@@ -96,7 +96,7 @@ Report:
 
 When uncertain, consult these examples:
 - **`examples/activation-decisions.md`** - Comprehensive positive/negative activation cases
-- **`examples/quality-patterns.md`** - Good vs bad examples for each section type
+- **`quality-patterns.md`** - Good vs bad examples for each section type
 - **`examples/common-mistakes.md`** - Errors to avoid with explanations
 
 For output structure reference, analyze 2-3 existing gems in the user's vault (`Gems/Videos/` or `Gems/Articles/`).
