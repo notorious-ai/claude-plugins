@@ -14,7 +14,7 @@ Activate when ALL conditions are met:
 2. Message contains a URL (YouTube, Medium, blog, article)
 3. Working directory contains `.obsidian` (is an Obsidian vault)
 
-For comprehensive positive/negative activation corpus, see `examples/activation-decisions.md`.
+For comprehensive positive/negative activation corpus, see `activation-decisions.md`.
 
 **Brief inline example (activate):**
 > User: "Save this video for me: https://youtube.com/watch?v=abc123"
@@ -95,7 +95,7 @@ Report:
 ## Decision Support
 
 When uncertain, consult these examples:
-- **`examples/activation-decisions.md`** - Comprehensive positive/negative activation cases
+- **`activation-decisions.md`** - Comprehensive positive/negative activation cases
 - **`quality-patterns.md`** - Good vs bad examples for each section type
 - **`examples/common-mistakes.md`** - Errors to avoid with explanations
 
