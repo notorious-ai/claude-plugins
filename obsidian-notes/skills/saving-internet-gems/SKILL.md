@@ -14,7 +14,7 @@ Activate when ALL conditions are met:
 2. Message contains a URL (YouTube, Medium, blog, article)
 3. Working directory contains `.obsidian` (is an Obsidian vault)
 
-For comprehensive positive/negative activation corpus, see `examples/activation-decisions.md`.
+For comprehensive positive/negative activation corpus, see `activation-decisions.md`.
 
 **Brief inline example (activate):**
 > User: "Save this video for me: https://youtube.com/watch?v=abc123"
@@ -52,8 +52,8 @@ If not found, inform user this skill only works from Obsidian vault root.
 
 ### 3. Load Type-Specific Reference
 
-- **Videos**: Read `references/video-capture.md`
-- **Articles**: Read `references/article-capture.md`
+- **Videos**: Read `video-capture.md`
+- **Articles**: Read `article-capture.md`
 
 ### 4. Extract Content & Build Note Structure
 
@@ -61,7 +61,7 @@ Follow the extraction strategy and INFO callout format from the type-specific re
 
 ### 5. Load Shared Workflow
 
-Read `references/shared-workflow.md` for:
+Read `shared-workflow.md` for:
 - Directory structure and filename generation
 - Tag discovery strategy
 - TL;DR section workflow
@@ -88,15 +88,15 @@ Report:
 
 | File | Contains | Load When |
 |------|----------|-----------|
-| `references/shared-workflow.md` | Shared workflows (TL;DR, Takeaways, Topics, Tags, Migration) | Always after type-specific |
-| `references/video-capture.md` | Video extraction, INFO fields, description strategy | Content is video |
-| `references/article-capture.md` | Article extraction, INFO fields, description strategy | Content is article |
+| `shared-workflow.md` | Shared workflows (TL;DR, Takeaways, Topics, Tags, Migration) | Always after type-specific |
+| `video-capture.md` | Video extraction, INFO fields, description strategy | Content is video |
+| `article-capture.md` | Article extraction, INFO fields, description strategy | Content is article |
 
 ## Decision Support
 
 When uncertain, consult these examples:
-- **`examples/activation-decisions.md`** - Comprehensive positive/negative activation cases
-- **`examples/quality-patterns.md`** - Good vs bad examples for each section type
-- **`examples/common-mistakes.md`** - Errors to avoid with explanations
+- **`activation-decisions.md`** - Comprehensive positive/negative activation cases
+- **`quality-patterns.md`** - Good vs bad examples for each section type
+- **`common-mistakes.md`** - Errors to avoid with explanations
 
 For output structure reference, analyze 2-3 existing gems in the user's vault (`Gems/Videos/` or `Gems/Articles/`).

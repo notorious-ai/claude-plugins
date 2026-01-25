@@ -111,7 +111,7 @@ This section presents video content to help user decide whether to watch.
 
 ## Extracting External Links for Further Reading
 
-While processing the video, collect external links the speaker references for the Further Reading subsection (see `references/shared-workflow.md`).
+While processing the video, collect external links the speaker references for the Further Reading subsection (see `shared-workflow.md`).
 
 **Where to look:**
 - Video description links section
@@ -134,4 +134,4 @@ While processing the video, collect external links the speaker references for th
 - Generic "follow me" links
 - Timestamps (these belong in Description, not Further Reading)
 
-For common mistakes to avoid, see `examples/common-mistakes.md`.
+For common mistakes to avoid, see `common-mistakes.md`.

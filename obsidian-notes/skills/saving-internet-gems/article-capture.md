@@ -130,7 +130,7 @@ This section preserves knowledge about the article and entices the reader to eng
 
 ## Extracting External Links for Further Reading
 
-While processing the article, collect external links the author references for the Further Reading subsection (see `references/shared-workflow.md`).
+While processing the article, collect external links the author references for the Further Reading subsection (see `shared-workflow.md`).
 
 **Where to look:**
 - Inline hyperlinks within the body text
@@ -151,4 +151,4 @@ While processing the article, collect external links the author references for t
 - Generic site links (just "github.com" vs. specific repo)
 - Internal navigation links within the same site
 
-For common mistakes to avoid, see `examples/common-mistakes.md`.
+For common mistakes to avoid, see `common-mistakes.md`.
