@@ -2,6 +2,14 @@
 
 All notable changes to the Obsidian Notes plugin will be documented in this file.
 
+## [3.2.0] - 2026-01-25
+
+### Saving Internet Gems Skill
+
+- Flattened directory structure: all files now live at skill root for simpler `Read` tool paths
+- Removed `examples/`, `references/`, and `scripts/` subdirectories
+- Updated all cross-references to use flat paths
+
 ## [3.1.0] - 2026-01-17
 
 ### Saving Internet Gems Skill
