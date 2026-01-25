@@ -61,7 +61,7 @@ Follow the extraction strategy and INFO callout format from the type-specific re
 
 ### 5. Load Shared Workflow
 
-Read `references/shared-workflow.md` for:
+Read `shared-workflow.md` for:
 - Directory structure and filename generation
 - Tag discovery strategy
 - TL;DR section workflow
@@ -88,7 +88,7 @@ Report:
 
 | File | Contains | Load When |
 |------|----------|-----------|
-| `references/shared-workflow.md` | Shared workflows (TL;DR, Takeaways, Topics, Tags, Migration) | Always after type-specific |
+| `shared-workflow.md` | Shared workflows (TL;DR, Takeaways, Topics, Tags, Migration) | Always after type-specific |
 | `references/video-capture.md` | Video extraction, INFO fields, description strategy | Content is video |
 | `references/article-capture.md` | Article extraction, INFO fields, description strategy | Content is article |
 
