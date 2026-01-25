@@ -52,7 +52,7 @@ If not found, inform user this skill only works from Obsidian vault root.
 
 ### 3. Load Type-Specific Reference
 
-- **Videos**: Read `references/video-capture.md`
+- **Videos**: Read `video-capture.md`
 - **Articles**: Read `article-capture.md`
 
 ### 4. Extract Content & Build Note Structure
@@ -89,7 +89,7 @@ Report:
 | File | Contains | Load When |
 |------|----------|-----------|
 | `shared-workflow.md` | Shared workflows (TL;DR, Takeaways, Topics, Tags, Migration) | Always after type-specific |
-| `references/video-capture.md` | Video extraction, INFO fields, description strategy | Content is video |
+| `video-capture.md` | Video extraction, INFO fields, description strategy | Content is video |
 | `article-capture.md` | Article extraction, INFO fields, description strategy | Content is article |
 
 ## Decision Support
