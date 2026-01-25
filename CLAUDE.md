@@ -172,6 +172,14 @@ Before testing, validate components are correctly structured.
 
 **IMPORTANT:** Fix all validation issues before testing. Invalid components will not activate properly.
 
+## Version Management
+
+**CRITICAL:** Always bump the plugin version in `.claude-plugin/plugin.json` when making changes.
+
+- Versions use semantic versioning convention (major.minor.patch)
+- When working with a plan, begin by updating the changelog and plugin manifest before doing the work
+- Before **merging** or **pushing**, ensure the version is bumped
+
 ## Helping Users Test Their Plugin
 
 After creating a plugin, guide the user through local testing. **You cannot test the plugin yourself** - provide clear instructions for the user to follow.
