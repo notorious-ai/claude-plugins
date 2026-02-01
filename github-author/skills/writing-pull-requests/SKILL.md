@@ -245,8 +245,17 @@ For detailed guidance, consult:
 </negative>
 
 <negative>
-<pattern>Using developer-action verbs in titles: add, create, implement, write, update, change</pattern>
-<reason>These describe what the developer did, not what the repository now does. See `examples/bad-pr-examples.md` for detailed guidance.</reason>
+<pattern>Using developer-action verbs in titles</pattern>
+
+| Avoid | Why | Use Instead |
+|-------|-----|-------------|
+| add | Describes action of adding | handle, define, introduce |
+| implement | Narrates development | handle, support, enable |
+| update | Vague about what changed | optimize, fix, refactor (be specific) |
+| change | Maximally vague | optimize, correct, simplify (be specific) |
+| create | Focuses on creation not function | define, establish, introduce |
+
+<reason>These describe what the developer did, not what the repository now does. See `examples/bad-pr-examples.md` for comprehensive analysis.</reason>
 </negative>
 
 ## Self-Review Checklist
