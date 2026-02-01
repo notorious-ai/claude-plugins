@@ -26,6 +26,20 @@ The verb must make grammatical sense in this frame. Developer-action verbs fail 
 
 Developer-action verbs (add, implement, create, write, update, change) describe what the developer did. Repository-capability verbs (parse, handle, support, expose, enable, optimize, simplify, prevent, serialize, validate, extract) describe what the code does.
 
+### Quick Reference by Intent
+
+| Intent | Verbs |
+|--------|-------|
+| New capability | handle, parse, transform, validate, serialize, cache, pool |
+| Improvement | optimize, simplify, consolidate, enhance |
+| Fix | fix, correct, respect, prevent |
+| Structural | extract, expose, define, introduce |
+| Removal | remove, drop, deprecate |
+| Configuration | configure, enable, disable |
+| Documentation | explain, clarify, document |
+
+For comprehensive verb guidance and rationale, see `examples/bad-pr-examples.md`.
+
 ## Title Structure
 
 PR titles follow imperative mood, beginning with a verb:
