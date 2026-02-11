@@ -1,6 +1,6 @@
 {
   "name": "github-author",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Enrich Claude's knowledge for authoring high-quality GitHub contributions (PRs and Issues)",
   "author": {
     "name": "Daniel Orbach"

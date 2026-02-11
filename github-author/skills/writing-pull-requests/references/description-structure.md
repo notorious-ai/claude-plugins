@@ -96,6 +96,23 @@ Resolves org/repo#789        # This PR implements the decision from #789
 
 Use `Relates to org/repo#123` when the PR is connected but doesn't fully address the issue.
 
+## When to Use Headers
+
+Headers are organizational tools, not mandatory templates. Use them when they genuinely aid navigation.
+
+**Use prose without headers when:**
+- Description is under 3 paragraphs
+- Single topic or concern
+- Straightforward change with linked issue
+
+**Consider headers when:**
+- Description exceeds 3-4 paragraphs and covers multiple topics
+- Breaking changes or migration steps need visibility
+- Post-merge actions require explicit tracking
+- Complex architectural decision needs structured explanation
+
+For short descriptions, flowing prose is more readable than templated sections.
+
 ## Headers in Long Descriptions
 
 For lengthy descriptions (roughly 4+ paragraphs), headers help readers navigate. Use them sparingly and appropriately for the content.
