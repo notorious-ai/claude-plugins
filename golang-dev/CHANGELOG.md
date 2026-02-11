@@ -1,5 +1,16 @@
 # Changelog
 
+## naming
+
+Initial release of the naming skill for Go identifiers.
+
+- Core workflow for naming packages, functions, methods, types, variables, constants, and receivers
+- Reference files for context-aware naming guidance across all identifier types
+- Examples from Go stdlib demonstrating excellent naming patterns
+- Anti-pattern examples showing common mistakes with corrections
+- Triggers on user requests and proactively when Claude creates new code elements
+- Comprehensive coverage of Go team conventions including MixedCaps, initialisms, and repetition avoidance
+
 ## committing
 
 Initial release of the committing skill for Go-centric codebases.
