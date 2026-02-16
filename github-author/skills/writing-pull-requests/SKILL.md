@@ -26,6 +26,20 @@ The verb must make grammatical sense in this frame. Developer-action verbs fail 
 
 Developer-action verbs (add, implement, create, write, update, change) describe what the developer did. Repository-capability verbs (parse, handle, support, expose, enable, optimize, simplify, prevent, serialize, validate, extract) describe what the code does.
 
+### Quick Reference by Intent
+
+| Intent | Verbs |
+|--------|-------|
+| New capability | handle, parse, transform, validate, serialize, cache, pool |
+| Improvement | optimize, simplify, consolidate, enhance |
+| Fix | fix, correct, respect, prevent |
+| Structural | extract, expose, define, introduce |
+| Removal | remove, drop, deprecate |
+| Configuration | configure, enable, disable |
+| Documentation | explain, clarify, document |
+
+For comprehensive verb guidance and rationale, see `examples/bad-pr-examples.md`.
+
 ## Title Structure
 
 PR titles follow imperative mood, beginning with a verb:
@@ -231,8 +245,17 @@ For detailed guidance, consult:
 </negative>
 
 <negative>
-<pattern>Using developer-action verbs in titles: add, create, implement, write, update, change</pattern>
-<reason>These describe what the developer did, not what the repository now does. See `examples/bad-pr-examples.md` for detailed guidance.</reason>
+<pattern>Using developer-action verbs in titles</pattern>
+
+| Avoid | Why | Use Instead |
+|-------|-----|-------------|
+| add | Describes action of adding | handle, define, introduce |
+| implement | Narrates development | handle, support, enable |
+| update | Vague about what changed | optimize, fix, refactor (be specific) |
+| change | Maximally vague | optimize, correct, simplify (be specific) |
+| create | Focuses on creation not function | define, establish, introduce |
+
+<reason>These describe what the developer did, not what the repository now does. See `examples/bad-pr-examples.md` for comprehensive analysis.</reason>
 </negative>
 
 ## Self-Review Checklist

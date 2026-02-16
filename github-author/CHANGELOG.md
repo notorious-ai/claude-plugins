@@ -2,7 +2,14 @@
 
 All notable changes to github-author are documented in this file.
 
-## [0.1.0] - Unreleased
+## [0.2.0] - 2026-02-01
+
+### writing-pull-requests
+- Organize verbs by intent with scannable quick-reference table (new capability, improvement, fix, structural, removal, configuration, documentation)
+- Surface problematic verbs with three-column alternatives table (avoid, why, use instead)
+- Clarify header usage with concrete thresholds (prose for under 3 paragraphs, headers for 3-4+ paragraphs or complex topics)
+
+## [0.1.0] - 2026-01-31
 
 ### writing-pull-requests
 - Teach "fill in the blank" technique for titles: "After this PR merges, the repository will _____"
