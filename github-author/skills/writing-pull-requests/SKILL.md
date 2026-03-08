@@ -1,6 +1,6 @@
 ---
 name: Writing Pull Requests
-description: This skill should be used when the user asks to "write a PR", "draft a pull request", "create PR description", "improve PR title", "make PR easier to review", "help with pull request", or "open a PR". Also activates proactively when preparing to create a pull request with `gh pr create` or when reviewing staged changes for contribution. Covers PR authoring, titles, and descriptions.
+description: Encodes PR authoring conventions including imperative titles with repository-capability verbs, motivation-focused descriptions, hidden context surfacing, and prose flow guidelines. Must be loaded before composing any pull request title or description, whether drafting interactively or creating programmatically with gh pr create.
 ---
 
 # Writing Pull Requests

@@ -1,6 +1,6 @@
 ---
 name: Writing Issues
-description: This skill should be used when the user asks to "write an issue", "draft an issue", "create a GitHub issue", "file a bug report", "submit a feature request", "track this work", or "open an issue". Also activates proactively when preparing to create an issue with `gh issue create` or when discussing work that should be tracked. Covers issue authoring for bugs, features, tasks, and discussions.
+description: Encodes GitHub issue authoring conventions including present-progressive titles, outcome-focused bodies, problem-space framing, and definition-of-done patterns. Must be loaded before composing any issue title or body, whether drafting interactively or creating programmatically with gh issue create.
 ---
 
 # Writing Issues
