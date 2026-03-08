@@ -1,6 +1,6 @@
 ---
 description: Guided interview for creating well-structured GitHub issues
-allowed-tools: Read, Grep, Bash(gh:*), AskUserQuestion
+allowed-tools: Read, Grep, Glob, Skill, Bash(gh:*), AskUserQuestion
 disable-model-invocation: true
 ---
 

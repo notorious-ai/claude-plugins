@@ -1,6 +1,6 @@
 ---
 description: Interactive PR drafting with git-first context gathering
-allowed-tools: Read, Grep, Bash(git:*), Bash(gh:*), AskUserQuestion
+allowed-tools: Read, Grep, Glob, Skill, Bash(git:*), Bash(gh:*), AskUserQuestion
 disable-model-invocation: true
 ---
 
