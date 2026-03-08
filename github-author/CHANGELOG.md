@@ -2,6 +2,26 @@
 
 All notable changes to github-author are documented in this file.
 
+## [0.2.2] - 2026-03-08
+
+### writing-pull-requests
+- Rewrite description in third person for reliable skill discovery
+- Mark as background knowledge with `user-invocable: false`
+
+### writing-issues
+- Rewrite description in third person for reliable skill discovery
+- Mark as background knowledge with `user-invocable: false`
+
+### /draft-pr
+- Restrict to manual invocation with `disable-model-invocation: true`
+- Reference writing-pull-requests skill as explicit invocation, not vague prose
+- Add `Glob` and `Skill` to allowed tools
+
+### /draft-issue
+- Restrict to manual invocation with `disable-model-invocation: true`
+- Reference writing-issues skill as explicit invocation, not vague prose
+- Add `Glob` and `Skill` to allowed tools
+
 ## [0.2.1] - 2026-03-08
 
 ### writing-pull-requests
