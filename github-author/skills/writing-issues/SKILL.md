@@ -1,6 +1,7 @@
 ---
 name: Writing Issues
-description: This skill should be used when the user asks to "write an issue", "draft an issue", "create a GitHub issue", "file a bug report", "submit a feature request", "track this work", or "open an issue". Also activates proactively when preparing to create an issue with `gh issue create` or when discussing work that should be tracked. Covers issue authoring for bugs, features, tasks, and discussions.
+description: Encodes GitHub issue authoring conventions including present-progressive titles, outcome-focused bodies, problem-space framing, and definition-of-done patterns. Must be loaded before composing any issue title or body, whether drafting interactively or creating programmatically with gh issue create.
+user-invocable: false
 ---
 
 # Writing Issues
@@ -214,6 +215,16 @@ For detailed guidance, consult:
 <pattern>Framing missing features as bugs: "Bug: no dark mode"</pattern>
 <reason>Missing functionality is a feature request, not a bug. Bugs describe incorrect behavior; features describe new capability.</reason>
 </negative>
+
+## Line Formatting for GitHub
+
+GitHub's markdown renderer treats hard newlines within a paragraph as literal line breaks. When composing `--body` content for `gh issue create`, write each paragraph as a single continuous line with no mid-sentence wraps. Newlines should only appear:
+
+- Between paragraphs (blank line)
+- Before list items, headings, or code blocks
+- Where markdown syntax requires them
+
+This differs from `git commit -m`, where hard wraps are conventional because terminals render them directly.
 
 ## Validation Checklist
 

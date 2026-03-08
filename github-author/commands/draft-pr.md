@@ -1,6 +1,7 @@
 ---
 description: Interactive PR drafting with git-first context gathering
-allowed-tools: Read, Grep, Bash(git:*), Bash(gh:*), AskUserQuestion
+allowed-tools: Read, Grep, Glob, Skill, Bash(git:*), Bash(gh:*), AskUserQuestion
+disable-model-invocation: true
 ---
 
 # Draft Pull Request
@@ -65,7 +66,7 @@ If no linked issue, the description must compensate with comprehensive context.
 
 ## Step 4: Draft PR
 
-Apply the writing-pull-requests skill to draft:
+Invoke the writing-pull-requests skill to load PR authoring conventions. Then draft:
 
 1. **Identify the capability**: What does the repository do differently after this merges?
 2. **Title**: Imperative verb + capability (think: "After this PR merges, the repository will _____")
@@ -91,5 +92,5 @@ Use AskUserQuestion:
   - Revise (Let me adjust the title or description)
   - Cancel (Exit without creating)
 
-If "Create PR" or "Create as draft", execute `gh pr create`.
+If "Create PR" or "Create as draft", execute `gh pr create`. Avoid hard-wrapping paragraphs in the `--body` content; GitHub renders mid-paragraph newlines as literal line breaks.
 If "Revise", ask what to change and iterate.
