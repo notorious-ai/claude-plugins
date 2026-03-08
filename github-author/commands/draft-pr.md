@@ -1,6 +1,7 @@
 ---
 description: Interactive PR drafting with git-first context gathering
 allowed-tools: Read, Grep, Bash(git:*), Bash(gh:*), AskUserQuestion
+disable-model-invocation: true
 ---
 
 # Draft Pull Request
@@ -65,7 +66,7 @@ If no linked issue, the description must compensate with comprehensive context.
 
 ## Step 4: Draft PR
 
-Apply the writing-pull-requests skill to draft:
+Invoke the writing-pull-requests skill to load PR authoring conventions. Then draft:
 
 1. **Identify the capability**: What does the repository do differently after this merges?
 2. **Title**: Imperative verb + capability (think: "After this PR merges, the repository will _____")

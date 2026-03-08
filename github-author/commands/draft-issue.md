@@ -1,6 +1,7 @@
 ---
 description: Guided interview for creating well-structured GitHub issues
 allowed-tools: Read, Grep, Bash(gh:*), AskUserQuestion
+disable-model-invocation: true
 ---
 
 # Draft GitHub Issue
@@ -55,7 +56,7 @@ Ask if any existing issues relate. Prior attempts and discussions provide valuab
 
 ## Step 5: Draft Issue
 
-Apply the writing-issues skill to draft:
+Invoke the writing-issues skill to load issue authoring conventions. Then draft:
 
 1. **Title**: Present progressive verb + goal (think: "This issue is _____")
 2. **Body**: Open with why, state who/how affected, include definition of done, link related work with context
