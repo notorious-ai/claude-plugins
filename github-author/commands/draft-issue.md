@@ -73,5 +73,5 @@ Use AskUserQuestion:
   - Revise (Let me adjust the content)
   - Cancel (Exit without creating)
 
-If "Create issue", execute `gh issue create`.
+If "Create issue", execute `gh issue create`. Avoid hard-wrapping paragraphs in the `--body` content; GitHub renders mid-paragraph newlines as literal line breaks.
 If "Revise", ask what to change and iterate.

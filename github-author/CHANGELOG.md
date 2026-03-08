@@ -2,6 +2,20 @@
 
 All notable changes to github-author are documented in this file.
 
+## [0.2.1] - 2026-03-08
+
+### writing-pull-requests
+- Instruct continuous-line paragraphs in `--body` content to prevent GitHub rendering hard wraps as jagged line breaks
+
+### writing-issues
+- Instruct continuous-line paragraphs in `--body` content to prevent GitHub rendering hard wraps as jagged line breaks
+
+### /draft-pr
+- Warn against hard-wrapping paragraphs when executing `gh pr create`
+
+### /draft-issue
+- Warn against hard-wrapping paragraphs when executing `gh issue create`
+
 ## [0.2.0] - 2026-02-01
 
 ### writing-pull-requests

@@ -215,6 +215,16 @@ For detailed guidance, consult:
 <reason>Missing functionality is a feature request, not a bug. Bugs describe incorrect behavior; features describe new capability.</reason>
 </negative>
 
+## Line Formatting for GitHub
+
+GitHub's markdown renderer treats hard newlines within a paragraph as literal line breaks. When composing `--body` content for `gh issue create`, write each paragraph as a single continuous line with no mid-sentence wraps. Newlines should only appear:
+
+- Between paragraphs (blank line)
+- Before list items, headings, or code blocks
+- Where markdown syntax requires them
+
+This differs from `git commit -m`, where hard wraps are conventional because terminals render them directly.
+
 ## Validation Checklist
 
 Before presenting the issue:

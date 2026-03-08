@@ -91,5 +91,5 @@ Use AskUserQuestion:
   - Revise (Let me adjust the title or description)
   - Cancel (Exit without creating)
 
-If "Create PR" or "Create as draft", execute `gh pr create`.
+If "Create PR" or "Create as draft", execute `gh pr create`. Avoid hard-wrapping paragraphs in the `--body` content; GitHub renders mid-paragraph newlines as literal line breaks.
 If "Revise", ask what to change and iterate.
