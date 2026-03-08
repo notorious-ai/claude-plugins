@@ -1,6 +1,7 @@
 ---
 name: Writing Pull Requests
 description: Encodes PR authoring conventions including imperative titles with repository-capability verbs, motivation-focused descriptions, hidden context surfacing, and prose flow guidelines. Must be loaded before composing any pull request title or description, whether drafting interactively or creating programmatically with gh pr create.
+user-invocable: false
 ---
 
 # Writing Pull Requests
