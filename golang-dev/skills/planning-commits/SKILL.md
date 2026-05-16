@@ -81,6 +81,8 @@ Produce a numbered list in the shape defined by `references/plan-shape.md`. For 
 
 Start with a skeleton commit when the work introduces a new package, module, or subsystem (see `examples/skeleton-first.md`). Layer capabilities one per commit, each carrying the docs, flags, and tests it justifies.
 
+Each commit's diff stays scoped to its own change, including the mechanical hygiene (formatting, manifest tidying, regenerating derived files) the change itself produces. When the working tree starts contaminated before work begins, the cleanup belongs in a dedicated first commit, not buried in the first feature commit.
+
 A plan entry that reads like a good commit message is a sign of premature naming — strip it back to plain prose before continuing. The message-writing skill in step 5 produces the actual phrasing.
 
 ### 4. Present for Approval
@@ -113,11 +115,14 @@ The plan entry is the input; the commit message is the output of the message-wri
 | `examples/docs-with-feature.md` | Docs travel with their feature | Incremental |
 | `examples/dependency-adoption-isolated.md` | Dependency choice gets its own commit | Atomic (decision layering) |
 | `examples/decision-rationale-layering.md` | Decision body carries WHY-EXTRINSIC | Atomic (decision layering) |
+| `examples/go-mod-get-before-use.md` | One `go.mod: get` per module, ahead of use | Atomic (Go-specialised) |
+| `examples/go-mod-tidy-first.md` | Cleanup of a contaminated tree as the first commit | Atomic / Incremental |
 | `examples/antipattern-by-symbol-kind.md` | All types, then all methods | Counter-example |
 | `examples/antipattern-by-layer.md` | Interfaces, then implementations | Counter-example |
 | `examples/antipattern-by-mechanical-layer.md` | All handlers, then routes, then tests | Counter-example |
 | `examples/antipattern-flags-up-front.md` | All flags at the start | Counter-example |
 | `examples/antipattern-trailing-docs-dump.md` | Docs piled into a final commit | Counter-example |
+| `examples/antipattern-trailing-format-dump.md` | Formatting and tidying deferred to a trailing commit | Counter-example |
 
 ## Validation Checklist
 

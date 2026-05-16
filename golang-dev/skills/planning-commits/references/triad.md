@@ -27,3 +27,5 @@ A two-line diff is fine-grained if it lands one cohesive change. A fifty-file di
 Build the final value over a planned sequence of commits. Start with a skeleton — package doc, README outline, type sketch, no-op functions with intent — that names the goal without forward-referencing implementations that do not yet exist on the branch. Then layer capabilities, one per commit.
 
 Flags grow with the features that need them; never land flags up front. Docs travel with the commit that introduces the feature they describe; never accumulate into a trailing docs-dump commit. Tests interleave with the code they exercise; never batch them at the end.
+
+Formatting, tidying, and other mechanical hygiene happen within the commit that produced the change, never deferred to a trailing dump. Each commit's diff is scoped to its own value — the production change plus the cleanup that change itself implies. When the working tree starts contaminated (drift from prior partial work), the cleanup is its own first commit; after that, every subsequent commit holds the line.
