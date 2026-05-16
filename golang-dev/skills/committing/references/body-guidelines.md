@@ -52,7 +52,13 @@ Use `fmt -w 72` or `fold -s -w 72` to verify body text is properly wrapped.
 
 ## What to Include
 
-The body's purpose is to capture the **WHY** - context from the conversation and thought process that led to this change.
+A commit has three layers of meaning, and each lives in its own place:
+
+- **The diff is the WHAT** - the change itself, line by line.
+- **File comments are the WHY-INTRINSIC** - doc comments, header blocks, and inline notes that explain the file's own decisions. A reader sees them the moment they look at the diff.
+- **The commit body is the WHY-EXTRINSIC** - facts about the world around the diff: where this change sits in a longer sequence, what motivated doing it now, what it unlocks downstream, what alternative was rejected, what constraint forced it.
+
+Keep the body in its lane. Its job is the surrounding story the diff cannot show.
 
 ### Motivation
 

@@ -15,6 +15,7 @@ Commits tell the story of a codebase. Follow these rules for every commit:
 2. Think: "This change modifies TARGET to _____"
 3. Use plaintext only - no Markdown formatting in commit messages
 4. Respect local repository conventions while maintaining Go team style
+5. Keep the body in its lane: the diff is the WHAT, file comments are the WHY-INTRINSIC, the commit body is the WHY-EXTRINSIC
 
 ## Workflow
 
