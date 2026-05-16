@@ -222,7 +222,7 @@ Each example file documents its XML tag conventions at the top.
 
 When changes span both Go code and non-Go files:
 
-1. Consider splitting into separate commits (preferred)
+1. Plan the split first using `golang-dev:planning-commits`, then return to this skill for each commit's message
 2. If logically unified, choose the PRIMARY functional impact as target
 3. Use `all:` only for truly cross-cutting refactoring
 
