@@ -48,3 +48,71 @@ Some changesets do not warrant a plan:
 - **Single-capability changesets.** When the entire diff is the smallest version of one reviewable change, the plan has one entry — which is to say there is nothing to plan. Hand off to the message-writing skill directly.
 
 When skipping, do not ask. Proceed to writing directly and let the user redirect if they want a plan after all.
+
+## Workflow
+
+When planning commits for a non-trivial changeset:
+
+### 1. Inspect the Working Tree
+
+```bash
+git status
+git diff
+```
+
+Identify what has changed and what remains to be changed. If the work has not started, inspect the brief itself — what the user described, which files will likely change.
+
+### 2. Identify Capabilities and Decisions
+
+Read the changeset or brief for distinct units of value:
+
+- User-facing capabilities (endpoints, commands, public APIs, features).
+- Single decisions worth isolating (dependency choices, policy switches, architectural commitments).
+- Documentation that travels with each capability.
+
+If the first instinct is to group by symbol kind, abstraction layer, or mechanical role, stop. Consult `examples/antipattern-by-symbol-kind.md`, `examples/antipattern-by-layer.md`, or `examples/antipattern-by-mechanical-layer.md` to recognise the failure mode.
+
+### 3. Draft the Plan
+
+Produce a numbered list in the shape defined by `references/plan-shape.md`. For each entry:
+
+- A single sentence stating the scope.
+- A paragraph stating the context: why this commit, why now, what it deliberately does not include.
+
+Start with a skeleton commit when the work introduces a new package, module, or subsystem (see `examples/skeleton-first.md`). Layer capabilities one per commit, each carrying the docs, flags, and tests it justifies.
+
+### 4. Present for Approval
+
+Show the plan to the user. Make it easy to redirect:
+
+- Number each entry so the user can reference individual commits.
+- Keep entries brief enough that the whole plan fits in one screen.
+- Invite specific corrections rather than open-ended feedback.
+
+The plan is a proposal, not a contract. Adjust it freely as the user redirects.
+
+### 5. Hand Off Each Commit to the Message-Writing Skill
+
+When implementing a commit from the plan:
+
+1. Stage only the changes for that entry's scope.
+2. Load the commit-message-writing skill appropriate to the repository — in a Go-centric repository, `golang-dev:committing`.
+3. Pass the entry's scope and context as input to that skill, which produces the actual commit message.
+
+The plan entry is the input; the commit message is the output of the message-writing skill, not of this one.
+
+## Example Files
+
+| File | Pattern | Demonstrates |
+|------|---------|--------------|
+| `examples/skeleton-first.md` | First commit lays the ground | Incremental |
+| `examples/flags-grow-with-features.md` | Flags arrive with their feature | Atomic |
+| `examples/siblings-by-decision.md` | Sibling endpoints split by contract | Atomic |
+| `examples/docs-with-feature.md` | Docs travel with their feature | Incremental |
+| `examples/dependency-adoption-isolated.md` | Dependency choice gets its own commit | Atomic (decision layering) |
+| `examples/decision-rationale-layering.md` | Decision body carries WHY-EXTRINSIC | Atomic (decision layering) |
+| `examples/antipattern-by-symbol-kind.md` | All types, then all methods | Counter-example |
+| `examples/antipattern-by-layer.md` | Interfaces, then implementations | Counter-example |
+| `examples/antipattern-by-mechanical-layer.md` | All handlers, then routes, then tests | Counter-example |
+| `examples/antipattern-flags-up-front.md` | All flags at the start | Counter-example |
+| `examples/antipattern-trailing-docs-dump.md` | Docs piled into a final commit | Counter-example |
