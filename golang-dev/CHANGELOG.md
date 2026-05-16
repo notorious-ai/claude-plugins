@@ -2,6 +2,14 @@
 
 ## planning-commits
 
+Encode per-commit hygiene as part of the incremental facet.
+
+- Extend `references/triad.md` so the incremental facet names mechanical hygiene — formatting, tidying, regenerating derived files — as belonging within each commit, never deferred to a trailing dump
+- Surface the same rule in SKILL.md workflow step 3 so it applies whether or not the triad reference has been loaded
+- Add `examples/go-mod-get-before-use.md` showing one `go.mod: get` commit per module ahead of the first caller, with `go mod tidy` run before staging
+- Add `examples/go-mod-tidy-first.md` showing how to detect a contaminated working tree and isolate its cleanup as the first commit
+- Add `examples/antipattern-trailing-format-dump.md` covering the format/tidy analogue of the trailing-docs-dump anti-pattern, with framing that defers to per-repo tooling awareness rather than hardcoding a specific stack
+
 Polish pass following initial-release review.
 
 - Tighten SKILL.md description by removing the sibling-skill example, leaving the body to name the message-writing hand-off
