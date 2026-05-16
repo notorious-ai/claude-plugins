@@ -13,6 +13,14 @@ Initial release of the naming skill for Go identifiers.
 
 ## committing
 
+Tighten body discipline so the commit message stays in its lane.
+
+- Name the three layers of meaning: diff is WHAT, file comments are WHY-INTRINSIC, body is WHY-EXTRINSIC
+- Forbid paraphrasing the diff, illustrated with a worked before-and-after example
+- Introduce the stranger test as a pre-draft step that anchors body content in unanswered questions
+- Require the engineer's voice; reject agent narration and any echo of user instructions or prompts
+- Require body length to be proportional to diff complexity
+
 Initial release of the committing skill for Go-centric codebases.
 
 - Core workflow for generating commit messages matching Go team conventions
