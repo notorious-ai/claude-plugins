@@ -31,6 +31,27 @@ Useful prompts when generating the list:
 
 Each answer earns its place in the body. Sentences that do not answer one of these questions usually duplicate the diff.
 
+### Worked Example: Stranger's Questions to Body
+
+Consider a diff that renames `parseSpec` to `parseSchema` across a parser package and updates every caller. A stranger reading the diff sees a clean find-and-replace and a passing test suite.
+
+What the diff cannot tell them:
+
+- Why now? The user-facing term changed from "spec" to "schema" in last week's API revision.
+- Why not keep both names with a type alias? The next commit introduces an unrelated `parseSpec` for module specifications; the names would collide.
+
+Write only those answers:
+
+```
+parser: rename parseSpec to parseSchema for API alignment
+
+Last week's API revision renamed the user-facing term from "spec"
+to "schema". An alias was considered but rejected because the next
+commit introduces an unrelated parseSpec for module specifications.
+```
+
+A typo fix in a doc comment leaves the stranger with no open questions; its body stays empty.
+
 ## Length Echoes Complexity
 
 A body's length should echo the diff's complexity. The body is not a place to demonstrate effort; it is a place to answer the questions the diff leaves open.
