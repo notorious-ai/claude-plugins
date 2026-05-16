@@ -1,5 +1,17 @@
 # Changelog
 
+## planning-commits
+
+Initial release of the planning-commits skill for sequencing atomic, fine-grained, incremental commits before any code is written or messages are drafted.
+
+- Core workflow inspecting the changeset, identifying capabilities and decisions, drafting the plan, presenting for approval, and handing each commit off to a message-writing skill
+- Triad reference defining atomic, fine-grained, and incremental with the value-vs-syntactic distinction and the decision-rationale-layering benefit
+- Plan-shape reference specifying the single-sentence scope plus context paragraph deliverable and the hand-off contract to commit-message-writing skills
+- Six positive examples covering skeleton-first introductions, flags growing with their features, siblings split by decision context, docs travelling with their feature, isolated dependency adoption, and decision-rationale layering
+- Five anti-pattern examples covering syntactic grouping by symbol kind, abstraction layer, and mechanical role, plus the flags-up-front and trailing docs-dump failures
+- Language-agnostic triggers covering "plan commits", "break this into commits", "atomic commits", and proactive loading before any non-trivial changeset
+- Validation checklist and special-case guidance for mixed-language, dependency-only, and large-refactor changesets
+
 ## naming
 
 Initial release of the naming skill for Go identifiers.
@@ -12,6 +24,10 @@ Initial release of the naming skill for Go identifiers.
 - Comprehensive coverage of Go team conventions including MixedCaps, initialisms, and repetition avoidance
 
 ## committing
+
+Defer commit-splitting decisions to the new planning-commits skill.
+
+- Replace the "consider splitting into separate commits" guidance in Mixed Changes with a pointer to `golang-dev:planning-commits`
 
 Modernize skill frontmatter to use current Claude Code fields.
 
