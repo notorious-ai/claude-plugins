@@ -2,6 +2,8 @@
 
 Real and representative examples of commits for non-Go files in Go-centric codebases.
 
+Uses the same XML tag conventions as `go-code-examples.md`. See its "How to Read These Examples" section for the tag table.
+
 ## Examples with Full Context
 
 <example>
@@ -76,6 +78,23 @@ Verb "label" describes the resulting action.
 <message>github: switch seen/expected order in issue forms</message>
 <message>github: simplify the telemetry proposal template</message>
 <message>github: clean up issue forms</message>
+</examples>
+
+## Claude Code
+
+<examples category="claude" context="Claude Code configuration and project memory">
+<message>claude: document repository navigation conventions</message>
+<message>claude: allow npm commands without prompts</message>
+<message>claude: enforce pre-commit linting via hook</message>
+<message>claude: enable plugin auto-discovery</message>
+</examples>
+
+## Agents
+
+<examples category="agents" context="Subagent definitions">
+<message>agents: define plugin-validator for marketplace checks</message>
+<message>agents: specialize code-reviewer for security-sensitive paths</message>
+<message>agents: delegate test generation to go-test-writer</message>
 </examples>
 
 ## Git Configuration

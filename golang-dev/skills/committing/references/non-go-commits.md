@@ -83,6 +83,55 @@ github: label Dependabot PRs with "dependencies"
 github: enforce commit message format
 ```
 
+### Claude Code (`claude:`)
+
+Use `claude:` for Claude Code configuration and project memory.
+
+**Files:**
+- `CLAUDE.md` (project memory)
+- `.claude/` directory (settings.json, hooks, permissions)
+- `.claude-plugin/plugin.json` and other plugin manifests
+
+**Sentence completion:** "This change modifies Claude Code configuration to..."
+
+**Verbs:**
+- **document** - adds project memory or guidance
+- **configure** - general configuration
+- **allow** / **deny** - permission rules
+- **enable** / **disable** - feature toggles
+- **enforce** - enforces policies via hooks
+
+**Examples:**
+```
+claude: document repository navigation conventions
+claude: allow npm commands without prompts
+claude: enforce pre-commit linting via hook
+claude: enable plugin auto-discovery
+```
+
+### Agents (`agents:`)
+
+Use `agents:` for subagent definition files.
+
+**Files:**
+- `agents/*.md` (subagent definitions, in plugins or under `.claude/agents/`)
+
+**Sentence completion:** "This change modifies the agents to..."
+
+**Verbs:**
+- **define** - new agent
+- **specialize** - narrow agent scope
+- **expand** - widen triggers or capabilities
+- **delegate** - shift work to a specific agent
+- **retire** - drop an agent
+
+**Examples:**
+```
+agents: define plugin-validator for marketplace checks
+agents: specialize code-reviewer for security-sensitive paths
+agents: delegate test generation to go-test-writer
+```
+
 ### Git Configuration (`git:`)
 
 Use `git:` for Git configuration files.

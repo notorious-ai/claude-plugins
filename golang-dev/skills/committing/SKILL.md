@@ -1,6 +1,8 @@
 ---
 name: committing
-description: This skill should be used when writing commit messages in Go-centric codebases (go.mod present or known from context). Triggers on user requests like "write a commit message", "commit these changes", "generate commit", or "author a commit". Also triggers proactively when the agent completes a task and decides to commit, prepares to run git commit, or needs to craft a commit message for staged changes. Covers commits for Go packages, documentation, configs, CI, tooling, and all other files.
+description: Writes commit messages following Go team conventions for both Go packages and supporting files (docs, configs, CI, tooling) in Go-centric codebases (go.mod present or known from context).
+when_to_use: Triggers on explicit user requests like "write a commit message", "commit these changes", "generate commit", or "author a commit". Loads proactively at the EARLIEST signal that a commit will follow in a Go-centric repo (go.mod present): when Claude is asked to write code, edit files, refactor, fix a bug, implement a feature, or plan code work in such a repo; when starting any task that will produce a diff; when completing such a task; or when preparing to run git commit. Do not wait for the word "commit" to appear — in a Go codebase, commits are inevitable, and loading these conventions up front avoids a late-stage scramble for the right target and verb.
+allowed-tools: Bash(git diff:*) Bash(git log:*) Bash(git status:*)
 ---
 
 # Committing in Go Projects
@@ -15,6 +17,8 @@ Commits tell the story of a codebase. Follow these rules for every commit:
 2. Think: "This change modifies TARGET to _____"
 3. Use plaintext only - no Markdown formatting in commit messages
 4. Respect local repository conventions while maintaining Go team style
+5. Keep the body in its lane: the diff is the WHAT, file comments are the WHY-INTRINSIC, the commit body is the WHY-EXTRINSIC
+6. Write as the human engineer making the change, not as the agent executing a task - never echo prompts or instructions
 
 ## Workflow
 
@@ -64,6 +68,8 @@ Apply the decision algorithm from the appropriate reference file.
 | Go package | `pkg` or `pkg/sub` | `net/http:`, `context:` |
 | Documentation | `docs:` | All `.md` files, `docs/` |
 | GitHub | `github:` | `.github/` directory |
+| Claude Code | `claude:` | `CLAUDE.md`, `.claude/`, `plugin.json` |
+| Agents | `agents:` | `agents/` directory |
 | Git config | `git:` | `.gitignore`, `.gitattributes` |
 | Dependencies | `go.mod:` | Module changes |
 | Build | `build:` | Makefile, build scripts |
@@ -114,7 +120,11 @@ Do not guess - ask when:
 
 ### 8. Write Body (If Needed)
 
-Consult `references/body-guidelines.md` for when and how to write commit body.
+Three principles govern every body. Apply them in order:
+
+1. **Stranger test** - list the questions a reader who has only the diff would still have. Write only the answers. An empty list means omit the body.
+2. **Length echoes complexity** - a two-paragraph body on a three-line diff is suspicious. Trim until the body's weight matches the diff's weight.
+3. **Never paraphrase the diff** - if the file's own comments already explain the choices, do not restate them. The body's job is the surrounding story the diff cannot show.
 
 Include body when:
 - One-liner alone lacks sufficient context
@@ -124,6 +134,8 @@ Include body when:
 Skip body when:
 - Change is self-explanatory from one-liner + diff
 - Simple, mechanical changes (tidy, formatting)
+
+For voice, structure, and worked examples, consult `references/body-guidelines.md`.
 
 ### 9. Present for Review
 
@@ -164,15 +176,17 @@ Before presenting the commit message:
 - [ ] No period at end
 - [ ] Within 72 characters
 
-**Body (if present):**
+**Body (if present):** Authoritative checklist lives in `references/body-guidelines.md`. At minimum verify:
 - [ ] Provides context NOT visible in diff
-- [ ] Plaintext only (no Markdown)
-- [ ] Lines wrapped at 72 characters
+- [ ] Length proportional to diff complexity
+- [ ] Plaintext, 72-char wrap, no Markdown
 
 **Overall:**
 - [ ] Will make sense in 6 months during git blame
 - [ ] Respects local repository conventions
 - [ ] Professional and precise language
+- [ ] Voice is the human engineer's, not the agent's
+- [ ] No echo of user instructions, prompts, or task briefs
 
 ## Reference Files
 
@@ -193,30 +207,14 @@ Load these as needed based on content type:
 
 **When to load examples:**
 
-1. **Trivial changes** - Skip examples. The workflow above suffices for straightforward commits where target and verb are obvious.
-
-2. **Ambiguous target or verb** - Search examples for clues. Use grep to find similar patterns:
+1. **Trivial changes** - Skip examples. The workflow above suffices for straightforward commits.
+2. **Ambiguous target or verb** - Grep examples for similar patterns:
    ```bash
    grep -i "verb-keyword" examples/go-code-examples.md
    ```
+3. **Sparse repository history** - Load examples in full when the working repo lacks samples to learn from.
 
-3. **Sparse repository history** - Load examples in full. When the working repository lacks good commit samples to learn from, use the example files as primary reference for style and verb selection.
-
-**XML tags for selective searching:**
-
-| Tag | Purpose | Context |
-|-----|---------|---------|
-| `<example>` | Full example with context, diff, explanation | Detailed learning |
-| `<examples category="...">` | Grouped one-liners by work type | Quick verb/pattern lookup |
-| `<message>` | Commit message to emulate | Good examples; also baseline in Verb Alternatives |
-| `<better>` | Improved alternative to `<message>` | Only in Verb Alternatives section |
-| `<anti-pattern>` | What NOT to do | Anti-Patterns section |
-| `<bad>` | Bad commit message | Inside `<anti-pattern>` |
-| `<good>` | Corrected version of `<bad>` | Inside `<anti-pattern>` |
-
-**Tag relationships:**
-- `<message>` + `<better>`: In Verb Alternatives, `<message>` is acceptable, `<better>` is preferred
-- `<bad>` + `<good>`: In Anti-Patterns, `<bad>` is wrong, `<good>` is the fix
+Each example file documents its XML tag conventions at the top.
 
 ## Special Cases
 

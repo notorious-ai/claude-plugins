@@ -2,6 +2,22 @@
 
 Real examples from the Go standard library organized by work type.
 
+## How to Read These Examples
+
+XML tags structure each entry for selective searching:
+
+| Tag | Purpose | Context |
+|-----|---------|---------|
+| `<example>` | Full example with context, diff, explanation | Detailed learning |
+| `<examples category="...">` | Grouped one-liners by work type | Quick verb/pattern lookup |
+| `<message>` | Commit message to emulate | Good examples; also baseline in Verb Alternatives |
+| `<better>` | Improved alternative to `<message>` | Only in Verb Alternatives section |
+| `<anti-pattern>` | What NOT to do | Anti-Patterns section |
+| `<bad>` | Bad commit message | Inside `<anti-pattern>` |
+| `<good>` | Corrected version of `<bad>` | Inside `<anti-pattern>` |
+
+In Verb Alternatives, `<message>` is acceptable and `<better>` is preferred. In Anti-Patterns, `<bad>` is wrong and `<good>` is the fix.
+
 ## Examples with Full Context
 
 <example>
