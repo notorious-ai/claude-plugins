@@ -70,7 +70,7 @@ Read the changeset or brief for distinct units of value:
 - Single decisions worth isolating (dependency choices, policy switches, architectural commitments).
 - Documentation that travels with each capability.
 
-If the first instinct is to group by symbol kind, abstraction layer, or mechanical role, stop. Consult `examples/antipattern-by-symbol-kind.md`, `examples/antipattern-by-layer.md`, or `examples/antipattern-by-mechanical-layer.md` to recognise the failure mode.
+If the first instinct is to group by symbol kind, abstraction layer, or mechanical role, stop. Consult the anti-pattern examples in the table below to recognise the failure mode before drafting the plan.
 
 ### 3. Draft the Plan
 
