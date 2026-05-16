@@ -81,6 +81,8 @@ Produce a numbered list in the shape defined by `references/plan-shape.md`. For 
 
 Start with a skeleton commit when the work introduces a new package, module, or subsystem (see `examples/skeleton-first.md`). Layer capabilities one per commit, each carrying the docs, flags, and tests it justifies.
 
+A plan entry that reads like a good commit message is a sign of premature naming — strip it back to plain prose before continuing. The message-writing skill in step 5 produces the actual phrasing.
+
 ### 4. Present for Approval
 
 Show the plan to the user. Make it easy to redirect:
