@@ -13,6 +13,21 @@ Initial release of the naming skill for Go identifiers.
 
 ## committing
 
+Modernize skill frontmatter to use current Claude Code fields.
+
+- Split discovery hints into a dedicated `when_to_use` field and strengthen it to fire at the earliest code-task signal in a Go-centric repo, not only on commit-time keywords
+- Pre-approve read-only git inspection (`git diff`, `git log`, `git status`) via `allowed-tools` so commit drafting no longer prompts for permission on every diagnostic command
+
+Recognize Claude Code targets and refine body discipline guidance.
+
+- Add `claude:` target for CLAUDE.md, `.claude/`, and plugin manifests
+- Add `agents:` target for subagent definition files
+- Reorder body-guidelines to follow the writer's drafting sequence
+- Present all three body principles at the drafting step so the reference becomes optional
+- Single-source the body checklist in body-guidelines.md
+- Co-locate example-file tag conventions with the example files
+- Illustrate the stranger test on a parser rename diff
+
 Tighten body discipline so the commit message stays in its lane.
 
 - Name the three layers of meaning: diff is WHAT, file comments are WHY-INTRINSIC, body is WHY-EXTRINSIC

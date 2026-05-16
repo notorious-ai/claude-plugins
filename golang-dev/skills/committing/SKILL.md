@@ -1,6 +1,8 @@
 ---
 name: committing
-description: This skill should be used when writing commit messages in Go-centric codebases (go.mod present or known from context). Triggers on user requests like "write a commit message", "commit these changes", "generate commit", or "author a commit". Also triggers proactively when the agent completes a task and decides to commit, prepares to run git commit, or needs to craft a commit message for staged changes. Covers commits for Go packages, documentation, configs, CI, tooling, and all other files.
+description: Writes commit messages following Go team conventions for both Go packages and supporting files (docs, configs, CI, tooling) in Go-centric codebases (go.mod present or known from context).
+when_to_use: Triggers on explicit user requests like "write a commit message", "commit these changes", "generate commit", or "author a commit". Loads proactively at the EARLIEST signal that a commit will follow in a Go-centric repo (go.mod present): when Claude is asked to write code, edit files, refactor, fix a bug, implement a feature, or plan code work in such a repo; when starting any task that will produce a diff; when completing such a task; or when preparing to run git commit. Do not wait for the word "commit" to appear — in a Go codebase, commits are inevitable, and loading these conventions up front avoids a late-stage scramble for the right target and verb.
+allowed-tools: Bash(git diff:*) Bash(git log:*) Bash(git status:*)
 ---
 
 # Committing in Go Projects
