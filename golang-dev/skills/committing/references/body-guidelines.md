@@ -17,6 +17,19 @@ Skip the body when:
 - Simple, straightforward changes with obvious motivation
 - Mechanical changes (tidy, formatting, renames)
 
+## Length Echoes Complexity
+
+A body's length should echo the diff's complexity. The body is not a place to demonstrate effort; it is a place to answer the questions the diff leaves open.
+
+Rough calibration:
+
+- One-line typo fix: no body
+- Small atomic change with a non-obvious why: one or two sentences
+- Larger restructuring or design decision: a paragraph, possibly two
+- Multi-area refactor with rejected alternatives: several paragraphs
+
+A two-paragraph body on a three-line diff is suspicious - it is almost certainly paraphrasing the diff or restating what the subject already says. Trim until the body's weight matches the diff's weight.
+
 ## Before Writing: The Stranger Test
 
 Before drafting any body, list the questions a stranger would still have after reading the diff with no other context. Write only the answers. If the list is empty, omit the body - a precise subject plus a self-documenting diff beats a body that paraphrases the diff.
@@ -224,6 +237,7 @@ caused timeouts.
 
 - [ ] Provides context NOT visible in the diff
 - [ ] Does NOT paraphrase comments, doc comments, or headers in the diff
+- [ ] Length is proportional to diff complexity (no padding)
 - [ ] Plaintext only (no Markdown)
 - [ ] Lines hard-wrapped at 72 characters
 - [ ] Paragraphs separated by blank lines

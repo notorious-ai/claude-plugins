@@ -171,6 +171,7 @@ Before presenting the commit message:
 **Body (if present):**
 - [ ] Provides context NOT visible in diff
 - [ ] Does NOT paraphrase comments, doc comments, or headers in the diff
+- [ ] Length is proportional to diff complexity (no padding)
 - [ ] Plaintext only (no Markdown)
 - [ ] Lines wrapped at 72 characters
 
