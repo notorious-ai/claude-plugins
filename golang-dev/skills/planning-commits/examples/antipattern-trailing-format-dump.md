@@ -1,6 +1,6 @@
 # Anti-pattern: trailing format or tidy dump
 
-The temptation arises at the end of a feature series. The agent has shipped the code, made it work, and is "about to clean up". The natural-feeling move is to run `gofmt`, `go mod tidy`, the lint auto-fixer, and any code generator once at the end, bundling the result into a single trailing tidy commit.
+The temptation arises at the end of a feature series. The agent has shipped the code, made it work, and is "about to clean up". The natural-feeling move is to run all the project's formatters, manifest tidiers, and auto-fixers once at the end, bundling the result into a single trailing tidy commit.
 
 ## The anti-pattern
 
@@ -20,16 +20,16 @@ A feature series ends as:
 
 Violates the atomic facet on two axes:
 
-- **CI is broken between intermediate commits.** For three consecutive commits, the source tree fails `gofmt -l .` and `go mod tidy && git diff --exit-code`. Any CI step or bisect run against commits 1, 2, or 3 sees failures that have nothing to do with that commit's actual change.
+- **CI is broken between intermediate commits.** For three consecutive commits, the source tree fails whichever format-and-tidy checks the project enforces. Any CI step or bisect run against commits 1, 2, or 3 sees failures that have nothing to do with that commit's actual change.
 - **The trailing commit is a dumping ground.** Commit 4's diff mixes mechanical edits across files from three different feature commits. Bisecting a regression that landed in commit 2 has to read through commit 4's noise to see the change in its original context. Worse, the "tidy" commit accretes whatever auto-fixes the tooling can find, so it ends up doing several unrelated cleanups under one label.
 
 ## Better
 
 Every commit cleans up after itself:
 
-- Commit 1's diff is `gofmt`-clean; if it added a module, `go mod tidy` was run before staging.
-- Commit 2's diff is `gofmt`-clean; same hygiene contract.
-- Commit 3's diff is `gofmt`-clean.
+- Commit 1's diff passes the project's format and tidy checks; if it added a dependency, the manifest was tidied before staging.
+- Commit 2 holds the same hygiene contract.
+- Commit 3 holds the same hygiene contract.
 
 No trailing commit is needed because no debt was accumulated.
 
