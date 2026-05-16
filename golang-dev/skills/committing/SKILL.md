@@ -16,6 +16,7 @@ Commits tell the story of a codebase. Follow these rules for every commit:
 3. Use plaintext only - no Markdown formatting in commit messages
 4. Respect local repository conventions while maintaining Go team style
 5. Keep the body in its lane: the diff is the WHAT, file comments are the WHY-INTRINSIC, the commit body is the WHY-EXTRINSIC
+6. Write as the human engineer making the change, not as the agent executing a task - never echo prompts or instructions
 
 ## Workflow
 
@@ -177,6 +178,8 @@ Before presenting the commit message:
 - [ ] Will make sense in 6 months during git blame
 - [ ] Respects local repository conventions
 - [ ] Professional and precise language
+- [ ] Voice is the human engineer's, not the agent's
+- [ ] No echo of user instructions, prompts, or task briefs
 
 ## Reference Files
 

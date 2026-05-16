@@ -154,6 +154,40 @@ continuous-integration wiring that drives it.
 
 The replacement is shorter and tells the reader something the diff alone cannot: this is step 1 of N, and here is what step 2 looks like.
 
+## Authorial Voice
+
+Commit messages enter the project's permanent record. They must sound like the engineer who made the change, not like an agent narrating the task it was given.
+
+### Write as the Human Engineer
+
+The body uses the voice of the engineer who authored the change. That an agent drafted it is incidental and never belongs in the message.
+
+Bad (agent narrating its task):
+```
+I was asked to refactor the parser, so this commit replaces...
+Per the task brief, validation is now applied to...
+Following your instructions, the timeout was raised to...
+```
+
+Good (engineer describing the change):
+```
+Replaces the parser so callers receive structured errors instead of
+panicking on malformed input.
+```
+
+### Never Echo Instructions
+
+Prompts and instructions are directed AT the agent. They are not part of the project's traceability chain. The git log records what the code does and why, not what someone told the agent to do.
+
+Bad (echoing the prompt):
+```
+The user asked to add validation to login.
+As per the spec at <url>, this change introduces retries.
+The TODO file said this should be one commit, so...
+```
+
+Distil the *intent behind* the instruction into the body's WHY-EXTRINSIC, then drop the instruction itself. The reader cares why the change exists, not which side of the keyboard authored it.
+
 ## What NOT to Include
 
 - Information visible in the diff itself
@@ -161,6 +195,8 @@ The replacement is shorter and tells the reader something the diff alone cannot:
 - File listings or line-by-line implementation details
 - Markdown formatting (headers, bullets, code blocks)
 - Generic phrases like "this commit does X"
+- Agent voice ("I was asked to", "per instructions")
+- Echoes of user prompts, task briefs, or instruction documents
 
 ## Issue References
 
@@ -193,6 +229,8 @@ caused timeouts.
 - [ ] Paragraphs separated by blank lines
 - [ ] URLs wrapped in angle brackets
 - [ ] Explains WHY, not WHAT (diff shows what)
+- [ ] Voice is the human engineer's, not the agent's
+- [ ] No echo of user instructions, prompts, or task briefs
 - [ ] Will make sense in 6 months during git blame
 
 **Before finalizing:** Re-read the diff alongside the body. Delete any sentence that just describes what changed (e.g., "renamed function X to Y") - the diff already shows that. Keep only what the diff cannot tell: why, what alternatives were rejected, what comes next.
