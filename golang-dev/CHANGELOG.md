@@ -2,6 +2,14 @@
 
 ## planning-commits
 
+Polish pass following initial-release review.
+
+- Tighten SKILL.md description by removing the sibling-skill example, leaving the body to name the message-writing hand-off
+- Collapse the inline anti-pattern enumeration in Workflow step 2 to a pointer at the Example Files table
+- Surface the "premature naming" guardrail from plan-shape into Workflow step 3 so it lands without loading the reference
+- Generalise the manifest-tidying example to name Go, npm, and Cargo ecosystems
+- Correct a possessive typo in docs-with-feature.md
+
 Initial release of the planning-commits skill for sequencing atomic, fine-grained, incremental commits before any code is written or messages are drafted.
 
 - Core workflow inspecting the changeset, identifying capabilities and decisions, drafting the plan, presenting for approval, and handing each commit off to a message-writing skill
