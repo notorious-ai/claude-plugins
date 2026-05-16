@@ -17,6 +17,20 @@ Skip the body when:
 - Simple, straightforward changes with obvious motivation
 - Mechanical changes (tidy, formatting, renames)
 
+## Before Writing: The Stranger Test
+
+Before drafting any body, list the questions a stranger would still have after reading the diff with no other context. Write only the answers. If the list is empty, omit the body - a precise subject plus a self-documenting diff beats a body that paraphrases the diff.
+
+Useful prompts when generating the list:
+
+- Why now? What triggered this change?
+- What alternative was rejected, and why?
+- What does this unlock or unblock downstream?
+- What constraint, incident, or external decision forced this approach?
+- Where does this sit in a longer sequence of commits?
+
+Each answer earns its place in the body. Sentences that do not answer one of these questions usually duplicate the diff.
+
 ## Format Rules
 
 **Plaintext only** - NO Markdown formatting. Terminals don't render it.

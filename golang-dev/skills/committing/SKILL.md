@@ -115,6 +115,8 @@ Do not guess - ask when:
 
 ### 8. Write Body (If Needed)
 
+Before drafting, apply the **stranger test**: list the questions a reader who has only the diff would still have. Write only the answers. An empty list means omit the body.
+
 Consult `references/body-guidelines.md` for when and how to write commit body.
 
 Include body when:
