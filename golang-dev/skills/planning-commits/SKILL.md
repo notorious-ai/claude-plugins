@@ -116,3 +116,48 @@ The plan entry is the input; the commit message is the output of the message-wri
 | `examples/antipattern-by-mechanical-layer.md` | All handlers, then routes, then tests | Counter-example |
 | `examples/antipattern-flags-up-front.md` | All flags at the start | Counter-example |
 | `examples/antipattern-trailing-docs-dump.md` | Docs piled into a final commit | Counter-example |
+
+## Validation Checklist
+
+Before presenting the plan:
+
+**Each entry:**
+- [ ] Scope is a single sentence (not a properly-formed commit message)
+- [ ] Context is a paragraph stating why this commit, why now, and what it deliberately excludes
+- [ ] The commit's changes can be reverted in isolation without breaking subsequent commits' premises
+- [ ] No forward reference to a symbol, behaviour, or file that no later commit introduces
+
+**Across the sequence:**
+- [ ] First commit is a skeleton or the smallest-standalone value, never a forward-referencing stub
+- [ ] Flags arrive with the features that consume them, not up front
+- [ ] Docs travel with each feature commit, never piled into a trailing dump
+- [ ] No commit groups by symbol kind, abstraction layer, or mechanical role
+- [ ] Decisions worth defending later have their own commit with body-carryable rationale
+
+**Overall:**
+- [ ] A reviewer can evaluate each commit in isolation and form an opinion
+- [ ] Reverting any single commit leaves the branch in a coherent state
+- [ ] The sequence builds the final value, not just a rearrangement of files
+
+## Special Cases
+
+### Mixed-Language Changesets
+
+When a changeset spans multiple languages or ecosystems (a Go service plus its Helm chart, a Rust library plus its Python bindings):
+
+- Plan each capability's full vertical stack as one commit, not each language's contribution as a separate commit.
+- The exception is when the cross-language wiring itself is the decision worth isolating. A binding-generator switch, for example, is a decision commit even if the diff spans both languages.
+
+### Dependency-Only Changes
+
+When the entire changeset is `go.mod`/`package.json`/`Cargo.toml` updates with no new callers and no behavioural changes:
+
+- Group by what kinds of dependencies are updated and why. A security-patch sweep is one commit; unrelated minor-version bumps are separate commits.
+- If a major-version update forces code changes, that is a decision commit (see `examples/decision-rationale-layering.md`).
+
+### Large Refactors
+
+When a refactor crosses many files but introduces no new capabilities:
+
+- Plan by the conceptual transformation, not by file. "Rename Foo to Bar across the codebase" is one commit if the rename is purely mechanical. "Restructure error returns to expose typed errors" is several commits, one per call-site cluster that shares an error contract.
+- Mechanical commits and decision commits should not mix. If the refactor exposes a decision worth defending (e.g., choosing a specific error taxonomy), that decision lands in its own commit with the rationale.
