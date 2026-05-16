@@ -27,3 +27,24 @@ For the full definitions, including the value-vs-syntactic distinction and the d
 |------|----------|-----------|
 | `references/triad.md` | Full definitions of atomic, fine-grained, incremental, with the value-vs-syntactic distinction | First time the skill triggers in a session |
 | `references/plan-shape.md` | Shape of a plan entry, hand-off to the message-writing skill, worked mini-example | Before producing the plan deliverable |
+
+## When to Plan
+
+Plan commits proactively at the earliest signal that the work ahead is non-trivial:
+
+- A user brief mentions more than one capability, feature, or decision.
+- The working tree already contains unstaged changes spanning unrelated concerns.
+- The expected diff is larger than what a reviewer can hold in their head as one decision.
+- A user has scolded about commit shape, granularity, or sequence in a prior turn.
+
+Do not wait for the word "commit" to appear in user prose. In any non-trivial task, commits are inevitable and the sequence is best chosen before the first line of code lands.
+
+## When to Skip Planning
+
+Some changesets do not warrant a plan:
+
+- **Mechanical edits.** Typo fixes, formatting passes, dependency-only `go.mod tidy`, single-line bug fixes. The plan would have one entry; producing it is overhead.
+- **Exploratory work.** The user has signalled they are "playing around" or "just trying something" and no commits are planned for this session. Wait for the user to convert exploration into intent before planning.
+- **Single-capability changesets.** When the entire diff is the smallest version of one reviewable change, the plan has one entry — which is to say there is nothing to plan. Hand off to the message-writing skill directly.
+
+When skipping, do not ask. Proceed to writing directly and let the user redirect if they want a plan after all.
