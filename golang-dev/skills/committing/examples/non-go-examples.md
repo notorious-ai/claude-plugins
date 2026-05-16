@@ -80,6 +80,23 @@ Verb "label" describes the resulting action.
 <message>github: clean up issue forms</message>
 </examples>
 
+## Claude Code
+
+<examples category="claude" context="Claude Code configuration and project memory">
+<message>claude: document repository navigation conventions</message>
+<message>claude: allow npm commands without prompts</message>
+<message>claude: enforce pre-commit linting via hook</message>
+<message>claude: enable plugin auto-discovery</message>
+</examples>
+
+## Agents
+
+<examples category="agents" context="Subagent definitions">
+<message>agents: define plugin-validator for marketplace checks</message>
+<message>agents: specialize code-reviewer for security-sensitive paths</message>
+<message>agents: delegate test generation to go-test-writer</message>
+</examples>
+
 ## Git Configuration
 
 <examples category="git" context="Git configuration files (.gitignore, .gitattributes, LFS)">

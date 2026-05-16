@@ -66,6 +66,8 @@ Apply the decision algorithm from the appropriate reference file.
 | Go package | `pkg` or `pkg/sub` | `net/http:`, `context:` |
 | Documentation | `docs:` | All `.md` files, `docs/` |
 | GitHub | `github:` | `.github/` directory |
+| Claude Code | `claude:` | `CLAUDE.md`, `.claude/`, `plugin.json` |
+| Agents | `agents:` | `agents/` directory |
 | Git config | `git:` | `.gitignore`, `.gitattributes` |
 | Dependencies | `go.mod:` | Module changes |
 | Build | `build:` | Makefile, build scripts |
