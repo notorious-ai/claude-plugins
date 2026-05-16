@@ -43,7 +43,7 @@ Do not wait for the word "commit" to appear in user prose. In any non-trivial ta
 
 Some changesets do not warrant a plan:
 
-- **Mechanical edits.** Typo fixes, formatting passes, dependency-only `go.mod tidy`, single-line bug fixes. The plan would have one entry; producing it is overhead.
+- **Mechanical edits.** Typo fixes, formatting passes, dependency-manifest tidying (`go mod tidy`, `npm prune`, `cargo update --workspace`), single-line bug fixes. The plan would have one entry; producing it is overhead.
 - **Exploratory work.** The user has signalled they are "playing around" or "just trying something" and no commits are planned for this session. Wait for the user to convert exploration into intent before planning.
 - **Single-capability changesets.** When the entire diff is the smallest version of one reviewable change, the plan has one entry — which is to say there is nothing to plan. Hand off to the message-writing skill directly.
 
