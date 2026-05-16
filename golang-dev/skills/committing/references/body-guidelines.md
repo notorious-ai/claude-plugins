@@ -17,19 +17,6 @@ Skip the body when:
 - Simple, straightforward changes with obvious motivation
 - Mechanical changes (tidy, formatting, renames)
 
-## Length Echoes Complexity
-
-A body's length should echo the diff's complexity. The body is not a place to demonstrate effort; it is a place to answer the questions the diff leaves open.
-
-Rough calibration:
-
-- One-line typo fix: no body
-- Small atomic change with a non-obvious why: one or two sentences
-- Larger restructuring or design decision: a paragraph, possibly two
-- Multi-area refactor with rejected alternatives: several paragraphs
-
-A two-paragraph body on a three-line diff is suspicious - it is almost certainly paraphrasing the diff or restating what the subject already says. Trim until the body's weight matches the diff's weight.
-
 ## Before Writing: The Stranger Test
 
 Before drafting any body, list the questions a stranger would still have after reading the diff with no other context. Write only the answers. If the list is empty, omit the body - a precise subject plus a self-documenting diff beats a body that paraphrases the diff.
@@ -43,6 +30,19 @@ Useful prompts when generating the list:
 - Where does this sit in a longer sequence of commits?
 
 Each answer earns its place in the body. Sentences that do not answer one of these questions usually duplicate the diff.
+
+## Length Echoes Complexity
+
+A body's length should echo the diff's complexity. The body is not a place to demonstrate effort; it is a place to answer the questions the diff leaves open.
+
+Rough calibration:
+
+- One-line typo fix: no body
+- Small atomic change with a non-obvious why: one or two sentences
+- Larger restructuring or design decision: a paragraph, possibly two
+- Multi-area refactor with rejected alternatives: several paragraphs
+
+A two-paragraph body on a three-line diff is suspicious - it is almost certainly paraphrasing the diff or restating what the subject already says. Trim until the body's weight matches the diff's weight.
 
 ## Format Rules
 
@@ -86,6 +86,36 @@ A commit has three layers of meaning, and each lives in its own place:
 - **The commit body is the WHY-EXTRINSIC** - facts about the world around the diff: where this change sits in a longer sequence, what motivated doing it now, what it unlocks downstream, what alternative was rejected, what constraint forced it.
 
 Keep the body in its lane. Its job is the surrounding story the diff cannot show.
+
+### Never Paraphrase the Diff
+
+When the changed file carries its own rationale - header comments, doc comments, inline explanations - restating that material in the body is dead weight. The reader sees those comments the moment they look at the diff. A self-documenting file deserves a brief, outward-pointing body or no body at all. Never a paraphrase.
+
+#### Worked Example: Paraphrase vs. Surrounding Story
+
+**Before** (paraphrases the file's own header about ko, defaults, base image, and platforms):
+
+```
+ko separates what to build from how. Top-level default* keys apply
+to every build; a builds: array would only override defaults per
+import path. Chainguard's static base is a minimal nonroot
+distroless-style image suitable for a fully-static Go binary with
+no CGO. Two platforms cover Linux nodes of either architecture and
+Apple Silicon developer machines.
+```
+
+Every claim above is already in the file the reader is about to scroll through. The body adds nothing.
+
+**After** (says only what the file cannot - its place in the sequence and what follows):
+
+```
+First step toward publishing the api-gateway image: the file itself
+documents the choices it encodes, and subsequent commits introduce
+the ko-based reusable workflow that consumes it plus the per-PR and
+continuous-integration wiring that drives it.
+```
+
+The replacement is shorter and tells the reader something the diff alone cannot: this is step 1 of N, and here is what step 2 looks like.
 
 ### Motivation
 
@@ -136,36 +166,6 @@ TODO: Add metrics for monitoring attack patterns.
 ```
 
 Only include these when they are strictly present in the conversation context.
-
-## Never Paraphrase the Diff
-
-When the changed file carries its own rationale - header comments, doc comments, inline explanations - restating that material in the body is dead weight. The reader sees those comments the moment they look at the diff. A self-documenting file deserves a brief, outward-pointing body or no body at all. Never a paraphrase.
-
-### Worked Example: Paraphrase vs. Surrounding Story
-
-**Before** (paraphrases the file's own header about ko, defaults, base image, and platforms):
-
-```
-ko separates what to build from how. Top-level default* keys apply
-to every build; a builds: array would only override defaults per
-import path. Chainguard's static base is a minimal nonroot
-distroless-style image suitable for a fully-static Go binary with
-no CGO. Two platforms cover Linux nodes of either architecture and
-Apple Silicon developer machines.
-```
-
-Every claim above is already in the file the reader is about to scroll through. The body adds nothing.
-
-**After** (says only what the file cannot - its place in the sequence and what follows):
-
-```
-First step toward publishing the api-gateway image: the file itself
-documents the choices it encodes, and subsequent commits introduce
-the ko-based reusable workflow that consumes it plus the per-PR and
-continuous-integration wiring that drives it.
-```
-
-The replacement is shorter and tells the reader something the diff alone cannot: this is step 1 of N, and here is what step 2 looks like.
 
 ## Authorial Voice
 
