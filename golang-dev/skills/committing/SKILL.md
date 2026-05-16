@@ -116,9 +116,11 @@ Do not guess - ask when:
 
 ### 8. Write Body (If Needed)
 
-Before drafting, apply the **stranger test**: list the questions a reader who has only the diff would still have. Write only the answers. An empty list means omit the body.
+Three principles govern every body. Apply them in order:
 
-Consult `references/body-guidelines.md` for when and how to write commit body.
+1. **Stranger test** - list the questions a reader who has only the diff would still have. Write only the answers. An empty list means omit the body.
+2. **Length echoes complexity** - a two-paragraph body on a three-line diff is suspicious. Trim until the body's weight matches the diff's weight.
+3. **Never paraphrase the diff** - if the file's own comments already explain the choices, do not restate them. The body's job is the surrounding story the diff cannot show.
 
 Include body when:
 - One-liner alone lacks sufficient context
@@ -128,6 +130,8 @@ Include body when:
 Skip body when:
 - Change is self-explanatory from one-liner + diff
 - Simple, mechanical changes (tidy, formatting)
+
+For voice, structure, and worked examples, consult `references/body-guidelines.md`.
 
 ### 9. Present for Review
 
