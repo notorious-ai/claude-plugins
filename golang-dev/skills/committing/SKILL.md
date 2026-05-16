@@ -203,30 +203,14 @@ Load these as needed based on content type:
 
 **When to load examples:**
 
-1. **Trivial changes** - Skip examples. The workflow above suffices for straightforward commits where target and verb are obvious.
-
-2. **Ambiguous target or verb** - Search examples for clues. Use grep to find similar patterns:
+1. **Trivial changes** - Skip examples. The workflow above suffices for straightforward commits.
+2. **Ambiguous target or verb** - Grep examples for similar patterns:
    ```bash
    grep -i "verb-keyword" examples/go-code-examples.md
    ```
+3. **Sparse repository history** - Load examples in full when the working repo lacks samples to learn from.
 
-3. **Sparse repository history** - Load examples in full. When the working repository lacks good commit samples to learn from, use the example files as primary reference for style and verb selection.
-
-**XML tags for selective searching:**
-
-| Tag | Purpose | Context |
-|-----|---------|---------|
-| `<example>` | Full example with context, diff, explanation | Detailed learning |
-| `<examples category="...">` | Grouped one-liners by work type | Quick verb/pattern lookup |
-| `<message>` | Commit message to emulate | Good examples; also baseline in Verb Alternatives |
-| `<better>` | Improved alternative to `<message>` | Only in Verb Alternatives section |
-| `<anti-pattern>` | What NOT to do | Anti-Patterns section |
-| `<bad>` | Bad commit message | Inside `<anti-pattern>` |
-| `<good>` | Corrected version of `<bad>` | Inside `<anti-pattern>` |
-
-**Tag relationships:**
-- `<message>` + `<better>`: In Verb Alternatives, `<message>` is acceptable, `<better>` is preferred
-- `<bad>` + `<good>`: In Anti-Patterns, `<bad>` is wrong, `<good>` is the fix
+Each example file documents its XML tag conventions at the top.
 
 ## Special Cases
 

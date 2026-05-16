@@ -2,6 +2,8 @@
 
 Real and representative examples of commits for non-Go files in Go-centric codebases.
 
+Uses the same XML tag conventions as `go-code-examples.md`. See its "How to Read These Examples" section for the tag table.
+
 ## Examples with Full Context
 
 <example>
