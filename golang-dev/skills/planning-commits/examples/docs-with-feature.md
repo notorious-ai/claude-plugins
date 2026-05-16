@@ -33,6 +33,6 @@ The incremental facet. Each commit's documentation describes only what exists on
 
 ## Non-linear is fine
 
-The README is built in logical narrative order, not top-to-bottom file order. Commit 1 might land the introduction and the encoder section. Commit 2 might insert a "round-trip" section between them. Commit 3 might append the streaming section while also revising the introduction to mention performance trade-offs. The READMEs final paragraph order need not match the order of the commits that produced it.
+The README is built in logical narrative order, not top-to-bottom file order. Commit 1 might land the introduction and the encoder section. Commit 2 might insert a "round-trip" section between them. Commit 3 might append the streaming section while also revising the introduction to mention performance trade-offs. The README's final paragraph order need not match the order of the commits that produced it.
 
 What stays invariant: every commit's README state describes a working product whose features all exist as of that commit. Never write a sentence that depends on a future commit to be true.
