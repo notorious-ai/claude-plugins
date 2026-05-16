@@ -110,9 +110,40 @@ TODO: Add metrics for monitoring attack patterns.
 
 Only include these when they are strictly present in the conversation context.
 
+## Never Paraphrase the Diff
+
+When the changed file carries its own rationale - header comments, doc comments, inline explanations - restating that material in the body is dead weight. The reader sees those comments the moment they look at the diff. A self-documenting file deserves a brief, outward-pointing body or no body at all. Never a paraphrase.
+
+### Worked Example: Paraphrase vs. Surrounding Story
+
+**Before** (paraphrases the file's own header about ko, defaults, base image, and platforms):
+
+```
+ko separates what to build from how. Top-level default* keys apply
+to every build; a builds: array would only override defaults per
+import path. Chainguard's static base is a minimal nonroot
+distroless-style image suitable for a fully-static Go binary with
+no CGO. Two platforms cover Linux nodes of either architecture and
+Apple Silicon developer machines.
+```
+
+Every claim above is already in the file the reader is about to scroll through. The body adds nothing.
+
+**After** (says only what the file cannot - its place in the sequence and what follows):
+
+```
+First step toward publishing the api-gateway image: the file itself
+documents the choices it encodes, and subsequent commits introduce
+the ko-based reusable workflow that consumes it plus the per-PR and
+continuous-integration wiring that drives it.
+```
+
+The replacement is shorter and tells the reader something the diff alone cannot: this is step 1 of N, and here is what step 2 looks like.
+
 ## What NOT to Include
 
 - Information visible in the diff itself
+- Paraphrases of comments, doc comments, or header blocks already in the diff
 - File listings or line-by-line implementation details
 - Markdown formatting (headers, bullets, code blocks)
 - Generic phrases like "this commit does X"
@@ -142,6 +173,7 @@ caused timeouts.
 ## Body Checklist
 
 - [ ] Provides context NOT visible in the diff
+- [ ] Does NOT paraphrase comments, doc comments, or headers in the diff
 - [ ] Plaintext only (no Markdown)
 - [ ] Lines hard-wrapped at 72 characters
 - [ ] Paragraphs separated by blank lines
