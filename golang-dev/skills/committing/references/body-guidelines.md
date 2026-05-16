@@ -235,6 +235,8 @@ caused timeouts.
 
 ## Body Checklist
 
+Authoritative body validation. SKILL.md's summary references this list.
+
 - [ ] Provides context NOT visible in the diff
 - [ ] Does NOT paraphrase comments, doc comments, or headers in the diff
 - [ ] Length is proportional to diff complexity (no padding)

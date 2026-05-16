@@ -172,12 +172,10 @@ Before presenting the commit message:
 - [ ] No period at end
 - [ ] Within 72 characters
 
-**Body (if present):**
+**Body (if present):** Authoritative checklist lives in `references/body-guidelines.md`. At minimum verify:
 - [ ] Provides context NOT visible in diff
-- [ ] Does NOT paraphrase comments, doc comments, or headers in the diff
-- [ ] Length is proportional to diff complexity (no padding)
-- [ ] Plaintext only (no Markdown)
-- [ ] Lines wrapped at 72 characters
+- [ ] Length proportional to diff complexity
+- [ ] Plaintext, 72-char wrap, no Markdown
 
 **Overall:**
 - [ ] Will make sense in 6 months during git blame
