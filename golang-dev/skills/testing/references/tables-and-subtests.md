@@ -19,6 +19,12 @@ several tests. No global test-case slices: a package-level table earns its
 place only when several functions genuinely share it, as when one table
 feeds a test, its benchmark, and a sibling codec's test.
 
+When the values themselves say nothing, name them or unroll them. A row of
+{0} beside {-1} tells a reader only that two numbers were tried, so either
+pair each value with the word for what makes it invalid ({"zero", 0},
+{"negative", -1}) or drop the table for two explicit calls. Duplicated
+lines are the cheaper cost when every line means something.
+
 ## When a sub-test is worth it
 
 Sub-tests are most appropriate when their names fit, feel, and read like
