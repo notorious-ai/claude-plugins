@@ -8,6 +8,16 @@ the rest, because the example archetype matches EVERY package and its
 harness is unlike the test harness: the only assertion is the printed
 output.
 
+## The name is the attribution
+
+go doc reads the name to decide which symbol an example documents: Example
+for the package, ExampleLoad for a function, ExampleConfig_Validate for a
+method, and a lower-case trailing suffix to separate several examples of
+one symbol (ExampleLoad_missingFile). Underscores mean nothing anywhere
+else in a test name; here they carry the whole attribution, and a name
+that resolves to no exported symbol is a vet failure rather than a silent
+miss.
+
 ## Every character serves users
 
 Doc comment, code, in-function comments, and the Output block all render on
