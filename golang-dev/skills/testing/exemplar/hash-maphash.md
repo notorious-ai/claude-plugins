@@ -17,9 +17,9 @@ type Hash struct{ ... }
     func (h *Hash) Sum64() uint64
 ```
 
-<sample id="property-claim-names" archetypes="transform" source="hash/maphash/maphash_test.go" lines="20-41">
+<sample id="property-claim-names" archetypes="transform" source="hash/maphash/maphash_test.go">
 
-Source: `hash/maphash/maphash_test.go` lines 20-41 (Go 1.27 dev). Verbatim.
+Source: `hash/maphash/maphash_test.go` (Go 1.27 dev). Verbatim.
 
 ```go
 func TestUnseededHash(t *testing.T) {
@@ -55,9 +55,9 @@ misnamed.</note>
 
 </sample>
 
-<sample id="one-invariant-many-paths" archetypes="stream,transform" source="hash/maphash/maphash_test.go" lines="44-105">
+<sample id="one-invariant-many-paths" archetypes="stream,transform" source="hash/maphash/maphash_test.go">
 
-Source: `hash/maphash/maphash_test.go` lines 44-105 (Go 1.27 dev). Verbatim.
+Source: `hash/maphash/maphash_test.go` (Go 1.27 dev). Verbatim.
 
 ```go
 func TestHashGrouping(t *testing.T) {

@@ -43,10 +43,10 @@ fits an API whose documented contract fully determines the SET of printed
 values while leaving their order unspecified. The standard tree uses it in
 three packages in total.
 
-<sample id="unordered-output-contract" archetypes="example" source="index/suffixarray/example_test.go" lines="12-22">
+<sample id="unordered-output-contract" archetypes="example" source="index/suffixarray/example_test.go">
 
-Source: `index/suffixarray/example_test.go` lines 12-22 (Go development
-tree, 1.27 dev, 2026-06). Verbatim.
+Source: `index/suffixarray/example_test.go` (Go development tree, 1.27
+dev, 2026-06). Verbatim.
 
 ```go
 func ExampleIndex_Lookup() {
@@ -66,8 +66,8 @@ func ExampleIndex_Lookup() {
 every occurrence, so the contract itself fully determines the value set
 ("ana" sits at 1 and 3 in "banana") and leaves only the order open. That is
 the whole fit: deterministic values, unspecified order. math/rand/v2's
-ExamplePerm (`example_test.go` lines 99-107) is the same shape: Perm(3)
-must print exactly 0, 1, and 2, in a random order.</highlight>
+ExamplePerm (`example_test.go`) is the same shape: Perm(3) must print
+exactly 0, 1, and 2, in a random order.</highlight>
 
 <note>Neither specimen involves a goroutine. Concurrent failure modes,
 deadlock, lost work, partial output, do not become expected-output

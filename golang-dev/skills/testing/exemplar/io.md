@@ -6,9 +6,9 @@ Source: `io/io_test.go` and `io/multi_test.go` (Go development tree, 1.27 dev,
 2026-06). Verbatim. Both files are external
 tests (`package io_test` with `. "io"`).
 
-<sample id="one-behavior-fakes" archetypes="stream" source="io/io_test.go" lines="93-145">
+<sample id="one-behavior-fakes" archetypes="stream" source="io/io_test.go">
 
-Source: `io/io_test.go` lines 93-145 (Go 1.27 dev). Verbatim.
+Source: `io/io_test.go` (Go 1.27 dev). Verbatim.
 
 ```go
 // Version of bytes.Buffer that checks whether WriteTo was called or not
@@ -79,9 +79,9 @@ there.</note>
 
 </sample>
 
-<sample id="regression-to-property" archetypes="stream" source="io/multi_test.go" lines="287-323">
+<sample id="regression-to-property" archetypes="stream" source="io/multi_test.go">
 
-Source: `io/multi_test.go` lines 287-323 (Go 1.27 dev). Verbatim.
+Source: `io/multi_test.go` (Go 1.27 dev). Verbatim.
 
 ```go
 // byteAndEOFReader is a Reader which reads one byte (the underlying

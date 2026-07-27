@@ -6,9 +6,9 @@ Source: `cmd/gofmt/gofmt_test.go` and `cmd/gofmt/testdata/rewrite1.input` (Go
 development tree, 1.27 dev, 2026-06). Verbatim.
 Note: `package main`, in-process — the gofmt binary is never executed.
 
-<sample id="update-flag-diff" archetypes="golden-fixture" source="cmd/gofmt/gofmt_test.go" lines="112-136">
+<sample id="update-flag-diff" archetypes="golden-fixture" source="cmd/gofmt/gofmt_test.go">
 
-Source: `cmd/gofmt/gofmt_test.go` lines 112-136 (Go 1.27 dev). Verbatim.
+Source: `cmd/gofmt/gofmt_test.go` (Go 1.27 dev). Verbatim.
 The tail of `runTest(t, in, out string)`; flag parsing and
 processing elided.
 
@@ -50,9 +50,9 @@ feature.</note>
 
 </sample>
 
-<sample id="corpus-glob-idempotence" archetypes="golden-fixture,harness" source="cmd/gofmt/gofmt_test.go" lines="138-169">
+<sample id="corpus-glob-idempotence" archetypes="golden-fixture,harness" source="cmd/gofmt/gofmt_test.go">
 
-Source: `cmd/gofmt/gofmt_test.go` lines 138-169 (Go 1.27 dev). Verbatim.
+Source: `cmd/gofmt/gofmt_test.go` (Go 1.27 dev). Verbatim.
 
 ```go
 // TestRewrite processes testdata/*.input files and compares them to the
@@ -102,9 +102,10 @@ carry every case.</note>
 
 </sample>
 
-<sample id="flag-in-fixture" archetypes="golden-fixture" source="cmd/gofmt/testdata/rewrite1.input" lines="4-9">
+<sample id="flag-in-fixture" archetypes="golden-fixture" source="cmd/gofmt/testdata/rewrite1.input">
 
-Source: `cmd/gofmt/testdata/rewrite1.input` lines 4-9 (copyright header elided; Go 1.27 dev). Verbatim.
+Source: `cmd/gofmt/testdata/rewrite1.input` (copyright header elided;
+Go 1.27 dev). Verbatim.
 The paired rewrite1.golden is identical with `Foo` rewritten to
 `Bar`.
 
@@ -119,7 +120,7 @@ type Foo int
 ```
 
 <highlight archetype="golden-fixture">One case is one reviewable pair of files;
-the flag that produced the golden sits on line 1 of the input.</highlight>
+the flag that produced the golden sits at the top of the input.</highlight>
 
 <note>Nothing about the case lives at helper-call distance in Go code.</note>
 

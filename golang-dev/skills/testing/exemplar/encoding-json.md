@@ -3,9 +3,9 @@
 Source: `encoding/json/example_test.go` (Go development tree, 1.27 dev,
 2026-06). Verbatim.
 
-<sample id="example-user-voice" archetypes="example" source="encoding/json/example_test.go" lines="58-86">
+<sample id="example-user-voice" archetypes="example" source="encoding/json/example_test.go">
 
-Source: `encoding/json/example_test.go` lines 58-86 (Go 1.27 dev). Verbatim.
+Source: `encoding/json/example_test.go` (Go 1.27 dev). Verbatim.
 
 ```go
 // This example uses a Decoder to decode a stream of distinct JSON values.
@@ -51,9 +51,9 @@ shorten examples to their minimum token count.</note>
 
 </sample>
 
-<sample id="example-self-naming-violation" archetypes="example" source="bufio/example_test.go" lines="36-37">
+<sample id="example-self-naming-violation" archetypes="example" source="bufio/example_test.go">
 
-Source: `bufio/example_test.go` lines 36-37 (Go 1.27 dev). Verbatim.
+Source: `bufio/example_test.go` (Go 1.27 dev). Verbatim.
 The violation, NOT to copy.
 
 ```go

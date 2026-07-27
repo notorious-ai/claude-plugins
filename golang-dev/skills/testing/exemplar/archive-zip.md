@@ -3,9 +3,9 @@
 Source: `archive/zip/reader_test.go` (Go development tree, 1.27 dev, 2026-06).
 Verbatim.
 
-<sample id="verifier-shape" archetypes="contract-conformance,harness" source="testing/fstest/testfs.go" lines="20-39">
+<sample id="verifier-shape" archetypes="contract-conformance,harness" source="testing/fstest/testfs.go">
 
-Source: `testing/fstest/testfs.go` lines 20-39 (Go 1.27 dev). Verbatim.
+Source: `testing/fstest/testfs.go` (Go 1.27 dev). Verbatim.
 The surface the next sample exercises.
 
 ```go
@@ -43,9 +43,9 @@ callable check.</note>
 
 </sample>
 
-<sample id="conformance-call" archetypes="contract-conformance" source="archive/zip/reader_test.go" lines="1203-1229">
+<sample id="conformance-call" archetypes="contract-conformance" source="archive/zip/reader_test.go">
 
-Source: `archive/zip/reader_test.go` lines 1203-1229 (Go 1.27 dev). Verbatim.
+Source: `archive/zip/reader_test.go` (Go 1.27 dev). Verbatim.
 
 ```go
 func TestFS(t *testing.T) {
