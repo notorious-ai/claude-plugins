@@ -123,7 +123,7 @@ Use `gh issue list` to discover related work. Reference relevant issues to conne
 
 ## Body Philosophy
 
-Issues are **problem-space** documents. The body carries the problem's why, how, and what. It must not carry the solution's: no chosen design, no build plan, no inventory of components. Implementation prescription removes agency from the person doing the work and often misses better approaches.
+The body carries the problem's trio and none of the solution's: no chosen design, no build plan, no inventory of components. Implementation prescription removes agency from the person doing the work and often misses better approaches.
 
 The first paragraph immediately follows the title without a header. This opening establishes context and motivation - the "why does this matter" that pulls readers in.
 
