@@ -1,6 +1,8 @@
 # Issue Body Structure
 
-Issue bodies follow GitHub Flavored Markdown. Effective issues focus on the desired outcome rather than prescribing implementation steps. The assignee determines the "how"; the issue author specifies the "why" and "what."
+Issue bodies follow GitHub Flavored Markdown. Every part of a body carries some piece of the problem's why, how, or what.
+
+A body runs inside-out: why first, then how, then what, with validation flowing from the what. Symptoms presented before the friction read as a work list. Symptoms presented after it read as evidence.
 
 ## The Untitled Opening
 
@@ -12,32 +14,36 @@ The first paragraph immediately follows the issue title without a header. This p
 
 When the title clearly conveys the goal, the opening can expand on context. When the title is ambiguous, the opening must clarify the intent.
 
-## Prose Over Checklists
+## Questions That Surface the Trio
 
-Write issue bodies as prose paragraphs that explain the goal and constraints. Avoid prescriptive task lists that dictate implementation:
+Interrogate the conversation until every element of the trio has an answer. The answers form your prose. A question left unanswered is either a probe to put to the user or a `[FILL: ...]` placeholder naming how to obtain it.
 
-**Avoid**:
-```markdown
-## Tasks
-- [ ] Add new column to database
-- [ ] Update API endpoint
-- [ ] Modify frontend form
-```
+**The why**, the problem core:
 
-**Prefer**:
-```markdown
-User profiles currently lack timezone information, causing scheduled
-notifications to arrive at inconvenient times. Users should be able
-to specify their timezone so notifications respect their local time.
-```
+1. Who is affected by this issue?
+2. What can they not do today?
+3. What happens if this remains unaddressed?
+4. Who else absorbs the cost, and where does it land?
 
-The first approach prescribes implementation. The second describes the outcome, leaving implementation to the assignee.
+**The how**, the constraints:
 
-## When Checklists Are Appropriate
+1. What is already true about the world that any solution has to accommodate? A deadline qualifies, and so does team size.
+2. Has this been attempted before, and what did that attempt run into?
+3. What is deliberately out of scope here?
 
-Checklists suit tracking multiple independent items or acceptance criteria:
+**The what**, the evidence:
 
-**Tracking multiple items**:
+1. What does the problem look like when it happens, in the terms the affected person would use?
+2. How often, to how many, and since when?
+3. What record already exists?
+4. What is suspected rather than measured?
+
+A symptom you cannot yet quantify still belongs in the body, labelled as suspected, because the label is what later keeps the matching criterion honest.
+
+## Scope Enumeration
+
+A checklist is the clearest form for naming the units of problem surface an issue covers:
+
 ```markdown
 Several deprecated endpoints need removal before the v2.0 release:
 
@@ -46,16 +52,26 @@ Several deprecated endpoints need removal before the v2.0 release:
 - [ ] `/api/v1/products/deprecated`
 ```
 
-**Acceptance criteria** (outcomes, not steps):
-```markdown
-## Acceptance Criteria
+This is problem-space what: the extent of the problem, enumerated. The endpoints above say how far the problem reaches, not what will be true once it is resolved.
 
-- [ ] Users can specify timezone in profile settings
-- [ ] Scheduled notifications respect user timezone
-- [ ] Default timezone is inferred from browser when not set
+## Validating the Why
+
+Criteria are the problem's what in future tense. Write the body first, then read them off it; `SKILL.md` states the check.
+
+A definition of done does not need a checklist. Often it is one or two sentences, the whole why stated as resolved:
+
+```markdown
+Scheduled notifications go out on UTC because profiles carry no timezone.
+A user in Tokyo receives their "daily summary" at 3 AM local time, and
+support logs roughly 20 complaints a month about notification timing.
+
+By the time this issue is complete, a Tokyo user's daily summary arrives
+during their morning instead of overnight, and notification-timing
+complaints have fallen from ~20/month toward zero across a full support
+cycle.
 ```
 
-The distinction: checklists track **what** needs to happen, not **how** to do it.
+Reach for a checklist instead when the why breaks into several independently checkable pieces; `SKILL.md`'s own timezone example shows that form.
 
 ## Issue Type Specializations
 
@@ -86,7 +102,9 @@ Results should display orders within the date range.
 Page displays "Something went wrong" error.
 ```
 
-Bug reports benefit from structured reproduction information because debugging requires precise context.
+Every one of those four sections is problem-space what. `Environment` and `Steps to Reproduce` record the conditions under which the symptom appears; `Actual Behavior` records the symptom itself. Together they are the evidence that the problem is real and the means for anyone else to see it. The opening paragraph still carries the why, here a user who cannot complete their task.
+
+`Expected Behavior` is `Actual Behavior` inverted, which is why a short bug report rarely needs a separate validation section. The criterion is that actual becomes expected. A short report may also lead with the symptom rather than the friction. Triage and deduplication both start from the symptom, so the inside-out order gives way here.
 
 ### Feature Requests
 
@@ -106,7 +124,7 @@ workflow.
 - As a team lead, I want to separate active from archived projects
 ```
 
-Feature requests focus on the problem and user need, not the solution. Implementation details are for the PR.
+Feature requests are why-led, with the what supplied by voiced need. `User Stories` are problem space: each one names a person and something they cannot do today, which is evidence rather than design. The sketched shape ("grouping or folders") describes the outcome, and it stays on the right side of the boundary only while it stays that coarse. Tables, components, and endpoints belong in the PR.
 
 ### Discussion Issues
 
@@ -128,7 +146,7 @@ Current pain points with REST:
 - What tooling do we need for schema management?
 ```
 
-Discussion issues frame the decision space rather than proposing solutions.
+Discussion issues are how-heavy. The framing sentence supplies the why, `Context` supplies the what (the pain points that make a decision necessary), and `Questions to Consider` map the how: the constraints and trade-offs any answer has to satisfy. The questions frame the decision space instead of proposing a solution, which is the whole job of the type.
 
 ## Link Formatting
 
@@ -209,7 +227,7 @@ Add a `timezone` column to the users table, update the User model,
 modify the API to accept timezone in profile updates...
 ```
 
-**Problem**: Dictates implementation, removes agency from assignee.
+**Problem**: This is the solution's what: columns, models, endpoints. It removes agency from the assignee and forecloses approaches nobody has proposed yet.
 
 ### Vague Goals
 
@@ -217,7 +235,7 @@ modify the API to accept timezone in profile updates...
 Improve the search experience.
 ```
 
-**Problem**: No specific outcome defined. What does "improve" mean?
+**Problem**: No specific outcome defined. What does "improve" mean? A vague why is fatal, because nothing downstream can be aimed at it. A loose validation criterion is not the same fault: once the why is clear, a criterion may stay as imprecise as the evidence behind it.
 
 ### Feature as Bug
 
@@ -234,15 +252,4 @@ There's no dark mode.
 We need to add a Redis cache.
 ```
 
-**Problem**: Redis is a solution. What problem does it solve? Slow queries? High database load?
-
-## Writing the "Why"
-
-Surface the motivation by asking:
-
-1. Who is affected by this issue?
-2. What can they not do today?
-3. What happens if this remains unaddressed?
-4. What outcome would resolve this?
-
-The answers form your prose.
+**Problem**: Redis is a solution. What problem does it solve? Slow queries? High database load? The same disguise turns up in constraint clothing ("constraint: must use Redis"), and one test strips it either way: the assignee could pick something else, so it is a choice.

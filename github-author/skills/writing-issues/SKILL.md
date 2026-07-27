@@ -41,6 +41,7 @@ The imperative mood suits PRs (commands that execute on merge). Present progress
 - Describe the goal or outcome being worked toward
 - Keep concise but descriptive
 - Avoid labels in the title (use GitHub labels instead)
+- Name the problem, not the remedy. "Consolidating validation logic" and "Adding a Redis cache" both put the answer in the title before the body has argued for it. A remedy already chosen elsewhere can be named, as in "Migrating authentication to passport-next", where the library was settled before the issue existed.
 
 **Examples by type**:
 - Feature: `Supporting user timezone preferences`
@@ -214,8 +215,13 @@ For detailed guidance, consult:
 </negative>
 
 <negative>
-<pattern>Criteria naming where or how the outcome is produced: "in profile settings", "the duplicated validation lives in one package"</pattern>
-<reason>These pin one design. State what becomes true for someone, not the arrangement that makes it true. "A Tokyo user's summary arrives in their morning" leaves every approach open; "users can set a timezone in profile settings" leaves one. The word "can" is fine, and "in profile settings" is what sinks it.</reason>
+<pattern>Criteria naming where or how the outcome is produced: "in profile settings", "groups are visually distinct in the project list", "the duplicated validation lives in one package"</pattern>
+<reason>These pin one design. State what becomes true for someone, not the arrangement that makes it true. "A Tokyo user's summary arrives in their morning" leaves every approach open; "users can set a timezone in profile settings" leaves one. The word "can" is fine, and "in profile settings" is what sinks it. This slip is commonest on issues for capabilities that do not exist yet, where there is no current behaviour to describe and the nearest concrete thing to reach for is a screen.</reason>
+</negative>
+
+<negative>
+<pattern>Firming up the evidence you were handed: "several users mentioned in passing" written up as "users have reported difficulty"</pattern>
+<reason>Anecdote reported as finding is the same failure as a threshold with no measurement behind it. Say how you know, and how well. "Three freelancers have mentioned it unprompted" is worth more to a reader than a confident sentence with nothing under it.</reason>
 </negative>
 
 <negative>

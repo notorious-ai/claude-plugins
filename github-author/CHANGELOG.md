@@ -8,20 +8,27 @@ All notable changes to github-author are documented in this file.
 
 - Replace the "issues explain why and what, PRs explain how" boundary with the problem-space why/how/what trio, since that boundary admitted solution-space requirements by construction
 - Type constraints, trade-offs, scope boundaries, and failed prior attempts as problem-space "how" rather than implementation detail to withhold
-- Derive validation criteria by inverting a documented symptom, confirming a stated constraint, or retiring a named risk, so every criterion traces to an antecedent already in the body
-- Inherit criterion precision from its antecedent instead of choosing it, removing the pull toward invented thresholds
+- State validation as a belief rather than a procedure: criteria are read off the body, and a criterion testing something the body never claimed means either the criterion is invention or the body never stated its why
 - Guard the constraint section with the can-the-assignee-change-it test against design prescription in costume
-- Add the two-implementations test for detecting mechanism named inside a criterion
 - Stop presenting "Acceptance Criteria" as a canonical heading; specify the function the section performs and vary headings across examples
+- Carry validation in prose unless the body already holds numbers or discrete units, since a checklist is one form among several rather than the shape of the section
+- Warn against firming up the evidence on hand, so remarks made in passing are not written up as findings
+- Keep the remedy out of the title unless it was settled before the issue existed
 - State the inside-out ordering mechanism: symptoms placed before the friction read as a work list, symptoms placed after it read as evidence
 - Distinguish scope enumeration from validation so scope checklists survive the new rule
 - Distinguish a vague why, which stays forbidden, from a loose validation criterion for a clear why, which is acceptable
 - Relabel bug reproduction steps as problem-space "what" rather than an exception to a no-how rule
 - Fold title-mood guidance into Title Structure and merge three overlapping checklist sections
+- Rebuild the worked examples as a six-shot set mostly adapted from real issues, spread across domain, body weight, and validation form, replacing eleven synthetic examples in one register that taught a template
+
+### writing-pull-requests
+
+- Restate the issue and PR boundary as two trios, replacing a division that assigned "why" to issues and "how" to pull requests
 
 ### /draft-issue
 
-- Gather symptoms and constraints as distinct context, then derive criteria by inversion rather than asking what "done" looks like
+- Gather the friction, the constraints, and the evidence as distinct context, then read criteria off what the body now says
+- Run on Sonnet via the `model` frontmatter field, since issue drafting does not need a larger model
 
 ## [0.2.2] - 2026-03-08
 

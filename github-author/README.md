@@ -7,7 +7,7 @@ Enrich Claude's knowledge for authoring high-quality GitHub contributions. This 
 ### Skills
 
 - **writing-pull-requests** - Activates when Claude helps with PR creation. Teaches the "fill in the blank" technique for titles ("After this PR merges, the repository will _____"), motivation-focused descriptions, and context surfacing through probe questions
-- **writing-issues** - Activates when Claude helps with issue creation. Encodes present progressive titles ("Supporting...", "Fixing..."), outcome-focused bodies, and the "By the time this Issue is complete..." pattern for definition of done
+- **writing-issues** - Activates when Claude helps with issue creation. Encodes present progressive titles ("Supporting...", "Fixing..."), problem-space bodies built on the why/how/what trio, and validation criteria derived by inverting the symptoms the body already states
 
 ### Commands
 
@@ -42,15 +42,19 @@ The skills activate automatically when you ask Claude to help with PRs or issues
 
 ## Philosophy
 
-This plugin encodes opinionated conventions for GitHub authoring:
+An issue lives entirely in the problem space. A pull request lives in the solution space. That boundary, not a split between motivation and detail, is what these conventions defend:
 
 - **PR Titles**: Imperative mood, verb-first, describing how the repository changes
 - **Issue Titles**: Present progressive, beginning with a meaningful verb
 - **Content Focus**:
-  - PRs: Emphasize the "why" over the "what" - code diffs show what changed
-  - Issues: Emphasize the "why" over the "how" - focus on desired outcomes, not implementation steps
+  - PRs: Carry the solution's own why, how, and what. Why this design and not another. How the constraints shaped it. What it consists of, without retelling a diff the reader can already see.
+  - Issues: Carry the problem's own why, how, and what. The friction and who bears it. The constraints any solution must live within. The symptoms, with whatever numbers exist, that show the problem is real.
+- **Validation**: An issue also says how anyone will know the problem is gone. Each criterion traces to something the body already states:
+  - a symptom, inverted
+  - a constraint, confirmed honoured
+  - a risk, retired
 
-The "what" and "how" are implementation details. They belong to the PR reviewer and Issue assignee, respectively.
+A criterion that traces to none of these has crossed into the solution space, and the remedy is to cut it or to document what the body should have said. Choosing the design is the assignee's work, and an issue that pre-empts that choice both removes their agency and tends to miss the better approach.
 
 ## Requirements
 
