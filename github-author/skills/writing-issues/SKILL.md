@@ -6,7 +6,15 @@ user-invocable: false
 
 # Writing Issues
 
-Effective issues focus on the **why** over the **how**. They describe desired outcomes rather than prescribing implementation steps. The issue author specifies what needs to happen; the assignee determines how to accomplish it.
+An issue lives entirely in the problem space. A pull request lives in the solution space. That is the only boundary that matters, and everything below refines how to stay on the correct side of it.
+
+Both spaces carry a full why/how/what trio, so an issue is not the "why half" of a pair. A good issue carries all three, drawn from the problem space:
+
+- **Why**: the problem core. The friction or unmet need, who bears it, and what it costs to leave it unaddressed.
+- **How**: the constraints. The boundaries, trade-offs, operational context, and prior failures that any viable solution must operate within.
+- **What**: the evidence. The symptoms, metrics, reproductions, and incident records that show the problem is real.
+
+The solution-space trio (why this design, how it is built, what it consists of) belongs in the PR.
 
 ## Title Mood: Present Progressive
 
@@ -54,19 +62,32 @@ When context is incomplete, ask proactively. The motivation behind an issue is e
 
 ## Surfacing Hidden Context
 
-Issues live in the problem-space: they define what needs solving without prescribing how. The body must surface the context that makes the problem clear and the outcome verifiable.
+Issues live in the problem space. The body must surface the context that makes the problem clear and the outcome verifiable, and it must draw every element of the trio from that space.
 
 ### What the Prose Must Capture
 
-Issues describe what the diff cannot convey (because the diff doesn't exist yet). The body must explain:
+Issues describe what the diff cannot convey (because the diff doesn't exist yet). Type each piece of context by the element it carries.
+
+**Why** - the problem core:
 
 - **Who is affected**: Which users, systems, or processes experience this problem
-- **How they are affected**: The specific pain, limitation, or risk
 - **Impact if unaddressed**: What happens if this issue is never resolved
-- **What outcome would resolve this**: The verifiable end state (see "Definition of Done")
+
+**How** - the constraints:
+
 - **Constraints limiting solutions**: Technical, organizational, or timeline boundaries
+- **Related prior attempts**: What has been tried before and why it didn't work (brief context, not exhaustive history), since a failed attempt narrows the viable space
 - **Scope boundaries**: What is explicitly not part of this issue's definition of done
-- **Related prior attempts**: What has been tried before and why it didn't work (brief context, not exhaustive history)
+
+**What** - the evidence:
+
+- **How they are affected**: The specific pain, limitation, or risk, with the metrics, reproductions, or complaint volumes that make it concrete
+- **What outcome would resolve this**: The same evidence in future tense (see "Definition of Done")
+
+Writing constraints down invites design prescription in costume. "Constraint: must use Redis" is a choice, not a constraint. **The test: can the assignee change it?** If yes, it is a design choice masquerading as a constraint. A genuine constraint is already true about the world.
+
+- Genuine: "We cannot afford extended downtime." "External integrations depend on this API shape." "The team is three people."
+- Smuggled: "Use Redis." "Add a timezone column." "Adopt cursor pagination."
 
 ### Detecting Missing Context
 
@@ -96,9 +117,7 @@ Use `gh issue list` to discover related work. Reference relevant issues to conne
 
 ## Body Philosophy
 
-Issues are **problem-space** documents. They define what needs solving and why it matters. PRs (solution-space) explain how; issues explain why.
-
-The body explains **why** this issue exists and **what** outcome is needed. Leave the **how** to the assignee. Implementation prescription removes agency from the person doing the work and often misses better approaches.
+Issues are **problem-space** documents. The body carries the problem's why, how, and what. It must not carry the solution's: no chosen design, no build plan, no inventory of components. Implementation prescription removes agency from the person doing the work and often misses better approaches.
 
 The first paragraph immediately follows the title without a header. This opening establishes context and motivation - the "why does this matter" that pulls readers in.
 
@@ -170,7 +189,7 @@ When creating an issue:
 2. **Search for related work**: Check open/closed issues for duplicates or related efforts
 3. **Check templates**: Use repository templates when applicable
 4. **Draft title**: Present progressive verb + goal (not imperative)
-5. **Write body**: Focus on why and what, link related work
+5. **Write body**: Carry the problem's why, how, and what; link related work
 6. **Review**: Does the title reflect ongoing work? Does the body describe outcome over implementation?
 
 ## Reference Files
