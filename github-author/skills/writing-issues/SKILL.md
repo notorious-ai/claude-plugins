@@ -99,7 +99,9 @@ Use intelligence to detect when essential context is missing. When gaps exist, a
 
 - "Who specifically encounters this problem and in what situation?"
 - "What happens to them if this remains unaddressed?"
-- "What would 'done' look like - what should be true when this is resolved?"
+- "What numbers, incidents, or complaint counts already document this?"
+- "What risk is being carried meanwhile, and does anything expire or reach end-of-life?"
+- "By the time this Issue is complete, what will be true?"
 
 If the user cannot provide the information after being asked, insert actionable placeholders that specify exactly what information is missing and how to obtain it:
 
@@ -222,7 +224,8 @@ When creating an issue:
 3. **Check templates**: Use repository templates when applicable
 4. **Draft title**: Present progressive verb + goal (not imperative)
 5. **Write body**: Carry the problem's why, how, and what; link related work
-6. **Review**: Does the title reflect ongoing work? Does the body describe outcome over implementation?
+6. **Derive criteria**: Invert the symptoms, constraints, and risks the body now states, and nothing else
+7. **Review**: Does the title reflect ongoing work? Does the body describe outcome over implementation?
 
 ## Reference Files
 
@@ -304,7 +307,12 @@ Before presenting the issue:
 
 **Body**:
 - [ ] Opens with untitled paragraph explaining why
-- [ ] Focuses on desired outcome, not implementation steps
+- [ ] Carries the problem's why, how, and what, and none of the solution's
 - [ ] Links related issues using full short syntax (`org/repo#123`)
-- [ ] Uses checklists for scope/criteria, not implementation steps
+- [ ] Any scope list enumerates problem surface, not implementation steps
+- [ ] Any validation list states how anyone will know the problem is gone
+- [ ] Every criterion traces to a symptom, constraint, or risk the body states
+- [ ] No criterion names a mechanism, location, or component
+- [ ] No threshold appears that the body does not supply
+- [ ] No stated constraint is something the assignee could change
 - [ ] Follows repository template when applicable
