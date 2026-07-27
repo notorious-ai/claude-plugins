@@ -1,6 +1,29 @@
 # Changelog
 
+## golang-dev
+
+Point the install command at the marketplace the collection publishes under.
+
 ## testing
+
+Correction pass following the first landing.
+
+- Move `evaluator-cases.md` beside SKILL.md, since it loads by reviewer role rather than by scenario like every file under `references/`
+- Cite canon snippets by source file alone, dropping the line ranges that rot on each Go release and invite doubt about a quote that merely moved
+- Carry the snippets' provenance in a dot-file the skill never loads, with all twenty-two samples re-verified line for line against the `go1.27rc2` tag
+- Close the maphash sample's second test function, which had been cut one brace short of compiling
+- Drop the hand-typed package-surface listing from the maphash file: unattributed code in a folder admitting only Go-team snippets, and silent about the three Write methods its own sample mixes seven ways
+- Stop restating sample ids and source paths in prose, leaving the markup as the one place either is declared
+- Correct the router's claim of one file per source package, false for the two files that quote a second package for their counter-example
+- Attribute a go/parser expectation to the position of the offending token rather than of the marker comment following it
+- Settle the goroutine-leak calibration rule: a synctest bubble waits for the goroutines inside it, so bubble exit is the detector and a WaitGroup belongs outside one
+- Keep synctest narration out of the calibration file's blessed code shape, which the always-loaded doctrine forbids
+- Describe the panic-recovery helper in `references/helpers.md` in place, instead of sending writers after a name that lives only in the reviewer-only calibration file
+- Fix the target at the newest Go release without hedging for older toolchains, since the compiler names a missing feature the moment it matters
+- Spell out how an example's name attributes it to a symbol, naming pkgsite as the reader and bounding what vet catches to an identifier matching nothing in the package or its imports
+- Require a name or an unrolled call for a case whose value carries no meaning on its own
+- Confine `when_to_use` to triggering, lifting the procedural sentences out of the field that shares a listing budget with the description
+- Pre-approve `go doc`, `go test`, `go vet`, and gofmt's reporting forms through `allowed-tools`
 
 Initial release of the testing skill for committed Go tests.
 
