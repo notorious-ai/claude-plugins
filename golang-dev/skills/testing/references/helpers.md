@@ -9,11 +9,11 @@ Test helpers are a good thing that must not be abused: a premature helper
 saving three lines is a smell that hides bigger misunderstandings. In a
 trivial package, only panic recovery earns one: panics take a table plus a
 recover helper whose failure message names the inputs and their specific
-invalidity from the case struct (exemplar/'s mustPanic is the shape). In
-complex packages, case-construction side functions become legitimate: when
-each tabular case's definition turns complex and multiline, side functions
-that build cases, or single fields of a case, keep the table readable.
-Before inventing a shape, find a proper exemplar in the standard library or
+invalidity from the case struct, one call per row. In complex packages,
+case-construction side functions become legitimate: when each tabular
+case's definition turns complex and multiline, side functions that build
+cases, or single fields of a case, keep the table readable. Before
+inventing a shape, find a proper exemplar in the standard library or
 golang.org/x.
 
 Helper types typically implement an interface the package consumes, with a
