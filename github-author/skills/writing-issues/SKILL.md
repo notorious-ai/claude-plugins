@@ -82,7 +82,7 @@ Issues describe what the diff cannot convey (because the diff doesn't exist yet)
 **What** - the evidence:
 
 - **How they are affected**: The specific pain, limitation, or risk, with the metrics, reproductions, or complaint volumes that make it concrete
-- **What outcome would resolve this**: The same evidence in future tense (see "Definition of Done")
+- **What outcome would resolve this**: The same evidence in future tense (see "Validating by Inverting the Problem")
 
 Writing constraints down invites design prescription in costume. "Constraint: must use Redis" is a choice, not a constraint. **The test: can the assignee change it?** If yes, it is a design choice masquerading as a constraint. A genuine constraint is already true about the world.
 
@@ -121,49 +121,61 @@ Issues are **problem-space** documents. The body carries the problem's why, how,
 
 The first paragraph immediately follows the title without a header. This opening establishes context and motivation - the "why does this matter" that pulls readers in.
 
-### Prose Over Checklists
+### Two Jobs for a Checklist
 
-Describe goals and constraints as prose. Avoid prescriptive task lists:
-
-**Avoid**:
-```markdown
-- [ ] Add database column
-- [ ] Update API endpoint
-- [ ] Modify frontend form
-```
-
-**Prefer**:
-```markdown
-User profiles lack timezone information, causing scheduled notifications
-to arrive at inconvenient times. Users should be able to specify their
-timezone so notifications respect their local time.
-```
-
-The first prescribes implementation. The second describes the outcome.
-
-### When Checklists Are Appropriate
-
-Checklists suit tracking scope or acceptance criteria as **outcomes**:
+Describe the problem as prose. A body made of task lines ("Add database column", "Update API endpoint", "Modify frontend form") prescribes implementation. State the friction and the evidence for it instead:
 
 ```markdown
-## Acceptance Criteria
-
-- [ ] Users can specify timezone in profile settings
-- [ ] Scheduled notifications respect user timezone
-- [ ] Default timezone inferred from browser when not set
+User profiles carry no timezone, so the scheduler sends on UTC. A user in
+Tokyo receives their "daily summary" at 3 AM local time, and support logs
+roughly 20 complaints a month about notification timing.
 ```
 
-These are outcomes to achieve, not steps to implement.
+Checklists still do two legitimate jobs in an issue, and they are different jobs:
 
-### Definition of Done
+- **Scope enumeration**: naming the units of problem surface this issue covers, such as which endpoints lack documentation. That is problem-space what, and a list is the clearest form for it.
+- **Validation**: stating how anyone will know the problem is gone. That is problem-space what in future tense, and the inversion rule below governs it.
 
-Include a clear outcome statement. The pattern "By the time this Issue is complete, the system will have..." works well for defining scope and completion criteria.
+Neither job licenses the other. A scope list is not a validation list.
 
-**Examples**:
-- "By the time this Issue is complete, users will be able to specify their timezone so notifications respect their local time."
+### Validating by Inverting the Problem
+
+Validation is not a fourth element. Present symptoms and their absence-conditions are the same category viewed at two different times. The coarse form is the whole why stated as resolved: "By the time this Issue is complete, the system will have..." works well as a single sentence, and it forces clarity about what done means.
+
+- "By the time this Issue is complete, notifications will arrive at an hour that makes sense wherever the user is."
 - "By the time this Issue is complete, the API will validate all input before processing."
 
-This framing forces clarity about what "done" means and helps prevent scope creep.
+The fine form is individual symptoms inverted. **Every criterion must have an antecedent already stated in the body**, of exactly one of three types:
+
+1. A documented symptom, inverted. This is the common case.
+2. A stated constraint, confirmed honoured.
+3. A named risk, retired.
+
+> If a criterion inverts no symptom, honours no constraint, and retires no risk that the body already states, it has crossed into the solution space.
+
+Two responses are valid then, and only two. Cut the criterion, or add the missing symptom, constraint, or risk to the body. The second response is a feature: wanting a criterion pressures the author to document the problem properly.
+
+**Precision is inherited, never chosen.** A criterion is exactly as precise as the antecedent it inverts, no more and no less.
+
+- Quantified symptom, quantified criterion. "P95 rose to 2s" inverts to "P95 under 500ms".
+- Qualitative symptom, observable check. "Tokyo users get 3 AM email" inverts to "arrives in their morning".
+- Suspected symptom, directed inquiry. Name who to ask or what to watch.
+
+Never invent a threshold to look rigorous; if the body has no number, the criterion has no number. Never substitute a mechanism for a measure you lack; a missing measurement is not licence to name a component. A loose criterion aimed at the stated why beats a precise one aimed elsewhere, because misalignment is the cardinal sin and vagueness is only a limit of current knowledge.
+
+**The two-implementations test.** Could two genuinely different approaches satisfy this criterion? If only one could, the criterion names mechanism. "A Tokyo user's summary arrives in their morning" passes, since browser inference, IP geolocation, account locale, and a per-notification offset all satisfy it. "Users can specify timezone in profile settings" fails, since only one implementation does.
+
+Name the section for the job it performs. The heading is the author's call:
+
+```markdown
+## How We'll Know
+
+- [ ] A user in Tokyo receives their daily summary during their morning, not overnight
+- [ ] Notification-timing complaints fall from ~20/month to near zero over a full support cycle
+- [ ] A user who never opens settings still receives notifications at a sensible local hour
+```
+
+Each item inverts a symptom the body states, and none names a mechanism. "Acceptance Criteria" is not forbidden, and contents that pass these tests are fine under any heading. But acceptance is something performed on a delivered artifact, so the label drags the section toward requirements-engineering phrasing and, with it, toward implementation. A heading that names the job holds the line better.
 
 ## Issue Templates
 
