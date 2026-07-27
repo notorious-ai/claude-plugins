@@ -18,6 +18,7 @@ when_to_use: >-
   of done: do not wait for the word "test". Not for non-Go test
   frameworks, godoc-only tasks, go vet or CI tooling failures, fuzz-crash
   debugging, or test-plan process documents.
+allowed-tools: Bash(go doc:*) Bash(go test:*) Bash(go vet:*) Bash(gofmt -l:*) Bash(gofmt -d:*)
 ---
 
 # Committed Go Tests
