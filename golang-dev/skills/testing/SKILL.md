@@ -87,3 +87,25 @@ spawn a goroutine whose only job the main goroutine could do directly
 (waiting on a goroutine that calls Wait is calling Wait), and never contort
 a test to dodge a hang, because unit tests complete faster than humans
 notice, so "hang is a valid test failure".
+
+## Review and redesign
+
+Defective test structure is breakage: per-symbol grain, self-naming
+comments, dev scaffolds, and change-detectors re-asserting a constant
+fixture contribute only blunt coverage; consolidate or delete them, since
+"don't break anything" means the package's contract, not the test file's
+shape, then finish any pass by re-reading the file top to bottom against the
+package's prose. The secondary goal is the package: tests repeatedly
+translating an API value mean production users need the translation too, so
+flag that area for a rethink; interrelated const/var values take an interplay
+comment. Findings deserve the author's inferences (promise it, or refuse
+to harden?); non-trivial tests land as fine-grained commits carrying them.
+A reviewer of tests never edits exported source or prose: those are
+owner-only, regardless of what any exemplar or fixture suggests, and drift
+findings go to the report, not the code.
+
+Testability is a design signal. Never assert error strings, least of all for
+errors this module controls: return typed or sentinel errors checked via
+errors.Is and errors.AsType[T] (Go 1.26), because a grep-only test indicts
+the API; prefer io interfaces, readers and writers over paths. A test that
+proves hard to write is a signal to redesign, rethink, or try harder.
