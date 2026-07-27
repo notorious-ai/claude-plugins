@@ -43,3 +43,34 @@ its promises. Drift is a finding, never silently absorbed: ask the owner,
 else side with prose unless the code moved deliberately, then fix the prose.
 Go-doc-first makes this operational: draft the test plan from go doc -all
 alone, no bodies, before opening source, so every collision is surfaced drift.
+
+## The unit is the package
+
+Go's objects are packages, not files or symbols. Exercise each package as
+its user, in an external `package foo_test` that enforces the user's seat
+at compile time, unless a peephole into internals is required. Thinking as
+a user tests flows, the anticipated call patterns that embody the contract,
+not a symbol-by-symbol scan. Aspire to fewer tests that cover more of the
+exported API, because users compose the API rather than call it piecemeal.
+
+When asked to add a test for one symbol, first see whether it fits an
+existing test as a sub-test or table row; usually it will not, and a
+runnable example is the next reach. A bug-hunt request gets run, not
+committed. A symbol extending the API gets tested the way its siblings are.
+
+A representative runnable example of the anticipated call pattern is
+mandatory per package; an ExampleLoad that just calls Load earns no commit.
+Example comments, doc and in-function alike, render on pkgsite: they speak
+to users about the attributed symbol and scenario, repeating non-Go
+contract parts at call sites, never narrating the code. Test comments speak
+only to maintainers: a non-trivial test carries a doc comment giving the
+author's rationale in layman's terms, a trivial one needs none, and no test
+comment ever opens with the function's name. Never explain conventions,
+ordering, or synctest mechanics: nothing good to say, say nothing. A test
+name claims a property in plain English, not a symbol; a whole-package
+scenario test named for the package is good. Bodies are trivial
+straight-line code: hard-coded numbers, not algorithms, the math done at
+coding time and written as results. Canon postdating training data: b.Loop
+benchmarks (Go 1.24), which the compiler keeps alive where old b.N
+discard-loops optimize away, and t.Context() (Go 1.24), canceled just
+before Cleanup so context-shutdown resources drain in time.
