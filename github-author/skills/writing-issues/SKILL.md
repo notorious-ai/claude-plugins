@@ -1,6 +1,6 @@
 ---
 name: Writing Issues
-description: Encodes GitHub issue authoring conventions including present-progressive titles, outcome-focused bodies, problem-space framing, and definition-of-done patterns. Must be loaded before composing any issue title or body, whether drafting interactively or creating programmatically with gh issue create.
+description: Encodes GitHub issue authoring conventions including present-progressive titles, outcome-focused bodies, problem-space framing as a why/how/what trio, and definition-of-done patterns validated by inverting the documented symptoms, constraints, and risks. Must be loaded before composing any issue title or body, or revising the criteria of an existing issue, whether drafting interactively or creating programmatically with gh issue create.
 user-invocable: false
 ---
 
