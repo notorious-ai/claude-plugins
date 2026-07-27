@@ -1,5 +1,18 @@
 # Changelog
 
+## testing
+
+Initial release of the testing skill for committed Go tests.
+
+- Golden hierarchy of contract authority running from the package's prose down to its existing tests, with drift surfaced as a finding instead of absorbed into a new test
+- Package-as-unit doctrine: an external test package, anticipated call patterns over symbol-by-symbol scans, and one representative runnable example required per package
+- Go-doc-first planning, drafting the test plan from the exported documentation alone before any source file is opened
+- Role-split routing where writers read only the exemplar samples matching their package's clusters while reviewers read the corpus whole
+- Eight exemplar files of verbatim, attributed Go-team snippets, serving the transform, lifecycle, stream, contract-conformance, harness, golden-fixture, async-assert, and example archetypes
+- Six scenario references covering helpers and fakes, tables and sub-tests, fixtures, runnable examples, concurrency and time, and conformance harnesses
+- Reviewer-only calibration cases pairing a shape a grader must not flag with the near-neighbour it must
+- Owner-only boundary keeping a reviewer of tests out of exported source and prose, with drift findings routed to the report
+
 ## planning-commits
 
 Encode per-commit hygiene as part of the incremental facet.
