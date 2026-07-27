@@ -15,11 +15,9 @@ when_to_use: >-
   interface; shaping a new package's API so it stays testable before the
   code exists; rescuing a test that flakes or resists being written. Load
   it after writing or changing any Go code, since committed tests are part
-  of done: do not wait for the word "test". Begin in go-doc-first mode,
-  planning from the exported docs before opening source, and enter
-  exemplar/ by role, matched samples to write and the whole corpus to
-  review. Not for non-Go test frameworks, godoc-only tasks, go vet or CI
-  tooling failures, fuzz-crash debugging, or test-plan process documents.
+  of done: do not wait for the word "test". Not for non-Go test
+  frameworks, godoc-only tasks, go vet or CI tooling failures, fuzz-crash
+  debugging, or test-plan process documents.
 ---
 
 # Committed Go Tests
