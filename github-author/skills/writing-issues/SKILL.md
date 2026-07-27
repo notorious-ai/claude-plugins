@@ -147,13 +147,17 @@ Validation is not a fourth element. Present symptoms and their absence-condition
 
 The fine form is individual symptoms inverted. **Every criterion must have an antecedent already stated in the body**, of exactly one of three types:
 
-1. A documented symptom, inverted. This is the common case.
+1. A documented symptom, inverted. This is the common case. An absent capability counts as a symptom: "a freelancer cannot group projects by client today" inverts to "a freelancer can group projects by client."
 2. A stated constraint, confirmed honoured.
 3. A named risk, retired.
 
 > If a criterion inverts no symptom, honours no constraint, and retires no risk that the body already states, it has crossed into the solution space.
 
-Two responses are valid then, and only two. Cut the criterion, or add the missing symptom, constraint, or risk to the body. The second response is a feature: wanting a criterion pressures the author to document the problem properly.
+Three responses are valid then:
+
+- Cut the criterion.
+- Add the missing symptom, constraint, or risk to the body. This response is a feature: wanting a criterion pressures the author to document the problem properly.
+- When the antecedent is knowable but not yet known, the criterion may stand as a `[FILL: ...]` that names how to obtain it, such as `[FILL: instrument search latency, then set a target from the observed P95]`. The placeholder must name how to obtain the antecedent, never restate the criterion in hopeful language.
 
 **Precision is inherited, never chosen.** A criterion is exactly as precise as the antecedent it inverts, no more and no less.
 
@@ -163,7 +167,19 @@ Two responses are valid then, and only two. Cut the criterion, or add the missin
 
 Never invent a threshold to look rigorous; if the body has no number, the criterion has no number. Never substitute a mechanism for a measure you lack; a missing measurement is not licence to name a component. A loose criterion aimed at the stated why beats a precise one aimed elsewhere, because misalignment is the cardinal sin and vagueness is only a limit of current knowledge.
 
-**The two-implementations test.** Could two genuinely different approaches satisfy this criterion? If only one could, the criterion names mechanism. "A Tokyo user's summary arrives in their morning" passes, since browser inference, IP geolocation, account locale, and a per-notification offset all satisfy it. "Users can specify timezone in profile settings" fails, since only one implementation does.
+**The two-implementations test.** Could two genuinely different approaches satisfy this criterion? If only one could, the criterion names mechanism. "A Tokyo user's summary arrives in their morning" passes, since browser inference, IP geolocation, account locale, and a per-notification offset all satisfy it.
+
+A can-do criterion passes when it names the ability and fails when it names the place or component that grants it.
+
+- Passes: "A freelancer can group projects by client." Folders, tags, saved filters and workspaces all satisfy it.
+- Fails: "Users can specify timezone in profile settings." Only one implementation does. The phrase "in profile settings" is what sinks it, not "can".
+
+Refactoring and tech-debt issues carry friction that is structural and usually unmeasured, so the honest-sounding criterion drifts toward naming a location. **Structural friction inverts to a task becoming cheaper for a named person, never to an arrangement existing.**
+
+- Fails: "The duplicated validation lives in one place." Names an arrangement.
+- Passes: "One team ships the auth service without coordinating a release with the other two."
+
+The inversion targets the experience, not the arrangement that produces it.
 
 Name the section for the job it performs. The heading is the author's call:
 
