@@ -239,8 +239,28 @@ For detailed guidance, consult:
 ## What to Avoid
 
 <negative>
-<pattern>Prescribing implementation steps instead of outcomes</pattern>
-<reason>Issues define what needs to happen, not how. "Add a database column" prescribes; "Users need to specify timezone" describes outcome.</reason>
+<pattern>Prescribing implementation steps instead of stating the friction</pattern>
+<reason>A build plan is the solution's what and belongs in the PR. "Add a database column" names a component; "notifications arrive at an hour that makes sense wherever the user is" inverts the friction and leaves every approach open.</reason>
+</negative>
+
+<negative>
+<pattern>The solution restated as a checklist: "Monitoring and alerting configured"</pattern>
+<reason>Mechanism, location, and component names in criteria fail the two-implementations test, since only the named arrangement satisfies them.</reason>
+</negative>
+
+<negative>
+<pattern>Criteria with no antecedent in the body</pattern>
+<reason>An item that inverts no stated symptom, honours no stated constraint, and retires no stated risk is either solution-space or a sign the body is incomplete.</reason>
+</negative>
+
+<negative>
+<pattern>Invented precision: "P95 under 200ms" when the body reports no latency figure</pattern>
+<reason>A threshold with no basis in the documented problem is rigour theatre. Precision is inherited from the antecedent.</reason>
+</negative>
+
+<negative>
+<pattern>Prescription dressed as a constraint: "Constraint: must use Redis"</pattern>
+<reason>The assignee can change it, so it is a design choice in costume rather than something already true about the world.</reason>
 </negative>
 
 <negative>
