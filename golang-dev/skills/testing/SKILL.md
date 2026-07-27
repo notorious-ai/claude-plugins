@@ -74,3 +74,16 @@ coding time and written as results. Canon postdating training data: b.Loop
 benchmarks (Go 1.24), which the compiler keeps alive where old b.N
 discard-loops optimize away, and t.Context() (Go 1.24), canceled just
 before Cleanup so context-shutdown resources drain in time.
+
+## Concurrency and time
+
+Go's doc conventions (go.dev/doc/comment) presume a top-level function safe
+for concurrent use and a type's methods not, unless the docs promise more:
+never commit a test pinning concurrency the docs do not promise; in review,
+delete such tests rather than rewrite them. Prefer testing/synctest (Go
+1.25) for contexts and goroutines: bubbles run on virtual time, so sleeping
+inside one is idiomatic and stable. Use the least orchestration: never
+spawn a goroutine whose only job the main goroutine could do directly
+(waiting on a goroutine that calls Wait is calling Wait), and never contort
+a test to dodge a hang, because unit tests complete faster than humans
+notice, so "hang is a valid test failure".
