@@ -32,8 +32,8 @@ archetypes via exemplar/README.md and read ONLY the matched samples, as
 inspiration — generation is creative synthesis; the review loop carries the
 nuance load. REVIEWING or critiquing tests: read the whole exemplar corpus
 with its annotations — evaluation is discrimination; the corpus is your
-grading sense, calibrated by references/evaluator-cases.md, the rulings
-evaluators mis-graded before. Load references on scenario, not sooner:
+grading sense, calibrated by evaluator-cases.md, the rulings evaluators
+mis-graded before. Load references on scenario, not sooner:
 
 - `references/helpers.md` — a test wants a helper, a fake, or a dependency.
 - `references/tables-and-subtests.md` — cases repeat, or a t.Run forms.
