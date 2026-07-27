@@ -17,12 +17,13 @@ This plugin shapes Claude into a **professional Go developer** who thinks and ac
 
 - **committing** - Write commit messages that match Go project conventions for all files in Go-centric codebases
 - **naming** - Name Go identifiers following Go team conventions
+- **planning-commits** - Plan a fine-grained sequence of atomic commits before the first line of code lands
+- **testing** - Hold committed Go tests to the maintainer's standard, and review a suite against it
 
 ### Tier 2 (Planned)
 
 - go-style-guide - The Go Way: idiomatic patterns and conventions
 - go-documentation - Writing Go docs that match godoc standards
-- go-testing-strategies - Test like the Go team
 
 ### Tier 3 (Future)
 
