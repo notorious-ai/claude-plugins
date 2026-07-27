@@ -88,8 +88,10 @@ ordering, or synctest mechanics: nothing good to say, say nothing. A test
 name claims a property in plain English, not a symbol; a whole-package
 scenario test named for the package is good. Bodies are trivial
 straight-line code: hard-coded numbers, not algorithms, the math done at
-coding time and written as results. Canon postdating training data: b.Loop
-benchmarks (Go 1.24), which the compiler keeps alive where old b.N
+coding time and written as results. Write for the newest Go, currently
+1.27, and never hedge for older toolchains: a feature the toolchain in use
+lacks announces itself at compile time. Canon postdating training data:
+b.Loop benchmarks (Go 1.24), which the compiler keeps alive where old b.N
 discard-loops optimize away, and t.Context() (Go 1.24), canceled just
 before Cleanup so context-shutdown resources drain in time.
 
