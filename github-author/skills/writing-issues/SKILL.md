@@ -140,59 +140,21 @@ roughly 20 complaints a month about notification timing.
 Checklists still do two legitimate jobs in an issue, and they are different jobs:
 
 - **Scope enumeration**: naming the units of problem surface this issue covers, such as which endpoints lack documentation. That is problem-space what, and a list is the clearest form for it.
-- **Validation**: stating how anyone will know the problem is gone. That is problem-space what in future tense, and the inversion rule below governs it.
+- **Validation**: stating how anyone will know the problem is gone.
 
 Neither job licenses the other. A scope list is not a validation list.
 
-### Validating by Inverting the Problem
+### Validation: Verifying the Why Is Carried
 
-Validation is not a fourth element. Present symptoms and their absence-conditions are the same category viewed at two different times. The coarse form is the whole why stated as resolved. "By the time this Issue is complete, the system will have..." works well as a single sentence, and it forces clarity about what done means.
+An issue earns exactly one kind of how: how anyone will know the why has been satisfied. Every other how is the assignee's.
 
-- "By the time this Issue is complete, notifications will arrive at an hour that makes sense wherever the user is."
-- "By the time this Issue is complete, the API will validate all input before processing."
+Criteria are not constructed. They are read off the body. A body that carries its why already contains them: it names someone who cannot do something, so the criterion is that they can; it names what the trouble costs, so the criterion is that the cost is gone. Reading them off is itself the check. A criterion testing something the body never claimed means either the criterion is invention, or the body never stated the why it should have. Fix whichever it is.
 
-The fine form is individual symptoms inverted. **Every criterion must have an antecedent already stated in the body**, of exactly one of three types:
+One sentence carries the coarse form, the whole why stated as resolved: "By the time this Issue is complete, notifications will arrive at an hour that makes sense wherever the user is."
 
-1. A documented symptom, inverted. This is the common case. An absent capability counts as a symptom: "a freelancer cannot group projects by client today" inverts to "a freelancer can group projects by client."
-2. A stated constraint, confirmed honoured.
-3. A named risk, retired.
+Be as precise as the body allows and no more. A body with numbers yields criteria with numbers. A body describing trouble nobody has measured yields criteria someone will still recognise on sight. Where a measure is worth having and does not exist yet, a `[FILL: ...]` naming how to get it is honest, and inventing a threshold is not.
 
-> If a criterion inverts no symptom, honours no constraint, and retires no risk that the body already states, it has crossed into the solution space.
-
-Three responses are valid then:
-
-- Cut the criterion.
-- Add the missing symptom, constraint, or risk to the body. This response is a feature: wanting a criterion pressures the author to document the problem properly.
-- When the antecedent is knowable but not yet known, the criterion may stand as a `[FILL: ...]` that names how to obtain it, such as `[FILL: instrument search latency, then set a target from the observed P95]`. The placeholder must name how to obtain the antecedent, never restate the criterion in hopeful language.
-
-**Precision is inherited, never chosen.** A criterion is exactly as precise as the antecedent it inverts, no more and no less.
-
-- Quantified symptom, quantified criterion. "P95 rose to 2s" inverts to "P95 under 500ms".
-- Qualitative symptom, observable check. "Tokyo users get 3 AM email" inverts to "arrives in their morning".
-- Suspected symptom, directed inquiry. Name who to ask or what to watch.
-
-Two corollaries follow, both load-bearing:
-
-- **Never invent a threshold** to look rigorous. If the body has no number, the criterion has no number.
-- **Never substitute a mechanism** for a measure you lack. A missing measurement is not licence to name a component.
-
-A loose criterion aimed at the stated why beats a precise one aimed elsewhere. Misalignment is the cardinal sin, and vagueness is only a limit of current knowledge.
-
-**The two-implementations test.** Could two genuinely different approaches satisfy this criterion? If only one could, the criterion names mechanism. "A Tokyo user's summary arrives in their morning" passes, since browser inference, IP geolocation, account locale, and a per-notification offset all satisfy it.
-
-A can-do criterion passes when it names the ability and fails when it names the place or component that grants it.
-
-- Passes: "A freelancer can group projects by client." Folders, tags, saved filters and workspaces all satisfy it.
-- Fails: "Users can specify timezone in profile settings." Only one implementation does. The phrase "in profile settings" is what sinks it, not "can".
-
-Refactoring and tech-debt issues carry friction that is structural and usually unmeasured, so the honest-sounding criterion drifts toward naming a location. **Structural friction inverts to a task becoming cheaper for a named person, never to an arrangement existing.**
-
-- Fails: "The duplicated validation lives in one place." Names an arrangement.
-- Passes: "One team ships the auth service without coordinating a release with the other two."
-
-The inversion targets the experience, not the arrangement that produces it.
-
-Name the section for the job it performs. The heading is the author's call:
+Name the section for the job it does. The heading is yours:
 
 ```markdown
 ## How We'll Know
@@ -202,7 +164,7 @@ Name the section for the job it performs. The heading is the author's call:
 - [ ] A user who never opens settings still receives notifications at a sensible local hour
 ```
 
-Each item inverts a symptom the body states, and none names a mechanism. "Acceptance Criteria" is not forbidden, and contents that pass these tests are fine under any heading. But acceptance is something performed on a delivered artifact, so the label drags the section toward requirements-engineering phrasing and, with it, toward implementation. A heading that names the job holds the line better.
+Each item states what becomes true for someone the body already named. "Acceptance Criteria" is not forbidden, but acceptance is something performed on a delivered artifact, so the label pulls the section toward requirements phrasing and, with it, toward implementation.
 
 ## Issue Templates
 
@@ -229,7 +191,7 @@ When creating an issue:
 3. **Check templates**: Use repository templates when applicable
 4. **Draft title**: Present progressive verb + goal (not imperative)
 5. **Write body**: Carry the problem's why, how, and what; link related work
-6. **Derive criteria**: Invert the symptoms, constraints, and risks the body now states, and nothing else
+6. **Read off criteria**: State how anyone will know the why is satisfied, using nothing the body has not already said
 7. **Review**: Does the title reflect ongoing work? Does the body describe outcome over implementation?
 
 ## Reference Files
@@ -252,18 +214,18 @@ For detailed guidance, consult:
 </negative>
 
 <negative>
-<pattern>The solution restated as a checklist: "Monitoring and alerting configured"</pattern>
-<reason>Mechanism, location, and component names in criteria fail the two-implementations test, since only the named arrangement satisfies them.</reason>
+<pattern>Criteria naming where or how the outcome is produced: "in profile settings", "the duplicated validation lives in one package"</pattern>
+<reason>These pin one design. State what becomes true for someone, not the arrangement that makes it true. "A Tokyo user's summary arrives in their morning" leaves every approach open; "users can set a timezone in profile settings" leaves one. The word "can" is fine, and "in profile settings" is what sinks it.</reason>
 </negative>
 
 <negative>
-<pattern>Criteria with no antecedent in the body</pattern>
-<reason>An item that inverts no stated symptom, honours no stated constraint, and retires no stated risk is either solution-space or a sign the body is incomplete.</reason>
+<pattern>Criteria the body never earned: "Monitoring and alerting configured" under a body about incident response</pattern>
+<reason>Nothing in that body claimed monitoring was missing. An item nobody can trace to the stated why is either the solution in disguise or a sign the body left its why unsaid.</reason>
 </negative>
 
 <negative>
 <pattern>Invented precision: "P95 under 200ms" when the body reports no latency figure</pattern>
-<reason>A threshold with no basis in the documented problem is rigour theatre. Precision is inherited from the antecedent.</reason>
+<reason>A threshold with no basis in the problem as described is rigour theatre. Borrow the body's precision rather than manufacturing it.</reason>
 </negative>
 
 <negative>
@@ -316,7 +278,7 @@ Before presenting the issue:
 - [ ] Links related issues using full short syntax (`org/repo#123`)
 - [ ] Any scope list enumerates problem surface, not implementation steps
 - [ ] Any validation list states how anyone will know the problem is gone
-- [ ] Every criterion traces to a symptom, constraint, or risk the body states
+- [ ] Every criterion checks something the body already says
 - [ ] No criterion names a mechanism, location, or component
 - [ ] No threshold appears that the body does not supply
 - [ ] No stated constraint is something the assignee could change
