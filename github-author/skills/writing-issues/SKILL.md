@@ -16,6 +16,10 @@ Both spaces carry a full why/how/what trio, so an issue is not the "why half" of
 
 The solution-space trio (why this design, how it is built, what it consists of) belongs in the PR.
 
+The trio runs inside-out: why first, then how, then what, with validation flowing from the what. The reason is how each ordering reads. Symptoms presented before the friction read as a work list. Symptoms presented after it read as evidence.
+
+This is a direction, not a required section order. A short bug report can carry friction and symptom in one sentence, and leading with the symptom there aids triage and deduplication. Longer issues run inside-out.
+
 ## Title Mood: Present Progressive
 
 Issues track ongoing work. The title reflects this with present progressive verbs - work that is happening, not a command to execute.
@@ -62,7 +66,7 @@ When context is incomplete, ask proactively. The motivation behind an issue is e
 
 ## Surfacing Hidden Context
 
-Issues live in the problem space. The body must surface the context that makes the problem clear and the outcome verifiable, and it must draw every element of the trio from that space.
+The body must surface the context that makes the problem clear and the outcome verifiable.
 
 ### What the Prose Must Capture
 
