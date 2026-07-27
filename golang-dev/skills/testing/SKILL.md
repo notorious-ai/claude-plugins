@@ -24,6 +24,24 @@ when_to_use: >-
 
 # Committed Go Tests
 
+Imitation is the method, split by role. The `exemplar/` files are annotated
+verbatim snippets from the Go team's own packages; imitate them, because
+canon is the source and nothing bundled is canon of its own. WRITING tests:
+after go doc -all, match the package's disjoint symbol clusters to
+archetypes via exemplar/README.md and read ONLY the matched samples, as
+inspiration — generation is creative synthesis; the review loop carries the
+nuance load. REVIEWING or critiquing tests: read the whole exemplar corpus
+with its annotations — evaluation is discrimination; the corpus is your
+grading sense, calibrated by references/evaluator-cases.md, the rulings
+evaluators mis-graded before. Load references on scenario, not sooner:
+
+- `references/helpers.md` — a test wants a helper, a fake, or a dependency.
+- `references/tables-and-subtests.md` — cases repeat, or a t.Run forms.
+- `references/fixtures.md` — file inputs, long literals, malformed cases.
+- `references/examples.md` — an Example function is written, reviewed, or judged.
+- `references/concurrency.md` — goroutines, panics, races, invalid inputs.
+- `references/harnesses.md` — conformance suites and testing packages.
+
 ## The contract and the golden hierarchy
 
 Test freely while developing: throwaway tests, tailored executables,
