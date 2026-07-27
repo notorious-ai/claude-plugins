@@ -8,7 +8,7 @@ user-invocable: false
 
 Effective issues focus on the **why** over the **how**. They describe desired outcomes rather than prescribing implementation steps. The issue author specifies what needs to happen; the assignee determines how to accomplish it.
 
-## Core Principle: Ongoing Efforts
+## Title Mood: Present Progressive
 
 Issues track ongoing work. The title reflects this with present progressive verbs - work that is happening, not a command to execute.
 
@@ -23,13 +23,9 @@ Issues track ongoing work. The title reflects this with present progressive verb
 
 The imperative mood suits PRs (commands that execute on merge). Present progressive suits issues (work in progress).
 
-## Title Structure
-
-Issue titles use present progressive, beginning with a meaningful verb:
-
 **Format**: `<Verb+ing> <what is being accomplished>`
 
-- Begin with present progressive verb (-ing form)
+- Begin with a meaningful present progressive verb (-ing form)
 - Describe the goal or outcome being worked toward
 - Keep concise but descriptive
 - Avoid labels in the title (use GitHub labels instead)
