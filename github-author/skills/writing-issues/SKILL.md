@@ -146,7 +146,7 @@ Neither job licenses the other. A scope list is not a validation list.
 
 ### Validating by Inverting the Problem
 
-Validation is not a fourth element. Present symptoms and their absence-conditions are the same category viewed at two different times. The coarse form is the whole why stated as resolved: "By the time this Issue is complete, the system will have..." works well as a single sentence, and it forces clarity about what done means.
+Validation is not a fourth element. Present symptoms and their absence-conditions are the same category viewed at two different times. The coarse form is the whole why stated as resolved. "By the time this Issue is complete, the system will have..." works well as a single sentence, and it forces clarity about what done means.
 
 - "By the time this Issue is complete, notifications will arrive at an hour that makes sense wherever the user is."
 - "By the time this Issue is complete, the API will validate all input before processing."
@@ -171,7 +171,12 @@ Three responses are valid then:
 - Qualitative symptom, observable check. "Tokyo users get 3 AM email" inverts to "arrives in their morning".
 - Suspected symptom, directed inquiry. Name who to ask or what to watch.
 
-Never invent a threshold to look rigorous; if the body has no number, the criterion has no number. Never substitute a mechanism for a measure you lack; a missing measurement is not licence to name a component. A loose criterion aimed at the stated why beats a precise one aimed elsewhere, because misalignment is the cardinal sin and vagueness is only a limit of current knowledge.
+Two corollaries follow, both load-bearing:
+
+- **Never invent a threshold** to look rigorous. If the body has no number, the criterion has no number.
+- **Never substitute a mechanism** for a measure you lack. A missing measurement is not licence to name a component.
+
+A loose criterion aimed at the stated why beats a precise one aimed elsewhere. Misalignment is the cardinal sin, and vagueness is only a limit of current knowledge.
 
 **The two-implementations test.** Could two genuinely different approaches satisfy this criterion? If only one could, the criterion names mechanism. "A Tokyo user's summary arrives in their morning" passes, since browser inference, IP geolocation, account locale, and a per-notification offset all satisfy it.
 
@@ -208,7 +213,7 @@ Before creating an issue, check for templates in `.github/ISSUE_TEMPLATE/`. Temp
 While uniform principles apply to all issues, certain types benefit from specific context. Consult `references/body-structure.md` for detailed guidance on:
 
 - **Bug reports**: Environment, reproduction steps, expected vs actual behavior
-- **Feature requests**: User impact, success criteria
+- **Feature requests**: The voiced need, written as people and what they cannot do today
 - **Discussion issues**: Decision framing, questions to consider
 
 ## Follow-up Tasks
