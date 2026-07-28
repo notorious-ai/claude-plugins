@@ -6,7 +6,7 @@ user-invocable: false
 
 # Writing Pull Requests
 
-Effective pull requests communicate the **why** behind changes, not the **what**. Code diffs already show what changed; the PR title and description convey motivation, impact, and context that accelerates review.
+Code diffs already show what changed, so retelling the diff in prose wastes the reader's time. The PR title and description convey motivation, impact, and context that accelerates review.
 
 ## Core Principle: Repository Transformation
 
@@ -166,7 +166,7 @@ Templates are guides, not rigid forms.
 
 ## Description Philosophy
 
-PRs are **solution-space** documents. Issues define what needs solving (problem-space); PRs explain why this particular solution was chosen and what outcome it achieves.
+PRs are **solution-space** documents. An issue carries the problem's why, how, and what. A PR carries the solution's: why this design, how it is built, and what it consists of.
 
 The description explains **why** this solution exists and **what outcome** it delivers. The expected outcome must be verifiable: reviewers should be able to confirm the changeset achieves the stated intent.
 

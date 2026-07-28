@@ -1,243 +1,70 @@
 ---
 name: Writing Issues
-description: Encodes GitHub issue authoring conventions including present-progressive titles, outcome-focused bodies, problem-space framing, and definition-of-done patterns. Must be loaded before composing any issue title or body, whether drafting interactively or creating programmatically with gh issue create.
+description: Encodes GitHub issue authoring conventions including present-progressive titles and problem-space bodies that communicate inside-out as why, how, and what, with completion criteria read off the documented problem. Must be loaded before composing any issue title or body, or revising an existing issue, whether drafting interactively or creating programmatically with gh issue create.
 user-invocable: false
 ---
 
 # Writing Issues
 
-Effective issues focus on the **why** over the **how**. They describe desired outcomes rather than prescribing implementation steps. The issue author specifies what needs to happen; the assignee determines how to accomplish it.
+An issue is a communication medium for a problem space. A pull request is the same medium for a solution space. This file describes the characteristics of an issue that communicates its problem well. It does not prescribe a structure, because the right form follows from the problem at hand, and no two problems arrive in the same shape.
 
-## Core Principle: Ongoing Efforts
+## The Problem-Space Trio
 
-Issues track ongoing work. The title reflects this with present progressive verbs - work that is happening, not a command to execute.
+A problem space carries its own why, how, and what, and a good issue holds all three:
 
-**Think**: "This issue is _____ (verb+ing)"
+- **Why, the problem core**: the friction or unmet need, who bears it, and what it costs to leave it unaddressed.
+- **How, the constraints**: what is already true about the world that any viable solution must operate within — operational boundaries, dependencies, deadlines, failed prior attempts, deliberate scope refusals.
+- **What, the evidence**: the symptoms that show the problem is real — reproductions, metrics, incident records, complaints — in the terms the affected person would use.
 
-| Imperative (avoid) | Present Progressive (prefer) |
-|--------------------|------------------------------|
-| Add timezone support | Supporting user timezone preferences |
-| Fix search crash | Fixing search crash on large date ranges |
-| Implement caching | Improving response times for frequent queries |
-| Remove deprecated API | Removing legacy v1 API endpoints |
+The solution's trio (why this design, how it is built, what it consists of) belongs to the pull request.
 
-The imperative mood suits PRs (commands that execute on merge). Present progressive suits issues (work in progress).
+Effective issues communicate inside-out: why first, then how, then what. Most drafts arrive outside-in, opening with a symptom or a requested feature, and reversing that direction is usually the single largest improvement available. The mechanism is how each ordering reads: symptoms placed before the friction read as a work list; placed after it, they read as evidence.
 
-## Title Structure
+Inside-out is a direction of emphasis, not a section order. A short bug report can lead with the symptom because triage and deduplication start there, and still carry its why in the sentence that follows.
 
-Issue titles use present progressive, beginning with a meaningful verb:
+## Titles
 
-**Format**: `<Verb+ing> <what is being accomplished>`
+Issues track ongoing work, and the title reflects this with a present-progressive verb: work that is happening, not a command to execute. Think: "This issue is _____ (verb+ing)."
 
-- Begin with present progressive verb (-ing form)
-- Describe the goal or outcome being worked toward
-- Keep concise but descriptive
-- Avoid labels in the title (use GitHub labels instead)
+| Imperative (suits PRs) | Present progressive (suits issues)            |
+| ---------------------- | --------------------------------------------- |
+| Add timezone support   | Supporting user timezone preferences          |
+| Fix search crash       | Fixing search crash on large date ranges      |
+| Implement caching      | Improving response times for frequent queries |
 
-**Examples by type**:
-- Feature: `Supporting user timezone preferences`
-- Bug: `Fixing search crash on large date ranges`
-- Task: `Migrating authentication to passport-next`
-- Investigation: `Investigating duplicate order submissions`
-- Discussion: `Evaluating GraphQL migration for public API`
+Name the problem, not the remedy. "Adding a Redis cache" puts the answer in the title before the body has argued for it; "Reducing dashboard load time" leaves every answer open. A remedy settled before the issue existed can be named, as in "Migrating authentication to passport-next". Leave type and priority to GitHub labels rather than title prefixes.
 
-## Gathering Context
+## Characteristics of an Effective Body
 
-Before drafting an issue, gather context:
+**It opens with why.** The first paragraph follows the title without a header and gives a reader who knows nothing about the problem a reason to care: the friction, who bears it, what it costs. Everything else in the body hangs off this paragraph, so when the conversation has not supplied a why, ask for it before drafting; no prose can compensate for a problem nobody stated.
 
-### From the Conversation
+**It stays in the problem space.** One test draws the boundary: could the assignee reasonably decide otherwise? If yes, it is a design choice and belongs to them. The test catches solutions wherever they hide — a "Solution" section, a build-step checklist, a preference dressed as a constraint ("must use Redis"), a criterion that names a mechanism ("export runs in a background worker"). A genuine constraint is already true about the world: "external integrations depend on this response shape", "the team is three people". Prescription does not just remove the assignee's agency; it forecloses better approaches nobody has thought of yet.
 
-Draw from the discussion that surfaced the need:
+**Its evidence carries its actual weight.** Report how you know and how well. Three unprompted remarks in support chat are worth more written as exactly that than dressed up as "users have reported". Numbers appear where something was measured and nowhere else. When a measure is worth having and absent, name how to obtain it — `[FILL: instrument search latency, then set a target from the observed P95]` — rather than inventing a threshold that only sounds rigorous.
 
-1. What problem or need was identified?
-2. Who is affected and how?
-3. What constraints exist?
-4. What outcome would resolve this?
+**It says how anyone will know the problem is gone — once.** This is the one how the issue owes the solution space, and it is read off the body rather than invented: the body names someone who cannot do something, so done is that they can; it names a cost, so done is that the cost is gone. A criterion testing something the body never claimed means either the criterion is invention or the body left its why unsaid — fix whichever it is. One outcome takes a sentence: "By the time this issue is complete, notifications will arrive at an hour that makes sense wherever the user is." Several independently checkable outcomes keep that sentence as the lead-in — "By the time this issue is complete:" — followed by the outcomes as a list, with or without a heading above it. The sentence and its list are one statement, not a closing line plus a formal section: when a heading tops the list, the sentence moves under the heading as the list's first line, and the narrative prose above simply ends. Prose that closes on "by the time this issue is complete…" and then reopens as a criteria checklist has said the same thing twice, leaving the reader two forms of one claim to reconcile. A sentence chaining outcomes with commas is the mirror fault, a list wearing prose. And each outcome is a state of the world, not an activity on the way to it: "root cause documented" and "approach decided" are work items wearing checkboxes, while the outcome they serve is the named person's cost gone.
 
-When context is incomplete, ask proactively. The motivation behind an issue is essential for effective tracking.
+**Its form follows its content.** Prose that argues beats a form that was filled in. A checklist earns its place when the body carries independently checkable units: measured baselines to invert (validation), or the endpoints a cleanup covers (scope). Those are different jobs, and one list never does both. No heading is canonical; name a section for the job it does in this issue, and skip the heading entirely when a lead-in sentence already names it. "Acceptance Criteria" is not forbidden, but acceptance is performed on a delivered artifact, so the label pulls a section toward requirements phrasing and, with it, toward implementation. An invented label the reader has never met ("How We'll Know", "Signs the Problem Is Gone") costs them a parse of the category on top of the contents; a conventional name or the lead-in sentence is cheaper. Whether to use headings at all is a question of size, left to judgment: a short body reads best as unbroken prose, and somewhere past four or five paragraphs sections begin to pay for themselves. When they appear, they belong further down the read. The trio runs why, then how, then what, and the why always opens the issue untitled — so a generic heading like "Context" or "Background" mostly labels the part every issue leads with anyway. Let sections carve the how and the what (constraints, reproduction, scope, validation) rather than the reason the issue exists.
 
-## Surfacing Hidden Context
+## Grounding in the Repository
 
-Issues live in the problem-space: they define what needs solving without prescribing how. The body must surface the context that makes the problem clear and the outcome verifiable.
+An issue joins a tracker that already has history. Search open and recently closed issues for duplicates and prior attempts (`gh issue list`), and link related work in prose with the reason it matters — a failed prior attempt is a constraint, not trivia. When `.github/ISSUE_TEMPLATE/` provides a template for the issue type, follow it; templates encode repository conventions this skill cannot know.
 
-### What the Prose Must Capture
+## Issue Hygiene
 
-Issues describe what the diff cannot convey (because the diff doesn't exist yet). The body must explain:
-
-- **Who is affected**: Which users, systems, or processes experience this problem
-- **How they are affected**: The specific pain, limitation, or risk
-- **Impact if unaddressed**: What happens if this issue is never resolved
-- **What outcome would resolve this**: The verifiable end state (see "Definition of Done")
-- **Constraints limiting solutions**: Technical, organizational, or timeline boundaries
-- **Scope boundaries**: What is explicitly not part of this issue's definition of done
-- **Related prior attempts**: What has been tried before and why it didn't work (brief context, not exhaustive history)
-
-### Detecting Missing Context
-
-Use intelligence to detect when essential context is missing. When gaps exist, ask targeted questions before drafting:
-
-- "Who specifically encounters this problem and in what situation?"
-- "What happens to them if this remains unaddressed?"
-- "What would 'done' look like - what should be true when this is resolved?"
-
-If the user cannot provide the information after being asked, insert actionable placeholders that specify exactly what information is missing and how to obtain it:
-
-- `[FILL: Interview support team for frequency of this complaint]`
-- `[FILL: Check analytics for user journey drop-off data]`
-- `[FILL: Ask product owner for priority relative to roadmap]`
-
-Placeholders must be specific enough that someone can act on them immediately.
-
-### From the Repository
-
-Check for existing context:
-
-1. Search open issues for related or duplicate work
-2. Review recently closed issues for prior attempts
-3. Check for issue templates in `.github/ISSUE_TEMPLATE/`
-
-Use `gh issue list` to discover related work. Reference relevant issues to connect efforts.
-
-## Body Philosophy
-
-Issues are **problem-space** documents. They define what needs solving and why it matters. PRs (solution-space) explain how; issues explain why.
-
-The body explains **why** this issue exists and **what** outcome is needed. Leave the **how** to the assignee. Implementation prescription removes agency from the person doing the work and often misses better approaches.
-
-The first paragraph immediately follows the title without a header. This opening establishes context and motivation - the "why does this matter" that pulls readers in.
-
-### Prose Over Checklists
-
-Describe goals and constraints as prose. Avoid prescriptive task lists:
-
-**Avoid**:
-```markdown
-- [ ] Add database column
-- [ ] Update API endpoint
-- [ ] Modify frontend form
-```
-
-**Prefer**:
-```markdown
-User profiles lack timezone information, causing scheduled notifications
-to arrive at inconvenient times. Users should be able to specify their
-timezone so notifications respect their local time.
-```
-
-The first prescribes implementation. The second describes the outcome.
-
-### When Checklists Are Appropriate
-
-Checklists suit tracking scope or acceptance criteria as **outcomes**:
-
-```markdown
-## Acceptance Criteria
-
-- [ ] Users can specify timezone in profile settings
-- [ ] Scheduled notifications respect user timezone
-- [ ] Default timezone inferred from browser when not set
-```
-
-These are outcomes to achieve, not steps to implement.
-
-### Definition of Done
-
-Include a clear outcome statement. The pattern "By the time this Issue is complete, the system will have..." works well for defining scope and completion criteria.
-
-**Examples**:
-- "By the time this Issue is complete, users will be able to specify their timezone so notifications respect their local time."
-- "By the time this Issue is complete, the API will validate all input before processing."
-
-This framing forces clarity about what "done" means and helps prevent scope creep.
-
-## Issue Templates
-
-Before creating an issue, check for templates in `.github/ISSUE_TEMPLATE/`. Templates encode repository-specific conventions. When a template applies to the issue type, follow its structure.
-
-## Type-Specific Guidance
-
-While uniform principles apply to all issues, certain types benefit from specific context. Consult `references/body-structure.md` for detailed guidance on:
-
-- **Bug reports**: Environment, reproduction steps, expected vs actual behavior
-- **Feature requests**: User impact, success criteria
-- **Discussion issues**: Decision framing, questions to consider
-
-## Follow-up Tasks
-
-When an issue identifies post-completion work, list it clearly at the end. See `references/body-structure.md` for formatting.
-
-## Workflow
-
-When creating an issue:
-
-1. **Gather context**: Understand the problem, who is affected, and desired outcome
-2. **Search for related work**: Check open/closed issues for duplicates or related efforts
-3. **Check templates**: Use repository templates when applicable
-4. **Draft title**: Present progressive verb + goal (not imperative)
-5. **Write body**: Focus on why and what, link related work
-6. **Review**: Does the title reflect ongoing work? Does the body describe outcome over implementation?
-
-## Reference Files
-
-For detailed guidance, consult:
-
-| File | Contains |
-|------|----------|
-| `references/body-structure.md` | Body format, prose flow, type specializations, linking related resources |
-| `examples/good-issue-examples.md` | Effective issue examples with probe tags showing context discovery |
-| `examples/bad-issue-examples.md` | Anti-patterns with detailed rationale for why they fail |
-
-**About probe tags**: Example files use `<probe>` tags to demonstrate targeted questions that surface essential context. Each probe shows what to ask ("Who is affected?", "What's the impact?") and the information it reveals. Use this pattern when gathering context before drafting.
-
-## What to Avoid
-
-<negative>
-<pattern>Prescribing implementation steps instead of outcomes</pattern>
-<reason>Issues define what needs to happen, not how. "Add a database column" prescribes; "Users need to specify timezone" describes outcome.</reason>
-</negative>
-
-<negative>
-<pattern>Using imperative titles: "Add timezone support", "Fix search crash"</pattern>
-<reason>Imperative mood suits PRs (commands that execute). Issues use present progressive to indicate ongoing work: "Supporting timezone preferences".</reason>
-</negative>
-
-<negative>
-<pattern>Skipping the "why does this matter" opening</pattern>
-<reason>The opening paragraph must establish motivation. Without it, readers don't know why they should care about this issue.</reason>
-</negative>
-
-<negative>
-<pattern>Creating task-like issues for small items: "Update button color"</pattern>
-<reason>Small tasks belong in parent issue checklists, not standalone issues. Issues track meaningful work with clear outcomes.</reason>
-</negative>
-
-<negative>
-<pattern>Framing missing features as bugs: "Bug: no dark mode"</pattern>
-<reason>Missing functionality is a feature request, not a bug. Bugs describe incorrect behavior; features describe new capability.</reason>
-</negative>
+- Small mechanical tasks ("update button color") belong in a parent issue's checklist or directly in a PR, not in standalone issues. Issues track work whose outcome needs communicating.
+- Missing functionality is a feature request, not a bug. Bugs describe incorrect behavior; feature requests describe absent capability. Mislabeling confuses triage.
 
 ## Line Formatting for GitHub
 
-GitHub's markdown renderer treats hard newlines within a paragraph as literal line breaks. When composing `--body` content for `gh issue create`, write each paragraph as a single continuous line with no mid-sentence wraps. Newlines should only appear:
+GitHub renders hard newlines inside a paragraph as literal line breaks. When composing `--body` content for `gh issue create`, write each paragraph as one continuous line; put newlines only between paragraphs and around list items, headings, and code blocks. This differs from `git commit -m`, where hard wraps are conventional because terminals render them directly.
 
-- Between paragraphs (blank line)
-- Before list items, headings, or code blocks
-- Where markdown syntax requires them
+## Reference Files
 
-This differs from `git commit -m`, where hard wraps are conventional because terminals render them directly.
+| File                              | Contains                                                                         | Read when                                                       |
+| --------------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `references/body-structure.md`    | Reader expectations by issue type, linking and formatting conventions            | Drafting a bug report, feature request, or discussion issue     |
+| `examples/good-issue-examples.md` | Five annotated issues demonstrating the characteristics across domains and forms | Calibrating tone and form before drafting                       |
+| `examples/bad-issue-examples.md`  | Failure modes paired with corrections                                            | Reviewing a draft that feels off, or revising an existing issue |
 
-## Validation Checklist
-
-Before presenting the issue:
-
-**Title**:
-- [ ] Uses present progressive verb (-ing form)
-- [ ] Describes goal or outcome, not developer action
-- [ ] Avoids labels or type prefixes (use GitHub labels)
-
-**Body**:
-- [ ] Opens with untitled paragraph explaining why
-- [ ] Focuses on desired outcome, not implementation steps
-- [ ] Links related issues using full short syntax (`org/repo#123`)
-- [ ] Uses checklists for scope/criteria, not implementation steps
-- [ ] Follows repository template when applicable
+Example files use `<probe>` tags showing the questions that surfaced each issue's context; use that pattern when the conversation leaves trio elements unanswered.
