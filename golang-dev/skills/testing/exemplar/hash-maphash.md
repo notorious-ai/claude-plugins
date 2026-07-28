@@ -2,18 +2,6 @@
 
 Samples: property-claim-names, one-invariant-many-paths
 
-Surface exercised:
-
-```go
-func MakeSeed() Seed
-func Bytes(seed Seed, b []byte) uint64
-func String(seed Seed, s string) uint64
-type Hash struct{ ... }
-    func (h *Hash) Seed() Seed
-    func (h *Hash) SetSeed(seed Seed)
-    func (h *Hash) Sum64() uint64
-```
-
 <sample id="property-claim-names" archetypes="transform" source="hash/maphash/maphash_test.go">
 
 ```go
