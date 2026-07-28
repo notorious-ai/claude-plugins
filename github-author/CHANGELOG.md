@@ -6,29 +6,44 @@ All notable changes to github-author are documented in this file.
 
 ### writing-issues
 
-- Replace the "issues explain why and what, PRs explain how" boundary with the problem-space why/how/what trio, since that boundary admitted solution-space requirements by construction
-- Type constraints, trade-offs, scope boundaries, and failed prior attempts as problem-space "how" rather than implementation detail to withhold
-- State validation as a belief rather than a procedure: criteria are read off the body, and a criterion testing something the body never claimed means either the criterion is invention or the body never stated its why
-- Guard the constraint section with the can-the-assignee-change-it test against design prescription in costume
-- Stop presenting "Acceptance Criteria" as a canonical heading; specify the function the section performs and vary headings across examples
-- Carry validation in prose unless the body already holds numbers or discrete units, since a checklist is one form among several rather than the shape of the section
-- Warn against firming up the evidence on hand, so remarks made in passing are not written up as findings
-- Keep the remedy out of the title unless it was settled before the issue existed
-- State the inside-out ordering mechanism: symptoms placed before the friction read as a work list, symptoms placed after it read as evidence
-- Distinguish scope enumeration from validation so scope checklists survive the new rule
-- Distinguish a vague why, which stays forbidden, from a loose validation criterion for a clear why, which is acceptable
-- Relabel bug reproduction steps as problem-space "what" rather than an exception to a no-how rule
-- Fold title-mood guidance into Title Structure and merge three overlapping checklist sections
-- Rebuild the worked examples as a six-shot set mostly adapted from real issues, spread across domain, body weight, and validation form, replacing eleven synthetic examples in one register that taught a template
+- Recast the skill from construction procedure to characteristics of the
+  finished issue: workflow steps, negative-pattern blocks, and the pre-flight
+  checklist gave way to five characteristics a good body embodies, trusting form
+  to follow content
+- Replace the "issues explain why and what, PRs explain how" boundary with the
+  problem-space trio — why (the friction and its cost), how (the constraints any
+  solution must live within), what (the symptoms as evidence) — communicated
+  inside-out, since the old boundary admitted solution-space requirements by
+  construction
+- State the inside-out ordering mechanism: symptoms placed before the friction
+  read as a work list, symptoms placed after it read as evidence
+- Stop presenting "Acceptance Criteria" as a canonical heading: no heading is
+  canonical, validation is read off the body rather than invented, and one
+  sentence often carries it
+- Guard constraints with the can-the-assignee-change-it test against design
+  prescription in costume
+- Report evidence at its actual weight: anecdotes stay anecdotes, numbers appear
+  only where something was measured, and an absent measure becomes a
+  `[FILL: ...]` pointer instead of an invented threshold
+- Keep the remedy out of the title unless it was settled before the issue
+  existed
+- Rebuild the worked examples as a five-shot set mostly adapted from real
+  issues, spread across domain, body weight, and validation form, with
+  continuous-line bodies matching the `gh --body` format the skill teaches
+- Refit the body-structure reference to reader expectations by issue type,
+  dropping the sections that restated the skill
 
 ### writing-pull-requests
 
-- Restate the issue and PR boundary as two trios, replacing a division that assigned "why" to issues and "how" to pull requests
+- Restate the issue and PR boundary as two trios, replacing a division that
+  assigned "why" to issues and "how" to pull requests
 
 ### /draft-issue
 
-- Gather the friction, the constraints, and the evidence as distinct context, then read criteria off what the body now says
-- Run on Sonnet via the `model` frontmatter field, since issue drafting does not need a larger model
+- Gather the friction, the constraints, and the evidence as distinct context,
+  then read criteria off what the body now says
+- Run on Sonnet via the `model` frontmatter field, since issue drafting does not
+  need a larger model
 
 ## [0.2.2] - 2026-03-08
 
@@ -58,11 +73,13 @@ All notable changes to github-author are documented in this file.
 
 ### writing-pull-requests
 
-- Instruct continuous-line paragraphs in `--body` content to prevent GitHub rendering hard wraps as jagged line breaks
+- Instruct continuous-line paragraphs in `--body` content to prevent GitHub
+  rendering hard wraps as jagged line breaks
 
 ### writing-issues
 
-- Instruct continuous-line paragraphs in `--body` content to prevent GitHub rendering hard wraps as jagged line breaks
+- Instruct continuous-line paragraphs in `--body` content to prevent GitHub
+  rendering hard wraps as jagged line breaks
 
 ### /draft-pr
 
@@ -76,16 +93,21 @@ All notable changes to github-author are documented in this file.
 
 ### writing-pull-requests
 
-- Organize verbs by intent with scannable quick-reference table (new capability, improvement, fix, structural, removal, configuration, documentation)
-- Surface problematic verbs with three-column alternatives table (avoid, why, use instead)
-- Clarify header usage with concrete thresholds (prose for under 3 paragraphs, headers for 3-4+ paragraphs or complex topics)
+- Organize verbs by intent with scannable quick-reference table (new capability,
+  improvement, fix, structural, removal, configuration, documentation)
+- Surface problematic verbs with three-column alternatives table (avoid, why,
+  use instead)
+- Clarify header usage with concrete thresholds (prose for under 3 paragraphs,
+  headers for 3-4+ paragraphs or complex topics)
 
 ## [0.1.0] - 2026-01-31
 
 ### writing-pull-requests
 
-- Teach "fill in the blank" technique for titles: "After this PR merges, the repository will _____"
-- Distinguish repository-capability verbs (parse, handle, support) from developer-action verbs (add, implement, create)
+- Teach "fill in the blank" technique for titles: "After this PR merges, the
+  repository will _____"
+- Distinguish repository-capability verbs (parse, handle, support) from
+  developer-action verbs (add, implement, create)
 - Guide motivation-focused descriptions with prose flow over bullet lists
 - Surface hidden context through probe questions documented in examples
 - Encode rationale embedding in code comments alongside PR descriptions
@@ -93,8 +115,10 @@ All notable changes to github-author are documented in this file.
 
 ### writing-issues
 
-- Encode present progressive titles reflecting ongoing work ("Supporting...", "Fixing...", "Investigating...")
-- Guide outcome-focused bodies with "By the time this Issue is complete..." pattern
+- Encode present progressive titles reflecting ongoing work ("Supporting...",
+  "Fixing...", "Investigating...")
+- Guide outcome-focused bodies with "By the time this Issue is complete..."
+  pattern
 - Distinguish problem-space (issues) from solution-space (PRs)
 - Surface hidden context through probe questions documented in examples
 - Provide type-specific guidance for bugs, features, tasks, and discussions
