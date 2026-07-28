@@ -22,8 +22,7 @@ feeds a test, its benchmark, and a sibling codec's test.
 When the values themselves say nothing, name them or unroll them. A row of
 {0} beside {-1} tells a reader only that two numbers were tried, so either
 pair each value with the word for what makes it invalid ({"zero", 0},
-{"negative", -1}) or drop the table for two explicit calls. Duplicated
-lines are the cheaper cost when every line means something.
+{"negative", -1}) or drop the table for two explicit calls.
 
 ## When a sub-test is worth it
 
@@ -41,7 +40,6 @@ inputs is often enough, never repeated into log names the runner prints
 anyway, and the best names complete a logged sentence ("Load(%q) succeeded
 for a config with %s"). Name a malformed input instead of dumping it,
 because a multiline quoted string in a test log is hard for human eyes to
-parse. Underscores mean nothing in test names except in examples, where
-go-doc reads them to attribute the example to a symbol. Failure messages
-follow the Go wiki's TestComments; many cases of one behavior,
+parse. Underscores mean nothing in test names except in examples. Failure
+messages follow the Go wiki's TestComments; many cases of one behavior,
 TableDrivenTests.
