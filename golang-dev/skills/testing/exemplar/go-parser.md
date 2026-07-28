@@ -25,9 +25,10 @@ The file-header comment.
 ```
 
 <highlight archetype="harness">A bespoke few-hundred-line harness, written
-once, that turns the parser's user contract into a corpus: the ERROR comment's
-own source position IS the expected diagnostic position, so nobody hand-counts
-line:col at helper-call distance.</highlight>
+once, that turns the parser's user contract into a corpus: the offending
+token's own source position IS the expected diagnostic position, marked in
+place by the comment that follows it, so nobody hand-counts line:col at
+helper-call distance.</highlight>
 
 <note>The header comment teaches the whole convention, with a worked example,
 before any code.</note>
