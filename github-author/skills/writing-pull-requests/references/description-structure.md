@@ -17,6 +17,7 @@ When an issue is linked, the opening can be brief since the issue provides conte
 The opening sentence establishes the change's purpose. Start with outcome or motivation, not developer action.
 
 **Prefer** (outcome-focused):
+
 ```markdown
 Users with large datasets experience 10+ second page loads, causing
 15% to abandon the dashboard before it finishes rendering.
@@ -33,6 +34,7 @@ integration with Azure Instance Metadata Service.
 ```
 
 **Avoid** (developer-action focused):
+
 ```markdown
 This PR adds caching to improve performance.
 ```
@@ -58,6 +60,16 @@ Write descriptions as flowing paragraphs rather than templated sections. Subsequ
 
 Each paragraph should connect logically to the previous, building a complete picture. Link to related issues and supplementary information naturally within the prose rather than listing them separately.
 
+Prose flow does not mean packing enumerations into sentences. A sentence that lists three or more parallel items — properties the solution must hold, constraints that shaped it, areas deserving review — reads better set off as a prose-list: a lead-in clause, then the items as clauses that still read as one continuous sentence, with the connective on the last. The grammar of the sentence survives, and a reader scanning for one item finds it without re-parsing the paragraph:
+
+```markdown
+The exporter now streams rows as they arrive, which means it:
+
+- holds a bounded buffer regardless of result size,
+- starts the download before the query completes, and
+- fails loudly on the first row it cannot serialize.
+```
+
 When additional resources don't fit naturally in prose, a list with reference-style links is acceptable:
 
 ```markdown
@@ -80,18 +92,18 @@ GitHub issues and PRs use the full short syntax: `org/repo#123`.
 
 GitHub recognizes keywords that automatically close issues when the PR merges. These keywords have specific semantics:
 
-| Keyword | Semantics | Use When |
-|---------|-----------|----------|
-| `Closes` | Completes the work described in the issue | The PR fully addresses the issue's scope |
-| `Fixes` | Resolves a defect or bug | The PR corrects incorrect behavior |
-| `Resolves` | Addresses a discussion or decision | The PR implements a decided approach |
+| Keyword    | Semantics                                 | Use When                                 |
+| ---------- | ----------------------------------------- | ---------------------------------------- |
+| `Closes`   | Completes the work described in the issue | The PR fully addresses the issue's scope |
+| `Fixes`    | Resolves a defect or bug                  | The PR corrects incorrect behavior       |
+| `Resolves` | Addresses a discussion or decision        | The PR implements a decided approach     |
 
 All three close the linked issue on merge. The choice signals intent to future readers:
 
 ```markdown
-Closes org/repo#123          # This PR completes issue #123
-Fixes org/repo#456           # This PR fixes bug #456
-Resolves org/repo#789        # This PR implements the decision from #789
+Closes org/repo#123 # This PR completes issue #123
+Fixes org/repo#456 # This PR fixes bug #456
+Resolves org/repo#789 # This PR implements the decision from #789
 ```
 
 Use `Relates to org/repo#123` when the PR is connected but doesn't fully address the issue.
@@ -101,11 +113,13 @@ Use `Relates to org/repo#123` when the PR is connected but doesn't fully address
 Headers are organizational tools, not mandatory templates. Use them when they genuinely aid navigation.
 
 **Use prose without headers when:**
+
 - Description is under 3 paragraphs
 - Single topic or concern
 - Straightforward change with linked issue
 
 **Consider headers when:**
+
 - Description exceeds 3-4 paragraphs and covers multiple topics
 - Breaking changes or migration steps need visibility
 - Post-merge actions require explicit tracking
@@ -130,10 +144,10 @@ The `ParseConfig` function now returns `(Config, error)` instead of
 just `Config`. Callers must handle the error case.
 
 Update call sites from:
-    cfg := ParseConfig(path)
+cfg := ParseConfig(path)
 To:
-    cfg, err := ParseConfig(path)
-    if err != nil { ... }
+cfg, err := ParseConfig(path)
+if err != nil { ... }
 
 ## Post-Merge
 
@@ -274,6 +288,7 @@ The description compensates for the missing issue by providing that essential co
 
 ```markdown
 ## Changes
+
 - Updated user.go
 - Fixed test
 - Added validation
@@ -329,11 +344,13 @@ For UI changes, include screenshots or recordings. Before/after comparisons help
 ## Draft PRs
 
 Use draft PRs for:
+
 - Work-in-progress needing early feedback
 - Changes blocked on dependent PRs
 - Proposals for design discussion
 
 Convert to ready-for-review when:
+
 - All commits are complete
 - CI passes
 - Self-review is done
