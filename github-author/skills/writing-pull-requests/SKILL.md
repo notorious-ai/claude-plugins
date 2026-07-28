@@ -8,6 +8,8 @@ user-invocable: false
 
 Code diffs already show what changed, so retelling the diff in prose wastes the reader's time. The PR title and description convey motivation, impact, and context that accelerates review.
 
+The problem space normally lives in a linked issue. When no issue exists, as for plenty of worthwhile changes, the description's opening paragraph stands in for one: a single paragraph carrying the friction and its cost is enough before the solution's story begins.
+
 ## Core Principle: Repository Transformation
 
 The PR title describes how the **repository** changes when the PR merges. The verb targets the repository capability, not the developer action.
@@ -18,26 +20,26 @@ Complete this sentence with your title: "After this PR merges, the repository wi
 
 The verb must make grammatical sense in this frame. Developer-action verbs fail the test:
 
-| Verb | "The repository will _____" | Works? |
-|------|----------------------------|--------|
-| Parse MAC addresses | "The repository will parse MAC addresses" | Yes |
-| Add rate limiting | "The repository will add rate limiting" | No |
-| Handle nil emails | "The repository will handle nil emails" | Yes |
-| Implement caching | "The repository will implement caching" | No |
+| Verb                | "The repository will _____"               | Works? |
+| ------------------- | ----------------------------------------- | ------ |
+| Parse MAC addresses | "The repository will parse MAC addresses" | Yes    |
+| Add rate limiting   | "The repository will add rate limiting"   | No     |
+| Handle nil emails   | "The repository will handle nil emails"   | Yes    |
+| Implement caching   | "The repository will implement caching"   | No     |
 
 Developer-action verbs (add, implement, create, write, update, change) describe what the developer did. Repository-capability verbs (parse, handle, support, expose, enable, optimize, simplify, prevent, serialize, validate, extract) describe what the code does.
 
 ### Quick Reference by Intent
 
-| Intent | Verbs |
-|--------|-------|
+| Intent         | Verbs                                                      |
+| -------------- | ---------------------------------------------------------- |
 | New capability | handle, parse, transform, validate, serialize, cache, pool |
-| Improvement | optimize, simplify, consolidate, enhance |
-| Fix | fix, correct, respect, prevent |
-| Structural | extract, expose, define, introduce |
-| Removal | remove, drop, deprecate |
-| Configuration | configure, enable, disable |
-| Documentation | explain, clarify, document |
+| Improvement    | optimize, simplify, consolidate, enhance                   |
+| Fix            | fix, correct, respect, prevent                             |
+| Structural     | extract, expose, define, introduce                         |
+| Removal        | remove, drop, deprecate                                    |
+| Configuration  | configure, enable, disable                                 |
+| Documentation  | explain, clarify, document                                 |
 
 For comprehensive verb guidance and rationale, see `examples/bad-pr-examples.md`.
 
@@ -53,6 +55,7 @@ PR titles follow imperative mood, beginning with a verb:
 - Capitalize the first letter (it is a sentence)
 
 **Examples**:
+
 - `Parse MAC addresses without separators`
 - `Limit authentication attempts to prevent brute-force attacks`
 - `Serialize connection pool cleanup to prevent leaks`
@@ -136,6 +139,7 @@ When rationale is uncovered, check the changeset for appropriate places to embed
 3. **Existing documentation**: If the project has architecture docs, design docs, or similar markdown files that already cover this area
 
 **Do not**:
+
 - Create ADR files if the project has no ADR convention
 - Add niche sections to an otherwise generic README
 - Introduce documentation patterns the project doesn't use
@@ -149,6 +153,7 @@ Before drafting, check for repository-specific templates that encode team conven
 ### Locating Templates
 
 Search these paths (first match wins):
+
 1. `.github/pull_request_template.md`
 2. `.github/PULL_REQUEST_TEMPLATE.md`
 3. `docs/pull_request_template.md`
@@ -158,6 +163,7 @@ Search these paths (first match wins):
 ### Using Templates
 
 When a template exists, evaluate fit:
+
 - **Good fit**: Follow the template structure
 - **Partial fit**: Use relevant sections, adapt others with judgment
 - **Poor fit**: Draft freely but note why the template didn't apply
@@ -174,18 +180,20 @@ The first paragraph immediately follows the title without a header. This opening
 
 **When an issue is linked**: The description can be brief since the issue provides problem-space context. Focus on the solution rationale: why this approach, what trade-offs were accepted.
 
-**When no issue exists**: The description must compensate by providing both problem-space context (what prompted the change, who is affected) and solution-space rationale (why this approach over alternatives).
+**When no issue exists**: The opening paragraph stands in for the missing issue, carrying the problem space in miniature: the friction, who bears it, what it costs. One paragraph is enough; the solution-space rationale (why this approach over alternatives) then proceeds as usual.
 
 ## PR Scope
 
 Keep PRs focused on a single logical change.
 
 **Signs of good scope**:
+
 - Reviewable in one sitting (under 400 lines typical)
 - Single purpose evident from title
 - All changes relate to stated intent
 
 **Signs of scope creep**:
+
 - "Also fixes..." or "While I was here..." in description
 - Multiple unrelated file groups changed
 
@@ -215,11 +223,11 @@ When creating a PR:
 
 For detailed guidance, consult:
 
-| File | Contains |
-|------|----------|
+| File                                  | Contains                                                           |
+| ------------------------------------- | ------------------------------------------------------------------ |
 | `references/description-structure.md` | Description format, prose flow, issue linking, post-merge patterns |
-| `examples/good-pr-examples.md` | Effective PR examples with probe tags showing context discovery |
-| `examples/bad-pr-examples.md` | Anti-patterns with detailed rationale for why they fail |
+| `examples/good-pr-examples.md`        | Effective PR examples with probe tags showing context discovery    |
+| `examples/bad-pr-examples.md`         | Anti-patterns with detailed rationale for why they fail            |
 
 **About probe tags**: Example files use `<probe>` tags to demonstrate targeted questions that surface essential context. Each probe shows what to ask ("What constraint prevented the simpler solution?", "What's the proof?") and the information it reveals. Use this pattern when gathering context before drafting.
 
@@ -248,13 +256,13 @@ For detailed guidance, consult:
 <negative>
 <pattern>Using developer-action verbs in titles</pattern>
 
-| Avoid | Why | Use Instead |
-|-------|-----|-------------|
-| add | Describes action of adding | handle, define, introduce |
-| implement | Narrates development | handle, support, enable |
-| update | Vague about what changed | optimize, fix, refactor (be specific) |
-| change | Maximally vague | optimize, correct, simplify (be specific) |
-| create | Focuses on creation not function | define, establish, introduce |
+| Avoid     | Why                              | Use Instead                               |
+| --------- | -------------------------------- | ----------------------------------------- |
+| add       | Describes action of adding       | handle, define, introduce                 |
+| implement | Narrates development             | handle, support, enable                   |
+| update    | Vague about what changed         | optimize, fix, refactor (be specific)     |
+| change    | Maximally vague                  | optimize, correct, simplify (be specific) |
+| create    | Focuses on creation not function | define, establish, introduce              |
 
 <reason>These describe what the developer did, not what the repository now does. See `examples/bad-pr-examples.md` for comprehensive analysis.</reason>
 </negative>
@@ -274,17 +282,20 @@ This differs from `git commit -m`, where hard wraps are conventional because ter
 Before presenting the PR:
 
 **Process**:
+
 - [ ] Read the diff as if seeing it for the first time
 - [ ] Confirm CI passes (don't waste reviewer time on broken builds)
 - [ ] Remove debug code and commented-out blocks
 - [ ] Verify scope - no unrelated changes snuck in
 
 **Title**:
+
 - [ ] Begins with imperative verb describing repository capability
 - [ ] Does NOT use developer-action verbs (add, implement, create, write)
 - [ ] Describes how the repository changes, not what you did
 
 **Description**:
+
 - [ ] Opens with untitled paragraph explaining why
 - [ ] Links related issues using full short syntax (`org/repo#123`)
 - [ ] Includes proof for complex changes
