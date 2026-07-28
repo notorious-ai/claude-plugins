@@ -39,6 +39,7 @@ func TestSeededHash(t *testing.T) {
 	if len(m) != 1 {
 		t.Errorf("seeded hash is random: got %d, want 1", len(m))
 	}
+}
 ```
 
 <highlight archetype="transform">Each name is a claim about the package, not a
