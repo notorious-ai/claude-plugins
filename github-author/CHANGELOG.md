@@ -2,6 +2,12 @@
 
 All notable changes to github-author are documented in this file.
 
+## [0.3.1] - 2026-07-29
+
+### writing-pull-requests
+
+- State in the opening that the problem space normally lives in a linked issue, and that one opening paragraph of friction and cost stands in for it when none exists
+
 ## [0.3.0] - 2026-07-28
 
 ### writing-issues
