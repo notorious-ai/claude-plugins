@@ -103,7 +103,7 @@ Miss: "any sleep sits inside a bubble" applied to the letter fails correct examp
 <rule id="goroutine-leak">
 A bubble waits for every goroutine inside it to exit, so a Close that only SIGNALS its janitor is not a leak finding in a bubbled suite; a goroutine nobody signals fails the test with "panic: deadlock: main bubble goroutine has exited but blocked goroutines remain". Bubble exit is the leak detector, and outside a bubble the detector is a sync.WaitGroup.
 <good>
-// Close signals the janitor; the bubble waits for it to exit.
+// Close signals the janitor.
 close(c.quit)
 </good>
 <bad>
