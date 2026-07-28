@@ -350,4 +350,38 @@ By the time this issue is complete:
 Streaming the response, a background job with a mailed link, or a smaller default export all satisfy these. Choosing between them is the assignee's work, and the PR is where that choice gets argued.
 </example>
 
+### The Same Claim in Two Forms
+
+<example>
+Closing the prose with the outcome sentence, then reopening it as a formal section.
+
+```markdown
+Exports above roughly 50k rows time out at the gateway after 30 seconds.
+Three customers have asked us to "just email it", and two have started
+paginating by hand to get their data out.
+
+By the time this issue is complete, a customer exporting more than 50k
+rows will get their file without asking us for help.
+
+## Acceptance Criteria
+
+- [ ] A customer exporting more than 50k rows gets their file without support intervention
+- [ ] Manual pagination workarounds are no longer needed
+```
+
+**Problem**: The sentence and the checklist carry the same claim, so the reader must reconcile two forms of it, and when later edits touch only one, nobody can say which is the definition of done. The section is not more formal than the sentence, only longer. This duplication survives review easily because both halves are individually correct.
+
+**Better**: One statement, in whichever form fits. Keep the sentence and drop the section, or move the sentence under the heading as the list's lead-in:
+
+```markdown
+## Definition of Done
+
+By the time this issue is complete:
+
+- [ ] A customer exporting more than 50k rows gets their file without asking us for help
+- [ ] Nobody paginates an export by hand to work around a timeout
+```
+
+</example>
+
 </examples>
