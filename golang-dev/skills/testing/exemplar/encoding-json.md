@@ -48,7 +48,7 @@ shorten examples to their minimum token count.</note>
 
 <sample id="example-self-naming-violation" archetypes="example" source="bufio/example_test.go">
 
-The violation, NOT to copy.
+The violation, NOT to copy. Doc comment and signature only; body elided.
 
 ```go
 // ExampleWriter_ReadFrom demonstrates how to use the ReadFrom method of Writer.
