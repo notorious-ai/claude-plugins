@@ -37,6 +37,10 @@ All notable changes to github-author are documented in this file.
   closing line plus a formal section, and rule out activity criteria ("root
   cause documented", "approach decided"), which are work items wearing
   checkboxes
+- Reserve headings for bodies large enough to need them, at the model's
+  discretion, and for material past the opening: the why opens every issue
+  untitled, so a generic "Context" or "Background" head mostly labels what the
+  issue already leads with
 - Rebuild the worked examples as a five-shot set mostly adapted from real
   issues, spread across domain, body weight, and validation form, with
   continuous-line bodies matching the `gh --body` format the skill teaches

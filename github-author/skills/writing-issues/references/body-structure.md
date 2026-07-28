@@ -64,9 +64,7 @@ Readers of a discussion issue expect the decision to be framed before anyone pro
 We're considering migrating from REST to GraphQL for the public API.
 This issue collects thoughts and concerns before deciding.
 
-## Context
-
-Current pain points with REST:
+## Current Pain Points
 
 - Over-fetching on mobile clients
 - Multiple round-trips for related data
@@ -79,7 +77,7 @@ Current pain points with REST:
 - What tooling do we need for schema management?
 ```
 
-Discussion issues are how-heavy. The framing sentence supplies the why, `Context` supplies the what (the pain points that make a decision necessary), and `Questions to Consider` map the how: the constraints and trade-offs any answer has to satisfy. The questions frame the decision space instead of proposing a solution, which is the whole job of the type.
+Discussion issues are how-heavy. The framing sentence supplies the why, `Current Pain Points` supplies the what (the evidence that makes a decision necessary), and `Questions to Consider` map the how: the constraints and trade-offs any answer has to satisfy. The pain-point section is named for what it holds rather than "Context", since the context proper is the untitled framing that opens the issue. The questions frame the decision space instead of proposing a solution, which is the whole job of the type.
 
 ## Linking Related Work
 
@@ -96,7 +94,7 @@ outlines the architectural approach we've since agreed on.
 When several resources don't fit naturally in prose, a brief annotated list works:
 
 ```markdown
-## Background
+## Related Work
 
 - org/repo#234 (prior attempt, abandoned due to migration complexity)
 - org/repo#567 (notification system discussion that surfaced this need)
