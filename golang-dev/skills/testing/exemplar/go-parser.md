@@ -1,11 +1,7 @@
 # go/parser — expectations at line granularity, inside the fixture
 
-Source: `go/parser/error_test.go` and `go/parser/testdata/commas.src` (Go
-development tree, 1.27 dev, 2026-06). Verbatim.
-
 <sample id="harness-header-doc" archetypes="harness" source="go/parser/error_test.go">
 
-Source: `go/parser/error_test.go` (Go 1.27 dev). Verbatim.
 The file-header comment.
 
 ```go
@@ -40,8 +36,6 @@ before any code.</note>
 
 <sample id="error-marker-language" archetypes="harness" source="go/parser/error_test.go">
 
-Source: `go/parser/error_test.go` (Go 1.27 dev). Verbatim.
-
 ```go
 // ERROR comments must be of the form /* ERROR "rx" */ and rx is
 // a regular expression that matches the expected error message.
@@ -62,8 +56,7 @@ plain comment cannot express.</highlight>
 
 <sample id="fixture-inline-expectations" archetypes="golden-fixture,harness" source="go/parser/testdata/commas.src">
 
-Source: `go/parser/testdata/commas.src`, the complete file (Go 1.27 dev).
-Verbatim.
+The complete file.
 
 ```go
 // (standard Go copyright header elided)

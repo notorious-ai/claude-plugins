@@ -2,9 +2,6 @@
 
 Samples: property-claim-names, one-invariant-many-paths
 
-Source: `hash/maphash/maphash_test.go` (Go development tree, 1.27 dev, 2026-06).
-Verbatim.
-
 Surface exercised:
 
 ```go
@@ -18,8 +15,6 @@ type Hash struct{ ... }
 ```
 
 <sample id="property-claim-names" archetypes="transform" source="hash/maphash/maphash_test.go">
-
-Source: `hash/maphash/maphash_test.go` (Go 1.27 dev). Verbatim.
 
 ```go
 func TestUnseededHash(t *testing.T) {
@@ -56,8 +51,6 @@ misnamed.</note>
 </sample>
 
 <sample id="one-invariant-many-paths" archetypes="stream,transform" source="hash/maphash/maphash_test.go">
-
-Source: `hash/maphash/maphash_test.go` (Go 1.27 dev). Verbatim.
 
 ```go
 func TestHashGrouping(t *testing.T) {

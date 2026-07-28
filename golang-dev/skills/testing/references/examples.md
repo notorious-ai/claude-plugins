@@ -55,9 +55,6 @@ three packages in total.
 
 <sample id="unordered-output-contract" archetypes="example" source="index/suffixarray/example_test.go">
 
-Source: `index/suffixarray/example_test.go` (Go development tree, 1.27
-dev, 2026-06). Verbatim.
-
 ```go
 func ExampleIndex_Lookup() {
 	index := suffixarray.New([]byte("banana"))

@@ -2,12 +2,8 @@
 
 Samples: case-table, family-shared-runner, example-edge-case, bloop-benchmark
 
-Source: `strings/strings_test.go` and `strings/example_test.go` (Go development
-tree, 1.27 dev, 2026-06). Verbatim.
-
 <sample id="case-table" archetypes="transform" source="strings/strings_test.go">
 
-Source: `strings/strings_test.go` (Go 1.27 dev). Verbatim.
 The table continues well past this excerpt; elided.
 
 ```go
@@ -40,8 +36,6 @@ rows.</note>
 </sample>
 
 <sample id="family-shared-runner" archetypes="transform,harness" source="strings/strings_test.go">
-
-Source: `strings/strings_test.go` (Go 1.27 dev). Verbatim.
 
 ```go
 // Execute f on each test case.  funcName should be the name of f; it's used
@@ -76,8 +70,6 @@ every failure message, so a plain loop beats `t.Run` ceremony.</highlight>
 
 <sample id="example-edge-case" archetypes="example" source="strings/example_test.go">
 
-Source: `strings/example_test.go` (Go 1.27 dev). Verbatim.
-
 ```go
 func ExampleCount() {
 	fmt.Println(strings.Count("cheese", "e"))
@@ -101,8 +93,6 @@ with the function's own name (see the encoding/json exemplar; bufio's
 </sample>
 
 <sample id="bloop-benchmark" archetypes="transform" source="strings/strings_test.go">
-
-Source: `strings/strings_test.go` (Go 1.27 dev). Verbatim.
 
 ```go
 func BenchmarkReplace(b *testing.B) {

@@ -2,13 +2,10 @@
 
 Samples: update-flag-diff, corpus-glob-idempotence, flag-in-fixture
 
-Source: `cmd/gofmt/gofmt_test.go` and `cmd/gofmt/testdata/rewrite1.input` (Go
-development tree, 1.27 dev, 2026-06). Verbatim.
 Note: `package main`, in-process — the gofmt binary is never executed.
 
 <sample id="update-flag-diff" archetypes="golden-fixture" source="cmd/gofmt/gofmt_test.go">
 
-Source: `cmd/gofmt/gofmt_test.go` (Go 1.27 dev). Verbatim.
 The tail of `runTest(t, in, out string)`; flag parsing and
 processing elided.
 
@@ -51,8 +48,6 @@ feature.</note>
 </sample>
 
 <sample id="corpus-glob-idempotence" archetypes="golden-fixture,harness" source="cmd/gofmt/gofmt_test.go">
-
-Source: `cmd/gofmt/gofmt_test.go` (Go 1.27 dev). Verbatim.
 
 ```go
 // TestRewrite processes testdata/*.input files and compares them to the
@@ -104,10 +99,8 @@ carry every case.</note>
 
 <sample id="flag-in-fixture" archetypes="golden-fixture" source="cmd/gofmt/testdata/rewrite1.input">
 
-Source: `cmd/gofmt/testdata/rewrite1.input` (copyright header elided;
-Go 1.27 dev). Verbatim.
-The paired rewrite1.golden is identical with `Foo` rewritten to
-`Bar`.
+Copyright header elided. The paired rewrite1.golden is identical with
+`Foo` rewritten to `Bar`.
 
 ```go
 //gofmt -r=Foo->Bar

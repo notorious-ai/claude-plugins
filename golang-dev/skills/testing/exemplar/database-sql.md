@@ -2,12 +2,8 @@
 
 Samples: matrix-runner, wait-before-read, bubble-sleep-expiry
 
-Source: `database/sql/sql_test.go` (Go development tree, 1.27 dev, 2026-06).
-Verbatim.
-
 <sample id="matrix-runner" archetypes="harness,lifecycle" source="database/sql/sql_test.go">
 
-Source: `database/sql/sql_test.go` (Go 1.27 dev). Verbatim.
 Body elided; it runs each driver variant under `t.Run` +
 `synctest.Test`, with `t.Cleanup` closing the DB inside the bubble.
 
@@ -41,8 +37,6 @@ bubble.</highlight>
 
 <sample id="wait-before-read" archetypes="lifecycle,async-assert" source="database/sql/sql_test.go">
 
-Source: `database/sql/sql_test.go` (Go 1.27 dev). Verbatim.
-
 ```go
 func (db *DB) numFreeConns() int {
 	synctest.Wait()
@@ -63,8 +57,6 @@ one-liners; no poll loops, no sleeps.</highlight>
 </sample>
 
 <sample id="bubble-sleep-expiry" archetypes="lifecycle,async-assert" source="database/sql/sql_test.go">
-
-Source: `database/sql/sql_test.go` (Go 1.27 dev). Verbatim.
 
 ```go
 func synctestSubtest(t *testing.T, name string, f func(t *testing.T)) {
