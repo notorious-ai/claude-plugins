@@ -27,6 +27,12 @@ All notable changes to github-author are documented in this file.
   `[FILL: ...]` pointer instead of an invented threshold
 - Keep the remedy out of the title unless it was settled before the issue
   existed
+- State validation once, in one form: a sentence for a single outcome, or a "By
+  the time this issue is complete:" lead-in with a list for several, since a
+  paragraph and a checklist carrying the same items shadow each other
+- Stop planting invented validation headings ("How We'll Know"): a reader-novel
+  category costs a parse the contents never repay, so corrections use the
+  lead-in sentence or a conventional label
 - Rebuild the worked examples as a five-shot set mostly adapted from real
   issues, spread across domain, body weight, and validation form, with
   continuous-line bodies matching the `gh --body` format the skill teaches

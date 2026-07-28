@@ -212,7 +212,7 @@ User profiles carry no timezone, so the scheduler sends on UTC. A user
 in Tokyo receives their "daily summary" at 3 AM local time, and support
 logs roughly 20 complaints a month about notification timing.
 
-## How We'll Know
+By the time this issue is complete:
 
 - [ ] A user in Tokyo receives their daily summary during their morning, not overnight
 - [ ] Notification-timing complaints fall from ~20/month to near zero over a full support cycle
@@ -275,7 +275,9 @@ enough that we keep a canned reply for it.
 **Better**: Invert the symptoms actually on the page.
 
 ```markdown
-## Signs the Problem Is Gone
+## Definition of Done
+
+By the time this issue is complete:
 
 - [ ] A new user can say what to do next without asking support
 - [ ] The canned reply for "I didn't know what to do next" falls out of use
@@ -306,7 +308,7 @@ regularly.
 **Better**: Match the precision the body already supports, and where it supplies none, say how to obtain it.
 
 ```markdown
-## What Good Looks Like
+By the time this issue is complete:
 
 - [ ] A user with the largest dataset we hold no longer waits long enough to switch tabs
 - [ ] The complaint stops reaching support, checked over a full month since the rate is anecdotal
@@ -339,7 +341,7 @@ paginating by hand to get their data out.
 **Better**: Describe the symptom absent, and let any design that gets there pass.
 
 ```markdown
-## Evidence the Friction Is Gone
+By the time this issue is complete:
 
 - [ ] A customer exporting more than 50k rows gets their file without asking us for help
 - [ ] Nobody paginates an export by hand to work around a timeout
