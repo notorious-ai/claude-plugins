@@ -168,8 +168,6 @@ Reducing dashboard load time
 <body>
 The main dashboard takes 8-12 seconds to load for users with large datasets (>10k records). Analytics show 15% of users abandon the page before it finishes loading.
 
-Target performance: dashboard loads within 2 seconds for typical users.
-
 ## Current Metrics
 - P50 load time: 4.2s
 - P95 load time: 11.8s
@@ -177,13 +175,15 @@ Target performance: dashboard loads within 2 seconds for typical users.
 
 ## Success Criteria
 
+By the time this issue is complete:
+
 - [ ] P50 load time under 2 seconds
 - [ ] P95 load time under 5 seconds
 - [ ] Dashboard abandonment falls from 15% into the single digits
 </body>
 
 <why_good>
-Every criterion inverts a number the body already states: P50 4.2s becomes under 2 seconds, P95 11.8s becomes under 5 seconds, and 15% abandonment becomes single digits. This is the set's one checkbox list, and it earns the form: the body carries three measured baselines, so a checklist reads as units to verify rather than tasks to perform. The heading is conventional, which is fine — contents that trace to the body are fine under any heading.
+Every criterion inverts a number the body already states: P50 4.2s becomes under 2 seconds, P95 11.8s becomes under 5 seconds, and 15% abandonment becomes single digits. This is the set's one checkbox list, and it earns the form: the body carries three measured baselines, so a checklist reads as units to verify rather than tasks to perform. The heading is conventional, which is fine — contents that trace to the body are fine under any heading. The lead-in sentence and the list are the issue's single validation statement; no prose paragraph restates the targets elsewhere.
 </why_good>
 </example>
 

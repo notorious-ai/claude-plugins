@@ -33,6 +33,10 @@ All notable changes to github-author are documented in this file.
 - Stop planting invented validation headings ("How We'll Know"): a reader-novel
   category costs a parse the contents never repay, so corrections use the
   lead-in sentence or a conventional label
+- Bind the lead-in sentence and its list into one statement rather than a
+  closing line plus a formal section, and rule out activity criteria ("root
+  cause documented", "approach decided"), which are work items wearing
+  checkboxes
 - Rebuild the worked examples as a five-shot set mostly adapted from real
   issues, spread across domain, body weight, and validation form, with
   continuous-line bodies matching the `gh --body` format the skill teaches
