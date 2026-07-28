@@ -35,8 +35,8 @@ An example announces its intent through its doc comment, its name, and its
 inline comments. Whoever judges it validates that the expected Output
 actually demonstrates that intent, because an example whose comment
 promises expiry while its Output shows only insertion publishes a lie on
-pkgsite. (A round-4 catch the maintainer praised: "the example's comment
-promises what its code never shows.")
+pkgsite. A comment promising what the code never shows is the shape to
+catch.
 
 ## All failures must reach the output
 
@@ -75,8 +75,8 @@ func ExampleIndex_Lookup() {
 every occurrence, so the contract itself fully determines the value set
 ("ana" sits at 1 and 3 in "banana") and leaves only the order open. That is
 the whole fit: deterministic values, unspecified order. math/rand/v2's
-ExamplePerm (`example_test.go`) is the same shape: Perm(3) must print
-exactly 0, 1, and 2, in a random order.</highlight>
+ExamplePerm is the same shape: Perm(3) must print exactly 0, 1, and 2, in a
+random order.</highlight>
 
 <note>Neither specimen involves a goroutine. Concurrent failure modes,
 deadlock, lost work, partial output, do not become expected-output
