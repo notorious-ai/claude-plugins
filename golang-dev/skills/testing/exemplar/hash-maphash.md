@@ -1,7 +1,5 @@
 # hash/maphash — property-claim names, scenario grain
 
-Samples: property-claim-names, one-invariant-many-paths
-
 <sample id="property-claim-names" archetypes="transform" source="hash/maphash/maphash_test.go">
 
 ```go

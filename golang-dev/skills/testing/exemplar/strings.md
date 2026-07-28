@@ -1,7 +1,5 @@
 # strings — one runner for a function family; Examples carry the trivial cases
 
-Samples: case-table, family-shared-runner, example-edge-case, bloop-benchmark
-
 <sample id="case-table" archetypes="transform" source="strings/strings_test.go">
 
 The table continues well past this excerpt; elided.

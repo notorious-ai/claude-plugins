@@ -1,7 +1,5 @@
 # database/sql — synctest bubbles: matrix runner, wait-before-read, bubble sleeps
 
-Samples: matrix-runner, wait-before-read, bubble-sleep-expiry
-
 <sample id="matrix-runner" archetypes="harness,lifecycle" source="database/sql/sql_test.go">
 
 Body elided; it runs each driver variant under `t.Run` +

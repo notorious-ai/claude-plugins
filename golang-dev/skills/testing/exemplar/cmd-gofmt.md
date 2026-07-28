@@ -1,7 +1,5 @@
 # cmd/gofmt — golden beside fixture, -update, idempotence
 
-Samples: update-flag-diff, corpus-glob-idempotence, flag-in-fixture
-
 Note: `package main`, in-process — the gofmt binary is never executed.
 
 <sample id="update-flag-diff" archetypes="golden-fixture" source="cmd/gofmt/gofmt_test.go">

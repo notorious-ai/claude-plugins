@@ -1,7 +1,5 @@
 # io — bespoke fakes, contract stated in prose above the assertion
 
-Samples: one-behavior-fakes, regression-to-property
-
 Both files are external tests (`package io_test` with `. "io"`).
 
 <sample id="one-behavior-fakes" archetypes="stream" source="io/io_test.go">
