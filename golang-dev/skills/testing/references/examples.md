@@ -10,13 +10,15 @@ output.
 
 ## The name is the attribution
 
-go doc reads the name to decide which symbol an example documents: Example
+pkgsite reads the name to decide which symbol an example documents: Example
 for the package, ExampleLoad for a function, ExampleConfig_Validate for a
 method, and a lower-case trailing suffix to separate several examples of
 one symbol (ExampleLoad_missingFile). Underscores mean nothing anywhere
-else in a test name; here they carry the whole attribution, and a name
-that resolves to no exported symbol is a vet failure rather than a silent
-miss.
+else in a test name; here they carry the whole attribution. Vet reports
+only a leading identifier matching nothing in the package or in the test
+file's imports, so a name aimed at an unexported symbol, or one that
+happens to match an imported package's, passes clean and documents
+nothing: check the attribution by eye.
 
 ## Every character serves users
 
