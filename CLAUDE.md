@@ -157,7 +157,7 @@ Ensure `CHANGELOG.md` exists at plugin root. Organize entries by **component** (
 When creating or modifying components after initial plugin setup:
 
 **Commands**: Invoke **command-development** skill
-**Skills**: Invoke **skill-development** skill, then invoke **plugin-dev:skill-reviewer** agent after creating the skill
+**Skills**: Invoke whichever skill-authoring skill the session actually has (**skill-creator** at the time of writing, so check the available skills rather than trust a name here), then validate as below
 **Agents**: Invoke **agent-development** skill
 **Hooks**: Invoke **hook-development** skill
 **MCP**: Invoke **mcp-integration** skill
@@ -166,7 +166,25 @@ When creating or modifying components after initial plugin setup:
 
 Before testing, validate components are correctly structured.
 
-**Skills**: Invoke **plugin-dev:skill-reviewer** agent to validate structure, quality, and best practices.
+**Skills**: Validate against the [live frontmatter reference][skills-docs], never against a checklist bundled in a plugin. Those checklists rot, and `plugin-dev:skill-reviewer` is the cautionary case:
+
+- It calls `when_to_use` deprecated, where the docs document it as supported.
+- It knows four of the seventeen frontmatter fields the docs list.
+- It invents a 500-character description limit in place of the real 1,536-character listing cap.
+- It hardwires progressive disclosure to three directory names, so a skill bundling a corpus reads as misorganized.
+
+Its most confident findings are the wrong ones, so do not run it.
+
+Three checks need no judgment:
+
+- Every file `SKILL.md` references exists, and every bundled file is referenced from `SKILL.md`. Claude loads only what the body names.
+- `description` plus `when_to_use` fit inside the 1,536-character skill-listing cap.
+- `SKILL.md` stays under 500 lines, with the detail in progressively disclosed files.
+
+For behavior rather than shape, measure instead of reviewing. Use the eval loop of whatever skill-authoring tooling the session has: **skill-creator** currently ships one, with a test case per prompt, a fresh grader per run, and a benchmark across revisions. Two of its parts are known-broken, so treat their output with suspicion:
+
+- The description optimizer proxies a skill with a slash command, which Claude Code never invokes on its own, so trigger accuracy comes back meaningless.
+- `quick_validate.py` checks the portable packaging schema rather than the Claude Code frontmatter spec, so it rejects `when_to_use`.
 
 **Other components**: Reference the relevant skill used during creation (**command-development**, **agent-development**, **hook-development**, **mcp-integration**) for validation guidance.
 
