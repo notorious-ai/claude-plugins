@@ -1,14 +1,8 @@
 # io — bespoke fakes, contract stated in prose above the assertion
 
-Samples: one-behavior-fakes, regression-to-property
+Both files are external tests (`package io_test` with `. "io"`).
 
-Source: `io/io_test.go` and `io/multi_test.go` (Go development tree, 1.27 dev,
-2026-06). Verbatim. Both files are external
-tests (`package io_test` with `. "io"`).
-
-<sample id="one-behavior-fakes" archetypes="stream" source="io/io_test.go" lines="93-145">
-
-Source: `io/io_test.go` lines 93-145 (Go 1.27 dev). Verbatim.
+<sample id="one-behavior-fakes" archetypes="stream" source="io/io_test.go">
 
 ```go
 // Version of bytes.Buffer that checks whether WriteTo was called or not
@@ -79,9 +73,7 @@ there.</note>
 
 </sample>
 
-<sample id="regression-to-property" archetypes="stream" source="io/multi_test.go" lines="287-323">
-
-Source: `io/multi_test.go` lines 287-323 (Go 1.27 dev). Verbatim.
+<sample id="regression-to-property" archetypes="stream" source="io/multi_test.go">
 
 ```go
 // byteAndEOFReader is a Reader which reads one byte (the underlying

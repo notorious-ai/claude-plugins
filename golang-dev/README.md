@@ -33,7 +33,7 @@ This plugin shapes Claude into a **professional Go developer** who thinks and ac
 ## Installation
 
 ```bash
-claude plugin install golang-dev@claude-code-plugins
+claude plugin install golang-dev@notorious-ai
 ```
 
 ## Requirements

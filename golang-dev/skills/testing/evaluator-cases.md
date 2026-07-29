@@ -101,16 +101,15 @@ Miss: "any sleep sits inside a bubble" applied to the letter fails correct examp
 </rule>
 
 <rule id="goroutine-leak">
-A Close that SIGNALS its background goroutine to exit without WAITING for it is a potential-leak finding to raise, never a fix to prescribe: whether a synctest bubble fails when it exits with a live-but-exiting goroutine is still under investigation with the maintainer, so the report flags it and the remedy stays with the owner.
+A bubble waits for every goroutine inside it to exit, so a Close that only SIGNALS its janitor is not a leak finding in a bubbled suite; a goroutine nobody signals fails the test with "panic: deadlock: main bubble goroutine has exited but blocked goroutines remain". Bubble exit is the leak detector, and outside a bubble the detector is a sync.WaitGroup.
 <good>
-// Close stops the janitor and waits for it to exit.
+// Close signals the janitor.
 close(c.quit)
-c.janitorDone.Wait()
 </good>
 <bad>
-// Close guarantees the janitor will exit.
-close(c.quit) // no wait: the goroutine may outlive Close
-Miss: "guarantees it will exit" reads as a clean shutdown, so graders pass it; the guarantee is not a wait, and a suite whose bubbles exit while the janitor still runs may fail — raise the flag, and do not rewrite the test or the package to resolve it.
+go func() { c.drain() }() // no bubble, so nothing reaps this
+if got := c.Len(); got != 0 {
+Miss: the ceremony reads as rigour, so graders have demanded a janitorDone.Wait() from a suite whose bubbles already wait, then passed an unreaped goroutine out here because the run happened to come back green — in a bubble the wait is free, and only outside one does a WaitGroup earn its lines.
 </bad>
 </rule>
 

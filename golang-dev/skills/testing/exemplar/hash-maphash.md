@@ -1,25 +1,6 @@
 # hash/maphash — property-claim names, scenario grain
 
-Samples: property-claim-names, one-invariant-many-paths
-
-Source: `hash/maphash/maphash_test.go` (Go development tree, 1.27 dev, 2026-06).
-Verbatim.
-
-Surface exercised:
-
-```go
-func MakeSeed() Seed
-func Bytes(seed Seed, b []byte) uint64
-func String(seed Seed, s string) uint64
-type Hash struct{ ... }
-    func (h *Hash) Seed() Seed
-    func (h *Hash) SetSeed(seed Seed)
-    func (h *Hash) Sum64() uint64
-```
-
-<sample id="property-claim-names" archetypes="transform" source="hash/maphash/maphash_test.go" lines="20-41">
-
-Source: `hash/maphash/maphash_test.go` lines 20-41 (Go 1.27 dev). Verbatim.
+<sample id="property-claim-names" archetypes="transform" source="hash/maphash/maphash_test.go">
 
 ```go
 func TestUnseededHash(t *testing.T) {
@@ -44,6 +25,7 @@ func TestSeededHash(t *testing.T) {
 	if len(m) != 1 {
 		t.Errorf("seeded hash is random: got %d, want 1", len(m))
 	}
+}
 ```
 
 <highlight archetype="transform">Each name is a claim about the package, not a
@@ -55,9 +37,7 @@ misnamed.</note>
 
 </sample>
 
-<sample id="one-invariant-many-paths" archetypes="stream,transform" source="hash/maphash/maphash_test.go" lines="44-105">
-
-Source: `hash/maphash/maphash_test.go` lines 44-105 (Go 1.27 dev). Verbatim.
+<sample id="one-invariant-many-paths" archetypes="stream,transform" source="hash/maphash/maphash_test.go">
 
 ```go
 func TestHashGrouping(t *testing.T) {

@@ -1,14 +1,8 @@
 # database/sql — synctest bubbles: matrix runner, wait-before-read, bubble sleeps
 
-Samples: matrix-runner, wait-before-read, bubble-sleep-expiry
+<sample id="matrix-runner" archetypes="harness,lifecycle" source="database/sql/sql_test.go">
 
-Source: `database/sql/sql_test.go` (Go development tree, 1.27 dev, 2026-06).
-Verbatim.
-
-<sample id="matrix-runner" archetypes="harness,lifecycle" source="database/sql/sql_test.go" lines="28-40">
-
-Source: `database/sql/sql_test.go` lines 28-40 (Go 1.27 dev). Verbatim.
-Body elided; lines 41-102 run each driver variant under `t.Run` +
+Body elided; it runs each driver variant under `t.Run` +
 `synctest.Test`, with `t.Cleanup` closing the DB inside the bubble.
 
 ```go
@@ -39,9 +33,7 @@ bubble.</highlight>
 
 </sample>
 
-<sample id="wait-before-read" archetypes="lifecycle,async-assert" source="database/sql/sql_test.go" lines="382-387">
-
-Source: `database/sql/sql_test.go` lines 382-387 (Go 1.27 dev). Verbatim.
+<sample id="wait-before-read" archetypes="lifecycle,async-assert" source="database/sql/sql_test.go">
 
 ```go
 func (db *DB) numFreeConns() int {
@@ -62,9 +54,7 @@ one-liners; no poll loops, no sleeps.</highlight>
 
 </sample>
 
-<sample id="bubble-sleep-expiry" archetypes="lifecycle,async-assert" source="database/sql/sql_test.go" lines="3332-3397">
-
-Source: `database/sql/sql_test.go` lines 3332-3397 (Go 1.27 dev). Verbatim.
+<sample id="bubble-sleep-expiry" archetypes="lifecycle,async-assert" source="database/sql/sql_test.go">
 
 ```go
 func synctestSubtest(t *testing.T, name string, f func(t *testing.T)) {

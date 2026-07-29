@@ -1,14 +1,8 @@
 # strings — one runner for a function family; Examples carry the trivial cases
 
-Samples: case-table, family-shared-runner, example-edge-case, bloop-benchmark
+<sample id="case-table" archetypes="transform" source="strings/strings_test.go">
 
-Source: `strings/strings_test.go` and `strings/example_test.go` (Go development
-tree, 1.27 dev, 2026-06). Verbatim.
-
-<sample id="case-table" archetypes="transform" source="strings/strings_test.go" lines="60-74">
-
-Source: `strings/strings_test.go` lines 60-74 (Go 1.27 dev). Verbatim.
-The table runs to line 220; elided.
+The table continues well past this excerpt; elided.
 
 ```go
 type IndexTest struct {
@@ -39,9 +33,7 @@ rows.</note>
 
 </sample>
 
-<sample id="family-shared-runner" archetypes="transform,harness" source="strings/strings_test.go" lines="222-238">
-
-Source: `strings/strings_test.go` lines 222-238 (Go 1.27 dev). Verbatim.
+<sample id="family-shared-runner" archetypes="transform,harness" source="strings/strings_test.go">
 
 ```go
 // Execute f on each test case.  funcName should be the name of f; it's used
@@ -74,9 +66,7 @@ every failure message, so a plain loop beats `t.Run` ceremony.</highlight>
 
 </sample>
 
-<sample id="example-edge-case" archetypes="example" source="strings/example_test.go" lines="94-100">
-
-Source: `strings/example_test.go` lines 94-100 (Go 1.27 dev). Verbatim.
+<sample id="example-edge-case" archetypes="example" source="strings/example_test.go">
 
 ```go
 func ExampleCount() {
@@ -100,9 +90,7 @@ with the function's own name (see the encoding/json exemplar; bufio's
 
 </sample>
 
-<sample id="bloop-benchmark" archetypes="transform" source="strings/strings_test.go" lines="1541-1551">
-
-Source: `strings/strings_test.go` lines 1541-1551 (Go 1.27 dev). Verbatim.
+<sample id="bloop-benchmark" archetypes="transform" source="strings/strings_test.go">
 
 ```go
 func BenchmarkReplace(b *testing.B) {

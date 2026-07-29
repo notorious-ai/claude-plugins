@@ -1,11 +1,7 @@
 # archive/zip — buying a whole interface contract with one verifier call
 
-Source: `archive/zip/reader_test.go` (Go development tree, 1.27 dev, 2026-06).
-Verbatim.
+<sample id="verifier-shape" archetypes="contract-conformance,harness" source="testing/fstest/testfs.go">
 
-<sample id="verifier-shape" archetypes="contract-conformance,harness" source="testing/fstest/testfs.go" lines="20-39">
-
-Source: `testing/fstest/testfs.go` lines 20-39 (Go 1.27 dev). Verbatim.
 The surface the next sample exercises.
 
 ```go
@@ -43,9 +39,7 @@ callable check.</note>
 
 </sample>
 
-<sample id="conformance-call" archetypes="contract-conformance" source="archive/zip/reader_test.go" lines="1203-1229">
-
-Source: `archive/zip/reader_test.go` lines 1203-1229 (Go 1.27 dev). Verbatim.
+<sample id="conformance-call" archetypes="contract-conformance" source="archive/zip/reader_test.go">
 
 ```go
 func TestFS(t *testing.T) {

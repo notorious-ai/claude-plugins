@@ -1,11 +1,7 @@
 # go/parser — expectations at line granularity, inside the fixture
 
-Source: `go/parser/error_test.go` and `go/parser/testdata/commas.src` (Go
-development tree, 1.27 dev, 2026-06). Verbatim.
+<sample id="harness-header-doc" archetypes="harness" source="go/parser/error_test.go">
 
-<sample id="harness-header-doc" archetypes="harness" source="go/parser/error_test.go" lines="5-21">
-
-Source: `go/parser/error_test.go` lines 5-21 (Go 1.27 dev). Verbatim.
 The file-header comment.
 
 ```go
@@ -29,18 +25,17 @@ The file-header comment.
 ```
 
 <highlight archetype="harness">A bespoke few-hundred-line harness, written
-once, that turns the parser's user contract into a corpus: the ERROR comment's
-own source position IS the expected diagnostic position, so nobody hand-counts
-line:col at helper-call distance.</highlight>
+once, that turns the parser's user contract into a corpus: the offending
+token's own source position IS the expected diagnostic position, marked in
+place by the comment that follows it, so nobody hand-counts line:col at
+helper-call distance.</highlight>
 
 <note>The header comment teaches the whole convention, with a worked example,
 before any code.</note>
 
 </sample>
 
-<sample id="error-marker-language" archetypes="harness" source="go/parser/error_test.go" lines="61-67">
-
-Source: `go/parser/error_test.go` lines 61-67 (Go 1.27 dev). Verbatim.
+<sample id="error-marker-language" archetypes="harness" source="go/parser/error_test.go">
 
 ```go
 // ERROR comments must be of the form /* ERROR "rx" */ and rx is
@@ -60,10 +55,9 @@ plain comment cannot express.</highlight>
 
 </sample>
 
-<sample id="fixture-inline-expectations" archetypes="golden-fixture,harness" source="go/parser/testdata/commas.src" lines="1-19">
+<sample id="fixture-inline-expectations" archetypes="golden-fixture,harness" source="go/parser/testdata/commas.src">
 
-Source: `go/parser/testdata/commas.src`, the complete file (Go 1.27 dev).
-Verbatim.
+The complete file.
 
 ```go
 // (standard Go copyright header elided)

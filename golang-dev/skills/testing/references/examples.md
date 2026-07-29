@@ -8,6 +8,18 @@ the rest, because the example archetype matches EVERY package and its
 harness is unlike the test harness: the only assertion is the printed
 output.
 
+## The name is the attribution
+
+pkgsite reads the name to decide which symbol an example documents: Example
+for the package, ExampleLoad for a function, ExampleConfig_Validate for a
+method, and a lower-case trailing suffix to separate several examples of
+one symbol (ExampleLoad_missingFile). Underscores mean nothing anywhere
+else in a test name; here they carry the whole attribution. Vet reports
+only a leading identifier matching nothing in the package or in the test
+file's imports, so a name aimed at an unexported symbol, or one that
+happens to match an imported package's, passes clean and documents
+nothing: check the attribution by eye.
+
 ## Every character serves users
 
 Doc comment, code, in-function comments, and the Output block all render on
@@ -23,8 +35,8 @@ An example announces its intent through its doc comment, its name, and its
 inline comments. Whoever judges it validates that the expected Output
 actually demonstrates that intent, because an example whose comment
 promises expiry while its Output shows only insertion publishes a lie on
-pkgsite. (A round-4 catch the maintainer praised: "the example's comment
-promises what its code never shows.")
+pkgsite. A comment promising what the code never shows is the shape to
+catch.
 
 ## All failures must reach the output
 
@@ -43,10 +55,7 @@ fits an API whose documented contract fully determines the SET of printed
 values while leaving their order unspecified. The standard tree uses it in
 three packages in total.
 
-<sample id="unordered-output-contract" archetypes="example" source="index/suffixarray/example_test.go" lines="12-22">
-
-Source: `index/suffixarray/example_test.go` lines 12-22 (Go development
-tree, 1.27 dev, 2026-06). Verbatim.
+<sample id="unordered-output-contract" archetypes="example" source="index/suffixarray/example_test.go">
 
 ```go
 func ExampleIndex_Lookup() {
@@ -66,8 +75,8 @@ func ExampleIndex_Lookup() {
 every occurrence, so the contract itself fully determines the value set
 ("ana" sits at 1 and 3 in "banana") and leaves only the order open. That is
 the whole fit: deterministic values, unspecified order. math/rand/v2's
-ExamplePerm (`example_test.go` lines 99-107) is the same shape: Perm(3)
-must print exactly 0, 1, and 2, in a random order.</highlight>
+ExamplePerm is the same shape: Perm(3) must print exactly 0, 1, and 2, in a
+random order.</highlight>
 
 <note>Neither specimen involves a goroutine. Concurrent failure modes,
 deadlock, lost work, partial output, do not become expected-output

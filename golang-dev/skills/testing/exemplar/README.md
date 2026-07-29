@@ -7,12 +7,13 @@ only code allowed in this folder is attributed snippets from the Go team's
 packages (standard library and golang.org/x). The annotations are ours and say
 what to imitate and why.
 
-Each snippet sits in a `<sample id archetypes source lines>` element carrying
+Each snippet sits in a `<sample id archetypes source>` element carrying
 one `<highlight archetype="...">` per archetype and a `<note>` for the general
-lesson. WRITING tests: match your package's symbol clusters from `go doc -all`
-to the archetypes below and read ONLY the matched samples; `file#id` names the
-`<sample id="id">` element in `file.md`. REVIEWING tests: read every file end
-to end; the whole corpus is the grading sense.
+lesson; an elision inside a code block is always marked. WRITING tests:
+match your package's symbol clusters from `go doc -all` to the archetypes
+below and read ONLY the matched samples; `file#id` names the
+`<sample id="id">` element in `file.md`. REVIEWING tests: read every file
+end to end; the whole corpus is the grading sense.
 
 ## Archetypes
 
@@ -24,9 +25,6 @@ to end; the whole corpus is the grading sense.
 - golden-fixture — outputs too large to inline: expected bytes live in testdata beside their inputs, refreshed by an `-update` flag. → cmd-gofmt#update-flag-diff, cmd-gofmt#corpus-glob-idempotence, cmd-gofmt#flag-in-fixture, go-parser#fixture-inline-expectations
 - async-assert — docs promising behavior after goroutines settle or time passes (expiry, delivery, draining). → database-sql#wait-before-read, database-sql#bubble-sleep-expiry
 - example — the mandatory runnable Example and its pkgsite voice; this archetype matches EVERY package. → encoding-json#example-user-voice, encoding-json#example-self-naming-violation, strings#example-edge-case
-
-One file per source package. Each names its source file and line ranges;
-elisions are marked. Verify against the tree before trusting an edit.
 
 ## Finding samples
 
