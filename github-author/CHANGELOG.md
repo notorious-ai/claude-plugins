@@ -2,6 +2,16 @@
 
 All notable changes to github-author are documented in this file.
 
+## [0.3.2] - 2026-07-29
+
+### writing-pull-requests
+
+- Set sentences that enumerate three or more parallel items off as prose-lists: items that still read as one sentence but scan as a list
+
+### writing-issues
+
+- Name the prose-list as the remedy for a comma-chained enumeration, so breaking a sentence into items does not require reshaping it into fragments
+
 ## [0.3.1] - 2026-07-29
 
 ### writing-pull-requests
