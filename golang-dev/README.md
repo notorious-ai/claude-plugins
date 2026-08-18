@@ -7,6 +7,7 @@ Comprehensive Go development experience - skills that elevate Claude into the ul
 This plugin shapes Claude into a **professional Go developer** who thinks and acts like someone from the Go team - not just knows Go syntax, but embodies Go culture, conventions, and professional practices.
 
 **Priority Hierarchy:**
+
 1. **Idiomatic readability** - Matching Go team style (stdlib, golang.org/x)
 2. **Professional developer mindset** - How to think and act, not just code
 3. **Industry know-hows** - Testing strategies, observability, community tools

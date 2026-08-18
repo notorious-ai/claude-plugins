@@ -17,6 +17,7 @@ ls -d */
 ```
 
 Each plugin directory contains:
+
 - `.claude-plugin/plugin.json` - Plugin manifest
 - `README.md` - Documentation and usage examples
 - Component directories (`commands/`, `agents/`, `skills/`, `hooks/`) as needed
@@ -142,4 +143,4 @@ Use GitHub Issues with the appropriate issue type:
 
 ---
 
-*Built with curiosity and shared with friends.*
+_Built with curiosity and shared with friends._
