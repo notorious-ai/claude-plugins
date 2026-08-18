@@ -66,6 +66,9 @@ Initial release of the planning-commits skill for sequencing atomic, fine-graine
 
 ## naming
 
+Retire the skill.
+Idiomatic Go naming is trained into current models, and a refresh against them leaves nothing for the skill to say.
+
 Initial release of the naming skill for Go identifiers.
 
 - Core workflow for naming packages, functions, methods, types, variables, constants, and receivers
