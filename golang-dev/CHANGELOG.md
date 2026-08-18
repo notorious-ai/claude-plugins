@@ -66,6 +66,11 @@ Initial release of the planning-commits skill for sequencing atomic, fine-graine
 
 ## naming
 
+Removed. The skill no longer ships with the plugin.
+
+- Idiomatic Go naming is trained into current models; what still slips, the standard linters catch
+- A policy skill for idiomatic Go packages will follow separately
+
 Initial release of the naming skill for Go identifiers.
 
 - Core workflow for naming packages, functions, methods, types, variables, constants, and receivers
