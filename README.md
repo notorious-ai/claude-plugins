@@ -17,6 +17,7 @@ ls -d */
 ```
 
 Each plugin directory contains:
+
 - `.claude-plugin/plugin.json` - Plugin manifest
 - `README.md` - Documentation and usage examples
 - Component directories (`commands/`, `agents/`, `skills/`, `hooks/`) as needed
@@ -30,32 +31,30 @@ Each plugin directory contains:
 
 ### Installation
 
-**Simple approach - Register the marketplace:**
+Register the marketplace, then install a plugin from it.
+Where the two commands write depends on the scope: choose one.
+
+**For yourself, across all projects** (user scope, the default):
 
 ```bash
 claude plugin marketplace add notorious-ai/claude-plugins
+claude plugin install github-author@notorious-ai
 ```
 
-Then install individual plugins you need:
+**For everyone working in a repository** (project scope, written to `.claude/settings.json` and committed):
 
 ```bash
-claude plugin install golang-dev@notorious-ai
+claude plugin marketplace add notorious-ai/claude-plugins --scope project
+claude plugin install github-author@notorious-ai --scope project
 ```
 
-Or browse and install interactively:
-
-```bash
-claude plugin
-```
-
-**Advanced - Team configuration for selective installation:**
-
-Teams can configure `.claude/settings.json` in their repository to specify which plugins to enable. When team members trust the repository, they'll be prompted to install only the selected plugins:
+Once a collaborator trusts the repository, Claude Code registers the marketplace and prompts them to install the plugins listed there.
+The generated settings look like this:
 
 ```json
 {
   "extraKnownMarketplaces": {
-    "team-tools": {
+    "notorious-ai": {
       "source": {
         "source": "github",
         "repo": "notorious-ai/claude-plugins"
@@ -63,11 +62,19 @@ Teams can configure `.claude/settings.json` in their repository to specify which
     }
   },
   "enabledPlugins": {
-    "developing-go@team-tools": true
+    "github-author@notorious-ai": true
   }
 }
 ```
 
+**For yourself, in one repository only** (local scope, written to `.claude/settings.local.json`, not shared):
+
+```bash
+claude plugin marketplace add notorious-ai/claude-plugins --scope local
+claude plugin install github-author@notorious-ai --scope local
+```
+
+Or browse and install interactively with `claude plugin`.
 For more details, see the [plugin configuration documentation](https://code.claude.com/docs/en/settings#plugin-configuration).
 
 ## 📖 Understanding This Repository
@@ -142,4 +149,4 @@ Use GitHub Issues with the appropriate issue type:
 
 ---
 
-*Built with curiosity and shared with friends.*
+_Built with curiosity and shared with friends._

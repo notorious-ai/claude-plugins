@@ -26,6 +26,7 @@ emphasizing content quality over workflow mechanics.
 ## Installation
 
 ```bash
+claude plugin marketplace add notorious-ai/claude-plugins
 claude plugin install github-author@notorious-ai
 ```
 
