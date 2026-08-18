@@ -150,7 +150,7 @@ Update `.claude-plugin/marketplace.json` to add the plugin:
 
 ### Verify CHANGELOG.md
 
-Ensure `CHANGELOG.md` exists at plugin root. Organize entries by **component** (skill/agent/command names) not by change type.
+Ensure `CHANGELOG.md` exists at plugin root. It follows [Keep a Changelog][keep-a-changelog], grouped by **component** (skill/agent/command names) under each version rather than by change type, and is written for the person upgrading the plugin: what now behaves differently for them, never what files moved.
 
 ## Working with Individual Components
 
@@ -342,3 +342,4 @@ When the pull request is ready to merge, use **squash-and-merge**. This will com
 [skill-structure]: https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices#skill-structure
 [skill-checklist]: https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices#checklist-for-effective-skills
 [skill-technical]: https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices#technical-notes
+[keep-a-changelog]: https://keepachangelog.com/en/1.1.0/
