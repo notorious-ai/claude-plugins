@@ -2,6 +2,12 @@
 
 All notable changes to golang-dev are documented in this file.
 
+## [0.6.1] - 2026-08-26
+
+### testing
+
+- Look to a dependency's own exported API before writing a test helper that searches, indexes, or converts the values it owns
+
 ## [0.6.0] - 2026-08-18
 
 ### naming
