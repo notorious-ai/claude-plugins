@@ -29,6 +29,12 @@ full keeps the test honest, and no mock framework does. No new third-party
 test dependency (go-cmp included) enters unless the module already carries
 it.
 
+Values a dependency owns usually come with the dependency's own way to
+search, index, or convert them. Look there before writing a helper that
+does it by hand: a one-use scan is often a translation the owner already
+supplies, and its abstraction names the semantics under test more
+directly than the loop does.
+
 ## The method-on-case line
 
 An advanced pattern makes the assertions a method on the case type,
