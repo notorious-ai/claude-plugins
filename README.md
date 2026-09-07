@@ -1,16 +1,15 @@
 # Claude Code Plugins Collection
 
-A curated collection of Claude Code plugins for systems architecture,
-distributed systems, and software engineering workflows. Each plugin is a
-standalone, composable tool that extends Claude Code with custom commands,
-agents, hooks, and integrations.
+A curated collection of Claude Code plugins for systems architecture, distributed systems, and software engineering workflows.
+Each plugin is a standalone, composable tool that extends Claude Code with custom commands, agents, hooks, and integrations.
 
 ## ✨ Available Plugins
 
 - [github-author](github-author/) - Craft effective GitHub PRs and Issues with skills for title conventions and description structure
 - [golang-dev](golang-dev/) - Comprehensive Go development experience with skills for committing, documentation, and testing
 
-This collection is growing. To browse available plugins:
+This collection is growing.
+To browse available plugins:
 
 ```bash
 ls -d */
@@ -121,13 +120,12 @@ claude-plugins/
 
 ## 🤝 Contributing
 
-We welcome contributions! Whether you have a new plugin to share, improvements
-to existing ones, or bug reports:
+We welcome contributions!
+Whether you have a new plugin to share, improvements to existing ones, or bug reports:
 
 - Open an issue for bugs, feature requests, or questions
 - Submit a pull request for new plugins or enhancements
-- See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on plugin
-  structure and development
+- See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on plugin structure and development
 
 ## 💬 Getting Help
 
@@ -136,8 +134,7 @@ Use GitHub Issues with the appropriate issue type:
 - **Bug**: Report issues with existing plugins
 - **Feature**: Suggest new plugins or enhancements
 - **Task**: Propose improvements to documentation or infrastructure
-- **Question Label**: Add the `question` label for questions about plugins or
-  usage
+- **Question Label**: Add the `question` label for questions about plugins or usage
 
 ## 🔗 Resources
 
