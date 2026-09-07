@@ -1,16 +1,14 @@
-# Claude Code Plugins Collection
+# Coding Agent Plugins
 
-A curated collection of Claude Code plugins for systems architecture,
-distributed systems, and software engineering workflows. Each plugin is a
-standalone, composable tool that extends Claude Code with custom commands,
-agents, hooks, and integrations.
+A collection of plugins that teach coding agents GitHub authoring and Go development practices.
 
 ## ✨ Available Plugins
 
 - [github-author](github-author/) - Craft effective GitHub PRs and Issues with skills for title conventions and description structure
 - [golang-dev](golang-dev/) - Comprehensive Go development experience with skills for committing, documentation, and testing
 
-This collection is growing. To browse available plugins:
+This collection is growing.
+To browse available plugins:
 
 ```bash
 ls -d */
@@ -26,10 +24,11 @@ Each plugin directory contains:
 
 ### Prerequisites
 
-- [Claude Code](https://claude.ai/code) installed and configured
-- Familiarity with Claude Code's plugin system
+- [Claude Code](https://claude.ai/code) or Codex CLI installed and configured
 
 ### Installation
+
+#### Claude Code
 
 Register the marketplace, then install a plugin from it.
 Where the two commands write depends on the scope: choose one.
@@ -77,6 +76,18 @@ claude plugin install github-author@notorious-ai --scope local
 Or browse and install interactively with `claude plugin`.
 For more details, see the [plugin configuration documentation](https://code.claude.com/docs/en/settings#plugin-configuration).
 
+#### Codex CLI
+
+Register the marketplace, then install the plugins you want:
+
+```bash
+codex plugin marketplace add notorious-ai/claude-plugins
+codex plugin add github-author@notorious-ai
+codex plugin add golang-dev@notorious-ai
+```
+
+Start a new Codex session after installation.
+
 ## 📖 Understanding This Repository
 
 ### Design Philosophy
@@ -121,13 +132,12 @@ claude-plugins/
 
 ## 🤝 Contributing
 
-We welcome contributions! Whether you have a new plugin to share, improvements
-to existing ones, or bug reports:
+We welcome contributions!
+Whether you have a new plugin to share, improvements to existing ones, or bug reports:
 
 - Open an issue for bugs, feature requests, or questions
 - Submit a pull request for new plugins or enhancements
-- See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on plugin
-  structure and development
+- See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on plugin structure and development
 
 ## 💬 Getting Help
 
@@ -136,11 +146,11 @@ Use GitHub Issues with the appropriate issue type:
 - **Bug**: Report issues with existing plugins
 - **Feature**: Suggest new plugins or enhancements
 - **Task**: Propose improvements to documentation or infrastructure
-- **Question Label**: Add the `question` label for questions about plugins or
-  usage
+- **Question Label**: Add the `question` label for questions about plugins or usage
 
 ## 🔗 Resources
 
+- [Codex Plugins Documentation](https://learn.chatgpt.com/docs/plugins)
 - [Claude Code Plugins Documentation](https://code.claude.com/docs/en/plugins)
 - [Plugins Reference](https://code.claude.com/docs/en/plugins-reference)
 - [Model Context Protocol](https://modelcontextprotocol.io/)

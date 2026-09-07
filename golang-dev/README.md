@@ -1,10 +1,10 @@
 # golang-dev
 
-Comprehensive Go development experience - skills that elevate Claude into the ultimate Golang developer.
+Go development skills for coding agents.
 
 ## Philosophy
 
-This plugin shapes Claude into a **professional Go developer** who thinks and acts like someone from the Go team - not just knows Go syntax, but embodies Go culture, conventions, and professional practices.
+This plugin teaches Go team conventions and professional development practices.
 
 **Priority Hierarchy:**
 
@@ -32,10 +32,21 @@ This plugin shapes Claude into a **professional Go developer** who thinks and ac
 
 ## Installation
 
+### Claude Code
+
 ```bash
 claude plugin marketplace add notorious-ai/claude-plugins
 claude plugin install golang-dev@notorious-ai
 ```
+
+### Codex CLI
+
+```bash
+codex plugin marketplace add notorious-ai/claude-plugins
+codex plugin add golang-dev@notorious-ai
+```
+
+Start a new Codex session after installation.
 
 ## Requirements
 
