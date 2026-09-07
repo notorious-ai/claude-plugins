@@ -1,6 +1,6 @@
 # golang-dev
 
-Go development skills for Claude Code and Codex.
+Go development skills for coding agents.
 
 ## Philosophy
 

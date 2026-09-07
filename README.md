@@ -1,6 +1,6 @@
-# Plugins for Claude Code and Codex
+# Coding Agent Plugins
 
-A collection of plugins for GitHub authoring and Go development in Claude Code and Codex.
+A collection of plugins that teach coding agents GitHub authoring and Go development practices.
 
 ## ✨ Available Plugins
 

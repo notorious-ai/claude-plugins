@@ -1,6 +1,6 @@
 # github-author
 
-Author high-quality GitHub contributions with Claude Code or Codex.
+Skills and workflows for coding agents to author high-quality GitHub contributions.
 This plugin focuses on the craft of writing effective Pull Requests and Issues, emphasizing content quality over workflow mechanics.
 
 ## Features
