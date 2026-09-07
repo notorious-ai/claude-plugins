@@ -37,23 +37,13 @@ Start a new Codex session after installation.
 
 ## Usage
 
-### Automatic Skill Activation
-
-The skills activate automatically when you ask Claude Code or Codex to help with PRs or issues:
+Ask for help with a GitHub contribution, for example:
 
 - "Help me write a PR for these changes"
 - "I need to create an issue for this bug"
 - "Draft a feature request for..."
-
-### Interactive Commands
-
-```bash
-# Start interactive PR drafting
-/draft-pr
-
-# Start guided issue creation
-/draft-issue
-```
+- `/draft-pr`
+- `/draft-issue`
 
 ## Philosophy
 
